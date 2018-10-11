@@ -1,0 +1,1204 @@
+Setting Up a Node
+-----------------
+
+-  Preparations:
+
+   -  Install `Go v1.10 <https://golang.org/doc/install>`__ or higher,
+      `Git <https://git-scm.com/downloads>`__, and the `C
+      compiler <#gcc-install-newbie-guide>`__.
+   -  Clone the go-seele repository to the
+      `GOPATH <https://github.com/golang/go/wiki/SettingGOPATH>`__
+      directory : ``go get -u -v github.com/seeleteam/go-seele/...``
+   -  In
+      seeleteam:raw-latex:`\go`-seele:raw-latex:`\cmd`:raw-latex:`\node`,
+      run: ``go build``; if you are running this for the first time a
+      node executable object will appear.
+
+-  Running a Node:
+
+..
+
+   1. If you run into the error related to “genesis block hash
+      mismatch”, follow the solution located
+      `here <#genesis-block-hash-mismatch>`__.
+   2. If you want to run a light node, just replace node1.json with
+      light_node1.json. Of course, don’t forget to start a full node
+      before you do this.
+   3. Unless otherwise stated, the nodes mentioned below refer to the
+      full node.
+
+-  commonds:
+
+   -  On Windows:
+
+      -  Running a Singular Node：
+
+         -  In the cmd window, run: ``node start -c``
+            `.:raw-latex:`\config`:raw-latex:`\node`1.json <#node1>`__
+         -  By default this will start the miner, not metrics. You can
+            add flags -m “stop” to not start the miner, or -t true to
+            `start metrics <#start-metrics>`__.
+
+      -  Running Multiple Nodes：
+
+         -  In one cmd window, run:
+            ``node start -c .\config\node1.json``
+         -  In a second cmd window, run:
+            ``node start -c .\config\node2.json``
+
+   -  On Linux & Mac:
+
+      -  Running a Singular Node：
+
+         -  On terminal, run: ``./node start -c ./config/node1.json``
+         -  By default this will start the miner, not metrics. You can
+            add flags -m “stop” to not start the miner, or -t true to
+            `start metrics <#start-metrics>`__.
+
+      Note: in the config file under the
+      seeleteam:raw-latex:`\go`-seele:raw-latex:`\cmd`:raw-latex:`\node `path,
+      there are 4 different module configurations that you can choose
+      from to start your node.
+
+      -  Running Multiple Nodes：
+
+         -  In one terminal window, run:
+            ``./node start -c ./config/node1.json``
+         -  In another terminal window, run:
+            ``./node start -c ./config/node2.json``
+
+-  Custom Configurations:
+
+   You can choose your own custom module configurations and not use the
+   default module configurations to start your node. The custom
+   configurations are below: (``Notes: you can follow`` `Join Seele
+   Network <https://github.com/seeleteam/go-seele/wiki/Join-Seele-Network>`__
+   ``to join Seele Network``)
+
+   { “basic”:{ “name”: “seele node1”, “version”: “1.0”, “dataDir”:
+   “node1”, “address”: “0.0.0.0:55027”, “coinbase”:
+   “0x010117ee8edfd14a1925e45e4cb698f195651b5a136e69ee9b394b7e8166cb1f”
+   }, “p2p”: { “privateKey”:
+   “0x8c5fe84f836732ae7935e70ed7f578851fabf533d327a36b4e9fc49b455aa721”,
+   “staticNodes”: [], “address”: “0.0.0.0:39007”, “networkID”: 1 },
+   “log”: { “isDebug”: true, “printLog”: false }, “httpServer”: {
+   “address”: “127.0.0.1:65027”, “crosssorgins”: [ "*" ], “whiteHost”: [
+   "*" ] }, “wsserver”: { “address”: “127.0.0.1:8080”, “pattern”: “/ws”
+   }, “genesis”: { “accounts”:{
+   “0x010171048615cfef6d03e10df133200a4266d3a8856795dd7e8873e300ecfbe4”:100,
+   “0x01014a36b60fbd2bf80b1f9da08d98b11166075a595622fedca4435ec35533e0”:200
+   }, “difficult”:10000000, “shard”:1 } }
+
+.. raw:: html
+
+   <table>
+
+.. raw:: html
+
+   <tbody>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <th>
+
+Domain
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th>
+
+Parameter
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <th>
+
+Explanation
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <th rowspan="5">
+
+basic
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <td>
+
+name
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Name of node
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+version
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Version of node
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+dataDir
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+System file path of node, used to store data
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+address
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Address to start RPC server
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+coinbase
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Coinbase used to mine
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <th rowspan="4">
+
+p2p
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <td>
+
+privateKey
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Private key for the p2p module, not used as an account
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+staticNodes
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+A static node. When the node is started, it will be connected to search
+for more nodes.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+address
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+The p2p server will listen on the TCP connection, which is used as the
+UDP address for the Kad protocol.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+networkID
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Used to indicate the network type. For example, 1 is testnet, 2 is
+mainnet.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <th rowspan="2">
+
+log
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <td>
+
+isDebug
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+If IsDebug is true, the log will be on the debug level, otherwise it
+will be on the info level.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+printLog
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+If PrintLog is true, then all logs will be printed on the console,
+otherwise it will be written and stored in a file.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <th rowspan="3">
+
+httpServer
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <td>
+
+address
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+HTTP RPC’s service address.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+crosssorgins
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Sent to the client’s cross-origin resource sharing origin. Note that
+CORS is a type of forced safety measure by the browser, which is
+irrelevant to the client’s custom HTTP.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+whiteHost
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Whitelist of permitted hosts.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <th rowspan="2">
+
+wsserver
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <td>
+
+address
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Address of Websocket RPC server.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+pattern
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Pattern to request path.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <th rowspan="3">
+
+genesis
+
+.. raw:: html
+
+   </th>
+
+.. raw:: html
+
+   <td>
+
+accounts
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Account information of the genesis block, used for testing.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+difficult
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Difficulty level: should be difficult near the beginning in order for
+easier block creation.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   <tr>
+
+.. raw:: html
+
+   <td>
+
+shard
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   <td>
+
+Number of shards in the genesis block.
+
+.. raw:: html
+
+   </td>
+
+.. raw:: html
+
+   </tr>
+
+.. raw:: html
+
+   </table>
+
+-  Help:
+
+   To run：node -h
+
+   use “node help []” for detailed usage
+
+   Usage: node [command]
+
+   Available Commands: help Help about any command key generate a key
+   pair with specified shard number start start the node of Seele
+   validatekey validate the private key and generate its public key
+
+   Flags: -a, –addr string rpc address (default “127.0.0.1:55027”) -h,
+   –help help for node
+
+   Use “node [command] –help” for more information about a command.
+
+-  Others:
+
+   -  To create a public and private key, run in the command window:
+      node key
+   -  To create a public key based on the private key,run in the command
+      window: node validatekey -k PRIVATEKEY
+
+Create a Full Node Client:
+--------------------------
+
+-  Preparations:
+
+   -  Install go v1.10 or higher and the C compiler.
+   -  In
+      seeleteam:raw-latex:`\go`-seele:raw-latex:`\cmd`:raw-latex:`\client`,
+      run: ``go build``. If you are running this for the first time, a
+      client executable object will appear.
+
+-  Running a Full Node Client:
+
+   -  On Windows:
+
+      -  In the command window, run: ``client``
+
+   -  On Mac & Linux:
+
+      -  In the command window, run: ``./client``
+
+-  Help:
+
+.. code:: cli
+
+   To run：client -h
+
+   NAME:
+      client.exe - interact with a full node process
+
+   USAGE:
+      client.exe [global options] command [command options] [arguments...]
+
+   AUTHOR:
+      seeleteam <dev@seelenet.com>
+
+   COMMANDS:
+        call              call contract
+        domain            system domain name commands
+        dumpheap          dump heap for profiling, return the file path
+        getbalance        get balance info
+        getblock          get block by height or hash
+        getblockheight    get block height
+        getblocktxcount   get block transaction count by block height or block hash
+        getdebtbyhash     get debt by debt hash
+        getdebts          get pending debts
+        getinfo           get node info
+        getlogs           get logs
+        getnonce          get account nonce
+        getpendingtxs     get pending transactions
+        getreceipt        get receipt by transaction hash
+        getshardnum       get account shard number
+        gettxbyhash       get transaction by transaction hash
+        gettxinblock      get transaction by block height or block hash with index of the transaction in the block
+        gettxpoolcontent  get transaction pool contents
+        gettxpoolcount    get transaction pool transaction count
+        htlc              Hash time lock contract commands
+        key               generate key with or without shard number
+        miner             miner commands
+        p2p               p2p commands
+        payload           generate the payload according to the abi file and method name and args
+        savekey           save private key to a keystore file
+        sendtx            send transaction to node
+        sign              generate a signed transaction and print it out
+        subchain          system sub chain commands
+        help, h           Shows a list of commands or help for one command
+
+   GLOBAL OPTIONS:
+      --help, -h  show help
+
+Create a Light Node Client:
+---------------------------
+
+-  Preparations:
+
+   -  Install go v1.10 or higher and the C compiler.
+   -  In
+      seeleteam:raw-latex:`\go`-seele:raw-latex:`\cmd`:raw-latex:`\client`:raw-latex:`\light`,
+      run: ``go build``. If you are running this for the first time, a
+      client executable object will appear.
+
+-  Running a Light Node Client:
+
+   -  On Windows:
+
+      -  In the command window, run: ``light``
+
+   -  On Mac & Linux:
+
+      -  In the command window, run: ``./light``
+
+-  Help:
+
+.. code:: cli
+
+   To run：light -h
+
+   NAME:
+      light.exe - interact with a light node process
+
+   USAGE:
+      light.exe [global options] command [command options] [arguments...]
+
+   AUTHOR:
+      seeleteam <dev@seelenet.com>
+
+   COMMANDS:
+        getbalance        get balance info
+        getblock          get block by height or hash
+        getblockheight    get block height
+        getblocktxcount   get block transaction count by block height or block hash
+        getnonce          get account nonce
+        getpendingtxs     get pending transactions
+        getreceipt        get receipt by transaction hash
+        getshardnum       get account shard number
+        gettxbyhash       get transaction by transaction hash
+        gettxinblock      get transaction by block height or block hash with index of the transaction in the block
+        gettxpoolcontent  get transaction pool contents
+        gettxpoolcount    get transaction pool transaction count
+        key               generate key with or without shard number
+        p2p               p2p commands
+        payload           generate the payload according to the abi file and method name and args
+        savekey           save private key to a keystore file
+        sendtx            send transaction to node
+        sign              generate a signed transaction and print it out
+        help, h           Shows a list of commands or help for one command
+
+   GLOBAL OPTIONS:
+      --help, -h  show help
+
+Three common scenario commands:
+----------------------------
+
+-  Prepare:
+
+   -  The commands mentioned next, if you don’t know how to use it,
+      please check the
+      `wiki <https://github.com/seeleteam/go-seele/wiki/API-Document>`__
+      in detail.
+   -  For convenience, A is From address on shard 1.
+
+      generate A account: \``\` // Request node key –shard 1
+
+   // Response public key: 0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1
+   private key:
+   0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104fbc3
+
+   ::
+
+        Sometimes you may need to generate the from address keyfile, command:
+
+   // Request client savekey –privatekey
+   0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104fbc3
+   –file .keystore-shard1
+
+   // Response Password: Repeat password: store key successful \``\`
+
+1. Tranfer
+~~~~~~~~~~
+
+-  Of course, you need a rich account to transfer money (for example, 10
+   fans) to A.
+   > Use the following example need to add the ``--accounts`` parameter
+   when you need to start the node, command: >
+   ``node start -c ./config/node1.json --accounts ./config/accounts.json``
+
+::
+
+   // Request
+   client sendtx --amount 10 --fee 1 --from ./keyfile/shard1-0x0a57a2714e193b7ac50475ce625f2dcfb483d741 --to 0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1
+
+   // Response
+   Please input your key file password:
+   account 0x0a57a2714e193b7ac50475ce625f2dcfb483d741 current nonce: 3, sending nonce: 3
+   transaction sent successfully
+   {
+         "Hash": "0x548d7cf43e099b90293b8cc973f39fb2a627f32fe8d6337bcd2fb43125ea7ba2",
+         "Data": {
+                 "From": "0x0a57a2714e193b7ac50475ce625f2dcfb483d741",
+                 "To": "0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1",
+                 "Amount": 10,
+                 "AccountNonce": 3,
+                 "Fee": 1,
+                 "Timestamp": 0,
+                 "Payload": ""
+         },
+         "Signature": {
+                 "Sig": "EmaBZqm/4sH+VzAfjpB8EpyhMesFyqU0qtr6MfcPyfsHK1Yk7SCisurT+feSxTk6uVzC26rylklLR12vwXrTuwA="
+         }
+   }
+
+-  Query the transfer result with the tx ``Hash``.
+
+.. code:: json
+
+   // Request
+   client getreceipt --hash 0x548d7cf43e099b90293b8cc973f39fb2a627f32fe8d6337bcd2fb43125ea7ba2
+
+   // Resposne
+   {
+         "contract": "0x",
+         "failed": false,
+         "poststate": "0x3ff9308feb7d9b568bda9d862c16ac25f46a2fbe2490fe3b23988c94788afd0f",
+         "result": "0x",
+         "totalFee": 1,
+         "txhash": "0x24e669798fe287683526c1fe431a3706a85a9f2230dfeac449de340d603712bc",
+         "usedGas": 0
+   }
+
+The result of ``"failure": false``\ row, indicating that the transfer
+was successful. By the way, if tx is not packed by the miner or the
+miner is packing, you may
+see\ ``get error when call rpc leveldb: not found``. Don’t worry, just
+wait for servals seconds, or you can use ``client gettxbyhash`` to query
+tx ``status``.
+
+-  Confirm the A balance.
+
+::
+
+   // Request
+   client getbalance --account 0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1
+
+   // Response
+   {
+         "Account": "0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1",
+         "Balance": 10
+   }
+
+2. Deploy contract
+~~~~~~~~~~~~~~~~~~
+
+-  For the sake of convenience, use A deploy the ``simple_storage.sol``
+   contract.
+
+.. code:: golang
+
+   // Request
+   client.exe sendtx --amount 0 --fee 123 --from .keystore-shard1 --payload 0x608060405234801561001057600080fd5b50600560008190555060df806100276000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058207f6dc43a0d648e9f5a0cad5071cde46657de72eb87ab4cded53a7f1090f51e6d0029
+
+   // Response
+   Please input your key file password:
+   account 0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1 current nonce: 1, sending nonce: 1
+   transaction sent successfully
+   {
+         "Hash": "0xa20e6446a2e1d75605b934ac9cccb7a3f5801446992ee0eaf8cc393b09415e04",
+         "Data": {
+                 "From": "0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1",
+                 "To": "0x0000000000000000000000000000000000000000",
+                 "Amount": 0,
+                 "AccountNonce": 1,
+                 "Fee": 123,
+                 "Timestamp": 0,
+                 "Payload": "0x608060405234801561001057600080fd5b50600560008190555060df806100276000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058207f6dc43a0d648e9f5a0cad5071cde46657de72eb87ab4cded53a7f1090f51e6d0029"
+         },
+         "Signature": {
+                 "Sig": "uhsSbz6fQ8fbYyJ9kMOODK8OXG1pHjky2vSTiOi3MEJXEYc2bttsxJReAWTRVSFLPoedML6XhzFfukoE/3dqhAE="
+         }
+   }
+
+If you display
+``get error when call rpc balance is not enough, account:0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1, balance:10, amount:0, fee:123``,
+that’s right, I deliberately, quickly fill the money.
+
+-  Query the contract deploy result
+
+.. code:: golang
+
+   // Request
+   client getreceipt --hash 0xa20e6446a2e1d75605b934ac9cccb7a3f5801446992ee0eaf8cc393b09415e04
+
+   // Response
+   {
+         "contract": "0xdb9519e8fa96bf81eb89dd06e0aeb2d94b510072",
+         "failed": false,
+         "poststate": "0xe2b9d359ddb2c247339b5077072c9d04a8b3813d52bdf9249ebd8d885bda1224",
+         "result": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058207f6dc43a0d648e9f5a0cad5071cde46657de72eb87ab4cded53a7f1090f51e6d0029",
+         "totalFee": 100123,
+         "txhash": "0xa20e6446a2e1d75605b934ac9cccb7a3f5801446992ee0eaf8cc393b09415e04",
+         "usedGas": 64707
+   }
+
+The result of ``"failure": false``\ row, which indicates the deploy
+contract was successful. The result of
+``"contract": "0xc3e7b32db87dd5b8d70a78666518c6395d0f0092"`` row is the
+contract address.
+
+3. Call contract
+~~~~~~~~~~~~~~~~
+
+Sendtx
+^^^^^^
+
+-  ``sendtx`` to call the contract
+
+.. code:: golang
+
+   // Request
+   client.exe sendtx --amount 0 --fee 10 --payload 0x6d4ce63c --from .keystore-shard1 --to 0xdb9519e8fa96bf81eb89dd06e0aeb2d94b510072
+
+   // Response
+   Please input your key file password:
+   account 0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1 current nonce: 2, sending nonce: 2
+   transaction sent successfully
+   {
+         "Hash": "0x709b8adeca8c563ba4e4b7cfd30da1fb78e7631e109bff0f1f1eb47810716c7e",
+         "Data": {
+                 "From": "0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1",
+                 "To": "0xdb9519e8fa96bf81eb89dd06e0aeb2d94b510072",
+                 "Amount": 0,
+                 "AccountNonce": 2,
+                 "Fee": 10,
+                 "Timestamp": 0,
+                 "Payload": "0x6d4ce63c"
+         },
+         "Signature": {
+                 "Sig": "R9jbC6TzFOI5LC6orUTTLGAaCGJh3ENnof2BWCmSl2cF1fvn1S/NxTMxsuxAHevPv2lbdG2G718upCCaSP5MBAA="
+         }
+   }
+
+-  Query the result
+
+.. code:: golang
+
+     // Request
+     client.exe getreceipt --hash 0x709b8adeca8c563ba4e4b7cfd30da1fb78e7631e109bff0f1f1eb47810716c7e 
+
+     // Response
+     {
+         "contract": "0x",
+         "failed": false,
+         "poststate": "0x6aed3131829b09567b4cc3617f3294e6e0d6418c9b34d5a38b4105b127e1b1f2",
+         "result": "0x0000000000000000000000000000000000000000000000000000000000000005",
+         "totalFee": 110,
+         "txhash": "0x709b8adeca8c563ba4e4b7cfd30da1fb78e7631e109bff0f1f1eb47810716c7e",
+         "usedGas": 424
+     }
+
+Call
+^^^^
+
+-  ``call`` the contract, the ``call`` command is separate from the
+   blockchain and is suitable for querying data without changing the
+   state.
+
+.. code:: golang
+
+   // Request
+   client.exe call --payload 0x6d4ce63c --to 0xdb9519e8fa96bf81eb89dd06e0aeb2d94b510072 --height -1
+
+   // Response
+   {
+         "contract": "0x",
+         "failed": false,
+         "poststate": "0x0d2252065b943d1e1bf77b55ba55d4039868a3db6bac773bb06d28f5e53193aa",
+         "result": "0x0000000000000000000000000000000000000000000000000000000000000005",
+         "totalFee": 101,
+         "txhash": "0x0d7a432efaffdca72ef41ea3717c3d2d4adefd63cd9fa6067b361ea2ba988345",
+         "usedGas": 424
+   }
+
+`GCC <https://gcc.gnu.org/>`__ install newbie guide
+---------------------------------------------------
+
+Install Document: https://gcc.gnu.org/install/
+
+Download Link: https://gcc.gnu.org/install/binaries.html
+
+Or you can go directly to the
+`website <https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/>`__
+to download the release installer. (Recommend)
+
+Start Metrics
+-------------
+
+If you want to start the metrics, it is necessary to install InfluxDB
+first.
+
+Download Link: https://portal.influxdata.com/downloads
+
+After downloading Influxdb, go to the Influxdb folder and update
+Influxdb.conf:
+
+::
+
+   [http]
+     # Determines whether the HTTP endpoint is enabled.
+     # enabled = true
+
+     # The bind address used by the HTTP service.
+     # bind-address = ":8086"
+     bind-address = ":8087"
+
+Then, start the influxdb with influxdb.conf.
+
+::
+
+   influxd run -config influxdb.conf
+
+And in another cmd window, use the influxdb client to create the
+database “influxdb”.
+
+::
+
+   influx -port 8087
+   create database influxdb
+   exit
+
+Finally, start the node with -t true.
+
+Q&A
+---
+
+genesis block hash mismatch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the log looks like the following: - Windows:
+
+::
+
+   data folder: C:\Users\seele\.seele\node1
+   INFO[0000] NewSeeleService BlockChain datadir is C:\Users\seele\.seele\node1\db\blockchain  caller="seeleservice.go:62" module=seele
+   INFO[0000] NewSeeleService account state datadir is C:\Users\seele\.seele\node1\db\accountState  caller="seeleservice.go:72" module=seele
+   ERRO[0000] NewSeeleService genesis.Initialize err. genesis block hash mismatch  caller="seeleservice.go:88" module=seele
+   genesis block hash mismatch
+
+-  Linux:
+
+::
+
+   log folder: /var/folders/dq/mcz24sr571g48wrbjvdbpndw0000gn/T/seeleTemp/log
+   data folder: /Home/seele/.seele/node1
+   INFO[0000] NewSeeleService BlockChain datadir is /Home/seele/.seele/node1/db/blockchain  caller="seeleservice.go:62" module=seele
+   INFO[0000] NewSeeleService account state datadir is /Home/seele/.seele/node1/db/accountState  caller="seeleservice.go:72" module=seele
+   ERRO[0000] NewSeeleService genesis.Initialize err. genesis block hash mismatch  caller="seeleservice.go:88" module=seele
+   genesis block hash mismatch
+
+You can just delete the .seele/node1 folder and restart. The absolute
+path to the .seele folder is in the logs printed above.

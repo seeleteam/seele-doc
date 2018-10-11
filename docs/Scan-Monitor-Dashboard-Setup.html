@@ -1,0 +1,807 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>I. Steps to Deploy Seele Monitor &mdash; Seele  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Steps to build your own seele-network" href="How-to-build-your-own-seele-network.html" /> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Seele
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Setting Up a Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#create-a-full-node-client">Create a Full Node Client:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#create-a-light-node-client">Create a Light Node Client:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#three-common-scenario-commands">Three common scenario commands:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#gcc-install-newbie-guide">GCC install newbie guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#start-metrics">Start Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#q-a">Q&amp;A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">Steps to build your own seele-network</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">I. Steps to Deploy Seele Monitor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-required-tools">1. Install Required Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-a-monitor">2. Deploy a Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modify-the-monitor-websocket-services-configuration">3） Modify the monitor websocket services configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#ii-steps-to-deploy-seele-scan">II. Steps to Deploy Seele scan</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-required-tools-1">1.Install Required Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-seele-data-synchronization-nodes">2.Deploy Seele Data Synchronization Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-scan-api">3. Deploy scan-api</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modify-scan-api-service-configurations">2）Modify scan-api Service Configurations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#iii-seele-dashboard-deployment-steps">III. Seele Dashboard Deployment Steps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-required-tools-2">1. Install Required Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-the-seele-node">2. Start the Seele Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-dashboard-api">3. Deploy dashboard-api</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Seele</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>I. Steps to Deploy Seele Monitor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../sources/docs/Scan-Monitor-Dashboard-Setup.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="i-steps-to-deploy-seele-monitor">
+<h1>I. Steps to Deploy Seele Monitor<a class="headerlink" href="#i-steps-to-deploy-seele-monitor" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-required-tools">
+<h2>1. Install Required Tools<a class="headerlink" href="#install-required-tools" title="Permalink to this headline">¶</a></h2>
+<p>1） Install Node ~~~~~~~~~~~~~~~~</p>
+<p>yum install node</p>
+<p>2） Install pm2 ~~~~~~~~~~~~~~~</p>
+<p>yum install pm2</p>
+<p>3） Install nginx ~~~~~~~~~~~~~~~~~</p>
+<p>yum install nginx</p>
+</div>
+<div class="section" id="deploy-a-monitor">
+<h2>2. Deploy a Monitor<a class="headerlink" href="#deploy-a-monitor" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Download the monitor source code</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. code:: bash
+
+   git clone https://github.com/seeleteam/monitor
+
+2） Modify the frontend service config of the monitor
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">config/dev.env.js</span></code>, modify the development environment config:</p>
+<p>NODE_ENV: ‘“development”’, // dev mode BOWER_SERVER:
+‘“ws://x.x.x.x:3000/bower”’, // monitor backend websocket server
+BOWER_CLIENT_HEARTCHECK_TIMEOUT: 5000, // monitor vue client heartcheck
+timeout BOWER_CLIENT_RECONNECT_TIMEOUT: 5000 // monitor vue client
+reconnect timeout</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">config/prod.env.js</span></code>, modify the production environment config:</p>
+<p>NODE_ENV: ‘“production”’, // prod mode BOWER_SERVER:
+‘“ws://x.x.x.x:3000/bower”’, // monitor backend websocket server
+BOWER_CLIENT_HEARTCHECK_TIMEOUT: 5000, // monitor vue client heartcheck
+timeout BOWER_CLIENT_RECONNECT_TIMEOUT: 5000 // monitor vue client
+reconnect timeout</p>
+<div class="section" id="modify-the-monitor-websocket-services-configuration">
+<h3>3） Modify the monitor websocket services configuration<a class="headerlink" href="#modify-the-monitor-websocket-services-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Modify the file <code class="docutils literal notranslate"><span class="pre">config/process.json</span></code>:</p>
+<p>{ “apps” : [ { “name” : “monitor_server”, // monitor backend server name
+“script” : “server/app.js”, // monitor backend server entry script
+“watch”: [“server”], “interpreter”: “node”, // monitor backend server
+start command “env”: { “NODE_ENV”: “development”, “SERVER_NGINX”: 0, //
+monitor backend deploy to nginx flag “WS_CLIENT_CONN_TIMEOUT”: 15, //
+check monitor client offline timeout “WS_CLIENT_CONN_INTERVAL”: 30000,
+// check all monitor client offline interval “SERVER_PORT”: 3000, //
+monitor backend port “BOWER_SERVER_DATA_UPDATE_INTERVAL”: 5000, //
+monitor backend data update interval “NODE_SHARD”: 1 //seele node shard
+num }, “env_production” : { “NODE_ENV”: “production”, “SERVER_NGINX”: 1,
+“WS_CLIENT_CONN_TIMEOUT”: 15, “WS_CLIENT_CONN_INTERVAL”: 30000,
+“SERVER_PORT”: 3000, “BOWER_SERVER_DATA_UPDATE_INTERVAL”: 5000,
+“NODE_SHARD”: 1 } } ] }</p>
+<p>4） Install and Compile the Code ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>cd monitor npm install npm run build</p>
+<ol class="arabic simple" start="5">
+<li>Start the Monitor Websocket Service</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Development Environment：
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: bash
+
+   cd monitor
+   pm2 start config/process.json --env development
+
+Production Environment：
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: bash
+
+   cd monitor
+   pm2 start config/process.json --env production
+
+6) Start the Monitor Front Service:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _development-environment-1:
+
+Development Environment：
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: bash
+
+   cd ./monitor
+   npm run dev
+
+.. _production-environment-1:
+
+Production Environment：
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: bash
+
+   nginx config file conf.d/monitor.conf
+      server {
+           listen      3001;
+           server_name  _;
+           root         /usr/local/nginx/monitor01;
+           location / {
+               index  index.html index.htm;
+           }
+
+           error_page 404 /404.html;
+               location = /40x.html {
+           }
+
+           error_page 500 502 503 504 /50x.html;
+               location = /50x.html {
+           }
+       }
+   cp -r ./monitor/dist  /usr/local/nginx/monitor01
+   nginx -s reload
+
+3. Deploy the monitor-frame
+---------------------------
+
+1) Download the monitor-frame Source Code
+</pre></div>
+</div>
+<p>git clone <a class="reference external" href="https://github.com/seeleteam/monitor-frame">https://github.com/seeleteam/monitor-frame</a></p>
+<p>2） Modify the monitor-frame Config ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Modify the file <code class="docutils literal notranslate"><span class="pre">src/pages/url.js</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">shard</span> <span class="n">view</span> <span class="n">of</span> <span class="n">seele</span><span class="o">-</span><span class="n">monitor</span><span class="p">,</span> <span class="n">default</span> <span class="n">display</span> <span class="n">index</span> <span class="mi">1</span>
+<span class="n">menuList</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">index</span> <span class="n">unique</span> <span class="nb">id</span>
+    <span class="n">menuName</span><span class="p">:</span> <span class="s1">&#39;Shard 01&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">display</span> <span class="n">name</span>
+    <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;http://localhost:3001&#39;</span> <span class="o">//</span> <span class="n">access</span> <span class="n">url</span>
+  <span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>3）Install and Compile the Code ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>cd monitor-frame npm install npm run build</p>
+<ol class="arabic simple" start="4">
+<li>Start the monitor-frame</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">_development</span><span class="o">-</span><span class="n">environment</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+
+<span class="n">Development</span> <span class="n">Environment</span>
+<span class="o">^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+<span class="o">..</span> <span class="n">code</span><span class="p">::</span> <span class="n">bash</span>
+
+   <span class="n">cd</span> <span class="o">./</span><span class="n">monitor</span><span class="o">-</span><span class="n">frame</span>
+   <span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
+
+<span class="o">..</span> <span class="n">_production</span><span class="o">-</span><span class="n">environment</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+
+<span class="n">Production</span> <span class="n">Environment</span>
+<span class="o">^^^^^^^^^^^^^^^^^^^^^^</span>
+
+<span class="o">..</span> <span class="n">code</span><span class="p">::</span> <span class="n">bash</span>
+
+   <span class="n">nginx</span> <span class="n">config</span> <span class="n">file</span> <span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">monitor</span><span class="o">-</span><span class="n">frame</span><span class="o">.</span><span class="n">conf</span>
+      <span class="n">server</span> <span class="p">{</span>
+           <span class="n">listen</span>      <span class="mi">8000</span><span class="p">;</span>
+           <span class="n">server_name</span>  <span class="n">_</span><span class="p">;</span>
+           <span class="n">root</span>         <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">monitor</span><span class="o">-</span><span class="n">frame</span><span class="p">;</span>
+           <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+               <span class="n">index</span>  <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">index</span><span class="o">.</span><span class="n">htm</span><span class="p">;</span>
+           <span class="p">}</span>
+
+           <span class="n">error_page</span> <span class="mi">404</span> <span class="o">/</span><span class="mf">404.</span><span class="n">html</span><span class="p">;</span>
+               <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="mi">40</span><span class="n">x</span><span class="o">.</span><span class="n">html</span> <span class="p">{</span>
+           <span class="p">}</span>
+
+           <span class="n">error_page</span> <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span> <span class="o">/</span><span class="mi">50</span><span class="n">x</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+               <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="mi">50</span><span class="n">x</span><span class="o">.</span><span class="n">html</span> <span class="p">{</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">monitor</span><span class="o">-</span><span class="n">frame</span><span class="o">/</span><span class="n">dist</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">monitor</span><span class="o">-</span><span class="n">frame</span>
+   <span class="n">nginx</span> <span class="o">-</span><span class="n">s</span> <span class="n">reload</span>
+
+<span class="mf">4.</span> <span class="n">Deploy</span> <span class="n">monitor</span><span class="o">-</span><span class="n">api</span>
+<span class="o">---------------------</span>
+
+<span class="mi">1</span><span class="p">)</span> <span class="n">Download</span> <span class="n">monitor</span><span class="o">-</span><span class="n">api</span> <span class="n">Source</span> <span class="n">Code</span>
+</pre></div>
+</div>
+<p>git clone <a class="reference external" href="https://github.com/seeleteam/monitor-api">https://github.com/seeleteam/monitor-api</a></p>
+<ol class="arabic simple" start="2">
+<li>Compile monitor-api</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="p">::</span> <span class="n">bash</span>
+
+   <span class="n">cd</span> <span class="n">monitor</span><span class="o">-</span><span class="n">api</span>
+   <span class="n">make</span>
+
+<span class="mi">3</span><span class="p">)</span> <span class="n">Edit</span> <span class="n">monitor</span><span class="o">-</span><span class="n">api</span> <span class="n">Configurations</span>
+</pre></div>
+</div>
+<p>Edit the config file <code class="docutils literal notranslate"><span class="pre">config/app.conf</span></code></p>
+<p>app_name = monitor-api // monitor api name addr = :9997 // default
+monitor-api server port run_mode = dev // select run mode
+DisableConsoleColor = true MonitorConfigFile = ./config/monitor.json #
+comment should be above the line [dev] # http server address, format
+ip:port addr = :9997 // monitor-api server port LimitConnection = 0 #
+enable web socket EnableWebSocket = true # enable rpc EnableRPC = true
+DisableConsoleColor = false</p>
+<p># enable write log out WriteLog = true</p>
+<p># web socket api WsRouter = /api</p>
+<p># every 10s send the node info to monitor server WsFullEventTickerTime =
+10 # every 2s send the block info, if the block height changed
+WsLatestBlockEventTickerTime = 2 # if web socket occur error, reconnect
+delay 5s DelayReConnTime = 5 # if rpc occur error, reconnetct and resend
+delay 5s DelaySendTime = 5 # if rpc server occur error over 10, report
+error to monitor server ReportErrorAfterTimes = 10 # RPC server addr for
+go-seele node, format ip:port RPCURL = 127.0.0.1:55027 // seele node rpc
+# log level, debug, info, warn, error, fatal, panic LogLevel = debug</p>
+<p>[prod] addr = :9997 EnableWebSocket = true EnableRPC = true WriteLog =
+true LogFile = monitor-api.log MonitorConfigFile = ./config/monitor.json
+WsRouter = /api WsFullEventTickerTime = 10 WsLatestBlockEventTickerTime
+= 2 DelayReConnTime = 5 DelaySendTime = 4 RPCUrl = 127.0.0.1:55027 //
+seele node rpc # debug, info, warn, error, fatal, panic LogLevel = info</p>
+<p>Edit the config file <code class="docutils literal notranslate"><span class="pre">config/monitor.conf</span></code></p>
+<p>{ “1”:“x.x.x.x:3001”, // shard1 monitor websocket url
+“2”:“x.x.x.x:3001”, // shard2 monitor websocket url “3”:“x.x.x.x:3001”
+// shard3 monitor websocket url }</p>
+<ol class="arabic simple" start="4">
+<li>Start monitor-api</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="p">::</span> <span class="n">bash</span>
+
+   <span class="o">./</span><span class="n">monitor</span><span class="o">-</span><span class="n">api</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="n">config</span><span class="o">.</span><span class="n">conf</span>
+
+<span class="mi">5</span><span class="p">)</span> <span class="n">In</span> <span class="n">your</span> <span class="n">Browser</span><span class="p">,</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">monitor</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">3001</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ii-steps-to-deploy-seele-scan">
+<h1>II. Steps to Deploy Seele scan<a class="headerlink" href="#ii-steps-to-deploy-seele-scan" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-required-tools-1">
+<span id="id1"></span><h2>1.Install Required Tools<a class="headerlink" href="#install-required-tools-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">&lt;https://golang.org/dl/&gt;</span></code>__ v1.7 or higher and the
+<code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">compiler</span> <span class="pre">&lt;https://gcc.gnu.org/&gt;</span></code>__.</li>
+<li>Install <code class="docutils literal notranslate"><span class="pre">mongodb</span> <span class="pre">&lt;https://www.mongodb.com/download-center&gt;</span></code>__
+version 3.63 or higher</li>
+</ul>
+</div>
+<div class="section" id="deploy-seele-data-synchronization-nodes">
+<h2>2.Deploy Seele Data Synchronization Nodes<a class="headerlink" href="#deploy-seele-data-synchronization-nodes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Download and compile
+<code class="docutils literal notranslate"><span class="pre">go-seele</span> <span class="pre">&lt;https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele&gt;</span></code>__</li>
+<li>Start a go-seele node, ensure that the node is p2p connected with
+other go-seele nodes, and run:</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">seele</span><span class="o">-</span><span class="n">node1</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="n">config</span><span class="o">/</span><span class="n">node1</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">accounts</span> <span class="n">config</span><span class="o">/</span><span class="n">accounts</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">miner</span> <span class="n">stop</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deploy-scan-api">
+<h2>3. Deploy scan-api<a class="headerlink" href="#deploy-scan-api" title="Permalink to this headline">¶</a></h2>
+<p>1）Download and compile scan-api ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<ul class="simple">
+<li>Download scan-api source code to
+<code class="docutils literal notranslate"><span class="pre">GOPATH</span> <span class="pre">&lt;https://github.com/golang/go/wiki/SettingGOPATH&gt;</span></code>__
+<code class="docutils literal notranslate"><span class="pre">src\github.com</span></code> directory</li>
+</ul>
+<p>git clone <a class="reference external" href="https://github.com/seeleteam/scan-api">https://github.com/seeleteam/scan-api</a></p>
+<ul class="simple">
+<li>In seeleteam:raw-latex:<code class="docutils literal notranslate"><span class="pre">\scan</span></code>-api, compile scan-api, which will
+create seele_syncer, scan_server, chart_service, and node_service, 4
+executable programs within <code class="docutils literal notranslate"><span class="pre">scan-api\build\</span></code>&nbsp;。</li>
+</ul>
+<p>cd seeleteam/scan-api make</p>
+<div class="section" id="modify-scan-api-service-configurations">
+<h3>2）Modify scan-api Service Configurations<a class="headerlink" href="#modify-scan-api-service-configurations" title="Permalink to this headline">¶</a></h3>
+<p>seele_syncer Configurations： ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{ “RpcURL”: “0.0.0.0:55026”, “WriteLog”: true, “LogLevel”: “debug”,
+</pre></div>
+</div>
+<p>“LogFile”: “seele-syncer.log”, “DataBaseConnUrl”:“127.0.0.1:27017”,
+“DataBaseName”:“seele”, “SyncInterval”:3, “ShardNumber”: 2 }</p>
+<table><tbody><tr><th><p>Service</p>
+</th><th><p>Parameter</p>
+</th><th><p>Explanation</p>
+</th></tr><tr><th rowspan="8"><p>seele_syncer</p>
+</th><td><p>RpcURL</p>
+</td><td><p>seele node’s rpc connection address</p>
+</td></tr><tr><td><p>WriteLog</p>
+</td><td><p>switch for log read/write</p>
+</td></tr><tr><td><p>LogLevel</p>
+</td><td><p>Level of log</p>
+</td></tr><tr><td><p>LogFile</p>
+</td><td><p>Filename of log</p>
+</td></tr><tr><td><p>DataBaseConnUrl</p>
+</td><td><p>mongodb connection address</p>
+</td></tr><tr><td><p>DataBaseName</p>
+</td><td><p>Database name of mongodb</p>
+</td></tr><tr><td><p>SyncInterval</p>
+</td><td><p>seele-node rpc sync time interval</p>
+</td></tr><tr><td><p>ShardNumber</p>
+</td><td><p>Shard ID</p>
+</td></tr></table><p>scan_server Configurations： ^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{ “GinMode”:“debug”, “Addr”: “:8888”, “WriteLog”: true, “LogLevel”:
+</pre></div>
+</div>
+<p>“debug”, “LogFile”: “scan-api.log”, “DataBaseConnUrl”:“127.0.0.1:27017”,
+“DataBaseName”:“seele” }</p>
+<table><tbody><tr><th><p>Service</p>
+</th><th><p>Paramater</p>
+</th><th><p>Explanation</p>
+</th></tr><tr><th rowspan="8"><p>scan_server</p>
+</th><td><p>GinMode</p>
+</td><td><p>Mode of operation for Gin</p>
+</td></tr><tr><td><p>Addr</p>
+</td><td><p>Service listening port</p>
+</td></tr><tr><tr><td><p>WriteLog</p>
+</td><td><p>Switch for log read/write</p>
+</td></tr><tr><td><p>LogLevel</p>
+</td><td><p>Level of log</p>
+</td></tr><tr><td><p>LogFile</p>
+</td><td><p>Filename of log</p>
+</td></tr><tr><td><p>DataBaseConnUrl</p>
+</td><td><p>mongodb connection address</p>
+</td></tr><tr><td><p>DataBaseName</p>
+</td><td><p>mongodb database name</p>
+</td></tr></table><p>chart_service Configurations： ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{ “WriteLog”: true, “LogLevel”: “debug”, “LogFile”: “scan-api.log”,
+</pre></div>
+</div>
+<p>“DataBaseConnUrl”:“127.0.0.1:27017”, “DataBaseName”:“seele”,
+“ShardCount”:20 }</p>
+<table><tbody><tr><th><p>Service</p>
+</th><th><p>Parameter</p>
+</th><th><p>Explanation</p>
+</th></tr><tr><th rowspan="8"><p>chart_service</p>
+</th><td><p>WriteLog</p>
+</td><td><p>Switch for log read/write</p>
+</td></tr><tr><tr><td><p>LogLevel</p>
+</td><td><p>Level of log</p>
+</td></tr><tr><td><p>LogFile</p>
+</td><td><p>Filename of log</p>
+</td></tr><tr><td><p>DataBaseConnUrl</p>
+</td><td><p>mongodb connection address</p>
+</td></tr><tr><td><p>DataBaseName</p>
+</td><td><p>mongodb database name</p>
+</td></tr><tr><td><p>ShardCount</p>
+</td><td><p>Number of shards</p>
+</td></tr></table><p>node_service Configurations ^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{ “RpcNodes” : [“0.0.0.0:55026”], “WriteLog”: true, “LogLevel”: “debug”,
+</pre></div>
+</div>
+<p>“LogFile”: “node_service.log”, “DataBaseConnUrl”:“127.0.0.1:27017”,
+“DataBaseName”: “seele”, “Interval”: 60, “ExpireTime”: 60 }</p>
+<table><tbody><tr><th><p>Service</p>
+</th><th><p>Parameter</p>
+</th><th><p>Explanation</p>
+</th></tr><tr><th rowspan="9"><p>node_service</p>
+</th><td><p>RpcNodes</p>
+</td><td><p>seele node’s RPC address list</p>
+</td></tr><tr><tr><td><p>WriteLog</p>
+</td><td><p>Switch for log read/write</p>
+</td></tr><tr><td><p>LogLevel</p>
+</td><td><p>Level of log</p>
+</td></tr><tr><td><p>LogFile</p>
+</td><td><p>Filename of log</p>
+</td></tr><tr><td><p>DataBaseConnUrl</p>
+</td><td><p>mongodb connection address</p>
+</td></tr><tr><td><p>DataBaseName</p>
+</td><td><p>mongodb database name</p>
+</td></tr><tr><td><p>Interval</p>
+</td><td><p>rpc connection time interval</p>
+</td></tr><tr><td><p>ExpireTime</p>
+</td><td><p>Expiration time of seele node</p>
+</td></tr></table><p>3）Start scan-api： ~~~~~~~~~~~~~~~~~~~</p>
+<p>Start order ^^^^^^^^^^^</p>
+<ul>
+<li><p class="first">mongodb：</p>
+<ul class="simple">
+<li>In the command window, run: ./mongod -f ./mongod.conf</li>
+</ul>
+</li>
+<li><p class="first">go-seele:</p>
+<ul class="simple">
+<li>Start the go-seele node, refer to
+<code class="docutils literal notranslate"><span class="pre">Getting-Started-With-Seele</span> <span class="pre">&lt;https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele&gt;</span></code>__</li>
+</ul>
+</li>
+<li><p class="first">seele-syncer：</p>
+<ul class="simple">
+<li>In the command window, run： ./seele_syncer -c ./server.json</li>
+</ul>
+</li>
+<li><p class="first">scan_server：</p>
+<ul class="simple">
+<li>In the command window, run： ./scan_server -c ./server.json</li>
+</ul>
+</li>
+<li><p class="first">chart_service：</p>
+<ul class="simple">
+<li>In the command window, run： ./chart_service： -c ./server.json</li>
+</ul>
+</li>
+<li><p class="first">node_service：</p>
+<ul class="simple">
+<li>In the command window, run： ./node_service： -c ./server.json ##<ol class="arabic" start="2">
+<li>Deploy scan ### 1) Download scan Source Code</li>
+</ol>
+</li>
+</ul>
+<p>git clone <a class="reference external" href="https://github.com/seeleteam/scan">https://github.com/seeleteam/scan</a></p>
+<p class="rubric">2） Modify scan Configuration :name:</p>
+<p>modify-scan-configuration</p>
+<p>In the development environment, modify the config file
+<code class="docutils literal notranslate"><span class="pre">config/dev.env.js</span></code></p>
+<p>NODE_ENV: ‘“development”’, // dev mode NEW_WORK_ID: 2, // net work
+type, ex: 1 main 2 test SCAN_SHARD: 20, // seele node shard total num
+SCAN_API_URL: ‘“<a class="reference external" href="http://localhost:3003">http://localhost:3003</a>”’, // scan-api url
+SCAN_API_PATH: ‘“/api/v1”’ // scan-api path</p>
+<p>In the production environment, modify the config file
+<code class="docutils literal notranslate"><span class="pre">config/prod.env.js</span></code></p>
+<p>NODE_ENV: ‘“production”’, // prod mode NEW_WORK_ID: 2, // net work
+type, ex: 1 main 2 test SCAN_SHARD: 20, // seele node shard total num
+SCAN_API_URL: ‘“<a class="reference external" href="http://localhost:3003">http://localhost:3003</a>”’, // scan-api url
+SCAN_API_PATH: ‘“/api/v1”’ // scan-api path</p>
+<p class="rubric">3）Install and Compile the Code :name:</p>
+<p>install-and-compile-the-code-2</p>
+<p>cd scan npm install npm run build</p>
+<p class="rubric">4) Start scan :name: start-scan</p>
+<p class="rubric">Development Environment :name: development-environment-3</p>
+<p>cd ./scan npm run dev</p>
+<p class="rubric">Production Environment :name: production-environment-3</p>
+<p>Modify nginx config file <code class="docutils literal notranslate"><span class="pre">conf.d/scan.conf</span></code> server { listen 3002;
+server_name _; root /usr/local/nginx/scan; location / { index
+index.html index.htm; }</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">error_page</span> <span class="mi">404</span> <span class="o">/</span><span class="mf">404.</span><span class="n">html</span><span class="p">;</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="mi">40</span><span class="n">x</span><span class="o">.</span><span class="n">html</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">error_page</span> <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span> <span class="o">/</span><span class="mi">50</span><span class="n">x</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="mi">50</span><span class="n">x</span><span class="o">.</span><span class="n">html</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>} cp -r ./scan/dist /usr/local/nginx/scan nginx -s reload</p>
+<p class="rubric">5) Visit <code class="docutils literal notranslate"><span class="pre">scan</span> <span class="pre">http://localhost:3002</span></code> on your browser</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">name:</th><td class="field-body">visit-scan-httplocalhost3002-on-your-browser</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="iii-seele-dashboard-deployment-steps">
+<h1>III. Seele Dashboard Deployment Steps<a class="headerlink" href="#iii-seele-dashboard-deployment-steps" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-required-tools-2">
+<span id="id2"></span><h2>1. Install Required Tools<a class="headerlink" href="#install-required-tools-2" title="Permalink to this headline">¶</a></h2>
+<p>1） Install node ~~~~~~~~~~~~~~~~</p>
+<p>yum install node</p>
+<p>2） Install nginx ~~~~~~~~~~~~~~~~~</p>
+<p>yum install nginx</p>
+<p>3） Install influxdb ~~~~~~~~~~~~~~~~~~~~</p>
+<p><a class="reference external" href="https://dl.influxdata.com/influxdb/releases/influxdb-1.5.1.x86_64.rpm">https://dl.influxdata.com/influxdb/releases/influxdb-1.5.1.x86_64.rpm</a>
+yum localinstall influxdb-1.5.1.x86_64.rpm</p>
+</div>
+<div class="section" id="start-the-seele-node">
+<h2>2. Start the Seele Node<a class="headerlink" href="#start-the-seele-node" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="deploy-dashboard-api">
+<h2>3. Deploy dashboard-api<a class="headerlink" href="#deploy-dashboard-api" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Download dashboard-api Source Code</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="p">::</span> <span class="n">bash</span>
+
+   <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">seeleteam</span><span class="o">/</span><span class="n">dashboard</span><span class="o">-</span><span class="n">api</span>
+
+<span class="mi">2</span><span class="p">)</span> <span class="n">Compile</span> <span class="n">dashboard</span><span class="o">-</span><span class="n">api</span>
+<span class="o">~~~~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="o">..</span> <span class="n">code</span><span class="p">::</span> <span class="n">bash</span>
+
+   <span class="n">cd</span> <span class="n">dashboard</span><span class="o">-</span><span class="n">api</span>
+   <span class="n">make</span>
+
+<span class="mi">3</span><span class="p">)</span> <span class="n">Modify</span> <span class="n">dashboard</span><span class="o">-</span><span class="n">api</span> <span class="n">Configurations</span>
+</pre></div>
+</div>
+<p>Modify the config file: <code class="docutils literal notranslate"><span class="pre">config/app.json</span></code></p>
+<p>{ “Name”: “dashboard-api”, // dashboard api name “Version”: “1.0”,
+“ListenAddr”: “0.0.0.0:61001”, // dashboard api listen address
+“LogLevel”:“debug”, “DisableConsoleColor”:true, “PrintLog”:true,
+“WriteLog”:true, “LimitConnection”:0, “RunMode”:“debug”,
+“RootRouterPrefix”:“/api”, “ServerConfig”:{ “ReadTimeout”:60,
+“WriteTimeout”:60, “IdleTimeout”:120, “MaxHeaderBytes”:1048576 }, “DB”:{
+// influxdb config “Name”:“influxdb”, // influxdb link name
+“Addr”:“<a class="reference external" href="http://localhost:8086">http://localhost:8086</a>”, // influxdb link address
+“UserName”:“test”, // influxdb link username “Password”:“test123”, //
+influxdb link password “DBInitialSize”:5, “DBMaxActive”:20,
+“DBIdleTimetout”:30 } }</p>
+<ol class="arabic simple" start="4">
+<li>Start dashboard-api</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="p">::</span> <span class="n">bash</span>
+
+   <span class="o">./</span><span class="n">dashboard</span><span class="o">-</span><span class="n">api</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="n">config</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">json</span>
+
+<span class="mf">4.</span> <span class="n">Deploy</span> <span class="n">dashboard</span>
+<span class="o">-------------------</span>
+
+<span class="mi">1</span><span class="p">)</span> <span class="n">Download</span> <span class="n">dashboard</span> <span class="n">Source</span> <span class="n">Code</span>
+</pre></div>
+</div>
+<p>git clone <a class="reference external" href="https://github.com/seeleteam/dashboard">https://github.com/seeleteam/dashboard</a></p>
+<p>2） Modify the Confirguations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Modify the Config file: <code class="docutils literal notranslate"><span class="pre">src/utils/config.js</span></code></p>
+<p>const API_URL = ‘<a class="reference external" href="http://localhost:61001">http://localhost:61001</a>’ // dashboard-api server url</p>
+<p>Modifify the file：&nbsp;<code class="docutils literal notranslate"><span class="pre">package.json</span></code></p>
+<p>“scripts”: { “analyze”: “cross-env PORT=8000 ANALYZE=1 BABELRC=1 umi
+build”, // dashboard-port: PORT=8000 “start”: “cross-env PORT=8000
+BABELRC=1 COMPILE_ON_DEMAND=none BROWSER=none HOST=0.0.0.0 umi dev”, //
+dashboard-port: PORT=8000 “lint”: “eslint –fix –ext .js src”, “build”:
+“cross-env PORT=8000 BABELRC=1 umi build”, // dashboard-port: PORT=8000
+“test”: “umi test” }</p>
+<p>3）Install and Compile the Code ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>cd dashboard npm install npm run build</p>
+<ol class="arabic simple" start="4">
+<li>Start dashboard Service</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. _development-environment-4:
+
+Development Environment
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: bash
+
+   cd ./dashboard
+   npm run start
+
+.. _production-environment-4:
+
+Production Environment
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: bash
+
+   nginx config file: conf.d/dashboard.conf
+      server {
+           listen      8000;
+           server_name  _;
+           root         /usr/local/nginx/dashboard;
+           location / {
+               index  index.html index.htm;
+           }
+
+           error_page 404 /404.html;
+               location = /40x.html {
+           }
+
+           error_page 500 502 503 504 /50x.html;
+               location = /50x.html {
+           }
+       }
+   cp -r ./dashboard/dist  /usr/local/nginx/dashboard
+   nginx -s reload
+
+5) Visit ``dashboard http://localhost:8000`` in your browser
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="How-to-build-your-own-seele-network.html" class="btn btn-neutral" title="Steps to build your own seele-network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Seele Team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../static/jquery.js"></script>
+        <script type="text/javascript" src="../static/underscore.js"></script>
+        <script type="text/javascript" src="../static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

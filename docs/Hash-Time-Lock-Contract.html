@@ -1,0 +1,1597 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hash Time Lock Contract &mdash; Seele  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial for Hash Time Lock (HTLC) System Contract" href="Hash-Time-Lock-System-Contract.html" />
+    <link rel="prev" title="Example" href="Using-the-contract-simulator.html" /> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Seele
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Setting Up a Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#create-a-full-node-client">Create a Full Node Client:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#create-a-light-node-client">Create a Light Node Client:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#three-common-scenario-commands">Three common scenario commands:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#gcc-install-newbie-guide">GCC install newbie guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#start-metrics">Start Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#q-a">Q&amp;A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">Steps to build your own seele-network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">I. Steps to Deploy Seele Monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html#ii-steps-to-deploy-seele-scan">II. Steps to Deploy Seele scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html#iii-seele-dashboard-deployment-steps">III. Seele Dashboard Deployment Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hash Time Lock Contract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command">Command</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#init">init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description">Parameter Description:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example：</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gensecret">gensecret</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-1">parameter description:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results-1">results：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-1">Example：</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#create">create</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-2">Parameter description：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results-2">results：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2">Example:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#participate">participate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-3">parameter description：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results-3">Results：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-3">Example：</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#refund">refund</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-4">parameter description：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-of-getting-contractid">Example of getting contractId</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#result">Result:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-4">Example：</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#withdraw">withdraw</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-5">Parameter description：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results-4">results：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-5">Example:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#getcontractbyid">getContractById</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-6">Parameter description：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results-5">results：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-6">Example:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#unpack">unpack</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-7">parameter description：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#result-1">result:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#getreceipt">getreceipt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-8">parameter description：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#result-2">result:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-7">example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#getbalance">getbalance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-description-9">parameter description:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#result-3">result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-8">example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#help">help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#working-on-seele1">Working on seele1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-9">example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#operating-on-seele2">Operating on seele2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operation-on-seele1">Operation on seele1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-seele1">On seele1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-seele2">On seele2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Tutorial for Hash Time Lock (HTLC) System Contract</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Seele</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Hash Time Lock Contract</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../sources/docs/Hash-Time-Lock-Contract.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hash-time-lock-contract">
+<h1>Hash Time Lock Contract<a class="headerlink" href="#hash-time-lock-contract" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="#description">Description</a></li>
+<li><a class="reference external" href="#basic">Basic</a></li>
+<li><a class="reference external" href="#command">Command Description</a></li>
+<li><a class="reference external" href="#tutorial">Start tutorial</a></li>
+</ul>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The following is a brief description of the transfer operations between
+different Seele’s chains or slices. For other chain (such as Ethereum)
+and seele cross-chain operation, please refer to the following steps,
+just need to replace one of the chains or fragments into the chain of
+Ethereum.You also can vist <a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Hash-Time-Lock-System-Contract">Hash Time Lock System
+Contract</a>
+to use system contract to replace one seele chain.</p>
+</div>
+<div class="section" id="basic">
+<h2>Basic<a class="headerlink" href="#basic" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>1.Required at least two Seele chains or shards.</li>
+</ul>
+<p>Seele could be deploy with two separate chains or multiple slices in one
+chain, the documenation is at <a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele">Start
+seele</a>,<a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/How-to-build-your-own-seele-network">Build
+you own
+cluster</a>,<a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Join-Seele-Network">Join
+Seele test
+network</a>.
+You could also directly use the test network chain or fragment without
+deploying any Seele.</p>
+<ul>
+<li><p class="first">2.Deploy hash time lock contract Run git clone
+<a class="reference external" href="https://github.com/seeleteam/labs.git">https://github.com/seeleteam/labs.git</a> to download the source
+codes，add github.com/seeleteam/labs to gopath，change directory to
+./github.com/seeleteam/labs/swap/ and then execute go build will
+build the swap executable file. In Windows, run swap.exe –h to view
+the help information, in Linux run ./swap –h to view the help
+information.</p>
+<ul class="simple">
+<li>For example, in Windows</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">h</span>
+<span class="n">NAME</span><span class="p">:</span>
+ <span class="n">swap</span> <span class="n">client</span> <span class="o">-</span> <span class="n">interact</span> <span class="k">with</span> <span class="n">node</span> <span class="n">swap</span> <span class="n">contract</span>
+<span class="n">USAGE</span><span class="p">:</span>
+ <span class="n">swap</span><span class="o">.</span><span class="n">exe</span> <span class="p">[</span><span class="k">global</span> <span class="n">options</span><span class="p">]</span> <span class="n">command</span> <span class="p">[</span><span class="n">command</span> <span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="n">arguments</span><span class="o">...</span><span class="p">]</span>
+<span class="n">COMMANDS</span><span class="p">:</span>
+
+   <span class="n">create</span>           <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">contract</span> <span class="k">for</span> <span class="n">htlc</span> <span class="n">transaction</span> <span class="n">on</span> <span class="n">chain</span>
+
+   <span class="n">gensecret</span>        <span class="n">generate</span> <span class="n">secret</span> <span class="ow">and</span> <span class="n">secret</span> <span class="nb">hash</span><span class="p">,</span> <span class="n">secret</span> <span class="nb">hash</span> <span class="ow">is</span> <span class="n">generated</span> <span class="n">by</span> <span class="n">sha256</span>
+
+   <span class="n">getbalance</span>       <span class="n">get</span> <span class="n">account</span> <span class="n">balance</span>
+
+   <span class="n">getContractById</span>  <span class="n">get</span> <span class="n">the</span> <span class="n">transaction</span> <span class="n">info</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">contract</span> <span class="n">by</span> <span class="n">contract</span> <span class="nb">id</span>
+
+   <span class="n">getreceipt</span>       <span class="n">get</span> <span class="n">receipt</span> <span class="n">by</span> <span class="n">transaction</span> <span class="nb">hash</span>
+
+   <span class="n">init</span>             <span class="n">deploy</span> <span class="n">the</span> <span class="n">contract</span> <span class="ow">in</span> <span class="n">seele</span>
+
+   <span class="n">participate</span>      <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">contract</span> <span class="k">for</span> <span class="n">htlc</span> <span class="n">transaction</span> <span class="n">on</span> <span class="n">other</span> <span class="n">chain</span>
+
+   <span class="n">refund</span>           <span class="n">refund</span> <span class="n">seele</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">contract</span>
+
+   <span class="n">unpack</span>           <span class="n">decode</span> <span class="n">the</span> <span class="n">result</span> <span class="n">of</span> <span class="n">getContractById</span> <span class="n">command</span>
+
+   <span class="n">withdraw</span>         <span class="n">get</span> <span class="n">seele</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">contract</span>
+
+   <span class="n">help</span><span class="p">,</span> <span class="n">h</span>          <span class="n">Shows</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">commands</span> <span class="ow">or</span> <span class="n">help</span> <span class="k">for</span> <span class="n">one</span> <span class="n">command</span>
+<span class="n">GLOBAL</span> <span class="n">OPTIONS</span><span class="p">:</span>
+ <span class="o">--</span><span class="n">help</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span>  <span class="n">show</span> <span class="n">help</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="command">
+<h2>Command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="#create">create</a></li>
+<li><a class="reference external" href="#gensecret">gensecret</a></li>
+<li><a class="reference external" href="#getbalance">getbalance</a></li>
+<li><a class="reference external" href="#getcontractbyid">getContractById</a></li>
+<li><a class="reference external" href="#getreceipt">getreceipt</a></li>
+<li><a class="reference external" href="#init">init</a></li>
+<li><a class="reference external" href="#participate">participate</a></li>
+<li><a class="reference external" href="#refund">refund</a></li>
+<li><a class="reference external" href="#unpack">unpack</a></li>
+<li><a class="reference external" href="#withdraw">withdraw</a></li>
+<li><a class="reference external" href="#help">help</a> ***</li>
+</ul>
+<div class="section" id="init">
+<h3>init<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
+<p>init is used to deploy the base contract to the Seele block chain
+network, that is deploying the hash time lock to the chain for
+subsequent use.</p>
+<div class="section" id="parameter-description">
+<h4>Parameter Description:<a class="headerlink" href="#parameter-description" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> is the address and port of chain to be linked to, default
+is 127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">fee</span></code> is the transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code> is the user’s private key file, which needs to be produced
+using Seele’s client key and the savekey command, see <a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/API-Document">Seele API
+Documents</a>
+for reference.</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> is the user’s transaction count, default is 0 for the
+user’s current value</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h4>Results:<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">the</span> <span class="pre">transaction</span> <span class="pre">information</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Committed</span> <span class="pre">transactions</span> <span class="pre">are</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">./config/deploy.json</span></code></li>
+</ul>
+</div>
+<div class="section" id="example">
+<h4>Example：<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>swap init –h to see command variables
+
+swap init --address 127.0.0.1:8027  --from ./keyfile/alice.key --fee 100 --nonce 0
+
+Result：
+
+    {
+
+        &quot;Hash&quot;: &quot;0x457b76764a98a951dcc4720a7d32f4383bb904b79c27ec5f04ae97e9b9411a6c&quot;,
+
+        &quot;Data&quot;: {
+
+                &quot;From&quot;: &quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;,
+
+                &quot;To&quot;: &quot;0x0000000000000000000000000000000000000000&quot;,
+
+                &quot;Amount&quot;: 0,
+
+                &quot;AccountNonce&quot;: 3,
+
+                &quot;Fee&quot;: 10,
+
+                &quot;Timestamp&quot;: 0,
+
+                &quot;Payload&quot;: &quot;0x608060405234801561001057600080fd5b50610bde806100206000396000f3006080604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663335ef5bd811461006657806363615149146100925780637249fbb6146100c1578063e16c7d98146100d9575b600080fd5b610080600160a060020a0360043516602435604435610142565b60408051918252519081900360200190f35b34801561009e57600080fd5b506100ad6004356024356104c5565b604080519115158252519081900360200190f35b3480156100cd57600080fd5b506100ad60043561083e565b3480156100e557600080fd5b506100f1600435610b0c565b60408051600160a060020a03998a1681529790981660208801528688019590955260608601939093526080850191909152151560a0840152151560c083015260e08201529051908190036101000190f35b600034811061019b576040805160e560020a62461bcd02815260206004820152601560248201527f6d73672e76616c7565206d757374206265203e20300000000000000000000000604482015290519081900360640190fd5b81428111610219576040805160e560020a62461bcd02815260206004820152602360248201527f74696d656c6f636b2074696d65206d75737420626520696e207468652066757460448201527f7572650000000000000000000000000000000000000000000000000000000000606482015290519081900360840190fd5b604080516c01000000000000000000000000338102602080840191909152600160a060020a03891690910260348301523460488301526068820187905260888083018790528351808403909101815260a8909201928390528151600293918291908401908083835b602083106102a05780518252601f199092019160209182019101610281565b51815160209384036101000a60001901801990921691161790526040519190930194509192505080830381855afa1580156102df573d6000803e3d6000fd5b5050506040513d60208110156102f457600080fd5b5051915061030182610b95565b1561030b57600080fd5b6101006040519081016040528033600160a060020a0316815260200186600160a060020a0316815260200134815260200185600019168152602001848152602001600015158152602001600015158152602001600060010260001916815250600080846000191660001916815260200190815260200160002060008201518160000160006101000a815481600160a060020a030219169083600160a060020a0316021790555060208201518160010160006101000a815481600160a060020a030219169083600160a060020a0316021790555060408201518160020155606082015181600301906000191690556080820151816004015560a08201518160050160006101000a81548160ff02191690831515021790555060c08201518160050160016101000a81548160ff02191690831515021790555060e0820151816006019060001916905590505084600160a060020a031633600160a060020a031683600019167f329a8316ed9c3b2299597538371c2944c5026574e803b1ec31d6113e1cd67bde348888604051808481526020018360001916600019168152602001828152602001935050505060405180910390a4509392505050565b600080836104d281610b95565b1515610528576040805160e560020a62461bcd02815260206004820152601960248201527f636f6e7472616374496420646f6573206e6f7420657869737400000000000000604482015290519081900360640190fd5b60408051602080820187905282518083038201815291830192839052815188938893600293909282918401908083835b602083106105775780518252601f199092019160209182019101610558565b51815160209384036101000a60001901801990921691161790526040519190930194509192505080830381855afa1580156105b6573d6000803e3d6000fd5b5050506040513d60208110156105cb57600080fd5b505160008381526020819052604090206003015414610634576040805160e560020a62461bcd02815260206004820152601c60248201527f686173686c6f636b206861736820646f6573206e6f74206d6174636800000000604482015290519081900360640190fd5b6000878152602081905260409020600101548790600160a060020a031633146106a7576040805160e560020a62461bcd02815260206004820152601a60248201527f776974686472617761626c653a206e6f74207265636569766572000000000000604482015290519081900360640190fd5b60008181526020819052604090206005015460ff1615610711576040805160e560020a62461bcd02815260206004820152601f60248201527f776974686472617761626c653a20616c72656164792077697468647261776e00604482015290519081900360640190fd5b600081815260208190526040902060040154421061079f576040805160e560020a62461bcd02815260206004820152603160248201527f776974686472617761626c653a2074696d656c6f636b2074696d65206d75737460448201527f20626520696e2074686520667574757265000000000000000000000000000000606482015290519081900360840190fd5b600088815260208190526040808220600681018a905560058101805460ff1916600190811790915581015460028201549251919850600160a060020a03169282156108fc02929190818181858888f19350505050158015610804573d6000803e3d6000fd5b5060405188907fd6fd4c8e45bf0c70693141c7ce46451b6a6a28ac8386fca2ba914044e0e2391690600090a2506001979650505050505050565b6000808261084b81610b95565b15156108a1576040805160e560020a62461bcd02815260206004820152601960248201527f636f6e7472616374496420646f6573206e6f7420657869737400000000000000604482015290519081900360640190fd5b6000848152602081905260409020548490600160a060020a03163314610911576040805160e560020a62461bcd02815260206004820152601660248201527f726566756e6461626c653a206e6f742073656e64657200000000000000000000604482015290519081900360640190fd5b600081815260208190526040902060050154610100900460ff1615610980576040805160e560020a62461bcd02815260206004820152601c60248201527f726566756e6461626c653a20616c726561647920726566756e64656400000000604482015290519081900360640190fd5b60008181526020819052604090206005015460ff16156109ea576040805160e560020a62461bcd02815260206004820152601d60248201527f726566756e6461626c653a20616c72656164792077697468647261776e000000604482015290519081900360640190fd5b600081815260208190526040902060040154421015610a79576040805160e560020a62461bcd02815260206004820152602360248201527f726566756e6461626c653a2074696d656c6f636b206e6f74207965742070617360448201527f7365640000000000000000000000000000000000000000000000000000000000606482015290519081900360840190fd5b60008581526020819052604080822060058101805461ff001916610100179055805460028201549251919650600160a060020a03169282156108fc02929190818181858888f19350505050158015610ad5573d6000803e3d6000fd5b5060405185907f989b3a845197c9aec15f8982bbb30b5da714050e662a7a287bb1a94c81e2e70e90600090a2506001949350505050565b6000806000806000806000806000610b238a610b95565b1515610b2e57610b89565b50505060008781526020819052604090208054600182015460028301546003840154600485015460058601546006870154600160a060020a039687169d50959094169a509198509650945060ff808216945061010090910416915b50919395975091939597565b600090815260208190526040902054600160a060020a03161515905600a165627a7a723058206ae87e62dfff3a6c14b5a0e7f82bf8658c82e68a35b897d310bbdf23038b8fee0029&quot;
+
+        },
+
+        &quot;Signature&quot;: {
+
+                &quot;Sig&quot;: &quot;9QrWejZXXlo/PqVDpUiPSb9IuCqoy/Sx6LqP8HaO8F83tMQccPvl7IgaeLKDuipeVLJPgd4tEYn/CUYbXX4CKAE=&quot;
+
+        }
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="gensecret">
+<h3>gensecret<a class="headerlink" href="#gensecret" title="Permalink to this headline">¶</a></h3>
+<p>gensecret is for generating the hash value of the keys</p>
+<div class="section" id="parameter-description-1">
+<span id="id1"></span><h4>parameter description:<a class="headerlink" href="#parameter-description-1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">none</span></code></li>
+</ul>
+</div>
+<div class="section" id="results-1">
+<span id="id2"></span><h4>results：<a class="headerlink" href="#results-1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">the</span> <span class="pre">key</span> <span class="pre">and</span> <span class="pre">key</span> <span class="pre">hash</span> <span class="pre">in</span> <span class="pre">hexadecimal</span> <span class="pre">format</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">hash</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">secret</span> <span class="pre">keys</span> <span class="pre">is</span> <span class="pre">in</span> <span class="pre">hexadecimal</span> <span class="pre">format,</span> <span class="pre">and</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">./config/hashkey.json</span></code></li>
+</ul>
+</div>
+<div class="section" id="example-1">
+<span id="id3"></span><h4>Example：<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>swap gensecret
+
+Result：
+secret hex: 0x261c680e5be606bc023d200f5019d2b63807a05079b431751d606c0bd8b53015
+secretHash hex: 0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="create">
+<h3>create<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h3>
+<p>create will create a transaction based on the contract created in init,
+will lock the initiator transfer amount for 48 hours</p>
+<div class="section" id="parameter-description-2">
+<span id="id4"></span><h4>Parameter description：<a class="headerlink" href="#parameter-description-2" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> specify the address to send the transaction to，default
+is 127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code> user’s private key file</li>
+<li><code class="docutils literal notranslate"><span class="pre">to</span></code> receiver’s address in hexadecimal format</li>
+<li><code class="docutils literal notranslate"><span class="pre">amount</span></code> the transfer amount</li>
+<li><code class="docutils literal notranslate"><span class="pre">fee</span></code> transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">secrethash</span></code> private key’s hash value，in hexadecimal format</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> user transaction count, the default is 0 for user’s current
+value</li>
+</ul>
+</div>
+<div class="section" id="results-2">
+<span id="id5"></span><h4>results：<a class="headerlink" href="#results-2" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Initiate</span> <span class="pre">transaction,</span> <span class="pre">and</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">./config/create.json</span></code></li>
+</ul>
+</div>
+<div class="section" id="example-2">
+<span id="id6"></span><h4>Example:<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>swap create --address 127.0.0.1:8027 --from .\keyfile\shard1-0x0a57a2714e193b7ac50475ce625f2dcfb483d741 --to 0x91d341d70ab3859a60840e120e28a17c5c2f64a1 --amount 10000 --fee 100 --secrethash 0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2
+Results：
+
+{
+
+        &quot;Hash&quot;: &quot;0x15e7143c38fc905e7f0905c198b53f75a704331c5ccd1eeaba9c0f0cc970074e&quot;,
+
+        &quot;Data&quot;: {
+
+                &quot;From&quot;: &quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;,
+
+                &quot;To&quot;: &quot;0x13b001e4915c13dcff90f0751b4c145b21110002&quot;,
+
+                &quot;Amount&quot;: 10000,
+
+                &quot;AccountNonce&quot;: 4,
+
+                &quot;Fee&quot;: 100,
+
+                &quot;Timestamp&quot;: 0,
+
+                &quot;Payload&quot;: &quot;0x335ef5bd00000000000000000000000091d341d70ab3859a60840e120e28a17c5c2f64a156915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2000000000000000000000000000000000000000000000000000000005b80cd8b&quot;
+
+        },
+
+        &quot;Signature&quot;: {
+
+                &quot;Sig&quot;: &quot;ypHxG4wHd9rawyVSK+U+1by8i8XbtZkceoBkBz9MhDFQ9z3KOwvz5Jtb+LGce5HWXClZOWSqJRiAvtgzi8xRYQA=&quot;
+
+        }
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="participate">
+<h3>participate<a class="headerlink" href="#participate" title="Permalink to this headline">¶</a></h3>
+<p>participate is creating a transaction on another Seele chain based on
+the contract created in init, which will lock the initiator transfer
+amount for 24 hours.</p>
+<div class="section" id="parameter-description-3">
+<span id="id7"></span><h4>parameter description：<a class="headerlink" href="#parameter-description-3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> the address to send transactions to，default is
+127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code> is the private key file</li>
+<li><code class="docutils literal notranslate"><span class="pre">to</span></code> recipient address in hexadecimal format</li>
+<li><code class="docutils literal notranslate"><span class="pre">amount</span></code> transfer amount</li>
+<li><code class="docutils literal notranslate"><span class="pre">fee</span></code> transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">secrethash</span></code> secrethash hash value of the private key, in
+hexadeimal format, the secrethash should be the one being used by
+create</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> transaction count，default is 0</li>
+</ul>
+</div>
+<div class="section" id="results-3">
+<span id="id8"></span><h4>Results：<a class="headerlink" href="#results-3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">commited</span> <span class="pre">transactions,</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">./config/participate.json</span></code></li>
+</ul>
+</div>
+<div class="section" id="example-3">
+<span id="id9"></span><h4>Example：<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>swap participate --address 127.0.0.1:8027 --from .\keyfile\shard2-0x2a23825407740fa7163069257c57452c4d4fc3d1 --to 0x0a57a2714e193b7ac50475ce625f2dcfb483d741 --amount 10000 --fee 100 --secrethash 0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2
+
+Result：
+
+{
+
+        &quot;Hash&quot;: &quot;0x15e7143c38fc905e7f0905c198b53f75a704331c5ccd1eeaba9c0f0cc970074e&quot;,
+
+        &quot;Data&quot;: {
+
+                &quot;From&quot;: &quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;,
+
+                &quot;To&quot;: &quot;0x13b001e4915c13dcff90f0751b4c145b21110002&quot;,
+
+                &quot;Amount&quot;: 10000,
+
+                &quot;AccountNonce&quot;: 4,
+
+                &quot;Fee&quot;: 100,
+
+                &quot;Timestamp&quot;: 0,
+
+                &quot;Payload&quot;: &quot;0x335ef5bd00000000000000000000000091d341d70ab3859a60840e120e28a17c5c2f64a156915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2000000000000000000000000000000000000000000000000000000005b80cd8b&quot;
+
+        },
+
+        &quot;Signature&quot;: {
+
+                &quot;Sig&quot;: &quot;ypHxG4wHd9rawyVSK+U+1by8i8XbtZkceoBkBz9MhDFQ9z3KOwvz5Jtb+LGce5HWXClZOWSqJRiAvtgzi8xRYQA=&quot;
+
+        }
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="refund">
+<h3>refund<a class="headerlink" href="#refund" title="Permalink to this headline">¶</a></h3>
+<p>refund Get back the sent Seele after the lock time</p>
+<div class="section" id="parameter-description-4">
+<span id="id10"></span><h4>parameter description：<a class="headerlink" href="#parameter-description-4" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> is the address to send transactions to，default is
+127.0.0.1:8027 127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code> is the private key file</li>
+<li><code class="docutils literal notranslate"><span class="pre">fee</span></code> is the transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> is the transaction count，default is 0</li>
+<li><code class="docutils literal notranslate"><span class="pre">contractId</span></code> the ID of the transaction to be queried, in
+hexadecimal format; the ID is the hash value of the result of create
+or participate, call the getreceipt command of the Seele client to
+see the result field. Run
+<code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">getreceipt</span> <span class="pre">--hash</span> <span class="pre">&lt;hash&gt;</span> <span class="pre">--address</span> <span class="pre">host:port</span></code> or
+<code class="docutils literal notranslate"><span class="pre">swap</span> <span class="pre">getreceipt</span> <span class="pre">--hash</span> <span class="pre">&lt;hash&gt;</span> <span class="pre">--address</span> <span class="pre">host:port</span></code>, the result
+field of the returned result is the contractId</li>
+</ul>
+</div>
+<div class="section" id="example-of-getting-contractid">
+<h4>Example of getting contractId<a class="headerlink" href="#example-of-getting-contractid" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xbc4e5bfd44832ff5005cd77117c382ab7e0d592a7de3d0dc71dd64061006d5f6</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8027</span>
+
+<span class="ow">or</span>
+
+<span class="n">swap</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xbc4e5bfd44832ff5005cd77117c382ab7e0d592a7de3d0dc71dd64061006d5f6</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8027</span>
+
+<span class="n">Result</span><span class="p">:</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;logs&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                <span class="p">{</span>
+
+                        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0x13b001e4915c13dcff90f0751b4c145b21110002&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                                <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000002710&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x000000000000000000000000000000000000000000000000000000005b7f7ee7&quot;</span>
+
+                        <span class="p">],</span>
+
+                        <span class="s2">&quot;topics&quot;</span><span class="p">:</span> <span class="s2">&quot;[0x329a8316ed9c3b2299597538371c2944c5026574e803b1ec31d6113e1cd67bde, 0xfc2ab449cc8c66ceacfab3e7c9fb68bdeeecefa4c6905db2431e98d2950cbb4a, 0x0000000000000000000000000a57a2714e193b7ac50475ce625f2dcfb483d741, 0x00000000000000000000000091d341d70ab3859a60840e120e28a17c5c2f64a1]&quot;</span>
+
+                <span class="p">}</span>
+
+        <span class="p">],</span>
+
+        <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe117fdeba7847029d9f7d8f5bef41bffc2d14df795b198e64389b7a92af099ef&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0xfc2ab449cc8c66ceacfab3e7c9fb68bdeeecefa4c6905db2431e98d2950cbb4a&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xbc4e5bfd44832ff5005cd77117c382ab7e0d592a7de3d0dc71dd64061006d5f6&quot;</span>
+
+<span class="p">}</span>
+
+<span class="n">the</span> <span class="n">result</span> <span class="n">field</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">contractId</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="result">
+<h4>Result:<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">transaction</span> <span class="pre">is</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">./config/refund.json</span></code></li>
+</ul>
+</div>
+<div class="section" id="example-4">
+<span id="id11"></span><h4>Example：<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>swap refund --from .\keyfile\shard1-0x0a57a2714e193b7ac50475ce625f2dcfb483d741 --fee 10 --address 127.0.0.1:8027 --nonce 0 --contractId 0xfc2ab449cc8c66ceacfab3e7c9fb68bdeeecefa4c6905db2431e98d2950cbb4a
+
+Return result：
+
+{
+
+        &quot;Hash&quot;: &quot;0xb8e73f3fd31d465f833b340b4fc27885bc0975f8e09c5517e9698ec7a2a64f9f&quot;,
+
+        &quot;Data&quot;: {
+
+                &quot;From&quot;: &quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;,
+
+                &quot;To&quot;: &quot;0x13b001e4915c13dcff90f0751b4c145b21110002&quot;,
+
+                &quot;Amount&quot;: 0,
+
+                &quot;AccountNonce&quot;: 8,
+
+                &quot;Fee&quot;: 10,
+
+                &quot;Timestamp&quot;: 0,
+
+                &quot;Payload&quot;: &quot;0x7249fbb6fc2ab449cc8c66ceacfab3e7c9fb68bdeeecefa4c6905db2431e98d2950cbb4a&quot;
+
+        },
+
+        &quot;Signature&quot;: {
+
+                &quot;Sig&quot;: &quot;Trl6LJkTr7LM6AR2H/rdLmT7ZzRiAikUmTuyZ01bAxAM94PL4WuW+PBDMcBj1Cih0h6lyJwwY30ytn66g/toMAA=&quot;
+
+        }
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="withdraw">
+<h3>withdraw<a class="headerlink" href="#withdraw" title="Permalink to this headline">¶</a></h3>
+<p>withdraw getting the Seele tokens from the contract</p>
+<div class="section" id="parameter-description-5">
+<span id="id12"></span><h4>Parameter description：<a class="headerlink" href="#parameter-description-5" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> is the address to send transactions to，default is
+127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code> is the private key file</li>
+<li><code class="docutils literal notranslate"><span class="pre">secret</span></code> raw data for production of secrethash，in hexadecimal
+format</li>
+<li><code class="docutils literal notranslate"><span class="pre">fee</span></code> transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> transaction count，default is 0</li>
+<li><code class="docutils literal notranslate"><span class="pre">contractId</span></code> the ID of the transaction to be queried，in
+hexadecimal format</li>
+</ul>
+</div>
+<div class="section" id="results-4">
+<span id="id13"></span><h4>results：<a class="headerlink" href="#results-4" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">transaction</span> <span class="pre">is</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">./config/withdraw.json</span></code></li>
+</ul>
+</div>
+<div class="section" id="example-5">
+<span id="id14"></span><h4>Example:<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>swap withdraw --address 127.0.0.1:8027 --from .\keyfile\bob.key --secret 0x261c680e5be606bc023d200f5019d2b63807a05079b431751d606c0bd8b53015 --fee 10 --nonce 0 --contractId 0xfc2ab449cc8c66ceacfab3e7c9fb68bdeeecefa4c6905db2431e98d2950cbb4a
+
+Result：
+
+{
+
+        &quot;Hash&quot;: &quot;0x502caedee71ac376a2c667f1ddcd79460d8b02906f9a2367095a78d1b9222306&quot;,
+
+        &quot;Data&quot;: {
+
+                &quot;From&quot;: &quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;,
+
+                &quot;To&quot;: &quot;0x13b001e4915c13dcff90f0751b4c145b21110002&quot;,
+
+                &quot;Amount&quot;: 0,
+
+                &quot;AccountNonce&quot;: 9,
+
+                &quot;Fee&quot;: 10,
+
+                &quot;Timestamp&quot;: 0,
+
+                &quot;Payload&quot;: &quot;0x63615149fc2ab449cc8c66ceacfab3e7c9fb68bdeeecefa4c6905db2431e98d2950cbb4a261c680e5be606bc023d200f5019d2b63807a05079b431751d606c0bd8b53015&quot;
+
+        },
+
+        &quot;Signature&quot;: {
+
+                &quot;Sig&quot;: &quot;1dEoWAeaolpMx9uB74ZzHpXogTRW0ZJYzd2HCWgDBEY9Pg/pJzmLAUnhJm5BnJ8DglF1rSelL9Zp4ZHsCFjWAgA=&quot;
+
+        }
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="getcontractbyid">
+<h3>getContractById<a class="headerlink" href="#getcontractbyid" title="Permalink to this headline">¶</a></h3>
+<p>getContractById is used to obtain the transaction information initiated
+by the sender.</p>
+<div class="section" id="parameter-description-6">
+<span id="id15"></span><h4>Parameter description：<a class="headerlink" href="#parameter-description-6" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> is the address to send transactions to，default is
+127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code> is the private key file</li>
+<li><code class="docutils literal notranslate"><span class="pre">fee</span></code> is the transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> is the transaction count，default is 0</li>
+<li><code class="docutils literal notranslate"><span class="pre">contractId</span></code> is the ID of the transaction to be queried, in
+hexadecimal format</li>
+</ul>
+</div>
+<div class="section" id="results-5">
+<span id="id16"></span><h4>results：<a class="headerlink" href="#results-5" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">transaction</span> <span class="pre">is</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">./config/contract.json</span></code></li>
+</ul>
+</div>
+<div class="section" id="example-6">
+<span id="id17"></span><h4>Example:<a class="headerlink" href="#example-6" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">getContractById</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">alice</span><span class="o">.</span><span class="n">key</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="n">contractId</span> <span class="mh">0xfc2ab449cc8c66ceacfab3e7c9fb68bdeeecefa4c6905db2431e98d2950cbb4a</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5443407e3a865651db3b9dc939174bb0df6ca52f02d0b542d0c1ba6ac8452b35&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe17a6a769b20d6e54fdc063d51172074c1fc0102&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+
+                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+
+                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe16c7d98fe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9&quot;</span>
+
+        <span class="p">},</span>
+
+        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;8mu9bArsPcVJunEISF3r8t/WAsKmQ4LQOflj0aNHc/1N4+HXhFe/x3ZdQESr6fHf3Dc3AcQn2UfNI5YXI31rlwA=&quot;</span>
+
+        <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="unpack">
+<h3>unpack<a class="headerlink" href="#unpack" title="Permalink to this headline">¶</a></h3>
+<p>unpack is use to decode the return result in the contract after the
+execution of getContractById</p>
+<div class="section" id="parameter-description-7">
+<span id="id18"></span><h4>parameter description：<a class="headerlink" href="#parameter-description-7" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> is the address to send transactions to，default is
+127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">hash</span></code> the hash value of the transaction, returning the hash field
+in the result after executing getContractById , or the hash field in
+./config/contract.json</li>
+</ul>
+</div>
+<div class="section" id="result-1">
+<span id="id19"></span><h4>result:<a class="headerlink" href="#result-1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">contractId</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">corresponding</span> <span class="pre">transfer</span> <span class="pre">ID</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">./config/contractinfo.json</span></code></li>
+</ul>
+<p>example：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>swap unpack --hash 0x5443407e3a865651db3b9dc939174bb0df6ca52f02d0b542d0c1ba6ac8452b35
+
+result：
+
+{
+
+        &quot;Sender&quot;: &quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;,
+
+        &quot;Receiver&quot;: &quot;0x91d341d70ab3859a60840e120e28a17c5c2f64a1&quot;,
+
+        &quot;Amount&quot;: 100000000,
+
+        &quot;Hashlock&quot;: &quot;0x0021377512d226cc1b7151bd4732452f5c7f1cfb9f0285350f95be3e82c3f6be&quot;,
+
+        &quot;Timelock&quot;: 1535177397,
+
+        &quot;Withdrawn&quot;: false,
+
+        &quot;Refunded&quot;: false,
+
+        &quot;Preimage&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;
+
+}
+</pre></div>
+</div>
+<p>Notes: According to the information listed, check if the receiver is in
+its own account, the amount is consistent, the hashlock is the
+secrethash advertised by the initiator, the timelock is about 48 hours
+from the moment, the withdrawal is desirable, and the refund has been
+executed, then decide whether to create a transaction using the
+participant. ***</p>
+</div>
+</div>
+<div class="section" id="getreceipt">
+<h3>getreceipt<a class="headerlink" href="#getreceipt" title="Permalink to this headline">¶</a></h3>
+<p>getreceipt is used to get the result of a transaction or contract
+execution</p>
+<div class="section" id="parameter-description-8">
+<span id="id20"></span><h4>parameter description：<a class="headerlink" href="#parameter-description-8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> is the address to send transactions to，default is
+127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">hash</span></code> is the hash value of the transaction</li>
+</ul>
+</div>
+<div class="section" id="result-2">
+<span id="id21"></span><h4>result:<a class="headerlink" href="#result-2" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">receipt</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">result</span></code></li>
+</ul>
+</div>
+<div class="section" id="example-7">
+<span id="id22"></span><h4>example<a class="headerlink" href="#example-7" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x1783a4aee339a337c5eb2c040fe6503529f1e49bb023a93ad3d38dc1c28c66f6</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8027</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;logs&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                <span class="p">{</span>
+
+                        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe17a6a769b20d6e54fdc063d51172074c1fc0102&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;topics&quot;</span><span class="p">:</span> <span class="s2">&quot;[0xd6fd4c8e45bf0c70693141c7ce46451b6a6a28ac8386fca2ba914044e0e23916, 0xfe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9]&quot;</span>
+
+                <span class="p">}</span>
+
+        <span class="p">],</span>
+
+        <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5483317a79cf26615702fae674ffc818d830cdc0a5ca8d1ec1848d101caa3457&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000001&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1783a4aee339a337c5eb2c040fe6503529f1e49bb023a93ad3d38dc1c28c66f6&quot;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="getbalance">
+<h3>getbalance<a class="headerlink" href="#getbalance" title="Permalink to this headline">¶</a></h3>
+<p>getbalance is use to getting the balance in the account</p>
+<div class="section" id="parameter-description-9">
+<span id="id23"></span><h4>parameter description:<a class="headerlink" href="#parameter-description-9" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code> is the address to send transactions to，default is
+127.0.0.1:8027</li>
+<li><code class="docutils literal notranslate"><span class="pre">account</span></code> is the account address in hexadecimal format</li>
+</ul>
+</div>
+<div class="section" id="result-3">
+<span id="id24"></span><h4>result<a class="headerlink" href="#result-3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">remaining</span> <span class="pre">balance</span></code></li>
+</ul>
+</div>
+<div class="section" id="example-8">
+<span id="id25"></span><h4>example<a class="headerlink" href="#example-8" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">getbalance</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0x0a57a2714e193b7ac50475ce625f2dcfb483d741</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8027</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Account&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Balance&quot;</span><span class="p">:</span> <span class="mi">999599767610</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="help">
+<h3>help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">help,</span> <span class="pre">h</span> <span class="pre">is</span> <span class="pre">for</span> <span class="pre">getting</span> <span class="pre">help</span></code> ***</p>
+</div>
+</div>
+<div class="section" id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Two different Seele chain seele1 and seele2 exchanges Refer to <a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele">start
+seele</a>
+for starting two Seele chains or two shards:</p>
+<ul class="simple">
+<li>1.<code class="docutils literal notranslate"><span class="pre">swap</span> <span class="pre">init</span> <span class="pre">--address</span> <span class="pre">&lt;ip-port&gt;</span> <span class="pre">--fee</span> <span class="pre">&lt;int&gt;</span> <span class="pre">--from</span> <span class="pre">&lt;file&gt;</span> <span class="pre">--nonce</span> <span class="pre">&lt;number&gt;</span> <span class="pre">to</span> <span class="pre">deploy</span> <span class="pre">contract</span></code>
+#### example:</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">init</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8027</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">100</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">shard1</span><span class="o">-</span><span class="mh">0x0a57a2714e193b7ac50475ce625f2dcfb483d741</span> <span class="o">--</span><span class="n">nonce</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">deploy</span> <span class="n">to</span> <span class="n">seele1</span>
+
+<span class="n">swap</span> <span class="n">init</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">100</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">shard2</span><span class="o">-</span><span class="mh">0x2a23825407740fa7163069257c57452c4d4fc3d1</span> <span class="o">--</span><span class="n">nonce</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">deploy</span> <span class="n">to</span> <span class="n">seele2</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">2.Both Alice and Bob agreed to initiate the exchange. Note: Alice and
+Bob need to have their own address on both the seele1 and seele2.</p>
+<ul class="simple">
+<li>Alice executes swap gensecret to generate private key and private
+key hash value. #### example</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>swap gensecret
+result：
+secret hex: 0x261c680e5be606bc023d200f5019d2b63807a05079b431751d606c0bd8b53015
+secretHash hex: 0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="section" id="working-on-seele1">
+<h3>Working on seele1<a class="headerlink" href="#working-on-seele1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>3.Alice runs
+<code class="docutils literal notranslate"><span class="pre">swap</span> <span class="pre">create</span> <span class="pre">--address&lt;ip:port&gt;</span> <span class="pre">--from</span> <span class="pre">&lt;key</span> <span class="pre">file&gt;</span> <span class="pre">--to</span> <span class="pre">&lt;receiver</span> <span class="pre">account&gt;</span> <span class="pre">--amount</span> <span class="pre">&lt;number&gt;</span> <span class="pre">--secrethash</span> <span class="pre">&lt;secret</span> <span class="pre">hash&gt;</span> <span class="pre">--fee</span> <span class="pre">&lt;number&gt;</span> <span class="pre">--nonce</span> <span class="pre">&lt;number&gt;</span></code></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">create</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">shard1</span><span class="o">-</span><span class="mh">0x0a57a2714e193b7ac50475ce625f2dcfb483d741</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0x025af35f527dfab6ddbdc39da16870e4906e6fe1</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">100000000</span> <span class="o">--</span><span class="n">secrethash</span> <span class="mh">0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>4.Bob runs
+<code class="docutils literal notranslate"><span class="pre">swap</span> <span class="pre">getContractById</span> <span class="pre">--address</span> <span class="pre">&lt;ip:port&gt;</span> <span class="pre">--from</span> <span class="pre">&lt;key</span> <span class="pre">file&gt;</span> <span class="pre">--fee</span> <span class="pre">&lt;number&gt;</span> <span class="pre">--nonce</span> <span class="pre">&lt;number&gt;</span> <span class="pre">--contractId</span> <span class="pre">&lt;hex</span> <span class="pre">string&gt;</span></code></li>
+</ul>
+<p>How to get the contractId? Perform a swap create operation by Alice to
+return the hash field of the result, execute
+<code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">getreceipt</span> <span class="pre">--hash</span> <span class="pre">&lt;hash&gt;</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">client</span></code> or use
+<code class="docutils literal notranslate"><span class="pre">swap</span> <span class="pre">getreceipt</span> <span class="pre">--address</span> <span class="pre">&lt;ip:port&gt;</span> <span class="pre">--hash</span> <span class="pre">&lt;hash&gt;</span></code></p>
+<div class="section" id="example-9">
+<span id="id26"></span><h4>example<a class="headerlink" href="#example-9" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xf9ab3c269e384ce5c2e3bb1a68635672e97e9c5b450af3f652122df19d5e81e0</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;logs&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                <span class="p">{</span>
+
+                        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe17a6a769b20d6e54fdc063d51172074c1fc0102&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                                <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000005f5e100&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x000000000000000000000000000000000000000000000000000000005b810495&quot;</span>
+
+                        <span class="p">],</span>
+
+                        <span class="s2">&quot;topics&quot;</span><span class="p">:</span> <span class="s2">&quot;[0x329a8316ed9c3b2299597538371c2944c5026574e803b1ec31d6113e1cd67bde, 0xfe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9, 0x0000000000000000000000000a57a2714e193b7ac50475ce625f2dcfb483d741, 0x000000000000000000000000025af35f527dfab6ddbdc39da16870e4906e6fe1]&quot;</span>
+
+                <span class="p">}</span>
+
+        <span class="p">],</span>
+
+        <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0xfe118c80518c7f0e2b27861035b1e156a0b30e991f45ba3ba3d3b7c079d63304&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0xfe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xf9ab3c269e384ce5c2e3bb1a68635672e97e9c5b450af3f652122df19d5e81e0&quot;</span>
+
+<span class="p">}</span>
+
+<span class="ow">or</span>
+
+<span class="n">swap</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xf9ab3c269e384ce5c2e3bb1a68635672e97e9c5b450af3f652122df19d5e81e0</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;logs&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                <span class="p">{</span>
+
+                        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe17a6a769b20d6e54fdc063d51172074c1fc0102&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                                <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000005f5e100&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x000000000000000000000000000000000000000000000000000000005b810495&quot;</span>
+
+                        <span class="p">],</span>
+
+                        <span class="s2">&quot;topics&quot;</span><span class="p">:</span> <span class="s2">&quot;[0x329a8316ed9c3b2299597538371c2944c5026574e803b1ec31d6113e1cd67bde, 0xfe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9, 0x0000000000000000000000000a57a2714e193b7ac50475ce625f2dcfb483d741, 0x000000000000000000000000025af35f527dfab6ddbdc39da16870e4906e6fe1]&quot;</span>
+
+                <span class="p">}</span>
+
+        <span class="p">],</span>
+
+        <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0xfe118c80518c7f0e2b27861035b1e156a0b30e991f45ba3ba3d3b7c079d63304&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0xfe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xf9ab3c269e384ce5c2e3bb1a68635672e97e9c5b450af3f652122df19d5e81e0&quot;</span>
+
+<span class="p">}</span>
+
+<span class="n">The</span> <span class="n">result</span> <span class="n">field</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">contractId</span>
+
+<span class="n">run</span><span class="p">:</span><span class="n">swap</span> <span class="n">getContractById</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">bob</span><span class="o">.</span><span class="n">key</span>
+
+<span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="n">contractId</span> <span class="mh">0xfe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9</span>
+
+
+<span class="n">result</span><span class="p">:{</span>
+
+        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5443407e3a865651db3b9dc939174bb0df6ca52f02d0b542d0c1ba6ac8452b35&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe17a6a769b20d6e54fdc063d51172074c1fc0102&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+
+                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+
+                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe16c7d98fe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9&quot;</span>
+
+        <span class="p">},</span>
+
+        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;8mu9bArsPcVJunEISF3r8t/WAsKmQ4LQOflj0aNHc/1N4+HXhFe/x3ZdQESr6fHf3Dc3AcQn2UfNI5YXI31rlwA=&quot;</span>
+
+        <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="n">run</span><span class="p">:</span><span class="n">swap</span> <span class="n">unpack</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x5443407e3a865651db3b9dc939174bb0df6ca52f02d0b542d0c1ba6ac8452b35</span>
+
+<span class="n">result</span><span class="p">:{</span>
+
+        <span class="s2">&quot;Sender&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Receiver&quot;</span><span class="p">:</span> <span class="s2">&quot;0x025af35f527dfab6ddbdc39da16870e4906e6fe1&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">100000000</span><span class="p">,</span>
+
+        <span class="s2">&quot;Hashlock&quot;</span><span class="p">:</span> <span class="s2">&quot;0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Timelock&quot;</span><span class="p">:</span> <span class="mi">1535181973</span><span class="p">,</span>
+
+        <span class="s2">&quot;Withdrawn&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;Refunded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;Preimage&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Bob verifies the above information, whether if the receiver is its own
+address, the amount is agreed by both parties, the hashlock is the value
+that Alice tells Bob, the timelock is about 48 hours from the moment,
+the withdrawal is false, the refund is false, and whether preimage is 0
+***</p>
+</div>
+</div>
+<div class="section" id="operating-on-seele2">
+<h3>Operating on seele2<a class="headerlink" href="#operating-on-seele2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>5.If Bob verifies that the data matches in step 4, Bob creates a
+transaction in another chain (seele2 chain).</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">participate</span> <span class="o">--</span><span class="n">address</span> <span class="o">&lt;</span><span class="n">ip</span><span class="p">:</span><span class="n">port</span><span class="o">&gt;</span> <span class="o">--</span><span class="kn">from</span> <span class="o">&lt;</span><span class="n">key</span> <span class="n">file</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">receiver</span> <span class="n">account</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">secrethash</span> <span class="o">&lt;</span><span class="n">secret</span> <span class="nb">hash</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">fee</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">nonce</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span>
+
+<span class="n">run</span><span class="p">:</span>
+
+<span class="n">swap</span> <span class="n">participate</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">shard2</span><span class="o">-</span><span class="mh">0x007d1b1ea335e8e4a74c0be781d828dc7db934b1</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0x55a60155b5b10d423701be281774f606a61c3d01</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">100000000</span> <span class="o">--</span><span class="n">secrethash</span> <span class="mh">0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span>
+
+
+<span class="n">result</span><span class="p">:</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe530e9eb1cfbcfe7ecb36345218577e6c0abbdeca50e8146918487b400401022&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x007d1b1ea335e8e4a74c0be781d828dc7db934b1&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7220b2dcb83d8a2f844ea0464bd58e56d1ba0102&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">100000000</span><span class="p">,</span>
+
+                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+
+                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+
+                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0x335ef5bd00000000000000000000000055a60155b5b10d423701be281774f606a61c3d0156915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2000000000000000000000000000000000000000000000000000000005b7fb91e&quot;</span>
+
+        <span class="p">},</span>
+
+        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;kjvf/525AJddpaB85sC9IX1veitdZVQsG8i9Sc03i5kJ8+pIqLiCdNwVv6el6Uq/zohUX04LPbeRcF1HqdNwbwE=&quot;</span>
+
+        <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>6.Alice also wants to see if the data matches</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xe530e9eb1cfbcfe7ecb36345218577e6c0abbdeca50e8146918487b400401022</span>
+<span class="p">{</span>
+
+        <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;logs&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                <span class="p">{</span>
+
+                        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7220b2dcb83d8a2f844ea0464bd58e56d1ba0102&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                                <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000005f5e100&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x000000000000000000000000000000000000000000000000000000005b7fb91e&quot;</span>
+
+                        <span class="p">],</span>
+
+                        <span class="s2">&quot;topics&quot;</span><span class="p">:</span> <span class="s2">&quot;[0x329a8316ed9c3b2299597538371c2944c5026574e803b1ec31d6113e1cd67bde, 0x2259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31, 0x000000000000000000000000007d1b1ea335e8e4a74c0be781d828dc7db934b1, 0x00000000000000000000000055a60155b5b10d423701be281774f606a61c3d01]&quot;</span>
+
+                <span class="p">}</span>
+
+        <span class="p">],</span>
+
+        <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0x3c6c45afc28245d89e81ffb5522cbd70e1828d4e94b1764a1843423966794f0c&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0x2259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe530e9eb1cfbcfe7ecb36345218577e6c0abbdeca50e8146918487b400401022&quot;</span>
+
+<span class="p">}</span>
+<span class="ow">or</span>
+
+<span class="n">swap</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xe530e9eb1cfbcfe7ecb36345218577e6c0abbdeca50e8146918487b400401022</span>
+
+
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;logs&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                <span class="p">{</span>
+
+                        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7220b2dcb83d8a2f844ea0464bd58e56d1ba0102&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                                <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000005f5e100&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2&quot;</span><span class="p">,</span>
+
+                                <span class="s2">&quot;0x000000000000000000000000000000000000000000000000000000005b7fb91e&quot;</span>
+
+                        <span class="p">],</span>
+
+                        <span class="s2">&quot;topics&quot;</span><span class="p">:</span> <span class="s2">&quot;[0x329a8316ed9c3b2299597538371c2944c5026574e803b1ec31d6113e1cd67bde, 0x2259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31, 0x000000000000000000000000007d1b1ea335e8e4a74c0be781d828dc7db934b1, 0x00000000000000000000000055a60155b5b10d423701be281774f606a61c3d01]&quot;</span>
+
+                <span class="p">}</span>
+
+        <span class="p">],</span>
+
+        <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0x3c6c45afc28245d89e81ffb5522cbd70e1828d4e94b1764a1843423966794f0c&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0x2259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe530e9eb1cfbcfe7ecb36345218577e6c0abbdeca50e8146918487b400401022&quot;</span>
+
+<span class="p">}</span>
+
+<span class="n">the</span> <span class="n">result</span> <span class="n">field</span> <span class="ow">is</span> <span class="n">contractId</span>
+
+<span class="n">run</span><span class="p">:</span>
+
+<span class="n">swap</span> <span class="n">getContractById</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">alice</span><span class="o">.</span><span class="n">key</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="n">contractId</span> <span class="mh">0x2259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xa05115d9bb67fde01790e89d0db89d7611044d40720b5dd486748350d7da59d6&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x007d1b1ea335e8e4a74c0be781d828dc7db934b1&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7220b2dcb83d8a2f844ea0464bd58e56d1ba0102&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+
+                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+
+                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe16c7d982259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31&quot;</span>
+
+        <span class="p">},</span>
+
+        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;CKpR9TmzBE+YLCu36obL5iaQTNpcNYBy7c7ViGxUR1VzpT9ON0Em2WvNdtJqOvAsXMk0oWYote+VzdGEtF00FwE=&quot;</span>
+
+        <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="n">run</span><span class="p">:</span>
+
+<span class="n">swap</span> <span class="n">unpack</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xa05115d9bb67fde01790e89d0db89d7611044d40720b5dd486748350d7da59d6</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Sender&quot;</span><span class="p">:</span> <span class="s2">&quot;0x007d1b1ea335e8e4a74c0be781d828dc7db934b1&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Receiver&quot;</span><span class="p">:</span> <span class="s2">&quot;0x55a60155b5b10d423701be281774f606a61c3d01&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">100000000</span><span class="p">,</span>
+
+        <span class="s2">&quot;Hashlock&quot;</span><span class="p">:</span> <span class="s2">&quot;0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Timelock&quot;</span><span class="p">:</span> <span class="mi">1535097118</span><span class="p">,</span>
+
+        <span class="s2">&quot;Withdrawn&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;Refunded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;Preimage&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Alice checks the above information, check if the receiver is its own
+address, the amount is agreed by both parties, the hashlock is the value
+that Alice tells Bob, the timelock is about 24 hours from the moment,
+the withdrawal is false, the refund is false, and preimage is 0 ***</p>
+<ul class="simple">
+<li>7.Alice gets the Seele token from the transaction initiated by Bob
+(seele2 chain)</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">withdraw</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">bob</span><span class="o">.</span><span class="n">key</span> <span class="o">--</span><span class="n">secret</span> <span class="mh">0x261c680e5be606bc023d200f5019d2b63807a05079b431751d606c0bd8b53015</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="n">contractId</span> <span class="mh">0xfe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8027</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1783a4aee339a337c5eb2c040fe6503529f1e49bb023a93ad3d38dc1c28c66f6&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x025af35f527dfab6ddbdc39da16870e4906e6fe1&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe17a6a769b20d6e54fdc063d51172074c1fc0102&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+
+                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0x63615149fe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9261c680e5be606bc023d200f5019d2b63807a05079b431751d606c0bd8b53015&quot;</span>
+
+        <span class="p">},</span>
+
+        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;OpXcAlayQznHg6Um+5jCp19OOoFkwGdz0iFN+4IfrSh2SwEu95Ep04PczF69BtYIN77lHgsZiD7G79Cp4LmCxgA=&quot;</span>
+
+        <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x1783a4aee339a337c5eb2c040fe6503529f1e49bb023a93ad3d38dc1c28c66f6</span> <span class="n">view</span> <span class="n">execution</span> <span class="n">result</span>
+
+<span class="ow">or</span>
+
+<span class="n">swap</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x1783a4aee339a337c5eb2c040fe6503529f1e49bb023a93ad3d38dc1c28c66f6</span> <span class="n">view</span> <span class="n">execution</span> <span class="n">result</span>
+
+<span class="n">client</span> <span class="n">getbalance</span> <span class="o">--</span><span class="n">address</span> <span class="o">&lt;</span><span class="n">ip</span><span class="p">:</span><span class="n">port</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">account</span> <span class="o">&lt;</span><span class="n">receiver</span> <span class="n">account</span><span class="o">&gt;</span>
+
+<span class="n">client</span> <span class="n">getbalance</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0x55a60155b5b10d423701be281774f606a61c3d01</span>
+
+<span class="ow">or</span>
+
+<span class="n">swap</span> <span class="n">getbalance</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0x55a60155b5b10d423701be281774f606a61c3d01</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Account&quot;</span><span class="p">:</span> <span class="s2">&quot;0x55a60155b5b10d423701be281774f606a61c3d01&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Balance&quot;</span><span class="p">:</span> <span class="mi">199998990</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By checking balance, Alice found Seele tokens are in the account. ***
+- 8.Bob needs to see the results of Alice’s withdrawal to get the
+secret.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">getContractById</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">alice</span><span class="o">.</span><span class="n">key</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="n">contractId</span> <span class="mh">0x2259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x11ea4062ce87fb97a20206d0695ad8dbe270b4fa392ae6e1e3de0af7761dc0aa&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x007d1b1ea335e8e4a74c0be781d828dc7db934b1&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7220b2dcb83d8a2f844ea0464bd58e56d1ba0102&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+
+                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+
+                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe16c7d982259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31&quot;</span>
+
+        <span class="p">},</span>
+
+        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;FrWbEspQQ+u9dfSxq612JgRlAC1zSXjgitfwiHXbf8xFNZ0i/2LiKDlEXo+pYioVitCbnQVJu0tVrPSy5ugyuwE=&quot;</span>
+
+        <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="n">swap</span> <span class="n">unpack</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x11ea4062ce87fb97a20206d0695ad8dbe270b4fa392ae6e1e3de0af7761dc0aa</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Sender&quot;</span><span class="p">:</span> <span class="s2">&quot;0x007d1b1ea335e8e4a74c0be781d828dc7db934b1&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Receiver&quot;</span><span class="p">:</span> <span class="s2">&quot;0x55a60155b5b10d423701be281774f606a61c3d01&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">100000000</span><span class="p">,</span>
+
+        <span class="s2">&quot;Hashlock&quot;</span><span class="p">:</span> <span class="s2">&quot;0x56915589f4cb70dbb631009f3f073e456eea72e7ecbd9238b6b93cfcd9f844c2&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Timelock&quot;</span><span class="p">:</span> <span class="mi">1535097118</span><span class="p">,</span>
+
+        <span class="s2">&quot;Withdrawn&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+
+        <span class="s2">&quot;Refunded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+
+        <span class="s2">&quot;Preimage&quot;</span><span class="p">:</span> <span class="s2">&quot;0x261c680e5be606bc023d200f5019d2b63807a05079b431751d606c0bd8b53015&quot;</span>
+
+<span class="p">}</span>
+
+<span class="n">preimage</span> <span class="n">field</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">secret</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="operation-on-seele1">
+<h3>Operation on seele1<a class="headerlink" href="#operation-on-seele1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>9.Bob uses the secret obtained above to get the tokens from the
+transaction initiated by Alice (seele1 chain), the operation steps
+are the same as 7</li>
+<li>10.Note that if Alice and Bob do not use the withdraw to obtain the
+Seele tokens within the specified time, then after the lock time of
+the timelock (alice is 48 hours, Bob is 24 hours), the tokens could
+be locked by the refund command.</li>
+</ul>
+</div>
+<div class="section" id="on-seele1">
+<h3>On seele1<a class="headerlink" href="#on-seele1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">refund</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">alice</span><span class="o">.</span><span class="n">key</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8027</span> <span class="o">--</span><span class="n">contractId</span> <span class="mh">0xfe036d9d54657dd5301ed52b36f65c65cb6e29feb0a70367c8f8900c247467b9</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xdf4fece572d1801b4447e3f443c1450310179074a2c0f44316b1cccc185bf728&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x55a60155b5b10d423701be281774f606a61c3d01&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7220b2dcb83d8a2f844ea0464bd58e56d1ba0102&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+
+                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+
+                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7249fbb62259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31&quot;</span>
+
+        <span class="p">},</span>
+
+        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;40qXsNEmaTh+1tuYPP5fDxC9BowEMCpBTthmwnLrNhZVj8Av+sOp0EYNLP3dtnjG7/dAePBGUzLj3XEsEjb3JQE=&quot;</span>
+
+        <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="on-seele2">
+<h3>On seele2<a class="headerlink" href="#on-seele2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span> <span class="n">refund</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">bob</span><span class="o">.</span><span class="n">key</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8027</span> <span class="o">--</span><span class="n">contractId</span> <span class="mh">0x2259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31</span>
+
+<span class="p">{</span>
+
+        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xdf4fece572d1801b4447e3f443c1450310179074a2c0f44316b1cccc185bf728&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x55a60155b5b10d423701be281774f606a61c3d01&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7220b2dcb83d8a2f844ea0464bd58e56d1ba0102&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+
+                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+
+                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0x7249fbb62259ed93f1781758502609efa0179cd66d988bf1549420ee25a8e726a51fad31&quot;</span>
+
+        <span class="p">},</span>
+
+        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+
+                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;40qXsNEmaTh+1tuYPP5fDxC9BowEMCpBTthmwnLrNhZVj8Av+sOp0EYNLP3dtnjG7/dAePBGUzLj3XEsEjb3JQE=&quot;</span>
+
+        <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You could view the contract execution result by the command:
+<code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">getreceipt</span> <span class="pre">--address</span> <span class="pre">&lt;ip:port&gt;</span> <span class="pre">--hash</span> <span class="pre">&lt;hash&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">swap</span> <span class="pre">getreceipt</span> <span class="pre">--address</span> <span class="pre">&lt;ip:port&gt;</span> <span class="pre">--hash</span> <span class="pre">&lt;hash&gt;</span></code> to view the
+contract execution</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Hash-Time-Lock-System-Contract.html" class="btn btn-neutral float-right" title="Tutorial for Hash Time Lock (HTLC) System Contract" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Using-the-contract-simulator.html" class="btn btn-neutral" title="Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Seele Team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../static/jquery.js"></script>
+        <script type="text/javascript" src="../static/underscore.js"></script>
+        <script type="text/javascript" src="../static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
