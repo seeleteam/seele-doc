@@ -1,4 +1,7 @@
-Hash Time Lock (HTLC) System Contract
+Hash Time Lock System Contract
+==============================
+
+Tutorial for Hash Time Lock (HTLC) System Contract
 --------------------------------------------------
 
 Home
@@ -751,7 +754,7 @@ On seele1
 
 -  13.Already refund, refund again will fail (refer to step 12)
 -  14.The lock time has not passed, refund will fail (refer to step 12)
--  14.Already withdraw, withdraw again will fail (refer to step 10)
--  15.Provide a fake private key, withdraw will fail (refer to step 10)
--  16.Fake recipient initiate a withdraw will fail (refer to step 10)
--  17.Withdraw after lock time expired will fail (refer to step 10)
+-  15.Already withdraw, withdraw again will fail (refer to step 10)
+-  16.Provide a fake private key, withdraw will fail (refer to step 10)
+-  17.Fake recipient initiate a withdraw will fail (refer to step 10)
+-  18.Withdraw after lock time expired will fail (refer to step 10)

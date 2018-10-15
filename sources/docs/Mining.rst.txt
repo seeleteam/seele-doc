@@ -1,0 +1,136 @@
+Mining
+======
+
+--------------
+
+CPU Mining
+----------
+
+SeeleCPU Miner
+
+****\ SeeleSeele
+NodeSeele\ `Getting Started With
+seele <https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele>`__\ 
+
+Seele Node
+~~~~~~~~~~~~~~
+
+Seele Node\ `Setting Up a
+Node <https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele/#create-a-full-node-client>`__\ NodeSeele
+Node
+
+Seele
+Node\ ``--miner,-m``\ NodeNode\ ``--miner stop``\ Seele
+Node\ ``--threads``\ NodeMiner
+
+Example
+^^^^^^^
+
+Seele
+Node\ ` <https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele/#node1>`__\ 
+
+// Seele Node
+
+.. code:: sh
+
+   node start -c <configpath>
+
+// Seele NodeMiner2
+
+.. code:: js
+
+   node start -c <configpath> --threads 2
+
+// Seele Node
+
+.. code:: js
+
+   node start -c <configpath> --miner stop
+
+Seele Full Client
+~~~~~~~~~~~~~~~~~~~~~
+
+Seele NodeclientNode Miner.\ `Create a Full
+Node
+Client <https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele/#create-a-full-node-client>`__\ 
+
+.. _example-1:
+
+Example
+^^^^^^^
+
+Client
+
+.. code:: js
+
+   client miner start
+
+   true
+
+ClientMiner2
+
+.. code:: js
+
+   client miner start --threads 2
+
+   true
+
+Client
+
+.. code:: js
+
+   client miner stop
+
+   true
+
+Seele Node Miner
+
+.. code:: js
+
+   client miner status
+
+   "Running"
+
+   or
+
+   "Stopped"
+
+Seele Node Miner Coinbase:
+
+.. code:: js
+
+   client miner getcoinbase
+
+   "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+
+Seele Node Miner Coinbase:
+
+.. code:: js
+
+   client miner setcoinbase "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+
+   true
+
+Seele Node Miner2:
+
+.. code:: js
+
+   client miner setthreads --threads 2
+
+   true
+
+Seele Node Miner Engine Information:
+
+.. code:: js
+
+   client miner getengineinfo
+
+   {
+       "hashrate": 495812.2433994204,
+       "threads": 1
+   }
+
+Other Mining
+------------
+
+Other Mining

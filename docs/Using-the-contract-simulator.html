@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using the Contract Simulator &mdash; Seele  documentation</title>
+  <title>Using The Contract Simulator &mdash; Seele  documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hash Time Lock Contract" href="Hash-Time-Lock-Contract.html" />
-    <link rel="prev" title="I. Steps to Deploy Seele Monitor" href="Scan-Monitor-Dashboard-Setup.html" /> 
+    <link rel="next" title="How To Build Your Own Seele Network" href="How-to-build-your-own-seele-network.html" />
+    <link rel="prev" title="Seele JSON-RPC" href="Seele-RPC.html" /> 
 
   
   <script src="../static/js/modernizr.min.js"></script>
@@ -78,37 +78,38 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Setting Up a Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#create-a-full-node-client">Create a Full Node Client:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#create-a-light-node-client">Create a Light Node Client:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#three-common-scenario-commands">Three common scenario commands:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#gcc-install-newbie-guide">GCC install newbie guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#start-metrics">Start Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html#q-a">Q&amp;A</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">Steps to build your own seele-network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">I. Steps to Deploy Seele Monitor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html#ii-steps-to-deploy-seele-scan">II. Steps to Deploy Seele scan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html#iii-seele-dashboard-deployment-steps">III. Seele Dashboard Deployment Steps</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the Contract Simulator</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#compile-the-contract-simulator">Compile the contract simulator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-simple-smart-contract-example">A simple smart contract example</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#smart-contract-source-code">Smart contract source code:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#create-the-contract-in-the-simulator-with-solidity-file">Create the contract in the simulator with solidity file</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using The Contract Simulator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compile-the-contract-simulator">Compile the contract simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-simple-smart-contract-example">A simple smart contract example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#smart-contract-source-code">Smart contract source code:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-the-contract-in-the-simulator-with-solidity-file">Create the contract in the simulator with solidity file</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#call-the-contract-in-simulator">Call the contract in simulator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-simple-smart-contract-example-that-relies-on-remix">A simple smart contract example that relies on Remix</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#prepare-remix">1. Prepare Remix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#create-and-deploy-contract-in-contract-simulator">4. Create and deploy contract in contract simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#call-the-contract-in-simulator">Call the contract in simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-simple-smart-contract-example-that-relies-on-remix">A simple smart contract example that relies on Remix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-remix">1. Prepare Remix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-and-deploy-contract-in-contract-simulator">4. Create and deploy contract in contract simulator</a></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Tutorial for Hash Time Lock (HTLC) System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
 </ul>
 
             
@@ -154,14 +155,12 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Using the Contract Simulator</li>
+      <li>Using The Contract Simulator</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/docs/Using-the-contract-simulator.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -173,7 +172,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <ul class="simple">
+  <div class="section" id="using-the-contract-simulator">
+<h1>Using The Contract Simulator<a class="headerlink" href="#using-the-contract-simulator" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
 <li>We recommend that you prepare a <a class="reference external" href="https://solidity.readthedocs.io/en/develop/installing-solidity.html">solc
 compiler</a>
 before using the contract simulator.</li>
@@ -181,37 +182,22 @@ before using the contract simulator.</li>
 prepare a Remix <a class="reference external" href="http://remix.ethereum.org/">online</a> environment
 or Remix local browser.</li>
 </ul>
-<div class="section" id="using-the-contract-simulator">
-<h1>Using the Contract Simulator<a class="headerlink" href="#using-the-contract-simulator" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="compile-the-contract-simulator">
-<h2>Compile the contract simulator<a class="headerlink" href="#compile-the-contract-simulator" title="Permalink to this headline">¶</a></h2>
+<h3>Compile the contract simulator<a class="headerlink" href="#compile-the-contract-simulator" title="Permalink to this headline">¶</a></h3>
 <p>The code is in <code class="docutils literal notranslate"><span class="pre">https://github.com/seeleteam/go-seele</span></code></p>
 <p>Copy the solc compiler to this path, and copy the solidity file in it
 too.</p>
 </div>
 <div class="section" id="a-simple-smart-contract-example">
-<h2>A simple smart contract example<a class="headerlink" href="#a-simple-smart-contract-example" title="Permalink to this headline">¶</a></h2>
+<h3>A simple smart contract example<a class="headerlink" href="#a-simple-smart-contract-example" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="smart-contract-source-code">
-<h3>Smart contract source code:<a class="headerlink" href="#smart-contract-source-code" title="Permalink to this headline">¶</a></h3>
+<h4>Smart contract source code:<a class="headerlink" href="#smart-contract-source-code" title="Permalink to this headline">¶</a></h4>
 <p>SimpleStorage.sol:</p>
-<div class="code solidity highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
-
-<span class="n">contract</span> <span class="n">SimpleStorage</span> <span class="p">{</span>
-    <span class="n">uint</span> <span class="n">storedData</span><span class="p">;</span>
-
-    <span class="n">function</span> <span class="nb">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">storedData</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="n">function</span> <span class="n">get</span><span class="p">()</span> <span class="n">constant</span> <span class="n">returns</span><span class="p">(</span><span class="n">uint</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">storedData</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="create-the-contract-in-the-simulator-with-solidity-file">
-<h3>Create the contract in the simulator with solidity file<a class="headerlink" href="#create-the-contract-in-the-simulator-with-solidity-file" title="Permalink to this headline">¶</a></h3>
+<h4>Create the contract in the simulator with solidity file<a class="headerlink" href="#create-the-contract-in-the-simulator-with-solidity-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Request
 vm create -f simpleStorage.sol
 
@@ -225,7 +211,7 @@ stored.</p>
 </div>
 </div>
 <div class="section" id="call-the-contract-in-simulator">
-<h2>Call the contract in simulator<a class="headerlink" href="#call-the-contract-in-simulator" title="Permalink to this headline">¶</a></h2>
+<h3>Call the contract in simulator<a class="headerlink" href="#call-the-contract-in-simulator" title="Permalink to this headline">¶</a></h3>
 <p>Use the global contract address (if -c not specified) and set(21)
 function to call contract.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Request
@@ -248,33 +234,18 @@ Result (big): 21
 </div>
 </div>
 <div class="section" id="a-simple-smart-contract-example-that-relies-on-remix">
-<h2>A simple smart contract example that relies on Remix<a class="headerlink" href="#a-simple-smart-contract-example-that-relies-on-remix" title="Permalink to this headline">¶</a></h2>
+<h3>A simple smart contract example that relies on Remix<a class="headerlink" href="#a-simple-smart-contract-example-that-relies-on-remix" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="prepare-remix">
-<h3>1. Prepare Remix<a class="headerlink" href="#prepare-remix" title="Permalink to this headline">¶</a></h3>
+<h4>1. Prepare Remix<a class="headerlink" href="#prepare-remix" title="Permalink to this headline">¶</a></h4>
 <p>Remix-IDE is a browser based IDE for solidity development, you can use
 the online version at <a class="reference external" href="http://remix.ethereum.org/">http://remix.ethereum.org/</a>, or download it from
 <a class="reference external" href="https://github.com/ethereum/remix-ide">https://github.com/ethereum/remix-ide</a> to install it locally.</p>
-<p>The following demonstration is done using the online version. ### 2.
+<p>The following demonstration is done using the online version. #### 2.
 Compile Contract Prepare the smart contract source code:</p>
-<div class="code solidity highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
-
-<span class="n">contract</span> <span class="n">SimpleStorage</span> <span class="p">{</span>
-    <span class="n">uint</span> <span class="n">storedData</span><span class="p">;</span>
-
-    <span class="n">function</span> <span class="nb">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">storedData</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="n">function</span> <span class="n">get</span><span class="p">()</span> <span class="n">constant</span> <span class="n">returns</span><span class="p">(</span><span class="n">uint</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">storedData</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 <p>And copy the smart contract source code to the text area. <img alt="image0" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/1.png" /> Click
 the Start to compile on the right to start compile. <img alt="image1" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/2.png" /> Ignore the
 yellow warnings, due to the source code version difference, the compiler
-will issue warnings. ### 3. Deploy Contract Select Run on the right, as
+will issue warnings. #### 3. Deploy Contract Select Run on the right, as
 shown in the picture with an arrow point to it. <img alt="image2" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/3.png" /> Click the
 Deploy button at the middle section of the page at the right.</p>
 <p><img alt="image3" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/4.png" /></p>
@@ -286,7 +257,7 @@ the content in the Input section, as below</p>
 </div>
 </div>
 <div class="section" id="create-and-deploy-contract-in-contract-simulator">
-<h3>4. Create and deploy contract in contract simulator<a class="headerlink" href="#create-and-deploy-contract-in-contract-simulator" title="Permalink to this headline">¶</a></h3>
+<h4>4. Create and deploy contract in contract simulator<a class="headerlink" href="#create-and-deploy-contract-in-contract-simulator" title="Permalink to this headline">¶</a></h4>
 <p>Run the following commands to change into go-seele/cmd/vm directory,
 then run the command go build.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">go</span><span class="o">-</span><span class="n">seele</span><span class="o">/</span><span class="n">cmd</span><span class="o">/</span><span class="n">vm</span>
@@ -305,7 +276,7 @@ Contract address: 0x7729861639f2a54efa89b0e4095303bb464b0012
 </div>
 <p>The string “Succeed to create contract!” means creation is successful,
 the deployment address might be different from the address above but
-that will not affect anything. ### 5. Test Set Function Pick a random
+that will not affect anything. #### 5. Test Set Function Pick a random
 number such as 21 for testing. You could pick any number that you like.
 Enter the number at the right side in the Set field. <img alt="image6" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/7.png" /> The
 execution log will show up in the area marked grey. <img alt="image7" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/8.png" /> Click on
@@ -323,7 +294,7 @@ Succeed to call contract!
 </pre></div>
 </div>
 <p>The string “Succeed to call contract!” indicates function call
-successful. ### 6. Test get Function Similar to set function, click on
+successful. #### 6. Test get Function Similar to set function, click on
 the get button. <img alt="image9" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/10.png" /> If the log shows up in the log field then means
 the function call is successful. <img alt="image10" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/11.png" /> Click on the log line item
 for detail. <img alt="image11" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/12.png" /> Copy the content from the input field.</p>
@@ -346,6 +317,7 @@ Result (big): 21
 </div>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -355,10 +327,10 @@ Result (big): 21
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Hash-Time-Lock-Contract.html" class="btn btn-neutral float-right" title="Hash Time Lock Contract" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="How-to-build-your-own-seele-network.html" class="btn btn-neutral float-right" title="How To Build Your Own Seele Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Scan-Monitor-Dashboard-Setup.html" class="btn btn-neutral" title="I. Steps to Deploy Seele Monitor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Seele-RPC.html" class="btn btn-neutral" title="Seele JSON-RPC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -367,7 +339,7 @@ Result (big): 21
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Seele Team
+        &copy; Copyright 2018, seeleteam
 
     </p>
   </div>
