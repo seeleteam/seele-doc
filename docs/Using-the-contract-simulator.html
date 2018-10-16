@@ -97,7 +97,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#call-the-contract-in-simulator">Call the contract in simulator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#a-simple-smart-contract-example-that-relies-on-remix">A simple smart contract example that relies on Remix</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#prepare-remix">1. Prepare Remix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compile-contract">2. Compile Contract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deploy-contract">3. Deploy Contract</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-and-deploy-contract-in-contract-simulator">4. Create and deploy contract in contract simulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-set-function">5. Test Set Function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-get-function">6. Test get Function</a></li>
 </ul>
 </li>
 </ul>
@@ -240,17 +244,24 @@ Result (big): 21
 <p>Remix-IDE is a browser based IDE for solidity development, you can use
 the online version at <a class="reference external" href="http://remix.ethereum.org/">http://remix.ethereum.org/</a>, or download it from
 <a class="reference external" href="https://github.com/ethereum/remix-ide">https://github.com/ethereum/remix-ide</a> to install it locally.</p>
-<p>The following demonstration is done using the online version. #### 2.
-Compile Contract Prepare the smart contract source code:</p>
-<p>And copy the smart contract source code to the text area. <img alt="image0" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/1.png" /> Click
-the Start to compile on the right to start compile. <img alt="image1" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/2.png" /> Ignore the
+<p>The following demonstration is done using the online version.</p>
+</div>
+<div class="section" id="compile-contract">
+<h4>2. Compile Contract<a class="headerlink" href="#compile-contract" title="Permalink to this headline">¶</a></h4>
+<p>Prepare the smart contract source code:</p>
+<p>And copy the smart contract source code to the text area. <img alt="image0" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/1.png" /> Click
+the Start to compile on the right to start compile. <img alt="image1" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/2.png" /> Ignore the
 yellow warnings, due to the source code version difference, the compiler
-will issue warnings. #### 3. Deploy Contract Select Run on the right, as
-shown in the picture with an arrow point to it. <img alt="image2" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/3.png" /> Click the
-Deploy button at the middle section of the page at the right.</p>
-<p><img alt="image3" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/4.png" /></p>
-<p>After successful deployment as shown in picture. <img alt="image4" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/5.png" /> Open the log
-detail section for log details, click on [vm] for details. <img alt="image5" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/6.png" /> Copy
+will issue warnings.</p>
+</div>
+<div class="section" id="deploy-contract">
+<h4>3. Deploy Contract<a class="headerlink" href="#deploy-contract" title="Permalink to this headline">¶</a></h4>
+<p>Select Run on the right, as shown in the picture with an arrow point to
+it. <img alt="image2" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/3.png" /> Click the Deploy button at the middle section of the page
+at the right.</p>
+<p><img alt="image3" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/4.png" /></p>
+<p>After successful deployment as shown in picture. <img alt="image4" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/5.png" /> Open the log
+detail section for log details, click on [vm] for details. <img alt="image5" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/6.png" /> Copy
 the content in the Input section, as below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mh">0x608060405234801561001057600080fd5b5060df8061001f6000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058206fcb4357785ff859d73db0a765f50b1529e2887953c7ccb14034e6ac7c0871670029</span>
 </pre></div>
@@ -276,12 +287,15 @@ Contract address: 0x7729861639f2a54efa89b0e4095303bb464b0012
 </div>
 <p>The string “Succeed to create contract!” means creation is successful,
 the deployment address might be different from the address above but
-that will not affect anything. #### 5. Test Set Function Pick a random
-number such as 21 for testing. You could pick any number that you like.
-Enter the number at the right side in the Set field. <img alt="image6" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/7.png" /> The
-execution log will show up in the area marked grey. <img alt="image7" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/8.png" /> Click on
-this log line item for detail. <img alt="image8" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/9.png" /> Copy the content in the Input
-field.</p>
+that will not affect anything.</p>
+</div>
+<div class="section" id="test-set-function">
+<h4>5. Test Set Function<a class="headerlink" href="#test-set-function" title="Permalink to this headline">¶</a></h4>
+<p>Pick a random number such as 21 for testing. You could pick any number
+that you like. Enter the number at the right side in the Set field.
+<img alt="image6" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/7.png" /> The execution log will show up in the area marked grey.
+<img alt="image7" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/8.png" /> Click on this log line item for detail. <img alt="image8" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/9.png" /> Copy the
+content in the Input field.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mh">0x60fe47b10000000000000000000000000000000000000000000000000000000000000015</span>
 </pre></div>
 </div>
@@ -294,10 +308,14 @@ Succeed to call contract!
 </pre></div>
 </div>
 <p>The string “Succeed to call contract!” indicates function call
-successful. #### 6. Test get Function Similar to set function, click on
-the get button. <img alt="image9" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/10.png" /> If the log shows up in the log field then means
-the function call is successful. <img alt="image10" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/11.png" /> Click on the log line item
-for detail. <img alt="image11" src="https://github.com/wangff15386/seele-photo/blob/master/photo/simulator%20remix/12.png" /> Copy the content from the input field.</p>
+successful.</p>
+</div>
+<div class="section" id="test-get-function">
+<h4>6. Test get Function<a class="headerlink" href="#test-get-function" title="Permalink to this headline">¶</a></h4>
+<p>Similar to set function, click on the get button. <img alt="image9" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/10.png" /> If the log
+shows up in the log field then means the function call is successful.
+<img alt="image10" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/11.png" /> Click on the log line item for detail. <img alt="image11" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/12.png" /> Copy the
+content from the input field.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mh">0x6d4ce63c</span>
 </pre></div>
 </div>
@@ -339,7 +357,7 @@ Result (big): 21
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, seeleteam
+        &copy; Copyright 2018, Seele Team
 
     </p>
   </div>
