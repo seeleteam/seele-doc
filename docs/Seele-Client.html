@@ -208,41 +208,46 @@
 <li class="toctree-l4"><a class="reference internal" href="#example-19">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#start">Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miner-start">Miner Start</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parameters-20">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#returns-20">Returns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-20">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#stop">Stop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miner-stop">Miner Stop</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parameters-21">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#returns-21">Returns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-21">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#status">Status</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miner-status">Miner Status</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parameters-22">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#returns-22">Returns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-22">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#getcoinbase">GetCoinbase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miner-getcoinbase">Miner GetCoinbase</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parameters-23">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#returns-23">Returns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-23">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#setthreads">SetThreads</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miner-setthreads">Miner SetThreads</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parameters-24">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#returns-24">Returns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-24">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#setcoinbase">SetCoinbase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miner-setcoinbase">Miner SetCoinbase</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parameters-25">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#returns-25">Returns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-25">Example</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#getengineinfo">GetEngineInfo</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#miner-getengineinfo">Miner GetEngineInfo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters-26">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#returns-26">Returns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-26">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#gettxpoolcontent">GetTxPoolContent</a><ul>
@@ -484,55 +489,209 @@ described here.</p>
 </div>
 <div class="section" id="client-command-list">
 <h2>Client Command List<a class="headerlink" href="#client-command-list" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="#getinfo">GetInfo</a></li>
-<li><a class="reference external" href="#getbalance">GetBalance</a></li>
-<li><a class="reference external" href="#addtx">AddTx</a></li>
-<li><a class="reference external" href="#getaccountnonce">GetAccountNonce</a></li>
-<li><a class="reference external" href="#getblockheight">GetBlockHeight</a></li>
-<li><a class="reference external" href="#getblock">GetBlock</a></li>
-<li><a class="reference external" href="#savekey">SaveKey</a></li>
-<li><a class="reference external" href="#getaccountshardnum">GetAccountShardNum</a></li>
-<li><a class="reference external" href="#call">Call</a></li>
-<li>GetLogs (Being Written)</li>
-<li><a class="reference external" href="#getblocktransactioncount">GetBlockTransactionCount</a></li>
-<li><a class="reference external" href="#gettransactionbyblockindex">GetTransactionByBlockIndex</a></li>
-<li><a class="reference external" href="#gettransactionbyhash">GetTransactionByHash</a></li>
-<li><a class="reference external" href="#getreceiptbytxhash">GetReceiptByTxHash</a></li>
-<li><a class="reference external" href="#getdebtbyhash">GetDebtByHash</a></li>
-<li><a class="reference external" href="#getpeersinfo">GetPeersInfo</a></li>
-<li><a class="reference external" href="#getpeercount">GetPeerCount</a></li>
-<li><a class="reference external" href="#getnetworkversion">GetNetworkVersion</a></li>
-<li><a class="reference external" href="#getprotocolversion">GetProtocolVersion</a></li>
-<li><a class="reference external" href="#getnetworkid">GetNetworkID</a></li>
-<li><a class="reference external" href="#start">Start</a></li>
-<li><a class="reference external" href="#stop">Stop</a></li>
-<li><a class="reference external" href="#status">Status</a></li>
-<li><a class="reference external" href="#getcoinbase">GetCoinbase</a></li>
-<li><a class="reference external" href="#setthreads">SetThreads</a></li>
-<li><a class="reference external" href="#setcoinbase">SetCoinbase</a></li>
-<li><a class="reference external" href="#getengineinfo">GetEngineInfo</a></li>
-<li><a class="reference external" href="#gettxpoolcontent">GetTxPoolContent</a></li>
-<li><a class="reference external" href="#gettxpooltxcount">GetTxPoolTxCount</a></li>
-<li><a class="reference external" href="#getpendingtransactions">GetPendingTransactions</a></li>
-<li><a class="reference external" href="#getpendingdebts">GetPendingDebts</a></li>
-<li><a class="reference external" href="#dumpheap">DumpHeap</a></li>
-<li><a class="reference external" href="#key">Key</a></li>
-<li><a class="reference external" href="#sign">Sign</a></li>
-<li><a class="reference external" href="#generatepayload">GeneratePayload</a></li>
-<li><a class="reference external" href="#createhtlc">CreateHTLC</a></li>
-<li><a class="reference external" href="#decodehtlc">DecodeHTLC</a></li>
-<li><a class="reference external" href="#gethtlc">GetHTLC</a></li>
-<li><a class="reference external" href="#generatehtlckey">GenerateHTLCKey</a></li>
-<li><a class="reference external" href="#refundfromhtlc">RefundFromHTLC</a></li>
-<li><a class="reference external" href="#generatehtlcstamptime">GenerateHTLCStamptime</a></li>
-<li><a class="reference external" href="#withdrawfromhtlc">WithdrawFromHTLC</a></li>
-<li><a class="reference external" href="#registerdomainname">RegisterDomainName</a></li>
-<li><a class="reference external" href="#getdomainnameowner">GetDomainNameOwner</a></li>
-<li>GenSubChainCfgFile (Being Written)</li>
-<li>QuerySubChain (Being Written)</li>
-<li>RegisterSubChain (Being Written)</li>
-</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="83%" />
+<col width="8%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Full</th>
+<th class="head">Light</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#getinfo">GetInfo</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getbalance">GetBalance</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#addtx">AddTx</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getaccountnonce">GetAccountNonce</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getblockheight">GetBlockHeight</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getblock">GetBlock</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#savekey">SaveKey</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getaccountshardnum">GetAccountShardNum</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#call">Call</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>GetLogs (Being Written)</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getblocktransactioncount">GetBlockTransactionCount</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyblockindex">GetTransactionByBlockIndex</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#gettransactionbyhash">GetTransactionByHash</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getreceiptbytxhash">GetReceiptByTxHash</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getdebtbyhash">GetDebtByHash</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getpeersinfo">GetPeersInfo</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getpeercount">GetPeerCount</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getnetworkversion">GetNetworkVersion</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getprotocolversion">GetProtocolVersion</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getnetworkid">GetNetworkID</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#miner-start">Miner Start</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#miner-stop">Miner Stop</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#miner-status">Miner Status</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#miner-getcoinbase">Miner GetCoinbase</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#miner-setthreads">Miner SetThreads</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#miner-setcoinbase">Miner SetCoinbase</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#miner-getengineinfo">Miner GetEngineInfo</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#gettxpoolcontent">GetTxPoolContent</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#gettxpooltxcount">GetTxPoolTxCount</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getpendingtransactions">GetPendingTransactions</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getpendingdebts">GetPendingDebts</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#dumpheap">DumpHeap</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#key">Key</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#sign">Sign</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#generatepayload">GeneratePayload</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#createhtlc">CreateHTLC</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#decodehtlc">DecodeHTLC</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#gethtlc">GetHTLC</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#generatehtlckey">GenerateHTLCKey</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#refundfromhtlc">RefundFromHTLC</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#generatehtlcstamptime">GenerateHTLCStamptime</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#withdrawfromhtlc">WithdrawFromHTLC</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#registerdomainname">RegisterDomainName</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getdomainnameowner">GetDomainNameOwner</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>GenSubChainCfgFile (Being Written)</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>QuerySubChain (Being Written)</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>RegisterSubChain (Being Written)</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="getinfo">
 <h3>GetInfo<a class="headerlink" href="#getinfo" title="Permalink to this headline">¶</a></h3>
 <p>This method returns node information.</p>
@@ -1819,8 +1978,8 @@ hash.</p>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="start">
-<h3>Start<a class="headerlink" href="#start" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="miner-start">
+<h3>Miner Start<a class="headerlink" href="#miner-start" title="Permalink to this headline">¶</a></h3>
 <p>This method starts the miner with an input number of threads.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1862,8 +2021,8 @@ hash.</p>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="stop">
-<h3>Stop<a class="headerlink" href="#stop" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="miner-stop">
+<h3>Miner Stop<a class="headerlink" href="#miner-stop" title="Permalink to this headline">¶</a></h3>
 <p>This method stops the miner.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1901,8 +2060,8 @@ hash.</p>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="status">
-<h3>Status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="miner-status">
+<h3>Miner Status<a class="headerlink" href="#miner-status" title="Permalink to this headline">¶</a></h3>
 <p>This method returns the miner’s status.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1940,8 +2099,8 @@ hash.</p>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="getcoinbase">
-<h3>GetCoinbase<a class="headerlink" href="#getcoinbase" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="miner-getcoinbase">
+<h3>Miner GetCoinbase<a class="headerlink" href="#miner-getcoinbase" title="Permalink to this headline">¶</a></h3>
 <p>This method is used to obtain the coinbase of miner consensus.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1981,8 +2140,8 @@ hash.</p>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="setthreads">
-<h3>SetThreads<a class="headerlink" href="#setthreads" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="miner-setthreads">
+<h3>Miner SetThreads<a class="headerlink" href="#miner-setthreads" title="Permalink to this headline">¶</a></h3>
 <p>This method is used to set the threads of miner consensus.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2024,8 +2183,8 @@ hash.</p>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="setcoinbase">
-<h3>SetCoinbase<a class="headerlink" href="#setcoinbase" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="miner-setcoinbase">
+<h3>Miner SetCoinbase<a class="headerlink" href="#miner-setcoinbase" title="Permalink to this headline">¶</a></h3>
 <p>This method is used to set the coinbase</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2065,9 +2224,10 @@ hash.</p>
 </pre></div>
 </div>
 </div>
+</div>
 <hr class="docutils" />
-<div class="section" id="getengineinfo">
-<h4>GetEngineInfo<a class="headerlink" href="#getengineinfo" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="miner-getengineinfo">
+<h3>Miner GetEngineInfo<a class="headerlink" href="#miner-getengineinfo" title="Permalink to this headline">¶</a></h3>
 <p>This method returns engine information of miner</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2086,20 +2246,20 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-26">
-<span id="id80"></span><h5>Parameters<a class="headerlink" href="#parameters-26" title="Permalink to this headline">¶</a></h5>
+<span id="id80"></span><h4>Parameters<a class="headerlink" href="#parameters-26" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-26">
-<span id="id81"></span><h5>Returns<a class="headerlink" href="#returns-26" title="Permalink to this headline">¶</a></h5>
+<span id="id81"></span><h4>Returns<a class="headerlink" href="#returns-26" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>none</li>
 </ul>
 </div>
 <div class="section" id="example-26">
-<span id="id82"></span><h5>Example<a class="headerlink" href="#example-26" title="Permalink to this headline">¶</a></h5>
+<span id="id82"></span><h4>Example<a class="headerlink" href="#example-26" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getengineinfo</span>
 
@@ -2109,7 +2269,6 @@ hash.</p>
     <span class="s2">&quot;threads&quot;</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
