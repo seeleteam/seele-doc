@@ -27,7 +27,9 @@
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Command Line Options" href="Command-Line-Options.html" />
+    <link rel="prev" title="Scan Monitor Dashboard Setup" href="Scan-Monitor-Dashboard-Setup.html" /> 
 
   
   <script src="../static/js/modernizr.min.js"></script>
@@ -77,10 +79,25 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mining</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cpu-mining">CPU Mining</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-mining-on-seele-node">Start mining on Seele Node</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#start-mining-with-seele-full-client">Start mining with Seele Full Client</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-mining">Other Mining</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
@@ -158,64 +175,114 @@
 <hr class="docutils" />
 <div class="section" id="cpu-mining">
 <h2>CPU Mining<a class="headerlink" href="#cpu-mining" title="Permalink to this headline">¶</a></h2>
-<p>目前，Seele提供了CPU Miner。</p>
-<p><strong>注意</strong>，如果您想在Seele挖矿，请务必确保您的Seele
-Node运行在主网上，且运行的是全节点。若您还不了解如何使用Seele，请阅读<a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele">Getting
-Started With
-seele</a>。</p>
-<div class="section" id="seele-node">
-<h3>Seele Node启动挖矿<a class="headerlink" href="#seele-node" title="Permalink to this headline">¶</a></h3>
-<p>您可以在启动Seele Node的同时启动挖矿，<a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele/#create-a-full-node-client">Setting Up a
-Node</a>会帮助您如何构建Node并启动Seele
-Node。</p>
-<p>Seele
-Node提供了<code class="docutils literal notranslate"><span class="pre">--miner,-m</span></code>命令行参数来指定Node启动时是否启动挖矿，默认为启动，若不想挖矿可在启动Node时使用<code class="docutils literal notranslate"><span class="pre">--miner</span> <span class="pre">stop</span></code>。Seele
-Node还提供了<code class="docutils literal notranslate"><span class="pre">--threads</span></code>命令行参数来设置Node启动的Miner所使用的线程数。</p>
+<p>Currently, Seele provides CPU Miner.</p>
+<p><strong>Attention</strong>，If you want to do mining on Seele，please make sure you
+are running the Seele Node on the Main-Net，and has to be run as full
+node.If you are not familiar with Seele，please read <a class="reference external" href="Getting-Started-With-Seele.html">Getting Started
+With Seele</a>.</p>
+<div class="section" id="start-mining-on-seele-node">
+<h3>Start mining on Seele Node<a class="headerlink" href="#start-mining-on-seele-node" title="Permalink to this headline">¶</a></h3>
+<p>You could start mining at the same time when Seele Node is
+starting，<a class="reference external" href="Getting-Started-With-Seele.html#setting-up-a-node">Setting Up a
+Node</a> will help
+you on how to build a Node and start Seele Node.</p>
+<p>Seele Node provides the <code class="docutils literal notranslate"><span class="pre">--miner,</span> <span class="pre">-m</span></code> command line parameter to
+specify whether to start mining when Node starts. The default is to
+start. If you don’t want to mine, you can use <code class="docutils literal notranslate"><span class="pre">--miner</span> <span class="pre">stop</span></code> when
+starting Node. The Seele Node also provides the <code class="docutils literal notranslate"><span class="pre">--threads</span></code> command
+line argument to set the number of threads used by the Miner started by
+Node.</p>
 <div class="section" id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
-<p>Seele
-Node启动时需要使用配置文件，配置文件的格式参考` &lt;<a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele/#node1">https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele/#node1</a>&gt;`__</p>
-<p>// 启动Seele Node时默认启动挖矿</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">configpath</span><span class="o">&gt;</span>
+<p>A configuration file is required at start of Seele Node, and the format
+of the configuration file is referenced <a class="reference external" href="#configpath">configpath</a>.</p>
+<div class="section" id="configpath">
+<h5>configpath<a class="headerlink" href="#configpath" title="Permalink to this headline">¶</a></h5>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+      <span class="s2">&quot;basic&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;seele node1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dataDir&quot;</span><span class="p">:</span> <span class="s2">&quot;node1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:55027&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;coinbase&quot;</span><span class="p">:</span> <span class="s2">&quot;0x010117ee8edfd14a1925e45e4cb698f195651b5a136e69ee9b394b7e8166cb1f&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;p2p&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;privateKey&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8c5fe84f836732ae7935e70ed7f578851fabf533d327a36b4e9fc49b455aa721&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;staticNodes&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:39007&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;networkID&quot;</span><span class="p">:</span> <span class="mi">1</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;log&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;isDebug&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;printLog&quot;</span><span class="p">:</span> <span class="n">false</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;httpServer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:65027&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;crosssorgins&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;*&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;whiteHost&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;*&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;wsserver&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8080&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;/ws&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;genesis&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;accounts&quot;</span><span class="p">:{</span>
+          <span class="s2">&quot;0x010171048615cfef6d03e10df133200a4266d3a8856795dd7e8873e300ecfbe4&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+          <span class="s2">&quot;0x01014a36b60fbd2bf80b1f9da08d98b11166075a595622fedca4435ec35533e0&quot;</span><span class="p">:</span><span class="mi">200</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;difficult&quot;</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span>
+        <span class="s2">&quot;shard&quot;</span><span class="p">:</span><span class="mi">1</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
-<p>// 启动Seele Node时启动挖矿，并设置Miner使用的线程数为2</p>
-<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">configpath</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">threads</span> <span class="mi">2</span>
+<p>// Start mining by default when starting Seele Node</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="n">configpath</span>
 </pre></div>
 </div>
-<p>// 启动Seele Node时不启动挖矿</p>
-<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">configpath</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">miner</span> <span class="n">stop</span>
+<p>// Start mining when starting Seele Node, and set the number of threads
+used by Miner to 2</p>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="n">configpath</span> <span class="o">--</span><span class="n">threads</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>// Mining does not start when starting Seele Node</p>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="n">configpath</span> <span class="o">--</span><span class="n">miner</span> <span class="n">stop</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="seele-full-client">
-<h3>Seele Full Client启动挖矿<a class="headerlink" href="#seele-full-client" title="Permalink to this headline">¶</a></h3>
-<p>若您已有了一个Seele
-Node全节点，您可以使用全节点client来启动并管理您的Node Miner.<a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele/#create-a-full-node-client">Create a
-Full Node
-Client</a>会帮助您如何获取全节点客户端。</p>
+</div>
+<div class="section" id="start-mining-with-seele-full-client">
+<h3>Start mining with Seele Full Client<a class="headerlink" href="#start-mining-with-seele-full-client" title="Permalink to this headline">¶</a></h3>
+<p>If you already have a Seele full node, you can use the full node client
+to start and manage your Node Miner <a class="reference external" href="Getting-Started-With-Seele.html#create-a-full-node-client">Create a Full Node
+Client</a>
+will help you on how to acquire a full client node。</p>
 <div class="section" id="example-1">
 <span id="id1"></span><h4>Example<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h4>
-<p>Client启动挖矿：</p>
+<p>Client starts mining：</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">start</span>
 
 <span class="n">true</span>
 </pre></div>
 </div>
-<p>Client启动挖矿并设置Miner线程数为2：</p>
+<p>Client starts mining and sets the number of Miner threads to 2：</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">start</span> <span class="o">--</span><span class="n">threads</span> <span class="mi">2</span>
 
 <span class="n">true</span>
 </pre></div>
 </div>
-<p>Client停止挖矿：</p>
+<p>Client stops mining：</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">stop</span>
 
 <span class="n">true</span>
 </pre></div>
 </div>
-<p>获取Seele Node Miner运行状态：</p>
+<p>Get the Seele Node Miner running status：</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">status</span>
 
 <span class="s2">&quot;Running&quot;</span>
@@ -225,25 +292,25 @@ Client</a>会帮助您如何获取全节点客户端。</p>
 <span class="s2">&quot;Stopped&quot;</span>
 </pre></div>
 </div>
-<p>获取Seele Node Miner Coinbase:</p>
+<p>Get Seele Node Miner Coinbase:</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">getcoinbase</span>
 
 <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
 </pre></div>
 </div>
-<p>设置Seele Node Miner Coinbase:</p>
+<p>Sets Seele Node Miner Coinbase:</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">setcoinbase</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
 
 <span class="n">true</span>
 </pre></div>
 </div>
-<p>设置Seele Node Miner线程数为2:</p>
+<p>Sets Seele Node Miner thread to 2:</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">setthreads</span> <span class="o">--</span><span class="n">threads</span> <span class="mi">2</span>
 
 <span class="n">true</span>
 </pre></div>
 </div>
-<p>获取Seele Node Miner Engine Information:</p>
+<p>Get Seele Node Miner Engine Information:</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">getengineinfo</span>
 
 <span class="p">{</span>
@@ -257,7 +324,7 @@ Client</a>会帮助您如何获取全节点客户端。</p>
 </div>
 <div class="section" id="other-mining">
 <h2>Other Mining<a class="headerlink" href="#other-mining" title="Permalink to this headline">¶</a></h2>
-<p>Other Mining目前正在开发中。</p>
+<p>Other Mining is currently under development.</p>
 </div>
 </div>
 
@@ -266,6 +333,15 @@ Client</a>会帮助您如何获取全节点客户端。</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Command-Line-Options.html" class="btn btn-neutral float-right" title="Command Line Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Scan-Monitor-Dashboard-Setup.html" class="btn btn-neutral" title="Scan Monitor Dashboard Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
