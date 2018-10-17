@@ -216,8 +216,8 @@ full node.</li>
 <li>In the cmd window, run:
 <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node1.json</span></code></li>
 <li>By default this will start the miner, not metrics. You can
-add flags -m “stop” to not start the miner, or -t true to
-<a class="reference external" href="#start-metrics">start metrics</a>.</li>
+add flags <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">stop</span></code> to not start the miner, or <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">true</span></code>
+to <a class="reference external" href="#start-metrics">start metrics</a>.</li>
 </ul>
 </li>
 <li>Running Multiple Nodes：<ul>
@@ -234,15 +234,10 @@ add flags -m “stop” to not start the miner, or -t true to
 <li>Running a Singular Node：<ul>
 <li>On terminal, run: <code class="docutils literal notranslate"><span class="pre">./node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">./config/node1.json</span></code></li>
 <li>By default this will start the miner, not metrics. You can
-add flags -m “stop” to not start the miner, or -t true to
-<a class="reference external" href="#start-metrics">start metrics</a>.</li>
+add flags <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">stop</span></code> to not start the miner, or <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">true</span></code>
+to <a class="reference external" href="#start-metrics">start metrics</a>.</li>
 </ul>
 </li>
-</ul>
-<p>Note: in the config file under the seeleteam/go-seele/cmd/node
-path, there are 4 different module configurations that you can
-choose from to start your node.</p>
-<ul class="simple">
 <li>Running Multiple Nodes：<ul>
 <li>In one terminal window, run:
 <code class="docutils literal notranslate"><span class="pre">./node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">./config/node1.json</span></code></li>
@@ -251,6 +246,9 @@ choose from to start your node.</p>
 </ul>
 </li>
 </ul>
+<p>Note: in the config file under the seeleteam/go-seele/cmd/node
+path, there are 4 different module configurations that you can
+choose from to start your node.</p>
 </li>
 </ul>
 </li>
@@ -374,6 +372,52 @@ will appear.</li>
 </li>
 <li>Help:</li>
 </ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span>To run：client -h
+
+NAME:
+   client.exe - interact with a full node process
+
+USAGE:
+   client.exe [global options] command [command options] [arguments...]
+
+AUTHOR:
+   seeleteam &lt;dev@seelenet.com&gt;
+
+COMMANDS:
+     call              call contract
+     domain            system domain name commands
+     dumpheap          dump heap for profiling, return the file path
+     getbalance        get balance info
+     getblock          get block by height or hash
+     getblockheight    get block height
+     getblocktxcount   get block transaction count by block height or block hash
+     getdebtbyhash     get debt by debt hash
+     getdebts          get pending debts
+     getinfo           get node info
+     getlogs           get logs
+     getnonce          get account nonce
+     getpendingtxs     get pending transactions
+     getreceipt        get receipt by transaction hash
+     getshardnum       get account shard number
+     gettxbyhash       get transaction by transaction hash
+     gettxinblock      get transaction by block height or block hash with index of the transaction in the block
+     gettxpoolcontent  get transaction pool contents
+     gettxpoolcount    get transaction pool transaction count
+     htlc              Hash time lock contract commands
+     key               generate key with or without shard number
+     miner             miner commands
+     p2p               p2p commands
+     payload           generate the payload according to the abi file and method name and args
+     savekey           save private key to a keystore file
+     sendtx            send transaction to node
+     sign              generate a signed transaction and print it out
+     subchain          system sub chain commands
+     help, h           Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h  show help
+</pre></div>
+</div>
 </div>
 <div class="section" id="create-a-light-node-client">
 <h2>Create a Light Node Client:<a class="headerlink" href="#create-a-light-node-client" title="Permalink to this headline">¶</a></h2>
@@ -398,6 +442,42 @@ object will appear.</li>
 </li>
 <li>Help:</li>
 </ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span>To run：light -h
+
+NAME:
+   light.exe - interact with a light node process
+
+USAGE:
+   light.exe [global options] command [command options] [arguments...]
+
+AUTHOR:
+   seeleteam &lt;dev@seelenet.com&gt;
+
+COMMANDS:
+     getbalance        get balance info
+     getblock          get block by height or hash
+     getblockheight    get block height
+     getblocktxcount   get block transaction count by block height or block hash
+     getnonce          get account nonce
+     getpendingtxs     get pending transactions
+     getreceipt        get receipt by transaction hash
+     getshardnum       get account shard number
+     gettxbyhash       get transaction by transaction hash
+     gettxinblock      get transaction by block height or block hash with index of the transaction in the block
+     gettxpoolcontent  get transaction pool contents
+     gettxpoolcount    get transaction pool transaction count
+     key               generate key with or without shard number
+     p2p               p2p commands
+     payload           generate the payload according to the abi file and method name and args
+     savekey           save private key to a keystore file
+     sendtx            send transaction to node
+     sign              generate a signed transaction and print it out
+     help, h           Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h  show help
+</pre></div>
+</div>
 </div>
 <div class="section" id="three-common-scene-commands">
 <h2>Three common scene commands:<a class="headerlink" href="#three-common-scene-commands" title="Permalink to this headline">¶</a></h2>
@@ -409,19 +489,27 @@ please check the <a class="reference external" href="../index.html">Seele docume
 detail.</p>
 </li>
 <li><p class="first">For convenience, A is From address on shard 1.</p>
-<p>generate A account: ``` // Request node key –shard 1</p>
+<p>generate A account:</p>
 </li>
 </ul>
-<p>// Response public key: 0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1
-private key:
-0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104fbc3</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sometimes</span> <span class="n">you</span> <span class="n">may</span> <span class="n">need</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">the</span> <span class="kn">from</span> <span class="nn">address</span> <span class="n">keyfile</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">node</span> <span class="n">key</span> <span class="o">--</span><span class="n">shard</span> <span class="mi">1</span>
+
+<span class="o">//</span> <span class="n">Response</span>
+<span class="n">public</span> <span class="n">key</span><span class="p">:</span>  <span class="mh">0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1</span>
+<span class="n">private</span> <span class="n">key</span><span class="p">:</span> <span class="mh">0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104fbc3</span>
 </pre></div>
 </div>
-<p>// Request client savekey –privatekey
-0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104fbc3
-–file .keystore-shard1</p>
-<p>// Response Password: Repeat password: store key successful ```</p>
+<p>Sometimes you may need to generate the from address keyfile, command:</p>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">client</span> <span class="n">savekey</span> <span class="o">--</span><span class="n">privatekey</span> <span class="mh">0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104fbc3</span> <span class="o">--</span><span class="n">file</span> <span class="o">.</span><span class="n">keystore</span><span class="o">-</span><span class="n">shard1</span>
+
+<span class="o">//</span> <span class="n">Response</span>
+<span class="n">Password</span><span class="p">:</span>
+<span class="n">Repeat</span> <span class="n">password</span><span class="p">:</span>
+<span class="n">store</span> <span class="n">key</span> <span class="n">successful</span>
+</pre></div>
+</div>
 </li>
 </ul>
 <div class="section" id="tranfer">
@@ -430,48 +518,49 @@ private key:
 <li>Of course, you need a rich account to transfer money (for example, 10
 fans) to A.
 &gt; Use the following example need to add the <code class="docutils literal notranslate"><span class="pre">--accounts</span></code> parameter
-when you need to start the node, command: &gt;
-<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">./config/node1.json</span> <span class="pre">--accounts</span> <span class="pre">./config/accounts.json</span></code></li>
+when you need to start the node,
+command:<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">./config/node1.json</span> <span class="pre">--accounts</span> <span class="pre">./config/accounts.json</span></code></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
-<span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">10</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">1</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span><span class="o">/</span><span class="n">keyfile</span><span class="o">/</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x0a57a2714e193b7ac50475ce625f2dcfb483d741</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1</span>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">10000</span> <span class="o">--</span><span class="n">price</span> <span class="mi">1</span> <span class="o">--</span><span class="n">gas</span> <span class="mi">2</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0xb286933bccbec9ca1cd92257d12d12ebab9b1201</span>
 
 <span class="o">//</span> <span class="n">Response</span>
 <span class="n">Please</span> <span class="nb">input</span> <span class="n">your</span> <span class="n">key</span> <span class="n">file</span> <span class="n">password</span><span class="p">:</span>
-<span class="n">account</span> <span class="mh">0x0a57a2714e193b7ac50475ce625f2dcfb483d741</span> <span class="n">current</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sending</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="n">current</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sending</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">transaction</span> <span class="n">sent</span> <span class="n">successfully</span>
 <span class="p">{</span>
-      <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x548d7cf43e099b90293b8cc973f39fb2a627f32fe8d6337bcd2fb43125ea7ba2&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0a57a2714e193b7ac50475ce625f2dcfb483d741&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-              <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-              <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-              <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-              <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;EmaBZqm/4sH+VzAfjpB8EpyhMesFyqU0qtr6MfcPyfsHK1Yk7SCisurT+feSxTk6uVzC26rylklLR12vwXrTuwA=&quot;</span>
-      <span class="p">}</span>
+  <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x9c0e2565b8a0b33c3f69aa6eb9bad4a86c3925a1fe12272e2082091b9b1c5609&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0xb286933bccbec9ca1cd92257d12d12ebab9b1201&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+      <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;GasPrice&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;GasLimit&quot;</span><span class="p">:</span> <span class="mi">21000</span><span class="p">,</span>
+      <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;N8XzJ/GEpU73dpzW5t5WShmVPFb8gQOrInGdypul8aBaDakmhbZ2rdqekA5bWslHQBfsoafeMukF5b7A1/6JWQA=&quot;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Query the transfer result with the tx <code class="docutils literal notranslate"><span class="pre">Hash</span></code>.</li>
 </ul>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
-<span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x548d7cf43e099b90293b8cc973f39fb2a627f32fe8d6337bcd2fb43125ea7ba2</span>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x9c0e2565b8a0b33c3f69aa6eb9bad4a86c3925a1fe12272e2082091b9b1c5609</span>
 
 <span class="o">//</span> <span class="n">Resposne</span>
 <span class="p">{</span>
-      <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-      <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0x3ff9308feb7d9b568bda9d862c16ac25f46a2fbe2490fe3b23988c94788afd0f&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;totalFee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x24e669798fe287683526c1fe431a3706a85a9f2230dfeac449de340d603712bc&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;usedGas&quot;</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0xef59ced1b06d3ec77aa5c3b0fa1bd7cdd83890961f49d06aabe0a2d57583dd3b&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;totalFee&quot;</span><span class="p">:</span> <span class="mi">21000</span><span class="p">,</span>
+  <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x9c0e2565b8a0b33c3f69aa6eb9bad4a86c3925a1fe12272e2082091b9b1c5609&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;usedGas&quot;</span><span class="p">:</span> <span class="mi">21000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -484,7 +573,7 @@ tx <code class="docutils literal notranslate"><span class="pre">status</span></c
 <ul class="simple">
 <li>Confirm the A balance.</li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getbalance</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1</span>
 
 <span class="o">//</span> <span class="n">Response</span>
@@ -501,12 +590,52 @@ tx <code class="docutils literal notranslate"><span class="pre">status</span></c
 <li>For the sake of convenience, use A deploy the <code class="docutils literal notranslate"><span class="pre">simple_storage.sol</span></code>
 contract.</li>
 </ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">//</span> <span class="n">Request</span>
+<span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">0</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">payload</span> <span class="mh">0x608060405234801561001057600080fd5b50600560008190555060df806100276000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058207f6dc43a0d648e9f5a0cad5071cde46657de72eb87ab4cded53a7f1090f51e6d0029</span>
+
+  <span class="o">//</span> <span class="n">Response</span>
+<span class="n">Please</span> <span class="nb">input</span> <span class="n">your</span> <span class="n">key</span> <span class="n">file</span> <span class="n">password</span><span class="p">:</span>
+<span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="n">current</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sending</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">transaction</span> <span class="n">sent</span> <span class="n">successfully</span>
+<span class="p">{</span>
+    <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xc4674bf0a3ee0796d3ae139ac40a480fa40d4e59ed0af9aa22d57dbc3c21a96e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;GasPrice&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;GasLimit&quot;</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>
+        <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0x608060405234801561001057600080fd5b50600560008190555060df806100276000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058207f6dc43a0d648e9f5a0cad5071cde46657de72eb87ab4cded53a7f1090f51e6d0029&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;Ws2zZlCiAyZYIx/iQQwz7hAG+K99gR5B8db2GZ0zKW8hTUfSBt1XH3swcB+dtZR/yUC1tl+jRY3Jv6fwRtYiiwA=&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>If you display
 <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">error</span> <span class="pre">when</span> <span class="pre">call</span> <span class="pre">rpc</span> <span class="pre">balance</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">enough,</span> <span class="pre">account:0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1,</span> <span class="pre">balance:10,</span> <span class="pre">amount:0,</span> <span class="pre">fee:123</span></code>,
 that’s right, I deliberately, quickly fill the money.</p>
 <ul class="simple">
 <li>Query the contract deploy result</li>
 </ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xc4674bf0a3ee0796d3ae139ac40a480fa40d4e59ed0af9aa22d57dbc3c21a96e</span>
+
+<span class="o">//</span> <span class="n">Response</span>
+<span class="p">{</span>
+    <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x12fe58608430e36ba6bfb0a9bc5623a634530002&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0x6bccb0ae94795ae716644300257863e157dd5717a00ca3293bd1d7e0cc1ece61&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058207f6dc43a0d648e9f5a0cad5071cde46657de72eb87ab4cded53a7f1090f51e6d0029&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;totalFee&quot;</span><span class="p">:</span> <span class="mi">1007070</span><span class="p">,</span>
+    <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xc4674bf0a3ee0796d3ae139ac40a480fa40d4e59ed0af9aa22d57dbc3c21a96e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;usedGas&quot;</span><span class="p">:</span> <span class="mi">100707</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>The result of <code class="docutils literal notranslate"><span class="pre">&quot;failure&quot;:</span> <span class="pre">false</span></code>row, which indicates the deploy
 contract was successful. The result of
 <code class="docutils literal notranslate"><span class="pre">&quot;contract&quot;:</span> <span class="pre">&quot;0xc3e7b32db87dd5b8d70a78666518c6395d0f0092&quot;</span></code> row is the
@@ -519,9 +648,49 @@ contract address.</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">sendtx</span></code> to call the contract</li>
 </ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">//</span> <span class="n">Request</span>
+ <span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">0</span>   <span class="o">--</span><span class="n">payload</span> <span class="mh">0x6d4ce63c</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0x12fe58608430e36ba6bfb0a9bc5623a634530002</span>
+
+ <span class="o">//</span> <span class="n">Response</span>
+ <span class="n">Please</span> <span class="nb">input</span> <span class="n">your</span> <span class="n">key</span> <span class="n">file</span> <span class="n">password</span><span class="p">:</span>
+ <span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="n">current</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sending</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">transaction</span> <span class="n">sent</span> <span class="n">successfully</span>
+<span class="p">{</span>
+   <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xae073c03abc04ad182792bc5bf9faeb04d1c80888c985e839f896fd5fd08bf9f&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x12fe58608430e36ba6bfb0a9bc5623a634530002&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+       <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+       <span class="s2">&quot;GasPrice&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+       <span class="s2">&quot;GasLimit&quot;</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>
+       <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+       <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;0x6d4ce63c&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;RB7a0T8ej34R7co1OgRsdYh3we1DQmJ1INUq1Tysoi4Sgf89u0Njvld+wOh1+XARhc/ojM4B0rpP4dIqqg7rvAA=&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li>Query the result</li>
 </ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xae073c03abc04ad182792bc5bf9faeb04d1c80888c985e839f896fd5fd08bf9f</span>
+
+<span class="o">//</span> <span class="n">Response</span>
+<span class="p">{</span>
+  <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0685695c28fde434c3d9b1e857849ad761cc607a804aa32bef4185469c359995&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000005&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;totalFee&quot;</span><span class="p">:</span> <span class="mi">216960</span><span class="p">,</span>
+  <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xae073c03abc04ad182792bc5bf9faeb04d1c80888c985e839f896fd5fd08bf9f&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;usedGas&quot;</span><span class="p">:</span> <span class="mi">21696</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="call">
 <h4>Call<a class="headerlink" href="#call" title="Permalink to this headline">¶</a></h4>
@@ -530,6 +699,21 @@ contract address.</p>
 blockchain and is suitable for querying data without changing the
 state.</li>
 </ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">//</span> <span class="n">Request</span>
+  <span class="n">client</span> <span class="n">call</span> <span class="o">--</span><span class="n">payload</span> <span class="mh">0x6d4ce63c</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0x12fe58608430e36ba6bfb0a9bc5623a634530002</span> <span class="o">--</span><span class="n">height</span> <span class="o">-</span><span class="mi">1</span>
+
+  <span class="o">//</span> <span class="n">Response</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;poststate&quot;</span><span class="p">:</span> <span class="s2">&quot;0x6c81260cea77c64aa240534c27a3c46cf41749f4c027546675819b3b1fb58ccb&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000005&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;totalFee&quot;</span><span class="p">:</span> <span class="mi">21696</span><span class="p">,</span>
+    <span class="s2">&quot;txhash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x452c1bbd09292411095780badf8f2b18b5e7ba72910214e683d741ff3547df3e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;usedGas&quot;</span><span class="p">:</span> <span class="mi">21696</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
