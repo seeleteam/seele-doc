@@ -199,45 +199,52 @@ of the configuration file is referenced <a class="reference external" href="#con
 <div class="section" id="configpath">
 <h5>configpath<a class="headerlink" href="#configpath" title="Permalink to this headline">¶</a></h5>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-      <span class="s2">&quot;basic&quot;</span><span class="p">:{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;seele node1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataDir&quot;</span><span class="p">:</span> <span class="s2">&quot;node1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:55027&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;coinbase&quot;</span><span class="p">:</span> <span class="s2">&quot;0x010117ee8edfd14a1925e45e4cb698f195651b5a136e69ee9b394b7e8166cb1f&quot;</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;p2p&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;privateKey&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8c5fe84f836732ae7935e70ed7f578851fabf533d327a36b4e9fc49b455aa721&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;staticNodes&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:39007&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;networkID&quot;</span><span class="p">:</span> <span class="mi">1</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;log&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;isDebug&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-        <span class="s2">&quot;printLog&quot;</span><span class="p">:</span> <span class="n">false</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;httpServer&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:65027&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;crosssorgins&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;*&quot;</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;whiteHost&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;*&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;wsserver&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8080&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;/ws&quot;</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;genesis&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;accounts&quot;</span><span class="p">:{</span>
-          <span class="s2">&quot;0x010171048615cfef6d03e10df133200a4266d3a8856795dd7e8873e300ecfbe4&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
-          <span class="s2">&quot;0x01014a36b60fbd2bf80b1f9da08d98b11166075a595622fedca4435ec35533e0&quot;</span><span class="p">:</span><span class="mi">200</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;difficult&quot;</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span>
-        <span class="s2">&quot;shard&quot;</span><span class="p">:</span><span class="mi">1</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
+  <span class="s2">&quot;basic&quot;</span><span class="p">:{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;seele node1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dataDir&quot;</span><span class="p">:</span> <span class="s2">&quot;node1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:8027&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coinbase&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;algorithm&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;p2p&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;privateKey&quot;</span><span class="p">:</span> <span class="s2">&quot;0xf65e40c6809643b25ce4df33153da2f3338876f181f83d2281c6ac4a987b1479&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;staticNodes&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:8057&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;networkID&quot;</span><span class="p">:</span> <span class="s2">&quot;seele&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;log&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;isDebug&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;printLog&quot;</span><span class="p">:</span> <span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;httpServer&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:8037&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;crossorigins&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;*&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;whiteHost&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;*&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;wsserver&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:8047&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;crossorigins&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;*&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:8087&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="s2">&quot;influxdb&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;test123&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;genesis&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;difficult&quot;</span><span class="p">:</span><span class="mi">8000000</span><span class="p">,</span>
+    <span class="s2">&quot;shard&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1539742676</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>// Start mining by default when starting Seele Node</p>

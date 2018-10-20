@@ -149,6 +149,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#gettps">GetTPS</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#monitor">monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nodeinfo">NodeInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodestats">NodeStats</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -300,7 +305,7 @@ transmission environments. It uses JSON(RFC 4627) as the data format.</p>
 <code class="docutils literal notranslate"><span class="pre">txpool</span></code>:transaction pool management - <code class="docutils literal notranslate"><span class="pre">download</span></code>:RPC collection
 provided for internal inquiry of blockchain node synchronization state.
 - <code class="docutils literal notranslate"><span class="pre">network</span></code>:connection management - <code class="docutils literal notranslate"><span class="pre">miner</span></code>:miner manipulation -
-<code class="docutils literal notranslate"><span class="pre">debug</span></code>:node debugging</p>
+<code class="docutils literal notranslate"><span class="pre">debug</span></code>:node debugging - <code class="docutils literal notranslate"><span class="pre">monitor</span></code>:node monitor</p>
 </div>
 <div class="section" id="json-rpc-contents">
 <h2>JSON-RPC Contents<a class="headerlink" href="#json-rpc-contents" title="Permalink to this headline">¶</a></h2>
@@ -309,7 +314,9 @@ provided for internal inquiry of blockchain node synchronization state.
 </ul>
 <table border="1" class="docutils">
 <colgroup>
-<col width="76%" />
+<col width="58%" />
+<col width="8%" />
+<col width="10%" />
 <col width="11%" />
 <col width="13%" />
 </colgroup>
@@ -317,54 +324,74 @@ provided for internal inquiry of blockchain node synchronization state.
 <tr class="row-odd"><th class="head">Command</th>
 <th class="head">Full</th>
 <th class="head">Light</th>
+<th class="head">public</th>
+<th class="head">private</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><a class="reference external" href="#getinfo">GetInfo</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#getbalance">GetBalance</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#addtx">AddTx</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#getaccountnonce">GetAccountNonce</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#getblockheight">GetBlockHeight</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#getblock">GetBlock</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#getblockbyhash">GetBlockByHash</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#getblockbyheight">GetBlockByHeight</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#call">Call</a></td>
+<td>✓</td>
+<td>&#160;</td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>GetLogs(Being Written)</td>
 <td>✓</td>
 <td>&#160;</td>
+<td>✓</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#generatepayload">GeneratePayload</a></td>
 <td>✓</td>
 <td>&#160;</td>
-</tr>
-<tr class="row-odd"><td>GetABI(Being Written)</td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
@@ -375,59 +402,105 @@ provided for internal inquiry of blockchain node synchronization state.
 </ul>
 <table border="1" class="docutils">
 <colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Command</th>
 <th class="head">Full</th>
 <th class="head">Light</th>
+<th class="head">public</th>
+<th class="head">private</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="#getblocktransactioncount">GetBlockTransactionC
-ount</a></td>
+<tr class="row-even"><td><a class="reference external" href="#getblocktransactioncount">GetBlockTr
+ansactionCo
+unt</a>
+_</td>
 <td>✓</td>
 <td>✓</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#getblocktransactioncountbyheight">GetBlockTransactionC
-ountByHeight</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#getblocktransactioncountbyhash">GetBlockTransactionC
-ountByHash</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyblockindex">GetTransactionByBloc
-kIndex</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#gettransactionbyblockheightandindex">GetTransactionByBloc
-kHeightAndIndex</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyblockhashandindex">GetTransactionByBloc
-kHashAndIndex</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#getreceiptbytxhash">GetReceiptByTransact
-ionHash</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyhash">GetTxByHash</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#getdebtbyhash">GetDebtByHash</a></td>
 <td>✓</td>
 <td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><p class="first"><a href="#id1"><span class="problematic" id="id2">`</span></a>GetBlockTr
+ansactionCo
+untByHeight</p>
+<blockquote>
+<div>&lt;#getblock</div></blockquote>
+<p class="last">transaction
+countbyheig
+ht&gt;`__</p>
+</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><cite>GetBlockTr
+ansactionCo
+untByHash &lt;
+#getblocktr
+ansactionco
+untbyhash&gt;</cite>
+__</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyblockindex">GetTransac
+tionByBlock
+Index</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#gettransactionbyblockheightandindex">GetTransac
+tionByBlock
+HeightAndIn
+dex</a>
+_</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyblockhashandindex">GetTransac
+tionByBlock
+HashAndInde
+x</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getreceiptbytxhash">GetReceipt
+ByTransacti
+onHash</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyhash">GetTxByHas
+h</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getdebtbyhash">GetDebtByH
+ash</a>
+_</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
@@ -436,20 +509,26 @@ ionHash</a></td>
 </ul>
 <table border="1" class="docutils">
 <colgroup>
-<col width="68%" />
-<col width="15%" />
-<col width="17%" />
+<col width="48%" />
+<col width="10%" />
+<col width="12%" />
+<col width="14%" />
+<col width="16%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Command</th>
 <th class="head">Full</th>
 <th class="head">Light</th>
+<th class="head">public</th>
+<th class="head">private</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><a class="reference external" href="#getstatus">GetStatus</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
@@ -458,35 +537,49 @@ ionHash</a></td>
 </ul>
 <table border="1" class="docutils">
 <colgroup>
-<col width="78%" />
-<col width="10%" />
+<col width="61%" />
+<col width="8%" />
+<col width="9%" />
+<col width="11%" />
 <col width="12%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Command</th>
 <th class="head">Full</th>
 <th class="head">Light</th>
+<th class="head">public</th>
+<th class="head">private</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><a class="reference external" href="#getpeersinfo">GetPeersInfo</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#getpeercount">GetPeerCount</a></td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 <td>✓</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#getnetworkversion">GetNetworkVersion</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#getprotocolversion">GetProtocolVersion</a></td>
 <td>✓</td>
 <td>✓</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#getnetworkid">GetNetworkID</a></td>
 <td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
 <td>✓</td>
 </tr>
 </tbody>
@@ -496,7 +589,9 @@ ionHash</a></td>
 </ul>
 <table border="1" class="docutils">
 <colgroup>
-<col width="73%" />
+<col width="55%" />
+<col width="9%" />
+<col width="11%" />
 <col width="12%" />
 <col width="14%" />
 </colgroup>
@@ -504,36 +599,52 @@ ionHash</a></td>
 <tr class="row-odd"><th class="head">Command</th>
 <th class="head">Full</th>
 <th class="head">Light</th>
+<th class="head">public</th>
+<th class="head">private</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><a class="reference external" href="#start">Start</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#stop">Stop</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#status">Status</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#getcoinbase">GetCoinbase</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#setthreads">SetThreads</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="#setcoinbase">SetCoinbase</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#getengineinfo">GetEngineInfo</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
@@ -542,42 +653,106 @@ ionHash</a></td>
 </ul>
 <table border="1" class="docutils">
 <colgroup>
-<col width="81%" />
-<col width="9%" />
-<col width="10%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Command</th>
 <th class="head">Full</th>
 <th class="head">Light</th>
+<th class="head">public</th>
+<th class="head">private</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="#printblock">PrintBlock</a></td>
+<tr class="row-even"><td><dl class="first docutils">
+<dt><a href="#id3"><span class="problematic" id="id4">`</span></a>PrintBlock</dt>
+<dd>&lt;#printblo</dd>
+</dl>
+<p class="last">ck&gt;`__</p>
+</td>
 <td>✓</td>
 <td>&#160;</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#gettxpoolcontent">GetTxPoolContent</a></td>
-<td>✓</td>
+<td>&#160;</td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#gettxpooltxcount">GetTxPoolTxCount</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#gettxpoolcontent">GetTxPoolC
+ontent</a></td>
 <td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#getpendingtransactions">GetPendingTransactions</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#getpendingdebts">GetPendingDebts</a></td>
 <td>✓</td>
 <td>&#160;</td>
+<td>✓</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#dumpheap">DumpHeap</a></td>
+<tr class="row-even"><td><a class="reference external" href="#gettxpooltxcount">GetTxPoolT
+xCount</a></td>
+<td>✓</td>
 <td>✓</td>
 <td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getpendingtransactions">GetPending
+Transaction
+s</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getpendingdebts">GetPending
+Debts</a></td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><cite>DumpHeap &lt;
+#dumpheap&gt;</cite>
+__</td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#gettps">GetTPS</a></td>
+<td>✓</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><a class="reference external" href="#monitor">monitor</a></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="10%" />
+<col width="12%" />
+<col width="14%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Full</th>
+<th class="head">Light</th>
+<th class="head">public</th>
+<th class="head">private</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#nodeinfo">NodeInfo</a></td>
+<td>✓</td>
+<td>&#160;</td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#nodestats">NodeStats</a></td>
+<td>✓</td>
+<td>&#160;</td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
@@ -665,20 +840,20 @@ manipulation.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-1">
-<span id="id1"></span><h5>Parameters<a class="headerlink" href="#parameters-1" title="Permalink to this headline">¶</a></h5>
+<span id="id5"></span><h5>Parameters<a class="headerlink" href="#parameters-1" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Account</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - account</li>
 </ul>
 </div>
 <div class="section" id="returns-1">
-<span id="id2"></span><h5>Returns<a class="headerlink" href="#returns-1" title="Permalink to this headline">¶</a></h5>
+<span id="id6"></span><h5>Returns<a class="headerlink" href="#returns-1" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Account</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - account</li>
 <li><code class="docutils literal notranslate"><span class="pre">Balance</span></code>:<code class="docutils literal notranslate"><span class="pre">big.Int</span></code> - account balance</li>
 </ul>
 </div>
 <div class="section" id="example-1">
-<span id="id3"></span><h5>Example<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h5>
+<span id="id7"></span><h5>Example<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_getBalance&quot;,&quot;params&quot;:[&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -718,7 +893,7 @@ manipulation.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-2">
-<span id="id4"></span><h5>Parameters<a class="headerlink" href="#parameters-2" title="Permalink to this headline">¶</a></h5>
+<span id="id8"></span><h5>Parameters<a class="headerlink" href="#parameters-2" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">Data</span></code>:<code class="docutils literal notranslate"><span class="pre">json</span></code> - transaction data</li>
@@ -731,13 +906,13 @@ manipulation.</p>
 </ul>
 </div>
 <div class="section" id="returns-2">
-<span id="id5"></span><h5>Returns<a class="headerlink" href="#returns-2" title="Permalink to this headline">¶</a></h5>
+<span id="id9"></span><h5>Returns<a class="headerlink" href="#returns-2" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - transaction send result</li>
 </ul>
 </div>
 <div class="section" id="example-2">
-<span id="id6"></span><h5>Example<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h5>
+<span id="id10"></span><h5>Example<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_addTx&quot;,&quot;params&quot;:[{&quot;Hash&quot;: &quot;0xe2648efdfe6eb6a1d4beb2461e2dff3ee9584fb14bc3ae15b38f612c617e12ae&quot;,&quot;Data&quot;: {&quot;From&quot;: &quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;,&quot;To&quot;:&quot;0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831&quot;,&quot;Amount&quot;: 20000,&quot;AccountNonce&quot;:21,&quot;Fee&quot;: 1,&quot;Timestamp&quot;: 0,&quot;Payload&quot;: &quot;&quot;},&quot;Signature&quot;:{&quot;Sig&quot;:&quot;RnlFViK1RAUs9UB5WCesa6W5f9qmuFvqnM7W+9W1iUwsPIguyUI1S0fm8ysrJ4ZeL/Hx/GFEq5FGn1guvySVPQE=&quot;}}],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -774,19 +949,19 @@ manipulation.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-3">
-<span id="id7"></span><h5>Parameters<a class="headerlink" href="#parameters-3" title="Permalink to this headline">¶</a></h5>
+<span id="id11"></span><h5>Parameters<a class="headerlink" href="#parameters-3" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">account</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - wallet address</li>
 </ul>
 </div>
 <div class="section" id="returns-3">
-<span id="id8"></span><h5>Returns<a class="headerlink" href="#returns-3" title="Permalink to this headline">¶</a></h5>
+<span id="id12"></span><h5>Returns<a class="headerlink" href="#returns-3" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - account nonce</li>
 </ul>
 </div>
 <div class="section" id="example-3">
-<span id="id9"></span><h5>Example<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h5>
+<span id="id13"></span><h5>Example<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_getAccountNonce&quot;,&quot;params&quot;:[&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -823,17 +998,17 @@ manipulation.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-4">
-<span id="id10"></span><h5>Parameters<a class="headerlink" href="#parameters-4" title="Permalink to this headline">¶</a></h5>
+<span id="id14"></span><h5>Parameters<a class="headerlink" href="#parameters-4" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-4">
-<span id="id11"></span><h5>Returns<a class="headerlink" href="#returns-4" title="Permalink to this headline">¶</a></h5>
+<span id="id15"></span><h5>Returns<a class="headerlink" href="#returns-4" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - block height</li>
 </ul>
 </div>
 <div class="section" id="example-4">
-<span id="id12"></span><h5>Example<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h5>
+<span id="id16"></span><h5>Example<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_getBlockHeight&quot;,&quot;params&quot;:[],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -871,7 +1046,7 @@ block hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-5">
-<span id="id13"></span><h5>Parameters<a class="headerlink" href="#parameters-5" title="Permalink to this headline">¶</a></h5>
+<span id="id17"></span><h5>Parameters<a class="headerlink" href="#parameters-5" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block height</li>
@@ -880,7 +1055,7 @@ information</li>
 </ul>
 </div>
 <div class="section" id="returns-5">
-<span id="id14"></span><h5>Returns<a class="headerlink" href="#returns-5" title="Permalink to this headline">¶</a></h5>
+<span id="id18"></span><h5>Returns<a class="headerlink" href="#returns-5" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">debts</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - debts in block</li>
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - debts hash</li>
@@ -927,7 +1102,7 @@ information</li>
 </ul>
 </div>
 <div class="section" id="example-5">
-<span id="id15"></span><h5>Example<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h5>
+<span id="id19"></span><h5>Example<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_getBlock&quot;,&quot;params&quot;:[&quot;&quot;,10368,true],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1029,7 +1204,7 @@ information</li>
 </tbody>
 </table>
 <div class="section" id="parameters-6">
-<span id="id16"></span><h5>Parameters<a class="headerlink" href="#parameters-6" title="Permalink to this headline">¶</a></h5>
+<span id="id20"></span><h5>Parameters<a class="headerlink" href="#parameters-6" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">fulltx,</span> <span class="pre">f</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - whether to include detailed transaction
@@ -1037,7 +1212,7 @@ information</li>
 </ul>
 </div>
 <div class="section" id="returns-6">
-<span id="id17"></span><h5>Returns<a class="headerlink" href="#returns-6" title="Permalink to this headline">¶</a></h5>
+<span id="id21"></span><h5>Returns<a class="headerlink" href="#returns-6" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">debts</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - debts in block</li>
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - debts hash</li>
@@ -1084,7 +1259,7 @@ information</li>
 </ul>
 </div>
 <div class="section" id="example-6">
-<span id="id18"></span><h5>Example<a class="headerlink" href="#example-6" title="Permalink to this headline">¶</a></h5>
+<span id="id22"></span><h5>Example<a class="headerlink" href="#example-6" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_getBlockByHash&quot;,&quot;params&quot;:[&quot;0x000002069d9de64bad509239e2a121afbf7de183576457a1d1fb077d19fa3e8c&quot;,true],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1186,7 +1361,7 @@ information</li>
 </tbody>
 </table>
 <div class="section" id="parameters-7">
-<span id="id19"></span><h5>Parameters<a class="headerlink" href="#parameters-7" title="Permalink to this headline">¶</a></h5>
+<span id="id23"></span><h5>Parameters<a class="headerlink" href="#parameters-7" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block height</li>
 <li><code class="docutils literal notranslate"><span class="pre">fulltx,</span> <span class="pre">f</span></code>:<code class="docutils literal notranslate"><span class="pre">boll</span></code> - whether to include detailed transaction
@@ -1194,7 +1369,7 @@ information</li>
 </ul>
 </div>
 <div class="section" id="returns-7">
-<span id="id20"></span><h5>Returns<a class="headerlink" href="#returns-7" title="Permalink to this headline">¶</a></h5>
+<span id="id24"></span><h5>Returns<a class="headerlink" href="#returns-7" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">debts</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - debts in block</li>
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - debts hash</li>
@@ -1241,7 +1416,7 @@ information</li>
 </ul>
 </div>
 <div class="section" id="example-7">
-<span id="id21"></span><h5>Example<a class="headerlink" href="#example-7" title="Permalink to this headline">¶</a></h5>
+<span id="id25"></span><h5>Example<a class="headerlink" href="#example-7" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_getBlockByHeight&quot;,&quot;params&quot;:[10368,true],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1347,7 +1522,7 @@ in the next version or more.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-8">
-<span id="id22"></span><h5>Parameters<a class="headerlink" href="#parameters-8" title="Permalink to this headline">¶</a></h5>
+<span id="id26"></span><h5>Parameters<a class="headerlink" href="#parameters-8" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">to</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - to address</li>
 <li><code class="docutils literal notranslate"><span class="pre">payload</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction payload info</li>
@@ -1355,7 +1530,7 @@ in the next version or more.</p>
 </ul>
 </div>
 <div class="section" id="returns-8">
-<span id="id23"></span><h5>Returns<a class="headerlink" href="#returns-8" title="Permalink to this headline">¶</a></h5>
+<span id="id27"></span><h5>Returns<a class="headerlink" href="#returns-8" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">contract</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - contract address</li>
 <li><code class="docutils literal notranslate"><span class="pre">failed</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - contract executes successfully or not</li>
@@ -1368,7 +1543,7 @@ execution</li>
 </ul>
 </div>
 <div class="section" id="example-8">
-<span id="id24"></span><h5>Example<a class="headerlink" href="#example-8" title="Permalink to this headline">¶</a></h5>
+<span id="id28"></span><h5>Example<a class="headerlink" href="#example-8" title="Permalink to this headline">¶</a></h5>
 <p>When using the example below, the contract must be deployed first. The
 solidity code file:</p>
 <p>As you can see, the example is testing the get function.</p>
@@ -1417,7 +1592,7 @@ and the event name.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-9">
-<span id="id25"></span><h5>Parameters<a class="headerlink" href="#parameters-9" title="Permalink to this headline">¶</a></h5>
+<span id="id29"></span><h5>Parameters<a class="headerlink" href="#parameters-9" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> - block height (default: -1)</li>
 <li><code class="docutils literal notranslate"><span class="pre">contract</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - contract code in hex</li>
@@ -1425,11 +1600,11 @@ and the event name.</p>
 </ul>
 </div>
 <div class="section" id="returns-9">
-<span id="id26"></span><h5>Returns<a class="headerlink" href="#returns-9" title="Permalink to this headline">¶</a></h5>
+<span id="id30"></span><h5>Returns<a class="headerlink" href="#returns-9" title="Permalink to this headline">¶</a></h5>
 <p>TODO</p>
 </div>
 <div class="section" id="example-9">
-<span id="id27"></span><h5>Example<a class="headerlink" href="#example-9" title="Permalink to this headline">¶</a></h5>
+<span id="id31"></span><h5>Example<a class="headerlink" href="#example-9" title="Permalink to this headline">¶</a></h5>
 <p>When using the example below, the contract must be deployed first. The
 solidity code file:</p>
 <p>As you can see, this example is testing the get function. In this
@@ -1467,7 +1642,7 @@ get transaction.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-10">
-<span id="id28"></span><h5>Parameters<a class="headerlink" href="#parameters-10" title="Permalink to this headline">¶</a></h5>
+<span id="id32"></span><h5>Parameters<a class="headerlink" href="#parameters-10" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">abiJSON</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - contract json string</li>
 <li><code class="docutils literal notranslate"><span class="pre">methodName</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - contract method name</li>
@@ -1475,13 +1650,13 @@ get transaction.</p>
 </ul>
 </div>
 <div class="section" id="returns-10">
-<span id="id29"></span><h5>Returns<a class="headerlink" href="#returns-10" title="Permalink to this headline">¶</a></h5>
+<span id="id33"></span><h5>Returns<a class="headerlink" href="#returns-10" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> payload of contract method with args</li>
 </ul>
 </div>
 <div class="section" id="example-10">
-<span id="id30"></span><h5>Example<a class="headerlink" href="#example-10" title="Permalink to this headline">¶</a></h5>
+<span id="id34"></span><h5>Example<a class="headerlink" href="#example-10" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_generatePayload&quot;,&quot;params&quot;:[&quot;[{</span><span class="se">\&quot;</span><span class="s1">constant</span><span class="se">\&quot;</span><span class="s1">:false,</span><span class="se">\&quot;</span><span class="s1">inputs</span><span class="se">\&quot;</span><span class="s1">:[{</span><span class="se">\&quot;</span><span class="s1">name</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">x</span><span class="se">\&quot;</span><span class="s1">,</span><span class="se">\&quot;</span><span class="s1">type</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">uint256</span><span class="se">\&quot;</span><span class="s1">}],</span><span class="se">\&quot;</span><span class="s1">name</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">set</span><span class="se">\&quot;</span><span class="s1">,</span><span class="se">\&quot;</span><span class="s1">outputs</span><span class="se">\&quot;</span><span class="s1">:[],</span><span class="se">\&quot;</span><span class="s1">payable</span><span class="se">\&quot;</span><span class="s1">:false,</span><span class="se">\&quot;</span><span class="s1">stateMutability</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">nonpayable</span><span class="se">\&quot;</span><span class="s1">,</span><span class="se">\&quot;</span><span class="s1">type</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">function</span><span class="se">\&quot;</span><span class="s1">},{</span><span class="se">\&quot;</span><span class="s1">constant</span><span class="se">\&quot;</span><span class="s1">:true,</span><span class="se">\&quot;</span><span class="s1">inputs</span><span class="se">\&quot;</span><span class="s1">:[],</span><span class="se">\&quot;</span><span class="s1">name</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">get</span><span class="se">\&quot;</span><span class="s1">,</span><span class="se">\&quot;</span><span class="s1">outputs</span><span class="se">\&quot;</span><span class="s1">:[{</span><span class="se">\&quot;</span><span class="s1">name</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;\&quot;</span><span class="s1">,</span><span class="se">\&quot;</span><span class="s1">type</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">uint256</span><span class="se">\&quot;</span><span class="s1">}],</span><span class="se">\&quot;</span><span class="s1">payable</span><span class="se">\&quot;</span><span class="s1">:false,</span><span class="se">\&quot;</span><span class="s1">stateMutability</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">view</span><span class="se">\&quot;</span><span class="s1">,</span><span class="se">\&quot;</span><span class="s1">type</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">function</span><span class="se">\&quot;</span><span class="s1">},{</span><span class="se">\&quot;</span><span class="s1">inputs</span><span class="se">\&quot;</span><span class="s1">:[],</span><span class="se">\&quot;</span><span class="s1">payable</span><span class="se">\&quot;</span><span class="s1">:false,</span><span class="se">\&quot;</span><span class="s1">stateMutability</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">nonpayable</span><span class="se">\&quot;</span><span class="s1">,</span><span class="se">\&quot;</span><span class="s1">type</span><span class="se">\&quot;</span><span class="s1">:</span><span class="se">\&quot;</span><span class="s1">constructor</span><span class="se">\&quot;</span><span class="s1">}]&quot;, &quot;set&quot;, [&quot;1&quot;]],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1524,20 +1699,20 @@ transaction pool based on block height or hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-11">
-<span id="id31"></span><h5>Parameters<a class="headerlink" href="#parameters-11" title="Permalink to this headline">¶</a></h5>
+<span id="id35"></span><h5>Parameters<a class="headerlink" href="#parameters-11" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
 <li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> - block height (default: -1)</li>
 </ul>
 </div>
 <div class="section" id="returns-11">
-<span id="id32"></span><h5>Returns<a class="headerlink" href="#returns-11" title="Permalink to this headline">¶</a></h5>
+<span id="id36"></span><h5>Returns<a class="headerlink" href="#returns-11" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - transactions number</li>
 </ul>
 </div>
 <div class="section" id="example-11">
-<span id="id33"></span><h5>Example<a class="headerlink" href="#example-11" title="Permalink to this headline">¶</a></h5>
+<span id="id37"></span><h5>Example<a class="headerlink" href="#example-11" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getBlockTransactionCount&quot;,&quot;params&quot;:[&quot;0x0000015592fab87d6efa10e63d7722f6f359d90a1aff9e70930b291931c34922&quot;,-1],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1575,19 +1750,19 @@ transaction pool based on block height.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-12">
-<span id="id34"></span><h5>Parameters<a class="headerlink" href="#parameters-12" title="Permalink to this headline">¶</a></h5>
+<span id="id38"></span><h5>Parameters<a class="headerlink" href="#parameters-12" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> - block height (default: -1)</li>
 </ul>
 </div>
 <div class="section" id="returns-12">
-<span id="id35"></span><h5>Returns<a class="headerlink" href="#returns-12" title="Permalink to this headline">¶</a></h5>
+<span id="id39"></span><h5>Returns<a class="headerlink" href="#returns-12" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - transactions number</li>
 </ul>
 </div>
 <div class="section" id="example-12">
-<span id="id36"></span><h5>Example<a class="headerlink" href="#example-12" title="Permalink to this headline">¶</a></h5>
+<span id="id40"></span><h5>Example<a class="headerlink" href="#example-12" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getBlockTransactionCountByHeight&quot;,&quot;params&quot;:[-1],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1625,19 +1800,19 @@ transaction pool based on block hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-13">
-<span id="id37"></span><h5>Parameters<a class="headerlink" href="#parameters-13" title="Permalink to this headline">¶</a></h5>
+<span id="id41"></span><h5>Parameters<a class="headerlink" href="#parameters-13" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
 </ul>
 </div>
 <div class="section" id="returns-13">
-<span id="id38"></span><h5>Returns<a class="headerlink" href="#returns-13" title="Permalink to this headline">¶</a></h5>
+<span id="id42"></span><h5>Returns<a class="headerlink" href="#returns-13" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - transactions number</li>
 </ul>
 </div>
 <div class="section" id="example-13">
-<span id="id39"></span><h5>Example<a class="headerlink" href="#example-13" title="Permalink to this headline">¶</a></h5>
+<span id="id43"></span><h5>Example<a class="headerlink" href="#example-13" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getBlockTransactionCount&quot;,&quot;params&quot;:[&quot;0x0000015592fab87d6efa10e63d7722f6f359d90a1aff9e70930b291931c34922&quot;],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1676,7 +1851,7 @@ height or hash and transaction index.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-14">
-<span id="id40"></span><h5>Parameters<a class="headerlink" href="#parameters-14" title="Permalink to this headline">¶</a></h5>
+<span id="id44"></span><h5>Parameters<a class="headerlink" href="#parameters-14" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - block height (default: -1)</li>
@@ -1684,7 +1859,7 @@ height or hash and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="returns-14">
-<span id="id41"></span><h5>Returns<a class="headerlink" href="#returns-14" title="Permalink to this headline">¶</a></h5>
+<span id="id45"></span><h5>Returns<a class="headerlink" href="#returns-14" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
@@ -1697,7 +1872,7 @@ height or hash and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="example-14">
-<span id="id42"></span><h5>Example<a class="headerlink" href="#example-14" title="Permalink to this headline">¶</a></h5>
+<span id="id46"></span><h5>Example<a class="headerlink" href="#example-14" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getTransactionByBlockIndex&quot;,&quot;params&quot;:[&quot;0x0000015592fab87d6efa10e63d7722f6f359d90a1aff9e70930b291931c34922&quot;, -1, 1],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1745,14 +1920,14 @@ height and transaction index.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-15">
-<span id="id43"></span><h5>Parameters<a class="headerlink" href="#parameters-15" title="Permalink to this headline">¶</a></h5>
+<span id="id47"></span><h5>Parameters<a class="headerlink" href="#parameters-15" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - block height (default: -1)</li>
 <li><code class="docutils literal notranslate"><span class="pre">index</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - transaction index, start with 0 (default: 0)</li>
 </ul>
 </div>
 <div class="section" id="returns-15">
-<span id="id44"></span><h5>Returns<a class="headerlink" href="#returns-15" title="Permalink to this headline">¶</a></h5>
+<span id="id48"></span><h5>Returns<a class="headerlink" href="#returns-15" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
@@ -1765,7 +1940,7 @@ height and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="example-15">
-<span id="id45"></span><h5>Example<a class="headerlink" href="#example-15" title="Permalink to this headline">¶</a></h5>
+<span id="id49"></span><h5>Example<a class="headerlink" href="#example-15" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getTransactionByBlockHeightAndIndex&quot;,&quot;params&quot;:[4202, 1],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1813,14 +1988,14 @@ hash and transaction index.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-16">
-<span id="id46"></span><h5>Parameters<a class="headerlink" href="#parameters-16" title="Permalink to this headline">¶</a></h5>
+<span id="id50"></span><h5>Parameters<a class="headerlink" href="#parameters-16" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">index</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - transaction index, start with 0 (default: 0)</li>
 </ul>
 </div>
 <div class="section" id="returns-16">
-<span id="id47"></span><h5>Returns<a class="headerlink" href="#returns-16" title="Permalink to this headline">¶</a></h5>
+<span id="id51"></span><h5>Returns<a class="headerlink" href="#returns-16" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
@@ -1833,7 +2008,7 @@ hash and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="example-16">
-<span id="id48"></span><h5>Example<a class="headerlink" href="#example-16" title="Permalink to this headline">¶</a></h5>
+<span id="id52"></span><h5>Example<a class="headerlink" href="#example-16" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getTransactionByBlockHashAndIndex&quot;,&quot;params&quot;:[&quot;0x0000015592fab87d6efa10e63d7722f6f359d90a1aff9e70930b291931c34922&quot;, 1],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1879,13 +2054,13 @@ hash and transaction index.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-17">
-<span id="id49"></span><h5>Parameters<a class="headerlink" href="#parameters-17" title="Permalink to this headline">¶</a></h5>
+<span id="id53"></span><h5>Parameters<a class="headerlink" href="#parameters-17" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
 </ul>
 </div>
 <div class="section" id="returns-17">
-<span id="id50"></span><h5>Returns<a class="headerlink" href="#returns-17" title="Permalink to this headline">¶</a></h5>
+<span id="id54"></span><h5>Returns<a class="headerlink" href="#returns-17" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">blockHash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">blockHeight</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - block height</li>
@@ -1902,7 +2077,7 @@ hash and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="example-17">
-<span id="id51"></span><h5>Example<a class="headerlink" href="#example-17" title="Permalink to this headline">¶</a></h5>
+<span id="id55"></span><h5>Example<a class="headerlink" href="#example-17" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getTransactionByHash&quot;,&quot;params&quot;:[0xbd2ca4f9869c714e589ad6a3b16731c8cb066de40d0e27e220cc1e014577baff],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -1955,13 +2130,13 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-18">
-<span id="id52"></span><h5>Parameters<a class="headerlink" href="#parameters-18" title="Permalink to this headline">¶</a></h5>
+<span id="id56"></span><h5>Parameters<a class="headerlink" href="#parameters-18" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
 </ul>
 </div>
 <div class="section" id="returns-18">
-<span id="id53"></span><h5>Returns<a class="headerlink" href="#returns-18" title="Permalink to this headline">¶</a></h5>
+<span id="id57"></span><h5>Returns<a class="headerlink" href="#returns-18" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">contract</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - contract address</li>
 <li><code class="docutils literal notranslate"><span class="pre">failed</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - transaction executes successfully or not</li>
@@ -1974,7 +2149,7 @@ execution</li>
 </ul>
 </div>
 <div class="section" id="example-18">
-<span id="id54"></span><h5>Example<a class="headerlink" href="#example-18" title="Permalink to this headline">¶</a></h5>
+<span id="id58"></span><h5>Example<a class="headerlink" href="#example-18" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getReceiptByTxHash&quot;,&quot;params&quot;:[&quot;0xbd2ca4f9869c714e589ad6a3b16731c8cb066de40d0e27e220cc1e014577baff&quot;],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2020,13 +2195,13 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-19">
-<span id="id55"></span><h5>Parameters<a class="headerlink" href="#parameters-19" title="Permalink to this headline">¶</a></h5>
+<span id="id59"></span><h5>Parameters<a class="headerlink" href="#parameters-19" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
 </ul>
 </div>
 <div class="section" id="returns-19">
-<span id="id56"></span><h5>Returns<a class="headerlink" href="#returns-19" title="Permalink to this headline">¶</a></h5>
+<span id="id60"></span><h5>Returns<a class="headerlink" href="#returns-19" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">blockHash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block hash of the debt on</li>
 <li><code class="docutils literal notranslate"><span class="pre">blockHeight</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> - block height of the debt on</li>
@@ -2046,7 +2221,7 @@ hash.</p>
 </ul>
 </div>
 <div class="section" id="example-19">
-<span id="id57"></span><h5>Example<a class="headerlink" href="#example-19" title="Permalink to this headline">¶</a></h5>
+<span id="id61"></span><h5>Example<a class="headerlink" href="#example-19" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;txpool_getDebtByHash&quot;,&quot;params&quot;:[0x0da1ed893e7f0ca2558c193b3b82ed20575a6978bea5b14f282309c69fee368e],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2108,14 +2283,14 @@ synchronization state.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-20">
-<span id="id58"></span><h5>Parameters<a class="headerlink" href="#parameters-20" title="Permalink to this headline">¶</a></h5>
+<span id="id62"></span><h5>Parameters<a class="headerlink" href="#parameters-20" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">input</span></code>:<code class="docutils literal notranslate"><span class="pre">interface{}</span></code> - getStatus input</li>
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">map[string]interface{}</span></code> - getStatus result</li>
 </ul>
 </div>
 <div class="section" id="returns-20">
-<span id="id59"></span><h5>Returns<a class="headerlink" href="#returns-20" title="Permalink to this headline">¶</a></h5>
+<span id="id63"></span><h5>Returns<a class="headerlink" href="#returns-20" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Status</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - synchronization state</li>
 <li><code class="docutils literal notranslate"><span class="pre">Duration</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - synchronization duration (seconds)</li>
@@ -2125,7 +2300,7 @@ synchronization state.</p>
 </ul>
 </div>
 <div class="section" id="example-20">
-<span id="id60"></span><h5>Example<a class="headerlink" href="#example-20" title="Permalink to this headline">¶</a></h5>
+<span id="id64"></span><h5>Example<a class="headerlink" href="#example-20" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">method</span> <span class="n">should</span> <span class="n">be</span> <span class="n">invoked</span> <span class="n">by</span> <span class="n">go</span> <span class="n">function</span><span class="o">.</span>
 </pre></div>
 </div>
@@ -2160,11 +2335,11 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-21">
-<span id="id61"></span><h5>Parameters<a class="headerlink" href="#parameters-21" title="Permalink to this headline">¶</a></h5>
+<span id="id65"></span><h5>Parameters<a class="headerlink" href="#parameters-21" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-21">
-<span id="id62"></span><h5>Returns<a class="headerlink" href="#returns-21" title="Permalink to this headline">¶</a></h5>
+<span id="id66"></span><h5>Returns<a class="headerlink" href="#returns-21" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">id</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - node ID</li>
 <li><code class="docutils literal notranslate"><span class="pre">caps</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - peer node protocol and version array</li>
@@ -2178,7 +2353,7 @@ information.</p>
 </ul>
 </div>
 <div class="section" id="example-21">
-<span id="id63"></span><h5>Example<a class="headerlink" href="#example-21" title="Permalink to this headline">¶</a></h5>
+<span id="id67"></span><h5>Example<a class="headerlink" href="#example-21" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;network_getPeersInfo&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2232,17 +2407,17 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-22">
-<span id="id64"></span><h5>Parameters<a class="headerlink" href="#parameters-22" title="Permalink to this headline">¶</a></h5>
+<span id="id68"></span><h5>Parameters<a class="headerlink" href="#parameters-22" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-22">
-<span id="id65"></span><h5>Returns<a class="headerlink" href="#returns-22" title="Permalink to this headline">¶</a></h5>
+<span id="id69"></span><h5>Returns<a class="headerlink" href="#returns-22" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - peer number of node</li>
 </ul>
 </div>
 <div class="section" id="example-22">
-<span id="id66"></span><h5>Example<a class="headerlink" href="#example-22" title="Permalink to this headline">¶</a></h5>
+<span id="id70"></span><h5>Example<a class="headerlink" href="#example-22" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;network_getPeerCount&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2279,17 +2454,17 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-23">
-<span id="id67"></span><h5>Parameters<a class="headerlink" href="#parameters-23" title="Permalink to this headline">¶</a></h5>
+<span id="id71"></span><h5>Parameters<a class="headerlink" href="#parameters-23" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-23">
-<span id="id68"></span><h5>Returns<a class="headerlink" href="#returns-23" title="Permalink to this headline">¶</a></h5>
+<span id="id72"></span><h5>Returns<a class="headerlink" href="#returns-23" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">float64</span></code> - version number</li>
 </ul>
 </div>
 <div class="section" id="example-23">
-<span id="id69"></span><h5>Example<a class="headerlink" href="#example-23" title="Permalink to this headline">¶</a></h5>
+<span id="id73"></span><h5>Example<a class="headerlink" href="#example-23" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;network_getNetVersion&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2326,17 +2501,17 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-24">
-<span id="id70"></span><h5>Parameters<a class="headerlink" href="#parameters-24" title="Permalink to this headline">¶</a></h5>
+<span id="id74"></span><h5>Parameters<a class="headerlink" href="#parameters-24" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-24">
-<span id="id71"></span><h5>Returns<a class="headerlink" href="#returns-24" title="Permalink to this headline">¶</a></h5>
+<span id="id75"></span><h5>Returns<a class="headerlink" href="#returns-24" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - version number</li>
 </ul>
 </div>
 <div class="section" id="example-24">
-<span id="id72"></span><h5>Example<a class="headerlink" href="#example-24" title="Permalink to this headline">¶</a></h5>
+<span id="id76"></span><h5>Example<a class="headerlink" href="#example-24" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;network_getProtocolVersion&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2373,17 +2548,17 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-25">
-<span id="id73"></span><h5>Parameters<a class="headerlink" href="#parameters-25" title="Permalink to this headline">¶</a></h5>
+<span id="id77"></span><h5>Parameters<a class="headerlink" href="#parameters-25" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-25">
-<span id="id74"></span><h5>Returns<a class="headerlink" href="#returns-25" title="Permalink to this headline">¶</a></h5>
+<span id="id78"></span><h5>Returns<a class="headerlink" href="#returns-25" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - network id</li>
 </ul>
 </div>
 <div class="section" id="example-25">
-<span id="id75"></span><h5>Example<a class="headerlink" href="#example-25" title="Permalink to this headline">¶</a></h5>
+<span id="id79"></span><h5>Example<a class="headerlink" href="#example-25" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;network_getNetworkID&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2422,19 +2597,19 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-26">
-<span id="id76"></span><h5>Parameters<a class="headerlink" href="#parameters-26" title="Permalink to this headline">¶</a></h5>
+<span id="id80"></span><h5>Parameters<a class="headerlink" href="#parameters-26" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">threads</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - number of threads</li>
 </ul>
 </div>
 <div class="section" id="returns-26">
-<span id="id77"></span><h5>Returns<a class="headerlink" href="#returns-26" title="Permalink to this headline">¶</a></h5>
+<span id="id81"></span><h5>Returns<a class="headerlink" href="#returns-26" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - start result</li>
 </ul>
 </div>
 <div class="section" id="example-26">
-<span id="id78"></span><h5>Example<a class="headerlink" href="#example-26" title="Permalink to this headline">¶</a></h5>
+<span id="id82"></span><h5>Example<a class="headerlink" href="#example-26" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;miner_start&quot;,&quot;params&quot;:[2],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2469,17 +2644,17 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-27">
-<span id="id79"></span><h5>Parameters<a class="headerlink" href="#parameters-27" title="Permalink to this headline">¶</a></h5>
+<span id="id83"></span><h5>Parameters<a class="headerlink" href="#parameters-27" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-27">
-<span id="id80"></span><h5>Returns<a class="headerlink" href="#returns-27" title="Permalink to this headline">¶</a></h5>
+<span id="id84"></span><h5>Returns<a class="headerlink" href="#returns-27" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - stop result</li>
 </ul>
 </div>
 <div class="section" id="example-27">
-<span id="id81"></span><h5>Example<a class="headerlink" href="#example-27" title="Permalink to this headline">¶</a></h5>
+<span id="id85"></span><h5>Example<a class="headerlink" href="#example-27" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;miner_stop&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2514,17 +2689,17 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-28">
-<span id="id82"></span><h5>Parameters<a class="headerlink" href="#parameters-28" title="Permalink to this headline">¶</a></h5>
+<span id="id86"></span><h5>Parameters<a class="headerlink" href="#parameters-28" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-28">
-<span id="id83"></span><h5>Returns<a class="headerlink" href="#returns-28" title="Permalink to this headline">¶</a></h5>
+<span id="id87"></span><h5>Returns<a class="headerlink" href="#returns-28" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - miner status</li>
 </ul>
 </div>
 <div class="section" id="example-28">
-<span id="id84"></span><h5>Example<a class="headerlink" href="#example-28" title="Permalink to this headline">¶</a></h5>
+<span id="id88"></span><h5>Example<a class="headerlink" href="#example-28" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;miner_status&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2561,17 +2736,17 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-29">
-<span id="id85"></span><h5>Parameters<a class="headerlink" href="#parameters-29" title="Permalink to this headline">¶</a></h5>
+<span id="id89"></span><h5>Parameters<a class="headerlink" href="#parameters-29" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-29">
-<span id="id86"></span><h5>Returns<a class="headerlink" href="#returns-29" title="Permalink to this headline">¶</a></h5>
+<span id="id90"></span><h5>Returns<a class="headerlink" href="#returns-29" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - coinbase</li>
 </ul>
 </div>
 <div class="section" id="example-29">
-<span id="id87"></span><h5>Example<a class="headerlink" href="#example-29" title="Permalink to this headline">¶</a></h5>
+<span id="id91"></span><h5>Example<a class="headerlink" href="#example-29" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;miner.GetCoinbase&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
 <span class="o">//</span> <span class="n">Result</span>
@@ -2604,19 +2779,19 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-30">
-<span id="id88"></span><h5>Parameters<a class="headerlink" href="#parameters-30" title="Permalink to this headline">¶</a></h5>
+<span id="id92"></span><h5>Parameters<a class="headerlink" href="#parameters-30" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">threads</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - miner threads (default: 0)</li>
 </ul>
 </div>
 <div class="section" id="returns-30">
-<span id="id89"></span><h5>Returns<a class="headerlink" href="#returns-30" title="Permalink to this headline">¶</a></h5>
+<span id="id93"></span><h5>Returns<a class="headerlink" href="#returns-30" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - SetThreads result</li>
 </ul>
 </div>
 <div class="section" id="example-30">
-<span id="id90"></span><h5>Example<a class="headerlink" href="#example-30" title="Permalink to this headline">¶</a></h5>
+<span id="id94"></span><h5>Example<a class="headerlink" href="#example-30" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;miner_setThreads&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2653,19 +2828,19 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-31">
-<span id="id91"></span><h5>Parameters<a class="headerlink" href="#parameters-31" title="Permalink to this headline">¶</a></h5>
+<span id="id95"></span><h5>Parameters<a class="headerlink" href="#parameters-31" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">coinbase</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> coinbase of the miner</li>
 </ul>
 </div>
 <div class="section" id="returns-31">
-<span id="id92"></span><h5>Returns<a class="headerlink" href="#returns-31" title="Permalink to this headline">¶</a></h5>
+<span id="id96"></span><h5>Returns<a class="headerlink" href="#returns-31" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - SetCoinbase result</li>
 </ul>
 </div>
 <div class="section" id="example-31">
-<span id="id93"></span><h5>Example<a class="headerlink" href="#example-31" title="Permalink to this headline">¶</a></h5>
+<span id="id97"></span><h5>Example<a class="headerlink" href="#example-31" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;miner_setcoinbase&quot;,&quot;params&quot;:[&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2702,18 +2877,18 @@ information.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-32">
-<span id="id94"></span><h5>Parameters<a class="headerlink" href="#parameters-32" title="Permalink to this headline">¶</a></h5>
+<span id="id98"></span><h5>Parameters<a class="headerlink" href="#parameters-32" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-32">
-<span id="id95"></span><h5>Returns<a class="headerlink" href="#returns-32" title="Permalink to this headline">¶</a></h5>
+<span id="id99"></span><h5>Returns<a class="headerlink" href="#returns-32" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hashrate</span></code>:<code class="docutils literal notranslate"><span class="pre">float64</span></code> - hashrate</li>
 <li><code class="docutils literal notranslate"><span class="pre">threads</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - miner threads</li>
 </ul>
 </div>
 <div class="section" id="example-32">
-<span id="id96"></span><h5>Example<a class="headerlink" href="#example-32" title="Permalink to this headline">¶</a></h5>
+<span id="id100"></span><h5>Example<a class="headerlink" href="#example-32" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;miner_getEngineInfo&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2754,13 +2929,13 @@ block height.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-33">
-<span id="id97"></span><h5>Parameters<a class="headerlink" href="#parameters-33" title="Permalink to this headline">¶</a></h5>
+<span id="id101"></span><h5>Parameters<a class="headerlink" href="#parameters-33" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> - block height</li>
 </ul>
 </div>
 <div class="section" id="returns-33">
-<span id="id98"></span><h5>Returns<a class="headerlink" href="#returns-33" title="Permalink to this headline">¶</a></h5>
+<span id="id102"></span><h5>Returns<a class="headerlink" href="#returns-33" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">HeaderHash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block header hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">Header</span></code>:<code class="docutils literal notranslate"><span class="pre">json</span></code> - block header</li>
@@ -2800,7 +2975,7 @@ block height.</p>
 </ul>
 </div>
 <div class="section" id="example-33">
-<span id="id99"></span><h5>Example<a class="headerlink" href="#example-33" title="Permalink to this headline">¶</a></h5>
+<span id="id103"></span><h5>Example<a class="headerlink" href="#example-33" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug_printBlock&quot;,&quot;params&quot;:[10368],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2883,11 +3058,11 @@ block height.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-34">
-<span id="id100"></span><h5>Parameters<a class="headerlink" href="#parameters-34" title="Permalink to this headline">¶</a></h5>
+<span id="id104"></span><h5>Parameters<a class="headerlink" href="#parameters-34" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-34">
-<span id="id101"></span><h5>Returns<a class="headerlink" href="#returns-34" title="Permalink to this headline">¶</a></h5>
+<span id="id105"></span><h5>Returns<a class="headerlink" href="#returns-34" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
@@ -2900,7 +3075,7 @@ block height.</p>
 </ul>
 </div>
 <div class="section" id="example-34">
-<span id="id102"></span><h5>Example<a class="headerlink" href="#example-34" title="Permalink to this headline">¶</a></h5>
+<span id="id106"></span><h5>Example<a class="headerlink" href="#example-34" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug_getTxPoolContent&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -2952,17 +3127,17 @@ transaction pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-35">
-<span id="id103"></span><h5>Parameters<a class="headerlink" href="#parameters-35" title="Permalink to this headline">¶</a></h5>
+<span id="id107"></span><h5>Parameters<a class="headerlink" href="#parameters-35" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-35">
-<span id="id104"></span><h5>Returns<a class="headerlink" href="#returns-35" title="Permalink to this headline">¶</a></h5>
+<span id="id108"></span><h5>Returns<a class="headerlink" href="#returns-35" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - number of transactions</li>
 </ul>
 </div>
 <div class="section" id="example-35">
-<span id="id105"></span><h5>Example<a class="headerlink" href="#example-35" title="Permalink to this headline">¶</a></h5>
+<span id="id109"></span><h5>Example<a class="headerlink" href="#example-35" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug_getTxPoolTxCount&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -3000,11 +3175,11 @@ pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-36">
-<span id="id106"></span><h5>Parameters<a class="headerlink" href="#parameters-36" title="Permalink to this headline">¶</a></h5>
+<span id="id110"></span><h5>Parameters<a class="headerlink" href="#parameters-36" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-36">
-<span id="id107"></span><h5>Returns<a class="headerlink" href="#returns-36" title="Permalink to this headline">¶</a></h5>
+<span id="id111"></span><h5>Returns<a class="headerlink" href="#returns-36" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
@@ -3017,7 +3192,7 @@ pool.</p>
 </ul>
 </div>
 <div class="section" id="example-36">
-<span id="id108"></span><h5>Example<a class="headerlink" href="#example-36" title="Permalink to this headline">¶</a></h5>
+<span id="id112"></span><h5>Example<a class="headerlink" href="#example-36" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug_getPendingTransactions&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -3066,11 +3241,11 @@ pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-37">
-<span id="id109"></span><h5>Parameters<a class="headerlink" href="#parameters-37" title="Permalink to this headline">¶</a></h5>
+<span id="id113"></span><h5>Parameters<a class="headerlink" href="#parameters-37" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-37">
-<span id="id110"></span><h5>Returns<a class="headerlink" href="#returns-37" title="Permalink to this headline">¶</a></h5>
+<span id="id114"></span><h5>Returns<a class="headerlink" href="#returns-37" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Data</span></code>:<code class="docutils literal notranslate"><span class="pre">json</span></code> - debt data</li>
 <li><code class="docutils literal notranslate"><span class="pre">Account</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - debt account</li>
@@ -3083,7 +3258,7 @@ pool.</p>
 </ul>
 </div>
 <div class="section" id="example-37">
-<span id="id111"></span><h5>Example<a class="headerlink" href="#example-37" title="Permalink to this headline">¶</a></h5>
+<span id="id115"></span><h5>Example<a class="headerlink" href="#example-37" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug_getPendingDebts&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -3126,17 +3301,17 @@ pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-38">
-<span id="id112"></span><h5>Parameters<a class="headerlink" href="#parameters-38" title="Permalink to this headline">¶</a></h5>
+<span id="id116"></span><h5>Parameters<a class="headerlink" href="#parameters-38" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-38">
-<span id="id113"></span><h5>Returns<a class="headerlink" href="#returns-38" title="Permalink to this headline">¶</a></h5>
+<span id="id117"></span><h5>Returns<a class="headerlink" href="#returns-38" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> file path</li>
 </ul>
 </div>
 <div class="section" id="example-38">
-<span id="id114"></span><h5>Example<a class="headerlink" href="#example-38" title="Permalink to this headline">¶</a></h5>
+<span id="id118"></span><h5>Example<a class="headerlink" href="#example-38" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug_dumpHeap&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">url</span>
 
@@ -3171,11 +3346,11 @@ pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-39">
-<span id="id115"></span><h5>Parameters<a class="headerlink" href="#parameters-39" title="Permalink to this headline">¶</a></h5>
+<span id="id119"></span><h5>Parameters<a class="headerlink" href="#parameters-39" title="Permalink to this headline">¶</a></h5>
 <p>none</p>
 </div>
 <div class="section" id="returns-39">
-<span id="id116"></span><h5>Returns<a class="headerlink" href="#returns-39" title="Permalink to this headline">¶</a></h5>
+<span id="id120"></span><h5>Returns<a class="headerlink" href="#returns-39" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">StartHeight</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> start height</li>
 <li><code class="docutils literal notranslate"><span class="pre">EndHeight</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> end height</li>
@@ -3184,7 +3359,7 @@ pool.</p>
 </ul>
 </div>
 <div class="section" id="example-39">
-<span id="id117"></span><h5>Example<a class="headerlink" href="#example-39" title="Permalink to this headline">¶</a></h5>
+<span id="id121"></span><h5>Example<a class="headerlink" href="#example-39" title="Permalink to this headline">¶</a></h5>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;debug_dumpHeap&quot;,&quot;params&quot;:[],&quot;id&quot;:2}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
 
@@ -3197,6 +3372,133 @@ pool.</p>
         <span class="s2">&quot;EndHeight&quot;</span><span class="p">:</span> <span class="mi">13941</span><span class="p">,</span>
         <span class="s2">&quot;Count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s2">&quot;Duration&quot;</span><span class="p">:</span> <span class="mi">166</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="monitor">
+<h3>monitor<a class="headerlink" href="#monitor" title="Permalink to this headline">¶</a></h3>
+<p>node monitor.</p>
+<hr class="docutils" />
+<div class="section" id="nodeinfo">
+<h4>NodeInfo<a class="headerlink" href="#nodeinfo" title="Permalink to this headline">¶</a></h4>
+<p>This method returns the node information of the node</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Template</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>RPC</td>
+<td><code class="docutils literal notranslate"><span class="pre">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;monitor_nodeInfo&quot;,&quot;params&quot;:[],&quot;id&quot;:1}</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="parameters-40">
+<span id="id122"></span><h5>Parameters<a class="headerlink" href="#parameters-40" title="Permalink to this headline">¶</a></h5>
+<p>none</p>
+</div>
+<div class="section" id="returns-40">
+<span id="id123"></span><h5>Returns<a class="headerlink" href="#returns-40" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> monitor name</li>
+<li><code class="docutils literal notranslate"><span class="pre">node</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> node name</li>
+<li><code class="docutils literal notranslate"><span class="pre">port</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> port</li>
+<li><code class="docutils literal notranslate"><span class="pre">netVersion</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> node network version</li>
+<li><code class="docutils literal notranslate"><span class="pre">protocol</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> node network protocol</li>
+<li><code class="docutils literal notranslate"><span class="pre">api</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> monitor api</li>
+<li><code class="docutils literal notranslate"><span class="pre">os</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> system os</li>
+<li><code class="docutils literal notranslate"><span class="pre">os_v</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> system os architecture</li>
+<li><code class="docutils literal notranslate"><span class="pre">client</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> client version</li>
+<li><code class="docutils literal notranslate"><span class="pre">canUpdateHistory</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> can update history?</li>
+<li><code class="docutils literal notranslate"><span class="pre">shard</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> shard number</li>
+</ul>
+</div>
+<div class="section" id="example-40">
+<span id="id124"></span><h5>Example<a class="headerlink" href="#example-40" title="Permalink to this headline">¶</a></h5>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;monitor_nodeInfo&quot;,&quot;params&quot;:[],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
+
+<span class="o">//</span> <span class="n">Result</span>
+<span class="p">{</span>
+    <span class="s2">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Test monitor&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;node&quot;</span><span class="p">:</span> <span class="s2">&quot;seele node1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;netVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;api&quot;</span><span class="p">:</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;os&quot;</span><span class="p">:</span> <span class="s2">&quot;windows&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;os_v&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;client&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;canUpdateHistory&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;shard&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="nodestats">
+<h4>NodeStats<a class="headerlink" href="#nodestats" title="Permalink to this headline">¶</a></h4>
+<p>This method returns the information of the node</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Template</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>RPC</td>
+<td><code class="docutils literal notranslate"><span class="pre">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;moni</span>
+<span class="pre">tor_nodeStats&quot;,&quot;params&quot;:[],&quot;id&quot;:1</span>
+<span class="pre">}</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="parameters-41">
+<span id="id125"></span><h5>Parameters<a class="headerlink" href="#parameters-41" title="Permalink to this headline">¶</a></h5>
+<p>none</p>
+</div>
+<div class="section" id="returns-41">
+<span id="id126"></span><h5>Returns<a class="headerlink" href="#returns-41" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">active</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> is node actively?</li>
+<li><code class="docutils literal notranslate"><span class="pre">syncing</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> is node syncing?</li>
+<li><code class="docutils literal notranslate"><span class="pre">mining</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> is node mining?</li>
+<li><code class="docutils literal notranslate"><span class="pre">peers</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> node peers number</li>
+</ul>
+</div>
+<div class="section" id="example-41">
+<span id="id127"></span><h5>Example<a class="headerlink" href="#example-41" title="Permalink to this headline">¶</a></h5>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;monitor_nodeStats&quot;,&quot;params&quot;:[],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
+
+<span class="o">//</span> <span class="n">Result</span>
+<span class="p">{</span>
+    <span class="s2">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;syncing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;mining&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;peers&quot;</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
