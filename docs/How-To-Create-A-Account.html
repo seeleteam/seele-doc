@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Seele TestNet Performance Introduction &mdash; Seele  documentation</title>
+  <title>How To Create A Account &mdash; Seele  documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hash Time Lock Contract" href="Hash-Time-Lock-Contract.html" />
-    <link rel="prev" title="Join Seele TestNet" href="Join-Seele-TestNet.html" /> 
+    <link rel="next" title="Scan Monitor Dashboard Setup" href="Scan-Monitor-Dashboard-Setup.html" />
+    <link rel="prev" title="Getting Started With Seele" href="Getting-Started-With-Seele.html" /> 
 
   
   <script src="../static/js/modernizr.min.js"></script>
@@ -82,7 +82,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-To-Create-A-Account.html">How To Create A Account</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How To Create A Account</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-account-by-seele-node">Create account by Seele Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-account-by-seele-client">Create account by Seele Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-keyfile-for-account">Generate keyfile for account</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Mining.html">Mining</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
@@ -91,12 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Seele TestNet Performance Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#test-net-functions-and-their-corresponding-functions-in-the-whitepaper">1. Test-net Functions and Their Corresponding Functions in the Whitepaper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-external-participation-program-of-seele-test-net">2. The External Participation Program of Seele Test-net:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test-net-operation-indicators">3. Test-net Operation Indicators</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
@@ -145,7 +145,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Seele TestNet Performance Introduction</li>
+      <li>How To Create A Account</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -162,47 +162,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="seele-testnet-performance-introduction">
-<h1>Seele TestNet Performance Introduction<a class="headerlink" href="#seele-testnet-performance-introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="test-net-functions-and-their-corresponding-functions-in-the-whitepaper">
-<h2>1. Test-net Functions and Their Corresponding Functions in the Whitepaper<a class="headerlink" href="#test-net-functions-and-their-corresponding-functions-in-the-whitepaper" title="Permalink to this headline">¶</a></h2>
-<p>There are three major highlights in Seele’s whitepaper – the Neural
-Consensus Algorithm (EDA), Heterogeneous Forest Network, and Value
-Transport Protocol (VTP and QVIC). In this released version of the
-test-net, the sPoW consensus algorithm can be regarded as the subnet and
-preview version of the EDA. The complete version of the Neural Consensus
-Algorithm will be gradually released after the release of our test-net.
-A stable version will be released in the main-net.</p>
+  <div class="section" id="how-to-create-a-account">
+<h1>How To Create A Account<a class="headerlink" href="#how-to-create-a-account" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>The commands mentioned next, if you don’t know how to use it, please
+check the <a class="reference external" href="../index.html">Seele documentation</a> in detail.</li>
+</ul>
+<div class="section" id="create-account-by-seele-node">
+<h2>Create account by Seele Node<a class="headerlink" href="#create-account-by-seele-node" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">For convenience, A is From address on shard 1.</p>
+<p>generate A account:</p>
+</li>
+</ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">node</span> <span class="n">key</span> <span class="o">--</span><span class="n">shard</span> <span class="mi">1</span>
+
+<span class="o">//</span> <span class="n">Response</span>
+<span class="n">public</span> <span class="n">key</span><span class="p">:</span>  <span class="mh">0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1</span>
+<span class="n">private</span> <span class="n">key</span><span class="p">:</span> <span class="mh">0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104f</span>
+</pre></div>
 </div>
-<div class="section" id="the-external-participation-program-of-seele-test-net">
-<h2>2. The External Participation Program of Seele Test-net:<a class="headerlink" href="#the-external-participation-program-of-seele-test-net" title="Permalink to this headline">¶</a></h2>
-<p>A three-phase strategy: The first phase is to select certain community
-members (users &amp; developers) to experience and test the test-net for one
-or two weeks. After gathering their feedback and basing our tests, we’ll
-continue to work on enhancements. Crucial enhancements will be released
-as soon as possible.</p>
-<p>The second phase is to expand the scope and invite more community users
-and partners. We will continue to optimize the test-net and enhance user
-experience. The time span will be one to two weeks.</p>
-<p>The third phase is to open the test-net to the entire community.
-Suggestions and recommendations are welcome.</p>
 </div>
-<div class="section" id="test-net-operation-indicators">
-<h2>3. Test-net Operation Indicators<a class="headerlink" href="#test-net-operation-indicators" title="Permalink to this headline">¶</a></h2>
-<p>We have reached a peak of 3000 TPS with the block generation time within
-10 seconds. When the main-net launches, there will be better
-improvements to meet the requirements of various industry applications,
-including high-concurrent Internet services and financial services with
-strict reliability and security requirements.</p>
-<p>Currently, the transaction confirmation delay &lt; 1 minute. When the
-main-net launches, we’re planning to reduce the transaction confirmation
-delay to within seconds.</p>
-<p>In the current version of test-net, our contract virtual machine is
-highly compatible with EVM. Most Ethereum smart contracts (including
-ERC20) can be executed.</p>
-<p>Before the release of main-net, we will also be able to support the
-popular WebAssembly smart contracts for complex business logics and
-requirements.</p>
+<div class="section" id="create-account-by-seele-client">
+<h2>Create account by Seele Client<a class="headerlink" href="#create-account-by-seele-client" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">For convenience, A is From address on shard 1.</p>
+<p>generate A account:</p>
+</li>
+</ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">client</span> <span class="n">key</span> <span class="o">--</span><span class="n">shard</span> <span class="mi">1</span>
+
+<span class="o">//</span> <span class="n">Response</span>
+<span class="n">public</span> <span class="n">key</span><span class="p">:</span>  <span class="mh">0xb4153ca4090a11af1984cdf20b0d0cbed5ff97a1</span>
+<span class="n">private</span> <span class="n">key</span><span class="p">:</span> <span class="mh">0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104f</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generate-keyfile-for-account">
+<h2>Generate keyfile for account<a class="headerlink" href="#generate-keyfile-for-account" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Sometimes you may need to generate the from address keyfile, command:</li>
+</ul>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<span class="n">client</span> <span class="n">savekey</span> <span class="o">--</span><span class="n">privatekey</span> <span class="mh">0x28f74ba46964f6bd09be55654d58eacea72b57449d5636a8c347c15a9104fbc3</span> <span class="o">--</span><span class="n">file</span> <span class="o">.</span><span class="n">keystore</span><span class="o">-</span><span class="n">shard1</span>
+
+<span class="o">//</span> <span class="n">Response</span>
+<span class="n">Password</span><span class="p">:</span>
+<span class="n">Repeat</span> <span class="n">password</span><span class="p">:</span>
+<span class="n">store</span> <span class="n">key</span> <span class="n">successful</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -214,10 +225,10 @@ requirements.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Hash-Time-Lock-Contract.html" class="btn btn-neutral float-right" title="Hash Time Lock Contract" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Scan-Monitor-Dashboard-Setup.html" class="btn btn-neutral float-right" title="Scan Monitor Dashboard Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Join-Seele-TestNet.html" class="btn btn-neutral" title="Join Seele TestNet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Getting-Started-With-Seele.html" class="btn btn-neutral" title="Getting Started With Seele" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

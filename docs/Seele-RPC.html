@@ -82,6 +82,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-To-Create-A-Account.html">How To Create A Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Mining.html">Mining</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
@@ -1084,7 +1085,8 @@ information</li>
 <li><code class="docutils literal notranslate"><span class="pre">transactions</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - transaction array</li>
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
-<li><code class="docutils literal notranslate"><span class="pre">fee</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasLimit</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas limit</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasPrice</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas price</li>
 <li><code class="docutils literal notranslate"><span class="pre">from</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction provider</li>
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">payload</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - transaction payload</li>
@@ -1144,22 +1146,24 @@ information</li>
             <span class="p">{</span>
                 <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
                 <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">150000000</span><span class="p">,</span>
-                <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
                 <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5c5c72b14ff8599cdd70c85c090ff74d4db0a5e2a9dbb5a702c31200de8245ae&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x6fb17b265260caed33b4e8f58ad84b508dd8950b9bc93dae8518fc96912f76bb&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1539050098</span><span class="p">,</span>
-                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
+                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1539931510</span><span class="p">,</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0xd5a145191b7ca9cb4f3dc850e426c1e853d2a9f1&quot;</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">280</span><span class="p">,</span>
                 <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-                <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0b30a6edf95a16933a0a77ffd3eb15680d4e3cb79466f21c1181c013a68eae62&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0xec759db47a65f6537d630517f6cd3ca39c6f93d1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">21000</span><span class="p">,</span>
+                <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xf526dc404145cd409601e951fec4f2222f3abf578381cdaaea9db3a791a79cbd&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831&quot;</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0xa00d22dc3624d4696eff8d1641b442f79c3379b1&quot;</span>
             <span class="p">}</span>
         <span class="p">],</span>
         <span class="s2">&quot;txDebts&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -1241,7 +1245,8 @@ information</li>
 <li><code class="docutils literal notranslate"><span class="pre">transactions</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - transaction array</li>
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
-<li><code class="docutils literal notranslate"><span class="pre">fee</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasLimit</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas limit</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasPrice</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas price</li>
 <li><code class="docutils literal notranslate"><span class="pre">from</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction provider</li>
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">payload</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - transaction payload</li>
@@ -1301,22 +1306,24 @@ information</li>
             <span class="p">{</span>
                 <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
                 <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">150000000</span><span class="p">,</span>
-                <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
                 <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5c5c72b14ff8599cdd70c85c090ff74d4db0a5e2a9dbb5a702c31200de8245ae&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x6fb17b265260caed33b4e8f58ad84b508dd8950b9bc93dae8518fc96912f76bb&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1539050098</span><span class="p">,</span>
-                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
+                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1539931510</span><span class="p">,</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0xd5a145191b7ca9cb4f3dc850e426c1e853d2a9f1&quot;</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">280</span><span class="p">,</span>
                 <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-                <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0b30a6edf95a16933a0a77ffd3eb15680d4e3cb79466f21c1181c013a68eae62&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0xec759db47a65f6537d630517f6cd3ca39c6f93d1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">21000</span><span class="p">,</span>
+                <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xf526dc404145cd409601e951fec4f2222f3abf578381cdaaea9db3a791a79cbd&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831&quot;</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0xa00d22dc3624d4696eff8d1641b442f79c3379b1&quot;</span>
             <span class="p">}</span>
         <span class="p">],</span>
         <span class="s2">&quot;txDebts&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -1398,7 +1405,8 @@ information</li>
 <li><code class="docutils literal notranslate"><span class="pre">transactions</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - transaction array</li>
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
-<li><code class="docutils literal notranslate"><span class="pre">fee</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasLimit</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas limit</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasPrice</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas price</li>
 <li><code class="docutils literal notranslate"><span class="pre">from</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction provider</li>
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">payload</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - transaction payload</li>
@@ -1458,22 +1466,24 @@ information</li>
             <span class="p">{</span>
                 <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
                 <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">150000000</span><span class="p">,</span>
-                <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
                 <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5c5c72b14ff8599cdd70c85c090ff74d4db0a5e2a9dbb5a702c31200de8245ae&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x6fb17b265260caed33b4e8f58ad84b508dd8950b9bc93dae8518fc96912f76bb&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1539050098</span><span class="p">,</span>
-                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
+                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1539931510</span><span class="p">,</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0xd5a145191b7ca9cb4f3dc850e426c1e853d2a9f1&quot;</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">280</span><span class="p">,</span>
                 <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-                <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0b30a6edf95a16933a0a77ffd3eb15680d4e3cb79466f21c1181c013a68eae62&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0xec759db47a65f6537d630517f6cd3ca39c6f93d1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">21000</span><span class="p">,</span>
+                <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xf526dc404145cd409601e951fec4f2222f3abf578381cdaaea9db3a791a79cbd&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831&quot;</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0xa00d22dc3624d4696eff8d1641b442f79c3379b1&quot;</span>
             <span class="p">}</span>
         <span class="p">],</span>
         <span class="s2">&quot;txDebts&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -1863,7 +1873,8 @@ height or hash and transaction index.</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
-<li><code class="docutils literal notranslate"><span class="pre">fee</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasLimit</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas limit</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasPrice</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas price</li>
 <li><code class="docutils literal notranslate"><span class="pre">from</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction provider</li>
 <li><code class="docutils literal notranslate"><span class="pre">to</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction receiver</li>
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
@@ -1881,14 +1892,15 @@ height or hash and transaction index.</p>
     <span class="s2">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-        <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xbd2ca4f9869c714e589ad6a3b16731c8cb066de40d0e27e220cc1e014577baff&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">150000000</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x473ea3667d073491d5896a93fcf84d7dd822988d07482f21e7a875787539e62e&quot;</span><span class="p">,</span>
         <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x16fba5fcb9bc4ee7c3b7fed667e41c9a0248da71&quot;</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1540178976</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1931,7 +1943,8 @@ height and transaction index.</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
-<li><code class="docutils literal notranslate"><span class="pre">fee</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasLimit</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas limit</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasPrice</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas price</li>
 <li><code class="docutils literal notranslate"><span class="pre">from</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction provider</li>
 <li><code class="docutils literal notranslate"><span class="pre">to</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction receiver</li>
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
@@ -1949,14 +1962,15 @@ height and transaction index.</p>
     <span class="s2">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-        <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xbd2ca4f9869c714e589ad6a3b16731c8cb066de40d0e27e220cc1e014577baff&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">150000000</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x473ea3667d073491d5896a93fcf84d7dd822988d07482f21e7a875787539e62e&quot;</span><span class="p">,</span>
         <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x16fba5fcb9bc4ee7c3b7fed667e41c9a0248da71&quot;</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1540178976</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1999,7 +2013,8 @@ hash and transaction index.</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
-<li><code class="docutils literal notranslate"><span class="pre">fee</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasLimit</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas limit</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasPrice</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas price</li>
 <li><code class="docutils literal notranslate"><span class="pre">from</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction provider</li>
 <li><code class="docutils literal notranslate"><span class="pre">to</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction receiver</li>
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
@@ -2017,14 +2032,15 @@ hash and transaction index.</p>
     <span class="s2">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-        <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xbd2ca4f9869c714e589ad6a3b16731c8cb066de40d0e27e220cc1e014577baff&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">150000000</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x473ea3667d073491d5896a93fcf84d7dd822988d07482f21e7a875787539e62e&quot;</span><span class="p">,</span>
         <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x16fba5fcb9bc4ee7c3b7fed667e41c9a0248da71&quot;</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1540178976</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -2067,7 +2083,8 @@ hash and transaction index.</p>
 <li><code class="docutils literal notranslate"><span class="pre">status</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction status</li>
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
-<li><code class="docutils literal notranslate"><span class="pre">fee</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasLimit</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas limit</li>
+<li><code class="docutils literal notranslate"><span class="pre">gasPrice</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction gas price</li>
 <li><code class="docutils literal notranslate"><span class="pre">from</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction provider</li>
 <li><code class="docutils literal notranslate"><span class="pre">to</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction receiver</li>
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
@@ -2086,20 +2103,21 @@ hash and transaction index.</p>
     <span class="s2">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;blockHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000015592fab87d6efa10e63d7722f6f359d90a1aff9e70930b291931c34922&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;blockHeight&quot;</span><span class="p">:</span> <span class="mi">4202</span><span class="p">,</span>
+        <span class="s2">&quot;blockHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000009c753570436b0bdd4ea1b9cfb1611f181f7aae82d4ba265761c50c8479&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;blockHeight&quot;</span><span class="p">:</span> <span class="mi">3608</span><span class="p">,</span>
         <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;block&quot;</span><span class="p">,</span>
         <span class="s2">&quot;transaction&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-            <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xbd2ca4f9869c714e589ad6a3b16731c8cb066de40d0e27e220cc1e014577baff&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x16fba5fcb9bc4ee7c3b7fed667e41c9a0248da71&quot;</span>
+                <span class="s2">&quot;accountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">150000000</span><span class="p">,</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x473ea3667d073491d5896a93fcf84d7dd822988d07482f21e7a875787539e62e&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1540178976</span><span class="p">,</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
         <span class="p">},</span>
-        <span class="s2">&quot;txIndex&quot;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="s2">&quot;txIndex&quot;</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -2133,6 +2151,7 @@ hash.</p>
 <span id="id56"></span><h5>Parameters<a class="headerlink" href="#parameters-18" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
+<li><code class="docutils literal notranslate"><span class="pre">abi</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - the abi file of contract</li>
 </ul>
 </div>
 <div class="section" id="returns-18">
