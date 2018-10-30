@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Command Line Options &mdash; Seele  documentation</title>
+  <title>Seele Node &mdash; Seele  documentation</title>
   
 
   
@@ -85,9 +85,8 @@
 <li class="toctree-l1"><a class="reference internal" href="How-To-Create-An-Account.html">How To Create An Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Mining.html">Mining</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Command Line Options</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#client">Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#node">Node</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Seele Node</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-options">Command Line Options</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
@@ -145,7 +144,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Command Line Options</li>
+      <li>Seele Node</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -162,131 +161,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="command-line-options">
-<h1>Command Line Options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="client">
-<h2>Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ client --help
-NAME:
-   client - interact with node process
+  <div class="section" id="seele-node">
+<h1>Seele Node<a class="headerlink" href="#seele-node" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="command-line-options">
+<h2>Command Line Options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="o">-</span><span class="n">h</span>
+<span class="n">use</span> <span class="s2">&quot;node help [&lt;command&gt;]&quot;</span> <span class="k">for</span> <span class="n">detailed</span> <span class="n">usage</span>
 
-USAGE:
-   client [global options] command [command options] [arguments...]
+<span class="n">Usage</span><span class="p">:</span>
+  <span class="n">node</span> <span class="p">[</span><span class="n">command</span><span class="p">]</span>
 
-COMMANDS:
-     call              call contract
-     domain            system domain name commands
-     dumpheap          dump heap for profiling, return the file path
-     getbalance        get balance info
-     getblock          get block by height or hash
-     getblockheight    get block height
-     getblocktxcount   get block transaction count by block height or block hash
-     getdebtbyhash     get debt by debt hash
-     getdebts          get pending debts
-     getinfo           get node info
-     getlogs           get logs
-     getnonce          get account nonce
-     getpendingtxs     get pending transactions
-     getreceipt        get receipt by transaction hash
-     getshardnum       get account shard number
-     gettxbyhash       get transaction by transaction hash
-     gettxinblock      get transaction by block height or block hash with index of the transaction in the block
-     gettxpoolcontent  get transaction pool contents
-     gettxpoolcount    get transaction pool transaction count
-     htlc              Hash time lock contract commands
-     key               generate key with or without shard number
-     miner             miner commands
-     p2p               p2p commands
-     savekey           save private key to a keystore file
-     sendtx            send transaction to node
-     sign              generate a signed transaction and print it out
-     subchain          system sub chain commands
-     help, h           Shows a list of commands or help for one command
+<span class="n">Available</span> <span class="n">Commands</span><span class="p">:</span>
+  <span class="n">help</span>        <span class="n">Help</span> <span class="n">about</span> <span class="nb">any</span> <span class="n">command</span>
+  <span class="n">key</span>         <span class="n">generate</span> <span class="n">a</span> <span class="n">key</span> <span class="n">pair</span> <span class="k">with</span> <span class="n">specified</span> <span class="n">shard</span> <span class="n">number</span>
+  <span class="n">start</span>       <span class="n">start</span> <span class="n">the</span> <span class="n">node</span> <span class="n">of</span> <span class="n">seele</span>
+  <span class="n">validatekey</span> <span class="n">validate</span> <span class="n">the</span> <span class="n">private</span> <span class="n">key</span> <span class="ow">and</span> <span class="n">generate</span> <span class="n">its</span> <span class="n">public</span> <span class="n">key</span>
 
-GLOBAL OPTIONS:
-   --help, -h  show help
+<span class="n">Flags</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>   <span class="n">help</span> <span class="k">for</span> <span class="n">node</span>
+
+<span class="n">Use</span> <span class="s2">&quot;node [command] --help&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span> <span class="n">about</span> <span class="n">a</span> <span class="n">command</span><span class="o">.</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ client call --help
-NAME:
-   client call - call contract
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">key</span> <span class="o">-</span><span class="n">h</span>
+<span class="n">generate</span> <span class="n">a</span> <span class="n">key</span> <span class="n">pair</span> <span class="ow">and</span> <span class="nb">print</span> <span class="n">them</span> <span class="k">with</span> <span class="nb">hex</span> <span class="n">values</span>
+ <span class="n">For</span> <span class="n">example</span><span class="p">:</span>
+<span class="n">node</span> <span class="n">key</span> <span class="o">--</span><span class="n">shard</span> <span class="mi">1</span>
 
-USAGE:
-   client call [command options] [arguments...]
+<span class="n">Usage</span><span class="p">:</span>
+  <span class="n">node</span> <span class="n">key</span> <span class="p">[</span><span class="n">flags</span><span class="p">]</span>
 
-OPTIONS:
-   --address value, -a value  address for client to request (default: &quot;127.0.0.1:8027&quot;)
-   --height value             block height (default: -1)
-   --payload value            transaction payload info
-   --to value                 to address
+<span class="n">Flags</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>         <span class="n">help</span> <span class="k">for</span> <span class="n">key</span>
+      <span class="o">--</span><span class="n">shard</span> <span class="n">uint</span>   <span class="n">shard</span> <span class="n">number</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ client domain --help
-NAME:
-   client domain - system domain name commands
-
-USAGE:
-   client domain command [command options] [arguments...]
-
-COMMANDS:
-     owner     get the domain name owner
-     register  register a domain name
-
-OPTIONS:
-   --help, -h  show help
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ client dumpheap --help
-NAME:
-   client dumpheap - dump heap for profiling, return the file path
-
-USAGE:
-   client dumpheap [command options] [arguments...]
-
-OPTIONS:
-   --address value, -a value  address for client to request (default: &quot;127.0.0.1:8027&quot;)
-   --file value               heap dump file name, defualt heap.dump (default: &quot;heap.dump&quot;)
-   --gc                       GC before heap dump, defualt false
-</pre></div>
-</div>
-</div>
-<div class="section" id="node">
-<h2>Node<a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ node --help
-use &quot;node help [&lt;command&gt;]&quot; for detailed usage
-
-Usage:
-  node [command]
-
-Available Commands:
-  help        Help about any command
-  key         generate a key pair with specified shard number
-  start       start the node of seele
-  validatekey validate the private key and generate its public key
-
-Flags:
-  -h, --help   help for node
-
-Use &quot;node [command] --help&quot; for more information about a command.
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ node key --help
-generate a key pair and print them with hex values
- For example:
-node key --shard 1
-
-Usage:
-  node key [flags]
-
-Flags:
-  -h, --help         help for key
-      --shard uint   shard number
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">start</span> <span class="o">--</span><span class="n">help</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">usage</span> <span class="n">example</span><span class="p">:</span>
-                <span class="n">node</span><span class="o">.</span><span class="n">exe</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="n">cmd</span>\<span class="n">node</span><span class="o">.</span><span class="n">json</span>
-                <span class="n">start</span> <span class="n">a</span> <span class="n">node</span><span class="o">.</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">exe</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="n">cmd</span>\<span class="n">node</span><span class="o">.</span><span class="n">json</span>
+        <span class="n">start</span> <span class="n">a</span> <span class="n">node</span><span class="o">.</span>
 
 <span class="n">Usage</span><span class="p">:</span>
   <span class="n">node</span> <span class="n">start</span> <span class="p">[</span><span class="n">flags</span><span class="p">]</span>
@@ -295,14 +208,15 @@ Flags:
       <span class="o">--</span><span class="n">accounts</span> <span class="n">string</span>   <span class="n">init</span> <span class="n">accounts</span> <span class="n">info</span>
   <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">config</span> <span class="n">string</span>     <span class="n">seele</span> <span class="n">node</span> <span class="n">config</span> <span class="n">file</span> <span class="p">(</span><span class="n">required</span><span class="p">)</span>
   <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>              <span class="n">help</span> <span class="k">for</span> <span class="n">start</span>
+  <span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="o">--</span><span class="n">light</span>             <span class="n">whether</span> <span class="n">start</span> <span class="k">with</span> <span class="n">light</span> <span class="n">mode</span>
   <span class="o">-</span><span class="n">t</span><span class="p">,</span> <span class="o">--</span><span class="n">metrics</span>           <span class="n">start</span> <span class="n">metrics</span>
   <span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="o">--</span><span class="n">miner</span> <span class="n">string</span>      <span class="n">miner</span> <span class="n">start</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">,</span> <span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">]</span> <span class="p">(</span><span class="n">default</span> <span class="s2">&quot;start&quot;</span><span class="p">)</span>
-      <span class="o">--</span><span class="n">threads</span> <span class="n">uint</span>      <span class="n">miner</span> <span class="n">thread</span> <span class="n">value</span> <span class="p">(</span><span class="n">default</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="o">--</span><span class="n">threads</span> <span class="nb">int</span>       <span class="n">miner</span> <span class="n">thread</span> <span class="n">value</span> <span class="p">(</span><span class="n">default</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">validatekey</span> <span class="o">--</span><span class="n">help</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">validatekey</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">For</span> <span class="n">example</span><span class="p">:</span>
-                        <span class="n">node</span><span class="o">.</span><span class="n">exe</span> <span class="n">validatekey</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">exe</span> <span class="n">validatekey</span>
 
 <span class="n">Usage</span><span class="p">:</span>
   <span class="n">node</span> <span class="n">validatekey</span> <span class="p">[</span><span class="n">flags</span><span class="p">]</span>
