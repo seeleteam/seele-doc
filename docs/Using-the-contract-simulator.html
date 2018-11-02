@@ -113,7 +113,6 @@
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seele.js.html">Seele.js</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
@@ -194,6 +193,12 @@ or Remix local browser.</li>
 <div class="section" id="compile-the-contract-simulator">
 <h3>Compile the contract simulator<a class="headerlink" href="#compile-the-contract-simulator" title="Permalink to this headline">¶</a></h3>
 <p>The code is in <code class="docutils literal notranslate"><span class="pre">https://github.com/seeleteam/go-seele</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">seeleteam</span><span class="o">/</span><span class="n">go</span><span class="o">-</span><span class="n">seele</span><span class="o">.</span><span class="n">git</span>
+
+<span class="n">cd</span> <span class="n">go</span><span class="o">-</span><span class="n">seele</span><span class="o">/</span><span class="n">cmd</span><span class="o">/</span><span class="n">vm</span>
+<span class="n">go</span> <span class="n">build</span>
+</pre></div>
+</div>
 <p>Copy the solc compiler to this path, and copy the solidity file in it
 too.</p>
 </div>
@@ -202,6 +207,21 @@ too.</p>
 <div class="section" id="smart-contract-source-code">
 <h4>Smart contract source code:<a class="headerlink" href="#smart-contract-source-code" title="Permalink to this headline">¶</a></h4>
 <p>SimpleStorage.sol:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">contract</span> <span class="n">SimpleStorage</span> <span class="p">{</span>
+    <span class="n">uint</span> <span class="n">storedData</span><span class="p">;</span>
+
+    <span class="n">function</span> <span class="nb">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">storedData</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">function</span> <span class="n">get</span><span class="p">()</span> <span class="n">constant</span> <span class="n">returns</span><span class="p">(</span><span class="n">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">storedData</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="create-the-contract-in-the-simulator-with-solidity-file">
 <h4>Create the contract in the simulator with solidity file<a class="headerlink" href="#create-the-contract-in-the-simulator-with-solidity-file" title="Permalink to this headline">¶</a></h4>
@@ -252,6 +272,21 @@ the online version at <a class="reference external" href="http://remix.ethereum.
 <div class="section" id="compile-contract">
 <h4>2. Compile Contract<a class="headerlink" href="#compile-contract" title="Permalink to this headline">¶</a></h4>
 <p>Prepare the smart contract source code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">contract</span> <span class="n">SimpleStorage</span> <span class="p">{</span>
+    <span class="n">uint</span> <span class="n">storedData</span><span class="p">;</span>
+
+    <span class="n">function</span> <span class="nb">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">storedData</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">function</span> <span class="n">get</span><span class="p">()</span> <span class="n">constant</span> <span class="n">returns</span><span class="p">(</span><span class="n">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">storedData</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>And copy the smart contract source code to the text area. <img alt="image0" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/1.png" /> Click
 the Start to compile on the right to start compile. <img alt="image1" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/2.png" /> Ignore the
 yellow warnings, due to the source code version difference, the compiler
@@ -317,7 +352,7 @@ successful.</p>
 <h4>6. Test get Function<a class="headerlink" href="#test-get-function" title="Permalink to this headline">¶</a></h4>
 <p>Similar to set function, click on the get button. <img alt="image9" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/10.png" /> If the log
 shows up in the log field then means the function call is successful.
-<img alt="image10" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/11.png" /> Click on the log line item for detail. <img alt="image11" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/12.png" /> Copy the
+<img alt="image10" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/11.png" /> Click on the log line item for detail. <img alt="image11" src="https://raw.githubusercontent.com/wangff15386/seele-photo/master/simulator%20remix/12.png" /> Copy the
 content from the input field.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mh">0x6d4ce63c</span>
 </pre></div>

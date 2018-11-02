@@ -163,7 +163,6 @@
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seele.js.html">Seele.js</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
@@ -1557,6 +1556,21 @@ execution</li>
 <span id="id28"></span><h5>Example<a class="headerlink" href="#example-8" title="Permalink to this headline">¶</a></h5>
 <p>When using the example below, the contract must be deployed first. The
 solidity code file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">contract</span> <span class="n">SimpleStorage</span> <span class="p">{</span>
+    <span class="n">uint</span> <span class="n">storedData</span><span class="o">=</span><span class="mi">23</span><span class="p">;</span>
+
+    <span class="n">function</span> <span class="nb">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">storedData</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">function</span> <span class="n">get</span><span class="p">()</span> <span class="n">constant</span> <span class="n">returns</span><span class="p">(</span><span class="n">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">storedData</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>As you can see, the example is testing the get function.</p>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;seele_call&quot;,&quot;params&quot;:[&quot;0x9df8ed11ea024183bd584480e80952c9b04e0122&quot;,&quot;0x6d4ce63c&quot;,-1],&quot;id&quot;:1}&#39;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8037</span>
@@ -1618,6 +1632,30 @@ and the event name.</p>
 <span id="id31"></span><h5>Example<a class="headerlink" href="#example-9" title="Permalink to this headline">¶</a></h5>
 <p>When using the example below, the contract must be deployed first. The
 solidity code file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">contract</span> <span class="n">simple_storage_1</span> <span class="p">{</span>
+    <span class="n">uint</span> <span class="n">storedData</span><span class="o">=</span><span class="mi">23</span><span class="p">;</span>
+
+    <span class="n">event</span> <span class="n">getLog</span><span class="p">(</span><span class="n">address</span> <span class="n">addr</span><span class="p">,</span> <span class="n">string</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">event</span> <span class="n">getLog1</span><span class="p">(</span><span class="n">string</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">event</span> <span class="n">getLog2</span><span class="p">(</span><span class="n">string</span> <span class="n">message</span><span class="p">);</span>
+
+    <span class="n">function</span> <span class="nb">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="n">public</span><span class="p">{</span>
+        <span class="n">getLog1</span><span class="p">(</span><span class="s2">&quot;set getLog1&quot;</span><span class="p">);</span>
+        <span class="n">getLog2</span><span class="p">(</span><span class="s2">&quot;set getLog2&quot;</span><span class="p">);</span>
+        <span class="n">storedData</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">function</span> <span class="n">get</span><span class="p">()</span> <span class="n">constant</span> <span class="n">public</span> <span class="n">returns</span><span class="p">(</span><span class="n">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">getLog</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span> <span class="s2">&quot;get getLog&quot;</span><span class="p">);</span>
+        <span class="n">getLog1</span><span class="p">(</span><span class="s2">&quot;get getLog1&quot;</span><span class="p">);</span>
+        <span class="nb">set</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">storedData</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>As you can see, this example is testing the get function. In this
 situation, the height is the block height of the block containing the
 get transaction.</p>
