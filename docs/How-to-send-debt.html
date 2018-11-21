@@ -164,6 +164,11 @@
             
   <div class="section" id="how-to-send-debt">
 <h1>How To Send Debt<a class="headerlink" href="#how-to-send-debt" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>The different between transaction and debt is that transaction
+happened in two accounts on the same shard,debt happened in two
+accounts on different shards.</li>
+</ul>
 <p>You should have two accounts on different
 shards.<a class="reference external" href="How-to-send-debt.html">Here</a> will help you to get the
 accounts.</p>
@@ -238,7 +243,7 @@ Don’t worry, just wait for servals seconds, or you can use
 <div class="section" id="get-debt">
 <h2>2. Get debt<a class="headerlink" href="#get-debt" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>When the transaction got over 100 blocks confirmed, you will get the
+<li>When the transaction got over 120 blocks confirmed, you will get the
 pending debt on shard 2.</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getdebts</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span>
