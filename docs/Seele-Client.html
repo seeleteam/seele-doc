@@ -108,7 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#example-1">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#addtx">AddTx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sendtx">SendTx</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parameters-2">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#returns-2">Returns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-2">Example</a></li>
@@ -607,6 +607,8 @@ described here.</p>
 <span class="n">OPTIONS</span><span class="p">:</span>
    <span class="o">--</span><span class="n">address</span> <span class="n">value</span><span class="p">,</span> <span class="o">-</span><span class="n">a</span> <span class="n">value</span>  <span class="n">address</span> <span class="k">for</span> <span class="n">client</span> <span class="n">to</span> <span class="n">request</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8027&quot;</span><span class="p">)</span>
    <span class="o">--</span><span class="n">account</span> <span class="n">value</span>            <span class="n">account</span> <span class="n">address</span>
+   <span class="o">--</span><span class="nb">hash</span> <span class="n">value</span>               <span class="nb">hash</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">hex</span>
+   <span class="o">--</span><span class="n">height</span> <span class="n">value</span>             <span class="n">block</span> <span class="n">height</span> <span class="ow">or</span> <span class="n">current</span> <span class="n">block</span> <span class="n">height</span> <span class="k">for</span> <span class="n">negative</span> <span class="n">value</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getblock</span> <span class="o">-</span><span class="n">h</span>
@@ -705,6 +707,8 @@ described here.</p>
 <span class="n">OPTIONS</span><span class="p">:</span>
    <span class="o">--</span><span class="n">address</span> <span class="n">value</span><span class="p">,</span> <span class="o">-</span><span class="n">a</span> <span class="n">value</span>  <span class="n">address</span> <span class="k">for</span> <span class="n">client</span> <span class="n">to</span> <span class="n">request</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8027&quot;</span><span class="p">)</span>
    <span class="o">--</span><span class="n">account</span> <span class="n">value</span>            <span class="n">account</span> <span class="n">address</span>
+   <span class="o">--</span><span class="nb">hash</span> <span class="n">value</span>               <span class="nb">hash</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">hex</span>
+   <span class="o">--</span><span class="n">height</span> <span class="n">value</span>             <span class="n">block</span> <span class="n">height</span> <span class="ow">or</span> <span class="n">current</span> <span class="n">block</span> <span class="n">height</span> <span class="k">for</span> <span class="n">negative</span> <span class="n">value</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getpendingtxs</span> <span class="o">-</span><span class="n">h</span>
@@ -1276,6 +1280,8 @@ described here.</p>
 <span class="n">OPTIONS</span><span class="p">:</span>
    <span class="o">--</span><span class="n">address</span> <span class="n">value</span><span class="p">,</span> <span class="o">-</span><span class="n">a</span> <span class="n">value</span>  <span class="n">address</span> <span class="k">for</span> <span class="n">client</span> <span class="n">to</span> <span class="n">request</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8027&quot;</span><span class="p">)</span>
    <span class="o">--</span><span class="n">account</span> <span class="n">value</span>            <span class="n">account</span> <span class="n">address</span>
+   <span class="o">--</span><span class="nb">hash</span> <span class="n">value</span>               <span class="nb">hash</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">hex</span>
+   <span class="o">--</span><span class="n">height</span> <span class="n">value</span>             <span class="n">block</span> <span class="n">height</span> <span class="ow">or</span> <span class="n">current</span> <span class="n">block</span> <span class="n">height</span> <span class="k">for</span> <span class="n">negative</span> <span class="n">value</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">light</span> <span class="n">getblock</span> <span class="o">-</span><span class="n">h</span>
@@ -1316,7 +1322,7 @@ described here.</p>
    <span class="o">--</span><span class="n">height</span> <span class="n">value</span>             <span class="n">block</span> <span class="n">height</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">light</span> <span class="n">getnonce</span> <span class="o">-</span><span class="n">h</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">light</span> <span class="n">getnonce</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">NAME</span><span class="p">:</span>
    <span class="n">light</span> <span class="n">getnonce</span> <span class="o">-</span> <span class="n">get</span> <span class="n">account</span> <span class="n">nonce</span>
 
@@ -1326,6 +1332,8 @@ described here.</p>
 <span class="n">OPTIONS</span><span class="p">:</span>
    <span class="o">--</span><span class="n">address</span> <span class="n">value</span><span class="p">,</span> <span class="o">-</span><span class="n">a</span> <span class="n">value</span>  <span class="n">address</span> <span class="k">for</span> <span class="n">client</span> <span class="n">to</span> <span class="n">request</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8027&quot;</span><span class="p">)</span>
    <span class="o">--</span><span class="n">account</span> <span class="n">value</span>            <span class="n">account</span> <span class="n">address</span>
+   <span class="o">--</span><span class="nb">hash</span> <span class="n">value</span>               <span class="nb">hash</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">hex</span>
+   <span class="o">--</span><span class="n">height</span> <span class="n">value</span>             <span class="n">block</span> <span class="n">height</span> <span class="ow">or</span> <span class="n">current</span> <span class="n">block</span> <span class="n">height</span> <span class="k">for</span> <span class="n">negative</span> <span class="n">value</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">light</span> <span class="n">getpendingtxs</span> <span class="o">-</span><span class="n">h</span>
@@ -1619,15 +1627,31 @@ described here.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="#getinfo">GetInfo</a></td>
+<tr class="row-even"><td><a class="reference external" href="#call">Call</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#getbalance">GetBalance</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#createhtlc">CreateHTLC</a></td>
 <td>✓</td>
-<td>✓</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#addtx">AddTx</a></td>
+<tr class="row-even"><td><a class="reference external" href="#decodehtlc">DecodeHTLC</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#dumpheap">DumpHeap</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#generatehtlckey">GenerateHTLCKey</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#generatehtlcstamptime">GenerateHTLCStamptime</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#generatepayload">GeneratePayload</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
@@ -1635,55 +1659,47 @@ described here.</p>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#getblockheight">GetBlockHeight</a></td>
+<tr class="row-even"><td><a class="reference external" href="#getaccountshardnum">GetAccountShardNum</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#getblock">GetBlock</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#getbalance">GetBalance</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#savekey">SaveKey</a></td>
+<tr class="row-even"><td><a class="reference external" href="#getblock">GetBlock</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#getaccountshardnum">GetAccountShardNum</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#getblockheight">GetBlockHeight</a></td>
 <td>✓</td>
 <td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#call">Call</a></td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td>GetLogs (Being Written)</td>
-<td>✓</td>
-<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#getblocktransactioncount">GetBlockTransactionCount</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyblockindex">GetTransactionByBlockIndex</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#gettransactionbyhash">GetTransactionByHash</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#getreceiptbytxhash">GetReceiptByTxHash</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#getdebtbyhash">GetDebtByHash</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#getdebtbyhash">GetDebtByHash</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#getpeersinfo">GetPeersInfo</a></td>
+<tr class="row-even"><td><a class="reference external" href="#getdomainnameowner">GetDomainNameOwner</a></td>
 <td>✓</td>
-<td>✓</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#getpeercount">GetPeerCount</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#gethtlc">GetHTLC</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getinfo">GetInfo</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getlogs">GetLogs</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getnetworkid">GetNetworkID</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
@@ -1691,45 +1707,37 @@ described here.</p>
 <td>✓</td>
 <td>✓</td>
 </tr>
+<tr class="row-even"><td><a class="reference external" href="#getpeercount">GetPeerCount</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getpeersinfo">GetPeersInfo</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#getpendingdebts">GetPendingDebts</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#getpendingtransactions">GetPendingTransactions</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 <tr class="row-even"><td><a class="reference external" href="#getprotocolversion">GetProtocolVersion</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#getnetworkid">GetNetworkID</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#getreceiptbytxhash">GetReceiptByTxHash</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#miner-start">Miner Start</a></td>
+<tr class="row-even"><td><a class="reference external" href="#gettransactionbyblockindex">GetTransactionByBlockIndex</a></td>
 <td>✓</td>
-<td>&#160;</td>
+<td>✓</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#miner-stop">Miner Stop</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#gettransactionbyhash">GetTransactionByHash</a></td>
 <td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#miner-status">Miner Status</a></td>
 <td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#miner-getcoinbase">Miner GetCoinbase</a></td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#miner-setthreads">Miner SetThreads</a></td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#miner-setcoinbase">Miner SetCoinbase</a></td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#miner-hashrate">Miner Hashrate</a></td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#miner-threads">Miner Threads</a></td>
-<td>✓</td>
-<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#gettxpoolcontent">GetTxPoolContent</a></td>
 <td>✓</td>
@@ -1739,63 +1747,63 @@ described here.</p>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#getpendingtransactions">GetPendingTransactions</a></td>
+<tr class="row-even"><td><a class="reference external" href="#key">Key</a></td>
 <td>✓</td>
 <td>✓</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#getpendingdebts">GetPendingDebts</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#miner-getcoinbase">Miner GetCoinbase</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#dumpheap">DumpHeap</a></td>
+<tr class="row-even"><td><a class="reference external" href="#miner-hashrate">Miner Hashrate</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#key">Key</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#sign">Sign</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#generatepayload">GeneratePayload</a></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#createhtlc">CreateHTLC</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#miner-setcoinbase">Miner SetCoinbase</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#decodehtlc">DecodeHTLC</a></td>
+<tr class="row-even"><td><a class="reference external" href="#miner-setthreads">Miner SetThreads</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#gethtlc">GetHTLC</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#miner-start">Miner Start</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#generatehtlckey">GenerateHTLCKey</a></td>
+<tr class="row-even"><td><a class="reference external" href="#miner-status">Miner Status</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="#refundfromhtlc">RefundFromHTLC</a></td>
+<tr class="row-odd"><td><a class="reference external" href="#miner-stop">Miner Stop</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="#generatehtlcstamptime">GenerateHTLCStamptime</a></td>
+<tr class="row-even"><td><a class="reference external" href="#miner-threads">Miner Threads</a></td>
 <td>✓</td>
 <td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#refundfromhtlc">RefundFromHTLC</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#registerdomainname">RegisterDomainName</a></td>
+<td>✓</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#savekey">SaveKey</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#sendtx">SendTx</a></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#sign">Sign</a></td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="#withdrawfromhtlc">WithdrawFromHTLC</a></td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="#registerdomainname">RegisterDomainName</a></td>
-<td>✓</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="#getdomainnameowner">GetDomainNameOwner</a></td>
 <td>✓</td>
 <td>&#160;</td>
 </tr>
@@ -1818,8 +1826,8 @@ described here.</p>
 <p>This method returns node information.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col width="21%" />
+<col width="79%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Type</th>
@@ -1828,7 +1836,7 @@ described here.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Console</td>
-<td><code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">getinfo</span> <span class="pre">-a</span> <span class="pre">&lt;rpc</span> <span class="pre">address&gt;</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">getinfo</span> <span class="pre">-a</span> <span class="pre">&lt;address&gt;</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -1873,8 +1881,8 @@ described here.</p>
 the node address balance is returned.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col width="14%" />
+<col width="86%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Type</th>
@@ -1883,29 +1891,30 @@ the node address balance is returned.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Console</td>
-<td><a href="#id1"><span class="problematic" id="id2">``</span></a>client getbalance –account 0x&lt;
-public address&gt; -a &lt;rpc address&gt;`
-`</td>
+<td><code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">getbalance</span> <span class="pre">--account</span> <span class="pre">&lt;string&gt;</span> <span class="pre">-a</span> <span class="pre">&lt;address&gt;</span></code></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="parameters-1">
-<span id="id3"></span><h4>Parameters<a class="headerlink" href="#parameters-1" title="Permalink to this headline">¶</a></h4>
+<span id="id1"></span><h4>Parameters<a class="headerlink" href="#parameters-1" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 <li><code class="docutils literal notranslate"><span class="pre">account</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - wallet address</li>
+<li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - block height or current block height for
+negative value (default: -1)</li>
 </ul>
 </div>
 <div class="section" id="returns-1">
-<span id="id4"></span><h4>Returns<a class="headerlink" href="#returns-1" title="Permalink to this headline">¶</a></h4>
+<span id="id2"></span><h4>Returns<a class="headerlink" href="#returns-1" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Account</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - account</li>
 <li><code class="docutils literal notranslate"><span class="pre">Balance</span></code>:<code class="docutils literal notranslate"><span class="pre">big.Int</span></code> - account balance</li>
 </ul>
 </div>
 <div class="section" id="example-1">
-<span id="id5"></span><h4>Example<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h4>
+<span id="id3"></span><h4>Example<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getbalance</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span>
 
@@ -1919,8 +1928,8 @@ public address&gt; -a &lt;rpc address&gt;`
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="addtx">
-<h3>AddTx<a class="headerlink" href="#addtx" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sendtx">
+<h3>SendTx<a class="headerlink" href="#sendtx" title="Permalink to this headline">¶</a></h3>
 <p>This method submits a transaction to the node.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1935,13 +1944,13 @@ public address&gt; -a &lt;rpc address&gt;`
 <tbody valign="top">
 <tr class="row-even"><td>Console</td>
 <td><code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">sendtx</span> <span class="pre">--amount</span> <span class="pre">10000</span> <span class="pre">--</span>
-<span class="pre">fee</span> <span class="pre">1</span> <span class="pre">--from</span> <span class="pre">keyfile</span> <span class="pre">--to</span> <span class="pre">&lt;string</span>
-<span class="pre">&gt;</span> <span class="pre">-a</span> <span class="pre">&lt;rpc</span> <span class="pre">address&gt;</span></code></td>
+<span class="pre">from</span> <span class="pre">&lt;keyfile&gt;</span> <span class="pre">--to</span> <span class="pre">&lt;string&gt;</span> <span class="pre">-a</span> <span class="pre">&lt;</span>
+<span class="pre">address&gt;</span></code></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="parameters-2">
-<span id="id6"></span><h4>Parameters<a class="headerlink" href="#parameters-2" title="Permalink to this headline">¶</a></h4>
+<span id="id4"></span><h4>Parameters<a class="headerlink" href="#parameters-2" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -1955,7 +1964,7 @@ public address&gt; -a &lt;rpc address&gt;`
 </ul>
 </div>
 <div class="section" id="returns-2">
-<span id="id7"></span><h4>Returns<a class="headerlink" href="#returns-2" title="Permalink to this headline">¶</a></h4>
+<span id="id5"></span><h4>Returns<a class="headerlink" href="#returns-2" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">From</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction ‘from’ address</li>
@@ -1970,7 +1979,7 @@ public address&gt; -a &lt;rpc address&gt;`
 </ul>
 </div>
 <div class="section" id="example-2">
-<span id="id8"></span><h4>Example<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h4>
+<span id="id6"></span><h4>Example<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">10000</span> <span class="o">--</span><span class="n">price</span> <span class="mi">1</span> <span class="o">--</span><span class="n">gas</span> <span class="mi">2</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0xb286933bccbec9ca1cd92257d12d12ebab9b1201</span>
 
@@ -2019,21 +2028,24 @@ public address&gt; -a &lt;rpc address&gt;`
 </tbody>
 </table>
 <div class="section" id="parameters-3">
-<span id="id9"></span><h4>Parameters<a class="headerlink" href="#parameters-3" title="Permalink to this headline">¶</a></h4>
+<span id="id7"></span><h4>Parameters<a class="headerlink" href="#parameters-3" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 <li><code class="docutils literal notranslate"><span class="pre">account</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - wallet address</li>
+<li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - block height or current block height for
+negative value (default: -1)</li>
 </ul>
 </div>
 <div class="section" id="returns-3">
-<span id="id10"></span><h4>Returns<a class="headerlink" href="#returns-3" title="Permalink to this headline">¶</a></h4>
+<span id="id8"></span><h4>Returns<a class="headerlink" href="#returns-3" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - nonce</li>
 </ul>
 </div>
 <div class="section" id="example-3">
-<span id="id11"></span><h4>Example<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h4>
+<span id="id9"></span><h4>Example<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getnonce</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span>
 
@@ -2064,20 +2076,20 @@ public address&gt; -a &lt;rpc address&gt;`
 </tbody>
 </table>
 <div class="section" id="parameters-4">
-<span id="id12"></span><h4>Parameters<a class="headerlink" href="#parameters-4" title="Permalink to this headline">¶</a></h4>
+<span id="id10"></span><h4>Parameters<a class="headerlink" href="#parameters-4" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-4">
-<span id="id13"></span><h4>Returns<a class="headerlink" href="#returns-4" title="Permalink to this headline">¶</a></h4>
+<span id="id11"></span><h4>Returns<a class="headerlink" href="#returns-4" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - nonce</li>
 </ul>
 </div>
 <div class="section" id="example-4">
-<span id="id14"></span><h4>Example<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h4>
+<span id="id12"></span><h4>Example<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getblockheight</span>
 
@@ -2109,7 +2121,7 @@ block hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-5">
-<span id="id15"></span><h4>Parameters<a class="headerlink" href="#parameters-5" title="Permalink to this headline">¶</a></h4>
+<span id="id13"></span><h4>Parameters<a class="headerlink" href="#parameters-5" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -2120,7 +2132,7 @@ information</li>
 </ul>
 </div>
 <div class="section" id="returns-5">
-<span id="id16"></span><h4>Returns<a class="headerlink" href="#returns-5" title="Permalink to this headline">¶</a></h4>
+<span id="id14"></span><h4>Returns<a class="headerlink" href="#returns-5" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">debts</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - debts in block</li>
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - debts hash</li>
@@ -2168,7 +2180,7 @@ information</li>
 </ul>
 </div>
 <div class="section" id="example-5">
-<span id="id17"></span><h4>Example<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h4>
+<span id="id15"></span><h4>Example<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getblock</span> <span class="o">--</span><span class="n">height</span> <span class="mi">10368</span> <span class="o">--</span><span class="n">fulltx</span><span class="o">=</span><span class="n">true</span>
 
@@ -2346,20 +2358,20 @@ information</li>
 </tbody>
 </table>
 <div class="section" id="parameters-6">
-<span id="id18"></span><h4>Parameters<a class="headerlink" href="#parameters-6" title="Permalink to this headline">¶</a></h4>
+<span id="id16"></span><h4>Parameters<a class="headerlink" href="#parameters-6" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">privatekey</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - private key for account</li>
 <li><code class="docutils literal notranslate"><span class="pre">file</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - key store file name (default: “.keystore”)</li>
 </ul>
 </div>
 <div class="section" id="returns-6">
-<span id="id19"></span><h4>Returns<a class="headerlink" href="#returns-6" title="Permalink to this headline">¶</a></h4>
+<span id="id17"></span><h4>Returns<a class="headerlink" href="#returns-6" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>none</li>
 </ul>
 </div>
 <div class="section" id="example-6">
-<span id="id20"></span><h4>Example<a class="headerlink" href="#example-6" title="Permalink to this headline">¶</a></h4>
+<span id="id18"></span><h4>Example<a class="headerlink" href="#example-6" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">savekey</span> <span class="o">--</span><span class="n">privatekey</span> <span class="mh">0x52117b49022b246ee3921a7ff6771df065594a0dde555e40d8ce940a3ecfb654</span>
 
@@ -2396,20 +2408,20 @@ account.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-7">
-<span id="id21"></span><h4>Parameters<a class="headerlink" href="#parameters-7" title="Permalink to this headline">¶</a></h4>
+<span id="id19"></span><h4>Parameters<a class="headerlink" href="#parameters-7" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">account</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - account address</li>
 <li><code class="docutils literal notranslate"><span class="pre">privatekey</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - private key for account</li>
 </ul>
 </div>
 <div class="section" id="returns-7">
-<span id="id22"></span><h4>Returns<a class="headerlink" href="#returns-7" title="Permalink to this headline">¶</a></h4>
+<span id="id20"></span><h4>Returns<a class="headerlink" href="#returns-7" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">shard</span> <span class="pre">number</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - shard number</li>
 </ul>
 </div>
 <div class="section" id="example-7">
-<span id="id23"></span><h4>Example<a class="headerlink" href="#example-7" title="Permalink to this headline">¶</a></h4>
+<span id="id21"></span><h4>Example<a class="headerlink" href="#example-7" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getshardnum</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span>
 
@@ -2452,7 +2464,7 @@ in the next version or more.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-8">
-<span id="id24"></span><h4>Parameters<a class="headerlink" href="#parameters-8" title="Permalink to this headline">¶</a></h4>
+<span id="id22"></span><h4>Parameters<a class="headerlink" href="#parameters-8" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -2462,7 +2474,7 @@ in the next version or more.</p>
 </ul>
 </div>
 <div class="section" id="returns-8">
-<span id="id25"></span><h4>Returns<a class="headerlink" href="#returns-8" title="Permalink to this headline">¶</a></h4>
+<span id="id23"></span><h4>Returns<a class="headerlink" href="#returns-8" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">contract</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - contract address</li>
 <li><code class="docutils literal notranslate"><span class="pre">failed</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - contract executes successfully or not</li>
@@ -2475,7 +2487,7 @@ execution</li>
 </ul>
 </div>
 <div class="section" id="example-8">
-<span id="id26"></span><h4>Example<a class="headerlink" href="#example-8" title="Permalink to this headline">¶</a></h4>
+<span id="id24"></span><h4>Example<a class="headerlink" href="#example-8" title="Permalink to this headline">¶</a></h4>
 <p>When using the example below, the contract must be deployed first. The
 solidity code file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
@@ -2529,7 +2541,7 @@ and the event name.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Console</td>
-<td><a href="#id27"><span class="problematic" id="id28">``</span></a>client getlogs –height &lt;block
+<td><a href="#id25"><span class="problematic" id="id26">``</span></a>client getlogs –height &lt;block
 height&gt; –address 0x&lt;contract add
 ress&gt; –topic 0x&lt;event name hash&gt;
 ``</td>
@@ -2537,7 +2549,7 @@ ress&gt; –topic 0x&lt;event name hash&gt;
 </tbody>
 </table>
 <div class="section" id="parameters-9">
-<span id="id29"></span><h4>Parameters<a class="headerlink" href="#parameters-9" title="Permalink to this headline">¶</a></h4>
+<span id="id27"></span><h4>Parameters<a class="headerlink" href="#parameters-9" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -2547,7 +2559,7 @@ ress&gt; –topic 0x&lt;event name hash&gt;
 </ul>
 </div>
 <div class="section" id="returns-9">
-<span id="id30"></span><h4>Returns<a class="headerlink" href="#returns-9" title="Permalink to this headline">¶</a></h4>
+<span id="id28"></span><h4>Returns<a class="headerlink" href="#returns-9" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">response</span></code>:<code class="docutils literal notranslate"><span class="pre">GetLogsResponse</span></code> - response parameter struct</li>
 <li><code class="docutils literal notranslate"><span class="pre">Txhash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - transaction hash</li>
@@ -2556,28 +2568,25 @@ ress&gt; –topic 0x&lt;event name hash&gt;
 </ul>
 </div>
 <div class="section" id="example-9">
-<span id="id31"></span><h4>Example<a class="headerlink" href="#example-9" title="Permalink to this headline">¶</a></h4>
+<span id="id29"></span><h4>Example<a class="headerlink" href="#example-9" title="Permalink to this headline">¶</a></h4>
 <p>When using the example below, the contract must be deployed first. The
 solidity code file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
 
-<span class="n">contract</span> <span class="n">simple_storage_1</span> <span class="p">{</span>
-    <span class="n">uint</span> <span class="n">storedData</span><span class="o">=</span><span class="mi">23</span><span class="p">;</span>
+<span class="n">contract</span> <span class="n">SimpleStorage</span> <span class="p">{</span>
+    <span class="n">uint</span> <span class="n">storedData</span><span class="p">;</span>
+    <span class="n">event</span> <span class="n">getX</span><span class="p">(</span><span class="n">uint</span><span class="p">,</span><span class="n">uint</span><span class="p">);</span>
 
-    <span class="n">event</span> <span class="n">getLog</span><span class="p">(</span><span class="n">address</span> <span class="n">addr</span><span class="p">,</span> <span class="n">string</span> <span class="n">message</span><span class="p">);</span>
-    <span class="n">event</span> <span class="n">getLog1</span><span class="p">(</span><span class="n">string</span> <span class="n">message</span><span class="p">);</span>
-    <span class="n">event</span> <span class="n">getLog2</span><span class="p">(</span><span class="n">string</span> <span class="n">message</span><span class="p">);</span>
-
-    <span class="n">function</span> <span class="nb">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="n">public</span><span class="p">{</span>
-        <span class="n">getLog1</span><span class="p">(</span><span class="s2">&quot;set getLog1&quot;</span><span class="p">);</span>
-        <span class="n">getLog2</span><span class="p">(</span><span class="s2">&quot;set getLog2&quot;</span><span class="p">);</span>
-        <span class="n">storedData</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">function</span> <span class="n">SimpleStorage</span><span class="p">()</span> <span class="n">public</span><span class="p">{</span>
+        <span class="n">storedData</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">function</span> <span class="n">get</span><span class="p">()</span> <span class="n">constant</span> <span class="n">public</span> <span class="n">returns</span><span class="p">(</span><span class="n">uint</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">getLog</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span> <span class="s2">&quot;get getLog&quot;</span><span class="p">);</span>
-        <span class="n">getLog1</span><span class="p">(</span><span class="s2">&quot;get getLog1&quot;</span><span class="p">);</span>
-        <span class="nb">set</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+    <span class="n">function</span> <span class="nb">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="n">public</span> <span class="p">{</span>
+        <span class="n">storedData</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">function</span> <span class="n">get</span><span class="p">()</span> <span class="n">public</span> <span class="n">returns</span> <span class="p">(</span><span class="n">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">emit</span> <span class="n">getX</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">storedData</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -2631,7 +2640,7 @@ transaction pool based on block height or hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-10">
-<span id="id32"></span><h4>Parameters<a class="headerlink" href="#parameters-10" title="Permalink to this headline">¶</a></h4>
+<span id="id30"></span><h4>Parameters<a class="headerlink" href="#parameters-10" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -2640,13 +2649,13 @@ transaction pool based on block height or hash.</p>
 </ul>
 </div>
 <div class="section" id="returns-10">
-<span id="id33"></span><h4>Returns<a class="headerlink" href="#returns-10" title="Permalink to this headline">¶</a></h4>
+<span id="id31"></span><h4>Returns<a class="headerlink" href="#returns-10" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - number of transaction</li>
 </ul>
 </div>
 <div class="section" id="example-10">
-<span id="id34"></span><h4>Example<a class="headerlink" href="#example-10" title="Permalink to this headline">¶</a></h4>
+<span id="id32"></span><h4>Example<a class="headerlink" href="#example-10" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getblocktxcount</span> <span class="o">--</span><span class="n">height</span> <span class="mi">4202</span>
 
@@ -2684,7 +2693,7 @@ height and transaction index.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-11">
-<span id="id35"></span><h4>Parameters<a class="headerlink" href="#parameters-11" title="Permalink to this headline">¶</a></h4>
+<span id="id33"></span><h4>Parameters<a class="headerlink" href="#parameters-11" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -2694,7 +2703,7 @@ height and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="returns-11">
-<span id="id36"></span><h4>Returns<a class="headerlink" href="#returns-11" title="Permalink to this headline">¶</a></h4>
+<span id="id34"></span><h4>Returns<a class="headerlink" href="#returns-11" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
@@ -2708,7 +2717,7 @@ height and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="example-11">
-<span id="id37"></span><h4>Example<a class="headerlink" href="#example-11" title="Permalink to this headline">¶</a></h4>
+<span id="id35"></span><h4>Example<a class="headerlink" href="#example-11" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">gettxinblock</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x0000015592fab87d6efa10e63d7722f6f359d90a1aff9e70930b291931c34922</span> <span class="o">--</span><span class="n">height</span> <span class="o">-</span><span class="mi">1</span> <span class="o">--</span><span class="n">index</span> <span class="mi">1</span>
 
@@ -2749,7 +2758,7 @@ height and transaction index.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-12">
-<span id="id38"></span><h4>Parameters<a class="headerlink" href="#parameters-12" title="Permalink to this headline">¶</a></h4>
+<span id="id36"></span><h4>Parameters<a class="headerlink" href="#parameters-12" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - hash value in hex</li>
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
@@ -2757,7 +2766,7 @@ height and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="returns-12">
-<span id="id39"></span><h4>Returns<a class="headerlink" href="#returns-12" title="Permalink to this headline">¶</a></h4>
+<span id="id37"></span><h4>Returns<a class="headerlink" href="#returns-12" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">blockHash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">blockHeight</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - block height</li>
@@ -2775,7 +2784,7 @@ height and transaction index.</p>
 </ul>
 </div>
 <div class="section" id="example-12">
-<span id="id40"></span><h4>Example<a class="headerlink" href="#example-12" title="Permalink to this headline">¶</a></h4>
+<span id="id38"></span><h4>Example<a class="headerlink" href="#example-12" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">gettxbyhash</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x473ea3667d073491d5896a93fcf84d7dd822988d07482f21e7a875787539e62e</span>
 
@@ -2825,7 +2834,7 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-13">
-<span id="id41"></span><h4>Parameters<a class="headerlink" href="#parameters-13" title="Permalink to this headline">¶</a></h4>
+<span id="id39"></span><h4>Parameters<a class="headerlink" href="#parameters-13" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -2834,7 +2843,7 @@ hash.</p>
 </ul>
 </div>
 <div class="section" id="returns-13">
-<span id="id42"></span><h4>Returns<a class="headerlink" href="#returns-13" title="Permalink to this headline">¶</a></h4>
+<span id="id40"></span><h4>Returns<a class="headerlink" href="#returns-13" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">contract</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - contract address</li>
 <li><code class="docutils literal notranslate"><span class="pre">failed</span></code>:<code class="docutils literal notranslate"><span class="pre">bool</span></code> - transaction executes successfully or not</li>
@@ -2847,7 +2856,7 @@ execution</li>
 </ul>
 </div>
 <div class="section" id="example-13">
-<span id="id43"></span><h4>Example<a class="headerlink" href="#example-13" title="Permalink to this headline">¶</a></h4>
+<span id="id41"></span><h4>Example<a class="headerlink" href="#example-13" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x9c0e2565b8a0b33c3f69aa6eb9bad4a86c3925a1fe12272e2082091b9b1c5609</span>
 
@@ -2887,7 +2896,7 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-14">
-<span id="id44"></span><h4>Parameters<a class="headerlink" href="#parameters-14" title="Permalink to this headline">¶</a></h4>
+<span id="id42"></span><h4>Parameters<a class="headerlink" href="#parameters-14" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -2895,7 +2904,7 @@ hash.</p>
 </ul>
 </div>
 <div class="section" id="returns-14">
-<span id="id45"></span><h4>Returns<a class="headerlink" href="#returns-14" title="Permalink to this headline">¶</a></h4>
+<span id="id43"></span><h4>Returns<a class="headerlink" href="#returns-14" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">blockHash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - block hash of the debt on</li>
 <li><code class="docutils literal notranslate"><span class="pre">blockHeight</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> - block height of the debt on</li>
@@ -2915,7 +2924,7 @@ hash.</p>
 </ul>
 </div>
 <div class="section" id="example-14">
-<span id="id46"></span><h4>Example<a class="headerlink" href="#example-14" title="Permalink to this headline">¶</a></h4>
+<span id="id44"></span><h4>Example<a class="headerlink" href="#example-14" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getdebtbyhash</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x0da1ed893e7f0ca2558c193b3b82ed20575a6978bea5b14f282309c69fee368e</span>
 
@@ -2965,14 +2974,14 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-15">
-<span id="id47"></span><h4>Parameters<a class="headerlink" href="#parameters-15" title="Permalink to this headline">¶</a></h4>
+<span id="id45"></span><h4>Parameters<a class="headerlink" href="#parameters-15" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-15">
-<span id="id48"></span><h4>Returns<a class="headerlink" href="#returns-15" title="Permalink to this headline">¶</a></h4>
+<span id="id46"></span><h4>Returns<a class="headerlink" href="#returns-15" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">id</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - node ID</li>
 <li><code class="docutils literal notranslate"><span class="pre">caps</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - peer node protocol and version array</li>
@@ -2986,7 +2995,7 @@ hash.</p>
 </ul>
 </div>
 <div class="section" id="example-15">
-<span id="id49"></span><h4>Example<a class="headerlink" href="#example-15" title="Permalink to this headline">¶</a></h4>
+<span id="id47"></span><h4>Example<a class="headerlink" href="#example-15" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getpeersinfo</span>
 
@@ -3034,20 +3043,20 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-16">
-<span id="id50"></span><h4>Parameters<a class="headerlink" href="#parameters-16" title="Permalink to this headline">¶</a></h4>
+<span id="id48"></span><h4>Parameters<a class="headerlink" href="#parameters-16" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-16">
-<span id="id51"></span><h4>Returns<a class="headerlink" href="#returns-16" title="Permalink to this headline">¶</a></h4>
+<span id="id49"></span><h4>Returns<a class="headerlink" href="#returns-16" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> - Peer note quantity</li>
 </ul>
 </div>
 <div class="section" id="example-16">
-<span id="id52"></span><h4>Example<a class="headerlink" href="#example-16" title="Permalink to this headline">¶</a></h4>
+<span id="id50"></span><h4>Example<a class="headerlink" href="#example-16" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">peers</span>
 
@@ -3078,20 +3087,20 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-17">
-<span id="id53"></span><h4>Parameters<a class="headerlink" href="#parameters-17" title="Permalink to this headline">¶</a></h4>
+<span id="id51"></span><h4>Parameters<a class="headerlink" href="#parameters-17" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-17">
-<span id="id54"></span><h4>Returns<a class="headerlink" href="#returns-17" title="Permalink to this headline">¶</a></h4>
+<span id="id52"></span><h4>Returns<a class="headerlink" href="#returns-17" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - version number</li>
 </ul>
 </div>
 <div class="section" id="example-17">
-<span id="id55"></span><h4>Example<a class="headerlink" href="#example-17" title="Permalink to this headline">¶</a></h4>
+<span id="id53"></span><h4>Example<a class="headerlink" href="#example-17" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">netversion</span>
 
@@ -3122,20 +3131,20 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-18">
-<span id="id56"></span><h4>Parameters<a class="headerlink" href="#parameters-18" title="Permalink to this headline">¶</a></h4>
+<span id="id54"></span><h4>Parameters<a class="headerlink" href="#parameters-18" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-18">
-<span id="id57"></span><h4>Returns<a class="headerlink" href="#returns-18" title="Permalink to this headline">¶</a></h4>
+<span id="id55"></span><h4>Returns<a class="headerlink" href="#returns-18" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - version number</li>
 </ul>
 </div>
 <div class="section" id="example-18">
-<span id="id58"></span><h4>Example<a class="headerlink" href="#example-18" title="Permalink to this headline">¶</a></h4>
+<span id="id56"></span><h4>Example<a class="headerlink" href="#example-18" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">protocolversion</span>
 
@@ -3166,20 +3175,20 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-19">
-<span id="id59"></span><h4>Parameters<a class="headerlink" href="#parameters-19" title="Permalink to this headline">¶</a></h4>
+<span id="id57"></span><h4>Parameters<a class="headerlink" href="#parameters-19" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-19">
-<span id="id60"></span><h4>Returns<a class="headerlink" href="#returns-19" title="Permalink to this headline">¶</a></h4>
+<span id="id58"></span><h4>Returns<a class="headerlink" href="#returns-19" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - network id</li>
 </ul>
 </div>
 <div class="section" id="example-19">
-<span id="id61"></span><h4>Example<a class="headerlink" href="#example-19" title="Permalink to this headline">¶</a></h4>
+<span id="id59"></span><h4>Example<a class="headerlink" href="#example-19" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">networkid</span>
 
@@ -3210,18 +3219,18 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-20">
-<span id="id62"></span><h4>Parameters<a class="headerlink" href="#parameters-20" title="Permalink to this headline">¶</a></h4>
+<span id="id60"></span><h4>Parameters<a class="headerlink" href="#parameters-20" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-20">
-<span id="id63"></span><h4>Returns<a class="headerlink" href="#returns-20" title="Permalink to this headline">¶</a></h4>
+<span id="id61"></span><h4>Returns<a class="headerlink" href="#returns-20" title="Permalink to this headline">¶</a></h4>
 <p>true or false</p>
 </div>
 <div class="section" id="example-20">
-<span id="id64"></span><h4>Example<a class="headerlink" href="#example-20" title="Permalink to this headline">¶</a></h4>
+<span id="id62"></span><h4>Example<a class="headerlink" href="#example-20" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">miner</span> <span class="n">start</span>
 
@@ -3252,18 +3261,18 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-21">
-<span id="id65"></span><h4>Parameters<a class="headerlink" href="#parameters-21" title="Permalink to this headline">¶</a></h4>
+<span id="id63"></span><h4>Parameters<a class="headerlink" href="#parameters-21" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-21">
-<span id="id66"></span><h4>Returns<a class="headerlink" href="#returns-21" title="Permalink to this headline">¶</a></h4>
+<span id="id64"></span><h4>Returns<a class="headerlink" href="#returns-21" title="Permalink to this headline">¶</a></h4>
 <p>true or false</p>
 </div>
 <div class="section" id="example-21">
-<span id="id67"></span><h4>Example<a class="headerlink" href="#example-21" title="Permalink to this headline">¶</a></h4>
+<span id="id65"></span><h4>Example<a class="headerlink" href="#example-21" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">miner</span> <span class="n">stop</span>
 
@@ -3294,18 +3303,18 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-22">
-<span id="id68"></span><h4>Parameters<a class="headerlink" href="#parameters-22" title="Permalink to this headline">¶</a></h4>
+<span id="id66"></span><h4>Parameters<a class="headerlink" href="#parameters-22" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-22">
-<span id="id69"></span><h4>Returns<a class="headerlink" href="#returns-22" title="Permalink to this headline">¶</a></h4>
+<span id="id67"></span><h4>Returns<a class="headerlink" href="#returns-22" title="Permalink to this headline">¶</a></h4>
 <p>“Running” or “Stopped”</p>
 </div>
 <div class="section" id="example-22">
-<span id="id70"></span><h4>Example<a class="headerlink" href="#example-22" title="Permalink to this headline">¶</a></h4>
+<span id="id68"></span><h4>Example<a class="headerlink" href="#example-22" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">miner</span> <span class="n">status</span>
 
@@ -3336,20 +3345,20 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-23">
-<span id="id71"></span><h4>Parameters<a class="headerlink" href="#parameters-23" title="Permalink to this headline">¶</a></h4>
+<span id="id69"></span><h4>Parameters<a class="headerlink" href="#parameters-23" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-23">
-<span id="id72"></span><h4>Returns<a class="headerlink" href="#returns-23" title="Permalink to this headline">¶</a></h4>
+<span id="id70"></span><h4>Returns<a class="headerlink" href="#returns-23" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - coinbase</li>
 </ul>
 </div>
 <div class="section" id="example-23">
-<span id="id73"></span><h4>Example<a class="headerlink" href="#example-23" title="Permalink to this headline">¶</a></h4>
+<span id="id71"></span><h4>Example<a class="headerlink" href="#example-23" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">miner</span> <span class="n">getcoinbase</span>
 
@@ -3380,7 +3389,7 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-24">
-<span id="id74"></span><h4>Parameters<a class="headerlink" href="#parameters-24" title="Permalink to this headline">¶</a></h4>
+<span id="id72"></span><h4>Parameters<a class="headerlink" href="#parameters-24" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -3388,11 +3397,11 @@ hash.</p>
 </ul>
 </div>
 <div class="section" id="returns-24">
-<span id="id75"></span><h4>Returns<a class="headerlink" href="#returns-24" title="Permalink to this headline">¶</a></h4>
+<span id="id73"></span><h4>Returns<a class="headerlink" href="#returns-24" title="Permalink to this headline">¶</a></h4>
 <p>true or false</p>
 </div>
 <div class="section" id="example-24">
-<span id="id76"></span><h4>Example<a class="headerlink" href="#example-24" title="Permalink to this headline">¶</a></h4>
+<span id="id74"></span><h4>Example<a class="headerlink" href="#example-24" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">miner</span> <span class="n">setthreads</span> <span class="o">--</span><span class="n">threads</span> <span class="mi">2</span>
 
@@ -3423,7 +3432,7 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-25">
-<span id="id77"></span><h4>Parameters<a class="headerlink" href="#parameters-25" title="Permalink to this headline">¶</a></h4>
+<span id="id75"></span><h4>Parameters<a class="headerlink" href="#parameters-25" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -3431,11 +3440,11 @@ hash.</p>
 </ul>
 </div>
 <div class="section" id="returns-25">
-<span id="id78"></span><h4>Returns<a class="headerlink" href="#returns-25" title="Permalink to this headline">¶</a></h4>
+<span id="id76"></span><h4>Returns<a class="headerlink" href="#returns-25" title="Permalink to this headline">¶</a></h4>
 <p>true or false</p>
 </div>
 <div class="section" id="example-25">
-<span id="id79"></span><h4>Example<a class="headerlink" href="#example-25" title="Permalink to this headline">¶</a></h4>
+<span id="id77"></span><h4>Example<a class="headerlink" href="#example-25" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">miner</span> <span class="n">setcoinbase</span> <span class="o">--</span><span class="n">coinbase</span> <span class="mh">0x16fba5fcb9bc4ee7c3b7fed667e41c9a0248da71</span>
 
@@ -3466,20 +3475,20 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-26">
-<span id="id80"></span><h4>Parameters<a class="headerlink" href="#parameters-26" title="Permalink to this headline">¶</a></h4>
+<span id="id78"></span><h4>Parameters<a class="headerlink" href="#parameters-26" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-26">
-<span id="id81"></span><h4>Returns<a class="headerlink" href="#returns-26" title="Permalink to this headline">¶</a></h4>
+<span id="id79"></span><h4>Returns<a class="headerlink" href="#returns-26" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>hashrate</li>
 </ul>
 </div>
 <div class="section" id="example-26">
-<span id="id82"></span><h4>Example<a class="headerlink" href="#example-26" title="Permalink to this headline">¶</a></h4>
+<span id="id80"></span><h4>Example<a class="headerlink" href="#example-26" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">hashrate</span>
 
@@ -3510,20 +3519,20 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-27">
-<span id="id83"></span><h4>Parameters<a class="headerlink" href="#parameters-27" title="Permalink to this headline">¶</a></h4>
+<span id="id81"></span><h4>Parameters<a class="headerlink" href="#parameters-27" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
 </ul>
 </div>
 <div class="section" id="returns-27">
-<span id="id84"></span><h4>Returns<a class="headerlink" href="#returns-27" title="Permalink to this headline">¶</a></h4>
+<span id="id82"></span><h4>Returns<a class="headerlink" href="#returns-27" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>threads num</li>
 </ul>
 </div>
 <div class="section" id="example-27">
-<span id="id85"></span><h4>Example<a class="headerlink" href="#example-27" title="Permalink to this headline">¶</a></h4>
+<span id="id83"></span><h4>Example<a class="headerlink" href="#example-27" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">threads</span>
 
@@ -3554,11 +3563,11 @@ hash.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-28">
-<span id="id86"></span><h4>Parameters<a class="headerlink" href="#parameters-28" title="Permalink to this headline">¶</a></h4>
+<span id="id84"></span><h4>Parameters<a class="headerlink" href="#parameters-28" title="Permalink to this headline">¶</a></h4>
 <p>none</p>
 </div>
 <div class="section" id="returns-28">
-<span id="id87"></span><h4>Returns<a class="headerlink" href="#returns-28" title="Permalink to this headline">¶</a></h4>
+<span id="id85"></span><h4>Returns<a class="headerlink" href="#returns-28" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
@@ -3571,7 +3580,7 @@ hash.</p>
 </ul>
 </div>
 <div class="section" id="example-28">
-<span id="id88"></span><h4>Example<a class="headerlink" href="#example-28" title="Permalink to this headline">¶</a></h4>
+<span id="id86"></span><h4>Example<a class="headerlink" href="#example-28" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">gettxpoolcontent</span>
 
@@ -3616,17 +3625,17 @@ transaction pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-29">
-<span id="id89"></span><h4>Parameters<a class="headerlink" href="#parameters-29" title="Permalink to this headline">¶</a></h4>
+<span id="id87"></span><h4>Parameters<a class="headerlink" href="#parameters-29" title="Permalink to this headline">¶</a></h4>
 <p>none</p>
 </div>
 <div class="section" id="returns-29">
-<span id="id90"></span><h4>Returns<a class="headerlink" href="#returns-29" title="Permalink to this headline">¶</a></h4>
+<span id="id88"></span><h4>Returns<a class="headerlink" href="#returns-29" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> - number of transactions</li>
 </ul>
 </div>
 <div class="section" id="example-29">
-<span id="id91"></span><h4>Example<a class="headerlink" href="#example-29" title="Permalink to this headline">¶</a></h4>
+<span id="id89"></span><h4>Example<a class="headerlink" href="#example-29" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">gettxpoolcount</span>
 
@@ -3658,11 +3667,11 @@ pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-30">
-<span id="id92"></span><h4>Parameters<a class="headerlink" href="#parameters-30" title="Permalink to this headline">¶</a></h4>
+<span id="id90"></span><h4>Parameters<a class="headerlink" href="#parameters-30" title="Permalink to this headline">¶</a></h4>
 <p>none</p>
 </div>
 <div class="section" id="returns-30">
-<span id="id93"></span><h4>Returns<a class="headerlink" href="#returns-30" title="Permalink to this headline">¶</a></h4>
+<span id="id91"></span><h4>Returns<a class="headerlink" href="#returns-30" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">accountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> - account nonce</li>
 <li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">Int</span></code> - transaction amount</li>
@@ -3675,7 +3684,7 @@ pool.</p>
 </ul>
 </div>
 <div class="section" id="example-30">
-<span id="id94"></span><h4>Example<a class="headerlink" href="#example-30" title="Permalink to this headline">¶</a></h4>
+<span id="id92"></span><h4>Example<a class="headerlink" href="#example-30" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getpendingtxs</span>
 
@@ -3717,11 +3726,11 @@ pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-31">
-<span id="id95"></span><h4>Parameters<a class="headerlink" href="#parameters-31" title="Permalink to this headline">¶</a></h4>
+<span id="id93"></span><h4>Parameters<a class="headerlink" href="#parameters-31" title="Permalink to this headline">¶</a></h4>
 <p>none</p>
 </div>
 <div class="section" id="returns-31">
-<span id="id96"></span><h4>Returns<a class="headerlink" href="#returns-31" title="Permalink to this headline">¶</a></h4>
+<span id="id94"></span><h4>Returns<a class="headerlink" href="#returns-31" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Data</span></code>:<code class="docutils literal notranslate"><span class="pre">json</span></code> - debt data</li>
 <li><code class="docutils literal notranslate"><span class="pre">Account</span></code>:<code class="docutils literal notranslate"><span class="pre">array</span></code> - debt account</li>
@@ -3734,7 +3743,7 @@ pool.</p>
 </ul>
 </div>
 <div class="section" id="example-31">
-<span id="id97"></span><h4>Example<a class="headerlink" href="#example-31" title="Permalink to this headline">¶</a></h4>
+<span id="id95"></span><h4>Example<a class="headerlink" href="#example-31" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getdebts</span>
 
@@ -3777,17 +3786,17 @@ pool.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-32">
-<span id="id98"></span><h4>Parameters<a class="headerlink" href="#parameters-32" title="Permalink to this headline">¶</a></h4>
+<span id="id96"></span><h4>Parameters<a class="headerlink" href="#parameters-32" title="Permalink to this headline">¶</a></h4>
 <p>none</p>
 </div>
 <div class="section" id="returns-32">
-<span id="id99"></span><h4>Returns<a class="headerlink" href="#returns-32" title="Permalink to this headline">¶</a></h4>
+<span id="id97"></span><h4>Returns<a class="headerlink" href="#returns-32" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">result</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> file path</li>
 </ul>
 </div>
 <div class="section" id="example-32">
-<span id="id100"></span><h4>Example<a class="headerlink" href="#example-32" title="Permalink to this headline">¶</a></h4>
+<span id="id98"></span><h4>Example<a class="headerlink" href="#example-32" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">dumpheap</span>
 
@@ -3819,20 +3828,20 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-33">
-<span id="id101"></span><h4>Parameters<a class="headerlink" href="#parameters-33" title="Permalink to this headline">¶</a></h4>
+<span id="id99"></span><h4>Parameters<a class="headerlink" href="#parameters-33" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">shard</span></code>:<code class="docutils literal notranslate"><span class="pre">uint</span></code> shard number</li>
 </ul>
 </div>
 <div class="section" id="returns-33">
-<span id="id102"></span><h4>Returns<a class="headerlink" href="#returns-33" title="Permalink to this headline">¶</a></h4>
+<span id="id100"></span><h4>Returns<a class="headerlink" href="#returns-33" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">key</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - public key</li>
 <li><code class="docutils literal notranslate"><span class="pre">private</span> <span class="pre">key</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - private key</li>
 </ul>
 </div>
 <div class="section" id="example-33">
-<span id="id103"></span><h4>Example<a class="headerlink" href="#example-33" title="Permalink to this headline">¶</a></h4>
+<span id="id101"></span><h4>Example<a class="headerlink" href="#example-33" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">key</span>
 
@@ -3864,20 +3873,20 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-34">
-<span id="id104"></span><h4>Parameters<a class="headerlink" href="#parameters-34" title="Permalink to this headline">¶</a></h4>
+<span id="id102"></span><h4>Parameters<a class="headerlink" href="#parameters-34" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">file</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> private key file</li>
 </ul>
 </div>
 <div class="section" id="returns-34">
-<span id="id105"></span><h4>Returns<a class="headerlink" href="#returns-34" title="Permalink to this headline">¶</a></h4>
+<span id="id103"></span><h4>Returns<a class="headerlink" href="#returns-34" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">key</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - public key</li>
 <li><code class="docutils literal notranslate"><span class="pre">private</span> <span class="pre">key</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> - private key</li>
 </ul>
 </div>
 <div class="section" id="example-34">
-<span id="id106"></span><h4>Example<a class="headerlink" href="#example-34" title="Permalink to this headline">¶</a></h4>
+<span id="id104"></span><h4>Example<a class="headerlink" href="#example-34" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">deckeyfile</span> <span class="o">--</span><span class="n">file</span> <span class="o">.</span><span class="n">keystore</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span>
 
@@ -3913,20 +3922,21 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-35">
-<span id="id107"></span><h4>Parameters<a class="headerlink" href="#parameters-35" title="Permalink to this headline">¶</a></h4>
+<span id="id105"></span><h4>Parameters<a class="headerlink" href="#parameters-35" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
 <li><code class="docutils literal notranslate"><span class="pre">privatekey</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> private key</li>
 <li><code class="docutils literal notranslate"><span class="pre">to</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> public address of the receiver</li>
-<li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> the amount of the transferred coins</li>
-<li><code class="docutils literal notranslate"><span class="pre">fee</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">amount</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> the amount of the transferred coins</li>
+<li><code class="docutils literal notranslate"><span class="pre">price</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> transaction gas price in Fan (default: “10”)</li>
+<li><code class="docutils literal notranslate"><span class="pre">gas</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> maximum gas for transaction (default: 200000)</li>
 <li><code class="docutils literal notranslate"><span class="pre">payload</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction payload</li>
 <li><code class="docutils literal notranslate"><span class="pre">nonce</span></code>:<code class="docutils literal notranslate"><span class="pre">int</span></code> transaction nonce</li>
 </ul>
 </div>
 <div class="section" id="returns-35">
-<span id="id108"></span><h4>Returns<a class="headerlink" href="#returns-35" title="Permalink to this headline">¶</a></h4>
+<span id="id106"></span><h4>Returns<a class="headerlink" href="#returns-35" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">Data</span></code>:<code class="docutils literal notranslate"><span class="pre">struct</span></code> transaction data</li>
@@ -3934,7 +3944,8 @@ with hex values.</p>
 <li><code class="docutils literal notranslate"><span class="pre">To</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction receiver</li>
 <li><code class="docutils literal notranslate"><span class="pre">Amount</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> public address of the receiver</li>
 <li><code class="docutils literal notranslate"><span class="pre">AccountNonce</span></code>:<code class="docutils literal notranslate"><span class="pre">unit64</span></code> account nonce</li>
-<li><code class="docutils literal notranslate"><span class="pre">Fee</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction fee</li>
+<li><code class="docutils literal notranslate"><span class="pre">price</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> transaction gas price in Fan (default: “10”)</li>
+<li><code class="docutils literal notranslate"><span class="pre">gas</span></code>:<code class="docutils literal notranslate"><span class="pre">int64</span></code> maximum gas for transaction (default: 200000)</li>
 <li><code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction timestamp</li>
 <li><code class="docutils literal notranslate"><span class="pre">Payload</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction payload</li>
 <li><code class="docutils literal notranslate"><span class="pre">Signature</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction signature</li>
@@ -3942,26 +3953,27 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="example-35">
-<span id="id109"></span><h4>Example<a class="headerlink" href="#example-35" title="Permalink to this headline">¶</a></h4>
+<span id="id107"></span><h4>Example<a class="headerlink" href="#example-35" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
-<span class="n">client</span> <span class="n">sign</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">20000</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">1</span> <span class="o">--</span><span class="n">nonce</span> <span class="mi">7</span> <span class="o">--</span><span class="n">privatekey</span> <span class="mh">0xf65e40c6809643b25ce4df33153da2f3338876f181f83d2281c6ac4a987b1479</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831</span>
+<span class="n">client</span> <span class="n">sign</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">20000</span> <span class="o">--</span><span class="n">nonce</span> <span class="mi">1</span> <span class="o">--</span><span class="n">privatekey</span> <span class="mh">0xf65e40c6809643b25ce4df33153da2f3338876f181f83d2281c6ac4a987b1479</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831</span>
 
 <span class="o">//</span> <span class="n">Result</span>
-<span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="n">current</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="n">sending</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">7</span>
+<span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="n">current</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sending</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">{</span>
-        <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x9ba03f6c4fcbe61a19f1721ec46c3f9dd3db91d236083a33b17396220c4accea&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span>
-                <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-                <span class="s2">&quot;Fee&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;BFkYL2KdCsoXl/njQs+v9/rwj3c5DVAMjfGTF7P6IdxiL1ra/NpLG/cM2HabPgqD1lV8PBjBy6UAmHuNxz5M1gA=&quot;</span>
-        <span class="p">}</span>
+    <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xd02530a4126ecea2787d59bf5e9611907c6043dd900f894554624bd1d25bcb32&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span>
+        <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;GasPrice&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;GasLimit&quot;</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>
+        <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;cqBn3pdgPbqCrqN1LXbgbWpiRJvXY/VNiqnMeN9X7oliSn5NNA345ChP0xBL6hejpk4mClZgq3hbA8obavHVUgA=&quot;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -3983,14 +3995,14 @@ with hex values.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Console</td>
-<td><a href="#id110"><span class="problematic" id="id111">``</span></a>client payload –abi &lt;string&gt; -
+<td><a href="#id108"><span class="problematic" id="id109">``</span></a>client payload –abi &lt;string&gt; -
 -method &lt;string&gt; –args &lt;string&gt;`
 `</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="parameters-36">
-<span id="id112"></span><h4>Parameters<a class="headerlink" href="#parameters-36" title="Permalink to this headline">¶</a></h4>
+<span id="id110"></span><h4>Parameters<a class="headerlink" href="#parameters-36" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">abi</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> the abi file of contract</li>
 <li><code class="docutils literal notranslate"><span class="pre">method</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> the method name of contract</li>
@@ -3998,13 +4010,13 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="returns-36">
-<span id="id113"></span><h4>Returns<a class="headerlink" href="#returns-36" title="Permalink to this headline">¶</a></h4>
+<span id="id111"></span><h4>Returns<a class="headerlink" href="#returns-36" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">payload</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> payload data</li>
 </ul>
 </div>
 <div class="section" id="example-36">
-<span id="id114"></span><h4>Example<a class="headerlink" href="#example-36" title="Permalink to this headline">¶</a></h4>
+<span id="id112"></span><h4>Example<a class="headerlink" href="#example-36" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">payload</span> <span class="o">--</span><span class="n">abi</span> <span class="n">test</span><span class="o">.</span><span class="n">sol</span> <span class="o">--</span><span class="n">method</span> <span class="nb">set</span> <span class="o">--</span><span class="n">args</span> <span class="mi">10</span>
 
@@ -4037,7 +4049,7 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-37">
-<span id="id115"></span><h4>Parameters<a class="headerlink" href="#parameters-37" title="Permalink to this headline">¶</a></h4>
+<span id="id113"></span><h4>Parameters<a class="headerlink" href="#parameters-37" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -4051,7 +4063,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="returns-37">
-<span id="id116"></span><h4>Returns<a class="headerlink" href="#returns-37" title="Permalink to this headline">¶</a></h4>
+<span id="id114"></span><h4>Returns<a class="headerlink" href="#returns-37" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">HashLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> contract hash lock</li>
 <li><code class="docutils literal notranslate"><span class="pre">TimeLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> lock time</li>
@@ -4070,7 +4082,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="example-37">
-<span id="id117"></span><h4>Example<a class="headerlink" href="#example-37" title="Permalink to this headline">¶</a></h4>
+<span id="id115"></span><h4>Example<a class="headerlink" href="#example-37" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">htlc</span> <span class="n">create</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">10000</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">1</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0x16fba5fcb9bc4ee7c3b7fed667e41c9a0248da71</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x9b9d066a68bc533fca7be7aaaffd21c9c971bb4b4960e79dcb36c532b67753dc</span>
 
@@ -4122,13 +4134,13 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-38">
-<span id="id118"></span><h4>Parameters<a class="headerlink" href="#parameters-38" title="Permalink to this headline">¶</a></h4>
+<span id="id116"></span><h4>Parameters<a class="headerlink" href="#parameters-38" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">payload</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction payload info</li>
 </ul>
 </div>
 <div class="section" id="returns-38">
-<span id="id119"></span><h4>Returns<a class="headerlink" href="#returns-38" title="Permalink to this headline">¶</a></h4>
+<span id="id117"></span><h4>Returns<a class="headerlink" href="#returns-38" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">HashLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> contract hash lock</li>
 <li><code class="docutils literal notranslate"><span class="pre">TimeLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> lock time</li>
@@ -4151,7 +4163,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="example-38">
-<span id="id120"></span><h4>Example<a class="headerlink" href="#example-38" title="Permalink to this headline">¶</a></h4>
+<span id="id118"></span><h4>Example<a class="headerlink" href="#example-38" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">htlc</span> <span class="n">decode</span> <span class="o">--</span><span class="n">payload</span> <span class="mh">0x7b22486173684c6f636b223a22307839623964303636613638626335333366636137626537616161666664323163396339373162623462343936306537396463623336633533326236373735336463222c2254696d654c6f636b223a302c22546f223a22307831366662613566636239626334656537633362376665643636376534316339613032343864613731227d</span>
 
@@ -4192,7 +4204,7 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-39">
-<span id="id121"></span><h4>Parameters<a class="headerlink" href="#parameters-39" title="Permalink to this headline">¶</a></h4>
+<span id="id119"></span><h4>Parameters<a class="headerlink" href="#parameters-39" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -4203,7 +4215,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="returns-39">
-<span id="id122"></span><h4>Returns<a class="headerlink" href="#returns-39" title="Permalink to this headline">¶</a></h4>
+<span id="id120"></span><h4>Returns<a class="headerlink" href="#returns-39" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">HashLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> contract hash lock</li>
 <li><code class="docutils literal notranslate"><span class="pre">TimeLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> lock time</li>
@@ -4223,7 +4235,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="example-39">
-<span id="id123"></span><h4>Example<a class="headerlink" href="#example-39" title="Permalink to this headline">¶</a></h4>
+<span id="id121"></span><h4>Example<a class="headerlink" href="#example-39" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">htlc</span> <span class="n">get</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">1</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">nonce</span> <span class="mi">7</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xc6ec049925ca2f9ec9860806c75ccbaddfc60e2c8a717d35be905bc1f1173e36</span>
 
@@ -4273,18 +4285,18 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-40">
-<span id="id124"></span><h4>Parameters<a class="headerlink" href="#parameters-40" title="Permalink to this headline">¶</a></h4>
+<span id="id122"></span><h4>Parameters<a class="headerlink" href="#parameters-40" title="Permalink to this headline">¶</a></h4>
 <p>none</p>
 </div>
 <div class="section" id="returns-40">
-<span id="id125"></span><h4>Returns<a class="headerlink" href="#returns-40" title="Permalink to this headline">¶</a></h4>
+<span id="id123"></span><h4>Returns<a class="headerlink" href="#returns-40" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">preimage</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> preimage key</li>
 <li><code class="docutils literal notranslate"><span class="pre">hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> key hash</li>
 </ul>
 </div>
 <div class="section" id="example-40">
-<span id="id126"></span><h4>Example<a class="headerlink" href="#example-40" title="Permalink to this headline">¶</a></h4>
+<span id="id124"></span><h4>Example<a class="headerlink" href="#example-40" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">htlc</span> <span class="n">key</span>
 
@@ -4318,7 +4330,7 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-41">
-<span id="id127"></span><h4>Parameters<a class="headerlink" href="#parameters-41" title="Permalink to this headline">¶</a></h4>
+<span id="id125"></span><h4>Parameters<a class="headerlink" href="#parameters-41" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -4329,7 +4341,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="returns-41">
-<span id="id128"></span><h4>Returns<a class="headerlink" href="#returns-41" title="Permalink to this headline">¶</a></h4>
+<span id="id126"></span><h4>Returns<a class="headerlink" href="#returns-41" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">HashLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> contract hash lock</li>
 <li><code class="docutils literal notranslate"><span class="pre">TimeLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> lock time</li>
@@ -4349,7 +4361,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="example-41">
-<span id="id129"></span><h4>Example<a class="headerlink" href="#example-41" title="Permalink to this headline">¶</a></h4>
+<span id="id127"></span><h4>Example<a class="headerlink" href="#example-41" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">htlc</span> <span class="n">refund</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">1</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">nonce</span> <span class="mi">7</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xc6ec049925ca2f9ec9860806c75ccbaddfc60e2c8a717d35be905bc1f1173e36</span>
 
@@ -4399,19 +4411,19 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-42">
-<span id="id130"></span><h4>Parameters<a class="headerlink" href="#parameters-42" title="Permalink to this headline">¶</a></h4>
+<span id="id128"></span><h4>Parameters<a class="headerlink" href="#parameters-42" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">time</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> time lock in the HTLC (default: 0)</li>
 </ul>
 </div>
 <div class="section" id="returns-42">
-<span id="id131"></span><h4>Returns<a class="headerlink" href="#returns-42" title="Permalink to this headline">¶</a></h4>
+<span id="id129"></span><h4>Returns<a class="headerlink" href="#returns-42" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">locktime</span></code>:<code class="docutils literal notranslate"><span class="pre">uint64</span></code> unix time stamptime</li>
 </ul>
 </div>
 <div class="section" id="example-42">
-<span id="id132"></span><h4>Example<a class="headerlink" href="#example-42" title="Permalink to this headline">¶</a></h4>
+<span id="id130"></span><h4>Example<a class="headerlink" href="#example-42" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">htlc</span> <span class="n">time</span>
 
@@ -4445,7 +4457,7 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-43">
-<span id="id133"></span><h4>Parameters<a class="headerlink" href="#parameters-43" title="Permalink to this headline">¶</a></h4>
+<span id="id131"></span><h4>Parameters<a class="headerlink" href="#parameters-43" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -4457,7 +4469,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="returns-43">
-<span id="id134"></span><h4>Returns<a class="headerlink" href="#returns-43" title="Permalink to this headline">¶</a></h4>
+<span id="id132"></span><h4>Returns<a class="headerlink" href="#returns-43" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">HashLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> contract hash lock</li>
 <li><code class="docutils literal notranslate"><span class="pre">TimeLock</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> lock time</li>
@@ -4478,7 +4490,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="example-43">
-<span id="id135"></span><h4>Example<a class="headerlink" href="#example-43" title="Permalink to this headline">¶</a></h4>
+<span id="id133"></span><h4>Example<a class="headerlink" href="#example-43" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">htlc</span> <span class="n">withdraw</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">1</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">nonce</span> <span class="mi">7</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xc6ec049925ca2f9ec9860806c75ccbaddfc60e2c8a717d35be905bc1f1173e36</span> <span class="o">--</span><span class="n">preimage</span> <span class="mh">0xffacc1067faf412f19db50b53b0b6a87d3f8a3af1778342edaa6d7f448a60b6a</span>
 
@@ -4532,7 +4544,7 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-44">
-<span id="id136"></span><h4>Parameters<a class="headerlink" href="#parameters-44" title="Permalink to this headline">¶</a></h4>
+<span id="id134"></span><h4>Parameters<a class="headerlink" href="#parameters-44" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -4543,7 +4555,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="returns-44">
-<span id="id137"></span><h4>Returns<a class="headerlink" href="#returns-44" title="Permalink to this headline">¶</a></h4>
+<span id="id135"></span><h4>Returns<a class="headerlink" href="#returns-44" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">Data</span></code>:<code class="docutils literal notranslate"><span class="pre">struct</span></code> transaction data</li>
@@ -4559,7 +4571,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="example-44">
-<span id="id138"></span><h4>Example<a class="headerlink" href="#example-44" title="Permalink to this headline">¶</a></h4>
+<span id="id136"></span><h4>Example<a class="headerlink" href="#example-44" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">domain</span> <span class="n">register</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">1</span> <span class="o">--</span><span class="n">name</span> <span class="n">test1</span>
 
@@ -4608,7 +4620,7 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-45">
-<span id="id139"></span><h4>Parameters<a class="headerlink" href="#parameters-45" title="Permalink to this headline">¶</a></h4>
+<span id="id137"></span><h4>Parameters<a class="headerlink" href="#parameters-45" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -4619,7 +4631,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="returns-45">
-<span id="id140"></span><h4>Returns<a class="headerlink" href="#returns-45" title="Permalink to this headline">¶</a></h4>
+<span id="id138"></span><h4>Returns<a class="headerlink" href="#returns-45" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> transaction hash</li>
 <li><code class="docutils literal notranslate"><span class="pre">Data</span></code>:<code class="docutils literal notranslate"><span class="pre">struct</span></code> transaction data</li>
@@ -4635,7 +4647,7 @@ with hex values.</p>
 </ul>
 </div>
 <div class="section" id="example-45">
-<span id="id141"></span><h4>Example<a class="headerlink" href="#example-45" title="Permalink to this headline">¶</a></h4>
+<span id="id139"></span><h4>Example<a class="headerlink" href="#example-45" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">domain</span> <span class="n">owner</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">1</span> <span class="o">--</span><span class="n">name</span> <span class="n">test1</span>
 
@@ -4684,7 +4696,7 @@ with hex values.</p>
 </tbody>
 </table>
 <div class="section" id="parameters-46">
-<span id="id142"></span><h4>Parameters<a class="headerlink" href="#parameters-46" title="Permalink to this headline">¶</a></h4>
+<span id="id140"></span><h4>Parameters<a class="headerlink" href="#parameters-46" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -4698,11 +4710,11 @@ address:port -n address:prot</li>
 </ul>
 </div>
 <div class="section" id="returns-46">
-<span id="id143"></span><h4>Returns<a class="headerlink" href="#returns-46" title="Permalink to this headline">¶</a></h4>
+<span id="id141"></span><h4>Returns<a class="headerlink" href="#returns-46" title="Permalink to this headline">¶</a></h4>
 <p>TODO</p>
 </div>
 <div class="section" id="example-46">
-<span id="id144"></span><h4>Example<a class="headerlink" href="#example-46" title="Permalink to this headline">¶</a></h4>
+<span id="id142"></span><h4>Example<a class="headerlink" href="#example-46" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">TODO</span>
 
@@ -4728,7 +4740,7 @@ address:port -n address:prot</li>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Console</td>
-<td><p class="first"><a href="#id145"><span class="problematic" id="id146">``</span></a>client subchain query –fee &lt;un
+<td><p class="first"><a href="#id143"><span class="problematic" id="id144">``</span></a>client subchain query –fee &lt;un
 it64&gt; –from &lt;file&gt; –nonce &lt;int&gt;</p>
 <blockquote class="last">
 <div>–name &lt;string&gt;``</div></blockquote>
@@ -4737,7 +4749,7 @@ it64&gt; –from &lt;file&gt; –nonce &lt;int&gt;</p>
 </tbody>
 </table>
 <div class="section" id="parameters-47">
-<span id="id147"></span><h4>Parameters<a class="headerlink" href="#parameters-47" title="Permalink to this headline">¶</a></h4>
+<span id="id145"></span><h4>Parameters<a class="headerlink" href="#parameters-47" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">address,</span> <span class="pre">a</span></code>:<code class="docutils literal notranslate"><span class="pre">string</span></code> address for client to request (default:
 “127.0.0.1:8027”)</li>
@@ -4748,11 +4760,11 @@ it64&gt; –from &lt;file&gt; –nonce &lt;int&gt;</p>
 </ul>
 </div>
 <div class="section" id="returns-47">
-<span id="id148"></span><h4>Returns<a class="headerlink" href="#returns-47" title="Permalink to this headline">¶</a></h4>
+<span id="id146"></span><h4>Returns<a class="headerlink" href="#returns-47" title="Permalink to this headline">¶</a></h4>
 <p>TODO</p>
 </div>
 <div class="section" id="example-47">
-<span id="id149"></span><h4>Example<a class="headerlink" href="#example-47" title="Permalink to this headline">¶</a></h4>
+<span id="id147"></span><h4>Example<a class="headerlink" href="#example-47" title="Permalink to this headline">¶</a></h4>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">TODO</span>
 
