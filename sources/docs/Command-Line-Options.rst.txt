@@ -1,8 +1,5 @@
 Command Line Options
-====================
-
-Client
-------
+======
 
 ::
 
@@ -92,7 +89,7 @@ Client
       --gc                       GC before heap dump, defualt false
 
 Node
-----
+====
 
 ::
 

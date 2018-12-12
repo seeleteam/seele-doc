@@ -24,15 +24,15 @@
 
   
 
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Seele.js" href="seele.js.html" />
-    <link rel="prev" title="Seele TestNet Performance Introduction" href="Seele-Test-net-Performance-Introduction.html" /> 
+    <link rel="next" title="Command Line Options" href="Command-Line-Options.html" />
+    <link rel="prev" title="Hash Time Lock Contract" href="Hash-Time-Lock-Contract.html" /> 
 
   
-  <script src="../static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -78,21 +78,13 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-To-Create-An-Account.html">How To Create An Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-to-send-debt.html">How To Send Debt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mining.html">Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele-node.html">Seele Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Hash Time Lock System Contract</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-for-hash-time-lock-htlc-system-contract">Tutorial for Hash Time Lock (HTLC) System Contract</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#home">Home</a></li>
@@ -109,8 +101,12 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="seele.js.html">Seele.js</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
 </ul>
 
             
@@ -162,6 +158,8 @@
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="../_sources/docs/Hash-Time-Lock-System-Contract.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -316,7 +314,10 @@ gets the amount</li>
 <li>If Bob or Alice does not get the amount during the lockout time,
 Alice and Bob can take back the amount after the lockout time has
 elapsed. #### On seele1</li>
-<li>1.Generate private key</li>
+<li><ol class="first arabic">
+<li>Generate private key</li>
+</ol>
+</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>client htlc key
 
@@ -329,9 +330,12 @@ Description：preimage is the private key and hash is the hash value of the priv
 </pre></div>
 </div>
 <ul class="simple">
-<li>2.Generation time, the time used to lock the transaction amount (Bob
+<li><ol class="first arabic" start="2">
+<li>Generation time, the time used to lock the transaction amount (Bob
 can take the amount in the transaction as long as it can provide
 preimage)</li>
+</ol>
+</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">htlc</span> <span class="n">time</span> <span class="o">--</span><span class="n">time</span> <span class="mi">300</span>
 
@@ -342,7 +346,10 @@ preimage)</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>3.Alice gets the current balance for comparison</li>
+<li><ol class="first arabic" start="3">
+<li>Alice gets the current balance for comparison</li>
+</ol>
+</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getbalance</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0x0a57a2714e193b7ac50475ce625f2dcfb483d741</span>
 
@@ -356,11 +363,14 @@ preimage)</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>4.Alice creates a Hash Time Lock (HTLC) system contract</li>
+<li><ol class="first arabic" start="4">
+<li>Alice creates a Hash Time Lock (HTLC) system contract</li>
+</ol>
+</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Create</span> <span class="n">Hash</span> <span class="n">Time</span> <span class="n">Lock</span> <span class="p">(</span><span class="n">HTLC</span><span class="p">)</span> <span class="n">system</span> <span class="n">contract</span>
 
-<span class="n">client</span> <span class="n">htlc</span> <span class="n">create</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">shard1</span><span class="o">-</span><span class="mh">0x0a57a2714e193b7ac50475ce625f2dcfb483d741</span> <span class="o">--</span> <span class="n">to</span> <span class="mh">0x2a87b6504cd00af95a83b9887112016a2a991cf1</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">10000000000</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xb0f8234614bb7e54e6c4ca24ff54c3319fad607af6dd18593ae5679376248e5c</span> <span class="o">--</span><span class="n">time</span> <span class="mi">1536906634</span>
+<span class="n">client</span> <span class="n">htlc</span> <span class="n">create</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.</span>\<span class="n">keyfile</span>\<span class="n">shard1</span><span class="o">-</span><span class="mh">0x0a57a2714e193b7ac50475ce625f2dcfb483d741</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0x2a87b6504cd00af95a83b9887112016a2a991cf1</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">10000000000</span> <span class="o">--</span><span class="n">fee</span> <span class="mi">10</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0xb0f8234614bb7e54e6c4ca24ff54c3319fad607af6dd18593ae5679376248e5c</span> <span class="o">--</span><span class="n">time</span> <span class="mi">1536906634</span>
 
 <span class="n">Please</span> <span class="nb">input</span> <span class="n">your</span> <span class="n">key</span> <span class="n">file</span> <span class="n">password</span><span class="p">:</span>
 
@@ -536,7 +546,7 @@ contract created on the seele1 meets the agreement of both parties.</li>
 <span class="n">Decode</span> <span class="n">the</span> <span class="n">result</span> <span class="n">field</span>
 
 
-<span class="n">client</span> <span class="n">htlc</span> <span class="n">decode</span> <span class="o">--</span><span class="n">payload</span> <span class="mh">0x7b225478223a7b2248617368223a22307863353265633833646437633</span> <span class="mi">131356434656434396361393038666362626334623164386633643064656430343330656431323463666161376433626335646166222</span><span class="n">c2244617461223a7b2246726f6d223a22307830613537613237313465313933623761633530343735636536323566326463666234383364373431222c22546f223a22307830303030303030303030303030303030303030303030303030303030303030303030303030313033222c22416d6f756e74223a31303030303030303030302c224163636f756e744e6f6e6365223a302c22466565223a31302c2254696d657374616d70223a302c225061796c6f6164223a2230783030376232323438363137333638346336663633366232323361323233303738363233303636333833323333333433363331333436323632333736353335333436353336363333343633363133323334363636363335333436333333333333313339363636313634333633303337363136363336363436343331333833353339333336313635333533363337333933333337333633323334333836353335363332323263323235343639366436353463366636333662323233613331333533333336333933303336333633333334326332323534366632323361323233303738333236313338333736323336333533303334363336343330333036313636333933353631333833333632333933383338333733313331333233303331333636313332363133393339333136333636333132323764227d2c225369676e6174757265223a7b22536967223a2232666b72352f30714f66767253772b5577483751666932635663594f3447796c6b6c72384a76372b454768696856743654344941742f43504c597238384434506c676b7a78557447305350554251394a564953723441413d227d7d2c22486173684c6f636b223a22307862306638323334363134626237653534653663346361323466663534633333313966616436303761663664643138353933616535363739333736323438653563222c2254696d654c6f636b223a313533363930363633342c22546f223a22307832613837623635303463643030616639356138336239383837313132303136613261393931636631222c22526566756e646564223a66616c73652c2257697468647261776564223a66616c73652c22507265696d616765223a22227d</span>
+<span class="n">client</span> <span class="n">htlc</span> <span class="n">decode</span> <span class="o">--</span><span class="n">payload</span> <span class="mh">0x7b225478223a7b2248617368223a22307863353265633833646437633131356434656434396361393038666362626334623164386633643064656430343330656431323463666161376433626335646166222c2244617461223a7b2246726f6d223a22307830613537613237313465313933623761633530343735636536323566326463666234383364373431222c22546f223a22307830303030303030303030303030303030303030303030303030303030303030303030303030313033222c22416d6f756e74223a31303030303030303030302c224163636f756e744e6f6e6365223a302c22466565223a31302c2254696d657374616d70223a302c225061796c6f6164223a2230783030376232323438363137333638346336663633366232323361323233303738363233303636333833323333333433363331333436323632333736353335333436353336363333343633363133323334363636363335333436333333333333313339363636313634333633303337363136363336363436343331333833353339333336313635333533363337333933333337333633323334333836353335363332323263323235343639366436353463366636333662323233613331333533333336333933303336333633333334326332323534366632323361323233303738333236313338333736323336333533303334363336343330333036313636333933353631333833333632333933383338333733313331333233303331333636313332363133393339333136333636333132323764227d2c225369676e6174757265223a7b22536967223a2232666b72352f30714f66767253772b5577483751666932635663594f3447796c6b6c72384a76372b454768696856743654344941742f43504c597238384434506c676b7a78557447305350554251394a564953723441413d227d7d2c22486173684c6f636b223a22307862306638323334363134626237653534653663346361323466663534633333313966616436303761663664643138353933616535363739333736323438653563222c2254696d654c6f636b223a313533363930363633342c22546f223a22307832613837623635303463643030616639356138336239383837313132303136613261393931636631222c22526566756e646564223a66616c73652c2257697468647261776564223a66616c73652c22507265696d616765223a22227d</span>
 
 <span class="p">{</span>
 
@@ -926,10 +936,10 @@ private key)</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="seele.js.html" class="btn btn-neutral float-right" title="Seele.js" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Command-Line-Options.html" class="btn btn-neutral float-right" title="Command Line Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Seele-Test-net-Performance-Introduction.html" class="btn btn-neutral" title="Seele TestNet Performance Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Hash-Time-Lock-Contract.html" class="btn btn-neutral" title="Hash Time Lock Contract" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -959,16 +969,16 @@ private key)</li>
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
 
-  <script type="text/javascript" src="../static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

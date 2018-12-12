@@ -24,15 +24,13 @@
 
   
 
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Scan Monitor Dashboard Setup" href="Scan-Monitor-Dashboard-Setup.html" />
-    <link rel="prev" title="How To Create An Account" href="How-To-Create-An-Account.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
-  <script src="../static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -78,28 +76,20 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-To-Create-An-Account.html">How To Create An Account</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How To Send Debt</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#transfer">1. Transfer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#get-debt">2. Get debt</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mining.html">Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele-node.html">Seele Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele.js.html">Seele.js</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
 </ul>
 
             
@@ -151,6 +141,8 @@
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="../_sources/docs/How-to-send-debt.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -165,24 +157,26 @@
   <div class="section" id="how-to-send-debt">
 <h1>How To Send Debt<a class="headerlink" href="#how-to-send-debt" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>The different between transaction and debt is that transaction
-happened in two accounts on the same shard,debt happened in two
-accounts on different shards.</li>
+<li>The difference between transactions and debts is that transactions
+happen between two accounts on the same shard while debts happen
+between two accounts on different shards.</li>
 </ul>
-<p>You should have two accounts on different
-shards.<a class="reference external" href="How-To-Create-An-Account.html">Here</a> will help you to get
-the accounts.</p>
+<p>You should have two accounts on different shards.
+<a class="reference external" href="How-To-Create-An-Account.html">Here</a> will help you to get the
+accounts.</p>
 <div class="section" id="transfer">
 <h2>1. Transfer<a class="headerlink" href="#transfer" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>You need a rich account to transfer money (for example, 100000 fan)
-from shard1 account to shard2 account.</li>
+<li>You need an account with value to transfer money (for example, 100000
+fan) from shard1 account to shard2 account.</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shard1</span> <span class="n">account</span><span class="p">:</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span>
 <span class="n">shard2</span> <span class="n">account</span><span class="p">:</span> <span class="mh">0xd228e1dd02bdce9656b8e195a77e0da0b70daea1</span>
 </pre></div>
 </div>
-<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="n">go</span><span class="o">-</span><span class="n">seele</span><span class="o">/</span><span class="n">cmd</span><span class="o">/</span><span class="n">client</span>
+
+<span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0xd228e1dd02bdce9656b8e195a77e0da0b70daea1</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">100000</span>
 <span class="n">Please</span> <span class="nb">input</span> <span class="n">your</span> <span class="n">key</span> <span class="n">file</span> <span class="n">password</span><span class="p">:</span>
 <span class="n">account</span><span class="p">:</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span><span class="p">,</span> <span class="n">transaction</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">1</span>
@@ -234,7 +228,7 @@ from shard1 account to shard2 account.</li>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The result of <code class="docutils literal notranslate"><span class="pre">&quot;failed&quot;:</span> <span class="pre">false</span></code>row, indicating that the transfer was
+<p>The result of <code class="docutils literal notranslate"><span class="pre">&quot;failed&quot;:</span> <span class="pre">false</span></code>row indicats that the transfer was
 successful. By the way, if tx is not packed by the miner or the miner is
 packing, you may see<code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">error</span> <span class="pre">when</span> <span class="pre">call</span> <span class="pre">rpc</span> <span class="pre">leveldb:</span> <span class="pre">not</span> <span class="pre">found</span></code>.
 Don’t worry, just wait for servals seconds, or you can use
@@ -264,7 +258,7 @@ pending debt on shard 2.</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Few second later, the debt will be packed by shard 2 new block.</li>
+<li>Few second later, the debt will be packed by a new block in shard 2.</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getdebtbyhash</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x5ecc232012ae6a1cfe9ab88ca38583872c0bc0b2e1da4e987f5dc98cbde8c0f1</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span>
 <span class="p">{</span>
@@ -355,15 +349,6 @@ pending debt on shard 2.</li>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Scan-Monitor-Dashboard-Setup.html" class="btn btn-neutral float-right" title="Scan Monitor Dashboard Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="How-To-Create-An-Account.html" class="btn btn-neutral" title="How To Create An Account" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
@@ -390,16 +375,16 @@ pending debt on shard 2.</li>
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
 
-  <script type="text/javascript" src="../static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

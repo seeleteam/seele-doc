@@ -24,15 +24,13 @@
 
   
 
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Seele Node" href="seele-node.html" />
-    <link rel="prev" title="Scan Monitor Dashboard Setup" href="Scan-Monitor-Dashboard-Setup.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
-  <script src="../static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -78,38 +76,20 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-To-Create-An-Account.html">How To Create An Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-to-send-debt.html">How To Send Debt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Mining</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cpu-mining">CPU Mining</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#start-mining-on-seele-node">Start mining on Seele Node</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#start-mining-with-seele-full-client">Start mining with Seele Full Client</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#example-1">Example</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#other-mining">Other Mining</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="seele-node.html">Seele Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele.js.html">Seele.js</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
 </ul>
 
             
@@ -161,6 +141,8 @@
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="../_sources/docs/Mining.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -179,13 +161,13 @@
 <h2>CPU Mining<a class="headerlink" href="#cpu-mining" title="Permalink to this headline">¶</a></h2>
 <p>Currently, Seele provides CPU Miner.</p>
 <p><strong>Attention</strong>，If you want to do mining on Seele，please make sure you
-are running the Seele Node on the Main-Net，and has to be run as full
-node.If you are not familiar with Seele，please read <a class="reference external" href="Getting-Started-With-Seele.html">Getting Started
-With Seele</a>.</p>
+are running the Seele Node(full node) on the Main-Net. If you are not
+familiar with Seele，please read <a class="reference external" href="Getting-Started-With-Seele.html">Getting Started With
+Seele</a>.</p>
 <div class="section" id="start-mining-on-seele-node">
 <h3>Start mining on Seele Node<a class="headerlink" href="#start-mining-on-seele-node" title="Permalink to this headline">¶</a></h3>
-<p>You could start mining at the same time when Seele Node is
-starting，<a class="reference external" href="Getting-Started-With-Seele.html#setting-up-a-node">Setting Up a
+<p>WHen Seele NOde starts, you could start mining at the same time.
+<a class="reference external" href="Getting-Started-With-Seele.html#setting-up-a-node">Setting Up a
 Node</a> will help
 you on how to build a Node and start Seele Node.</p>
 <p>Seele Node provides the <code class="docutils literal notranslate"><span class="pre">--miner,</span> <span class="pre">-m</span></code> command line parameter to
@@ -196,8 +178,9 @@ line argument to set the number of threads used by the Miner started by
 Node.</p>
 <div class="section" id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
-<p>A configuration file is required at start of Seele Node, and the format
-of the configuration file is referenced <a class="reference external" href="#configpath">configpath</a>.</p>
+<p>A configuration file is required at the start of Seele Node, and the
+format of the configuration file is referenced to
+<a class="reference external" href="#configpath">configpath</a>.</p>
 <div class="section" id="configpath">
 <h5>configpath<a class="headerlink" href="#configpath" title="Permalink to this headline">¶</a></h5>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -267,8 +250,8 @@ used by Miner to 2</p>
 </div>
 <div class="section" id="start-mining-with-seele-full-client">
 <h3>Start mining with Seele Full Client<a class="headerlink" href="#start-mining-with-seele-full-client" title="Permalink to this headline">¶</a></h3>
-<p>If you already have a Seele full node, you can use the full node client
-to start and manage your Node Miner <a class="reference external" href="Getting-Started-With-Seele.html#create-a-full-node-client">Create a Full Node
+<p>If you already have a Seele full node running, you can use the full node
+client to start and manage your Node miner <a class="reference external" href="Getting-Started-With-Seele.html#create-a-full-node-client">Create a Full Node
 Client</a>
 will help you on how to acquire a full client node.</p>
 <div class="section" id="example-1">
@@ -308,7 +291,7 @@ will help you on how to acquire a full client node.</p>
 </pre></div>
 </div>
 <p>Sets Seele Node Miner Coinbase:</p>
-<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">setcoinbase</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">miner</span> <span class="n">setcoinbase</span> <span class="o">--</span><span class="n">coinbase</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span>
 
 <span class="n">true</span>
 </pre></div>
@@ -343,15 +326,6 @@ will help you on how to acquire a full client node.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="seele-node.html" class="btn btn-neutral float-right" title="Seele Node" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="Scan-Monitor-Dashboard-Setup.html" class="btn btn-neutral" title="Scan Monitor Dashboard Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
@@ -378,16 +352,16 @@ will help you on how to acquire a full client node.</p>
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
 
-  <script type="text/javascript" src="../static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

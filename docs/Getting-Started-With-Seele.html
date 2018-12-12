@@ -24,15 +24,15 @@
 
   
 
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="How To Create An Account" href="How-To-Create-An-Account.html" />
-    <link rel="prev" title="Introduction" href="Introduction.html" /> 
+    <link rel="next" title="How To Build Your Own Seele Network" href="How-to-build-your-own-seele-network.html" />
+    <link rel="prev" title="Introduction" href="../introduction/index.html" /> 
 
   
-  <script src="../static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -78,14 +78,13 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started With Seele</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-a-node">Setting Up a Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-a-full-node-client">Create a Full Node Client:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-a-light-node-client">Create a Light Node Client:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#three-common-scene-commands">Three common scene commands:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#three-common-used-commands">Three common-used commands:</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#transfer">1. Transfer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#deploy-contract">2. Deploy contract</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#call-contract">3. Call contract</a><ul>
@@ -103,20 +102,17 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="How-To-Create-An-Account.html">How To Create An Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-to-send-debt.html">How To Send Debt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mining.html">Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele-node.html">Seele Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele.js.html">Seele.js</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
 </ul>
 
             
@@ -168,6 +164,8 @@
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="../_sources/docs/Getting-Started-With-Seele.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -187,37 +185,35 @@
 <li>Preparations:<ul>
 <li>Install <a class="reference external" href="https://golang.org/doc/install">Go v1.10</a> or higher,
 <a class="reference external" href="https://git-scm.com/downloads">Git</a>, and the <a class="reference external" href="#gcc-install-newbie-guide">C
-compiler</a>.</li>
+compiler</a>(if you have not
+installed GO, Git or C compiler please follow README).</li>
 <li>Clone the go-seele repository to the
 <a class="reference external" href="https://github.com/golang/go/wiki/SettingGOPATH">GOPATH</a>
 directory : <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">get</span> <span class="pre">-u</span> <span class="pre">-v</span> <span class="pre">github.com/seeleteam/go-seele/...</span></code></li>
-<li>In <code class="docutils literal notranslate"><span class="pre">seeleteam\go-seele\cmd\node</span></code>, run: <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>; if you are
-running this for the first time a node executable object will
-appear.</li>
 </ul>
 </li>
-<li>Running a Node:</li>
+<li>In <code class="docutils literal notranslate"><span class="pre">seeleteam\go-seele\cmd\node</span></code>, run: <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>; if you are
+running this for the first time a node executable object will appear.</li>
 </ul>
-<blockquote>
-<div><ol class="arabic simple">
-<li>If you run into the error related to “genesis block hash
-mismatch”, follow the solution located
-<a class="reference external" href="#genesis-block-hash-mismatch">here</a>.</li>
+<p>Something you may need to know before running a node:</p>
+<ol class="arabic simple">
+<li>If you run into the error related to “genesis block hash mismatch”,
+follow the solution located <a class="reference external" href="#genesis-block-hash-mismatch">here</a>.</li>
 <li>If you want to run a light node, just replace node1.json with
-light_node1.json. Of course, don’t forget to start a full node
-before you do this.</li>
-<li>Unless otherwise stated, the nodes mentioned below refer to the
-full node.</li>
+light_node1.json. Of course, don’t forget to start a full node before
+you do this.</li>
+<li>Unless otherwise stated, the nodes mentioned below refer to the full
+node.</li>
 </ol>
-</div></blockquote>
+<p>Running a Node:</p>
 <ul>
-<li><p class="first">commands:</p>
+<li><p class="first">In go-seele/cmd/node:</p>
 <ul>
 <li><p class="first">On Windows:</p>
 <ul class="simple">
-<li>Running a Singular Node：<ul>
+<li>Running a Single Node：<ul>
 <li>In the cmd window, run:
-<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node1.json</span> <span class="pre">[--accounts</span> <span class="pre">.\config\accounts.json]</span></code></li>
+<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node1.json</span> <span class="pre">--accounts</span> <span class="pre">.\config\accounts.json</span></code></li>
 <li>By default this will start the miner, not metrics. You can
 add flags <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">stop</span></code> to not start the miner, or <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">true</span></code>
 to <a class="reference external" href="#start-metrics">start metrics</a>.</li>
@@ -225,9 +221,9 @@ to <a class="reference external" href="#start-metrics">start metrics</a>.</li>
 </li>
 <li>Running Multiple Nodes：<ul>
 <li>In one cmd window, run:
-<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node1.json</span> <span class="pre">[--accounts</span> <span class="pre">.\config\accounts.json]</span></code></li>
+<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node1.json</span> <span class="pre">--accounts</span> <span class="pre">.\config\accounts.json</span></code></li>
 <li>In a second cmd window, run:
-<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node2.json</span> <span class="pre">[--accounts</span> <span class="pre">.\config\accounts.json]</span></code></li>
+<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node2.json</span> <span class="pre">--accounts</span> <span class="pre">.\config\accounts.json</span></code></li>
 </ul>
 </li>
 </ul>
@@ -409,7 +405,8 @@ window: node validatekey -k PRIVATEKEY</li>
 <h2>Create a Full Node Client:<a class="headerlink" href="#create-a-full-node-client" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Preparations:<ul>
-<li>Install go v1.10 or higher and the C compiler.</li>
+<li>Install go v1.10 or higher and the C compiler (if you haven’t
+install GO, Git or C compiler please follow README).</li>
 <li>In <code class="docutils literal notranslate"><span class="pre">seeleteam\go-seele\cmd\client</span></code>, run: <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>. If you
 are running this for the first time, a client executable object
 will appear.</li>
@@ -535,8 +532,8 @@ object will appear.</li>
 </pre></div>
 </div>
 </div>
-<div class="section" id="three-common-scene-commands">
-<h2>Three common scene commands:<a class="headerlink" href="#three-common-scene-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="three-common-used-commands">
+<h2>Three common-used commands:<a class="headerlink" href="#three-common-used-commands" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Prepare:</p>
 <p><a class="reference external" href="How-To-Create-An-Account.html">How to create an account</a> will
@@ -546,35 +543,38 @@ help you to get a Seele account.</p>
 <div class="section" id="transfer">
 <h3>1. Transfer<a class="headerlink" href="#transfer" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Of course, you need a rich account to transfer money (for example, 10
-fans) to A.
+<li>Of course, you need an account with money in it to transfer money
+(for example, 10 fans) to A.
 &gt; Use the following example need to add the <code class="docutils literal notranslate"><span class="pre">--accounts</span></code> parameter
-when you need to start the node,
+when you need to start the node, In seeleteam/go-seele/cmd/node:
 command:<code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">./config/node1.json</span> <span class="pre">--accounts</span> <span class="pre">./config/accounts.json</span></code></li>
 </ul>
-<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
-<span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">10000</span> <span class="o">--</span><span class="n">price</span> <span class="mi">1</span> <span class="o">--</span><span class="n">gas</span> <span class="mi">2</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0xb286933bccbec9ca1cd92257d12d12ebab9b1201</span>
+<div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span>// Request (if not given value,  default value will be : gasprice = 10, gaslimit = 21000)
+client sendtx --amount 10000 --price 1 --gas 2 --from .keystore-shard-1-0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21 --to 0xb286933bccbec9ca1cd92257d12d12ebab9b1201
 
-<span class="o">//</span> <span class="n">Response</span>
-<span class="n">Please</span> <span class="nb">input</span> <span class="n">your</span> <span class="n">key</span> <span class="n">file</span> <span class="n">password</span><span class="p">:</span>
-<span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="n">current</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sending</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">transaction</span> <span class="n">sent</span> <span class="n">successfully</span>
-<span class="p">{</span>
-  <span class="s2">&quot;Hash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x9c0e2565b8a0b33c3f69aa6eb9bad4a86c3925a1fe12272e2082091b9b1c5609&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;From&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="s2">&quot;0xb286933bccbec9ca1cd92257d12d12ebab9b1201&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-      <span class="s2">&quot;AccountNonce&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s2">&quot;GasPrice&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="s2">&quot;GasLimit&quot;</span><span class="p">:</span> <span class="mi">21000</span><span class="p">,</span>
-      <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s2">&quot;Payload&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;Signature&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;Sig&quot;</span><span class="p">:</span> <span class="s2">&quot;N8XzJ/GEpU73dpzW5t5WShmVPFb8gQOrInGdypul8aBaDakmhbZ2rdqekA5bWslHQBfsoafeMukF5b7A1/6JWQA=&quot;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+// Response (If we want use coherent name as savekey step in “How To Create An Account”, it is recommended to use .keystore-shard1&amp; It is .keystore-shard1 not .keystore-shard-1)
+
+In seeleteam/go-seele/cmd/node:
+
+Please input your key file password:
+account 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21 current nonce: 0, sending nonce: 0
+transaction sent successfully
+{
+  &quot;Hash&quot;: &quot;0x9c0e2565b8a0b33c3f69aa6eb9bad4a86c3925a1fe12272e2082091b9b1c5609&quot;,
+  &quot;Data&quot;: {
+      &quot;From&quot;: &quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;,
+      &quot;To&quot;: &quot;0xb286933bccbec9ca1cd92257d12d12ebab9b1201&quot;,
+      &quot;Amount&quot;: 10000,
+      &quot;AccountNonce&quot;: 0,
+      &quot;GasPrice&quot;: 1,
+      &quot;GasLimit&quot;: 21000,
+      &quot;Timestamp&quot;: 0,
+      &quot;Payload&quot;: &quot;&quot;
+  },
+  &quot;Signature&quot;: {
+      &quot;Sig&quot;: &quot;N8XzJ/GEpU73dpzW5t5WShmVPFb8gQOrInGdypul8aBaDakmhbZ2rdqekA5bWslHQBfsoafeMukF5b7A1/6JWQA=&quot;
+  }
+}
 </pre></div>
 </div>
 <ul class="simple">
@@ -618,8 +618,8 @@ tx <code class="docutils literal notranslate"><span class="pre">status</span></c
 <div class="section" id="deploy-contract">
 <h3>2. Deploy contract<a class="headerlink" href="#deploy-contract" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>For the sake of convenience, use A deploy the <code class="docutils literal notranslate"><span class="pre">simple_storage.sol</span></code>
-contract.<a class="reference external" href="Using-the-contract-simulator.html">Using the contract
+<li>For the sake of convenience, use A to deploy the
+<code class="docutils literal notranslate"><span class="pre">simple_storage.sol</span></code> contract. <a class="reference external" href="Using-the-contract-simulator.html">Using the contract
 simulator</a> will help you to get
 the contract binary data.</li>
 </ul>
@@ -827,10 +827,10 @@ path to the .seele folder is in the logs printed above.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="How-To-Create-An-Account.html" class="btn btn-neutral float-right" title="How To Create An Account" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="How-to-build-your-own-seele-network.html" class="btn btn-neutral float-right" title="How To Build Your Own Seele Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../introduction/index.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -860,16 +860,16 @@ path to the .seele folder is in the logs printed above.</p>
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
 
-  <script type="text/javascript" src="../static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
