@@ -24,15 +24,15 @@
 
   
 
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="How To Build Your Own Seele Network" href="How-to-build-your-own-seele-network.html" />
-    <link rel="prev" title="Seele JSON-RPC" href="Seele-RPC.html" /> 
+    <link rel="next" title="Hash Time Lock Contract" href="Hash-Time-Lock-Contract.html" />
+    <link rel="prev" title="Scan Monitor Dashboard Setup" href="Scan-Monitor-Dashboard-Setup.html" /> 
 
   
-  <script src="../static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -78,17 +78,11 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-To-Create-An-Account.html">How To Create An Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-to-send-debt.html">How To Send Debt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mining.html">Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele-node.html">Seele Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Using The Contract Simulator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#compile-the-contract-simulator">Compile the contract simulator</a></li>
@@ -111,12 +105,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele.js.html">Seele.js</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
 </ul>
 
             
@@ -168,6 +164,8 @@
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="../_sources/docs/Using-the-contract-simulator.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -208,7 +206,9 @@ too.</p>
 <div class="section" id="smart-contract-source-code">
 <h4>Smart contract source code:<a class="headerlink" href="#smart-contract-source-code" title="Permalink to this headline">¶</a></h4>
 <p>SimpleStorage.sol:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">example</span> <span class="ow">is</span> <span class="n">only</span> <span class="n">compatible</span> <span class="k">with</span> <span class="n">solidity</span> <span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span>
+
+<span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
 
 <span class="n">contract</span> <span class="n">SimpleStorage</span> <span class="p">{</span>
     <span class="n">uint</span> <span class="n">storedData</span><span class="p">;</span>
@@ -227,7 +227,7 @@ too.</p>
 <div class="section" id="create-the-contract-in-the-simulator-with-solidity-file">
 <h4>Create the contract in the simulator with solidity file<a class="headerlink" href="#create-the-contract-in-the-simulator-with-solidity-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Request
-vm create -f simpleStorage.sol
+./vm create -f simpleStorage.sol
 
 // Response
 Succeed to create contract!
@@ -384,10 +384,10 @@ Result (big): 21
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="How-to-build-your-own-seele-network.html" class="btn btn-neutral float-right" title="How To Build Your Own Seele Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Hash-Time-Lock-Contract.html" class="btn btn-neutral float-right" title="Hash Time Lock Contract" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Seele-RPC.html" class="btn btn-neutral" title="Seele JSON-RPC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Scan-Monitor-Dashboard-Setup.html" class="btn btn-neutral" title="Scan Monitor Dashboard Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -417,16 +417,16 @@ Result (big): 21
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
 
-  <script type="text/javascript" src="../static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

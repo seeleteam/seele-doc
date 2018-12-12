@@ -1,0 +1,2630 @@
+JSON RPC API
+============
+
+JSON is a lightweight data exchange format. It can represent numbers,
+strings, ordered value sequences and key-value pairs.
+
+JSON-RPC is a stateless, lightweight Remote Procedure Call (RPC)
+protocol. It defines several data structures and the relevant rules to
+handle them. JSON-RPC is transmission-agnostic, because it can be used
+in situations like process, socket, HTTP, or different message
+transmission environments. It uses JSON(RFC 4627) as the data format.
+
+JSON-RPC Support
+----------------
+
++----------------+------------+
+| Type           | Supported? |
++================+============+
+| JSON-RPC 1.0   | ✓          |
++----------------+------------+
+| JSON-RPC 2.0   | ✓          |
++----------------+------------+
+| Batch Requests | ✓          |
++----------------+------------+
+| HTTP           | ✓          |
++----------------+------------+
+| WS             | ✓          |
++----------------+------------+
+
+JSON-RPC Port
+-------------
+
+Default port:
+
++--------+-------------+-----------------------+
+| Client | Type        | Address               |
++========+=============+=======================+
+| Go     | jsonrpc-2.0 | http://localhost:8027 |
++--------+-------------+-----------------------+
+| Go     | http        | http://localhost:8037 |
++--------+-------------+-----------------------+
+| Go     | websocket   | http://localhost:8047 |
++--------+-------------+-----------------------+
+
+JSON-RPC Example
+----------------
+
+Currently three measures are supported for access: directly calling
+methods in Go, client access, and HTTP access.
+
+-  Client call
+
+.. code:: bash
+
+   //On Windows:
+   .\client.exe getinfo -a 127.0.0.1:8027
+
+   //On Linux & Mac:
+   ./client getinfo -a 127.0.0.1:8027
+
+-  RPC call
+
+.. code:: bash
+
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.GetInfo","params":[],"id":1}' localhost:8037
+
+JSON-RPC List
+-------------
+
+Currently, there are several RPCs with different namespaces： -
+``seele``:node data manipulation and procurement / acquisition -
+``txpool``:transaction pool management - ``download``:block
+synchronization processing - ``network``:connection management -
+``miner``:miner manipulation - ``debug``:node debugging
+
+JSON-RPC Contents
+-----------------
+
+-  `Base API <#seele>`__
+
+   -  `GetInfo <#getinfo>`__
+   -  `GetBalance <#getbalance>`__
+   -  `AddTx <#addtx>`__
+   -  `GetAccountNonce <#getaccountnonce>`__
+   -  `GetBlockHeight <#getblockheight>`__
+   -  `GetBlockByHeight <#getblockbyheight>`__
+   -  `GetBlockByHash <#getblockbyhash>`__
+   -  `SaveKey <#savekey>`__
+   -  `GetAccountShardNum <#getaccountshardnum>`__
+   -  `Call <#call>`__
+   -  `GetLogs <#getlogs>`__
+
+-  `txpool <#txpool>`__
+
+   -  `GetBlockTransactionCountByHeight <#getblocktransactioncountbyheight>`__
+   -  `GetBlockTransactionCountByHash <#getblocktransactioncountbyhash>`__
+   -  `GetTransactionByBlockHeightAndIndex <#gettransactionbyblockheightandindex>`__
+   -  `GetTransactionByBlockHashAndIndex <#gettransactionbyblockhashandindex>`__
+   -  `GetTransactionByHash <#gettransactionbyhash>`__
+   -  `GetPendingTransactions <#getpendingtransactions>`__
+   -  `GetReceiptByTxHash <#getreceiptbytxhash>`__
+
+-  `download <#download>`__
+
+   -  `GetStatus <#getstatus>`__
+
+-  `network <#network>`__
+
+   -  `GetPeersInfo <#getpeersinfo>`__
+   -  `GetPeerCount <#getpeercount>`__
+   -  `GetNetworkVersion <#getnetworkversion>`__
+   -  `GetProtocolVersion <#getprotocolversion>`__
+
+-  `miner <#miner>`__
+
+   -  `Start <#start>`__
+   -  `Stop <#stop>`__
+   -  `Hashrate <#hashrate>`__
+   -  `GetCoinbase <#getcoinbase>`__
+   -  `GetThreads <#getthreads>`__
+   -  `SetCoinbase <#setcoinbase>`__
+   -  `SetThreads <#setthreads>`__
+
+-  `debug <#debug>`__
+
+   -  `PrintBlock <#printblock>`__
+   -  `GetTxPoolContent <#gettxpoolcontent>`__
+   -  `GetTxPoolTxCount <#gettxpooltxcount>`__
+   -  `Key <#key>`__
+   -  `Sign <#sign>`__
+
+seele
+~~~~~
+
+RPC collection provided for public for blockchain node and transaction
+manipulation.
+
+--------------
+
+GetInfo
+^^^^^^^
+
+This method returns information such as basic account address and
+current block height of the miner.
+
++---------+-------------------------------------------------------------------+
+| Type    | Template                                                          |
++=========+===================================================================+
+| Console | ``client.exe getinfo -a <rpc address>``                           |
++---------+-------------------------------------------------------------------+
+| RPC     | ``{"jsonrpc":"2.0","method":"seele.GetInfo","params":[],"id":2}`` |
++---------+-------------------------------------------------------------------+
+
+Parameters
+''''''''''
+
+none
+
+Returns
+'''''''
+
+-  ``Coinbase``:``[]byte`` - node address
+-  ``CurrentBlockHeight``:``uint64`` - current block height
+-  ``HeaderHash``:``[]byte`` - block hash
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getinfo
+
+   // Result
+   {
+       "Coinbase": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+       "CurrentBlockHeight": 2,
+       "HeaderHash": "0x0000002380317fac31fb0f8aba7ff99e603507bdd41b9faf07e43b186725bcc4"
+   }
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.GetInfo","params":[],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc":"2.0",
+       "id":1,
+       "result":{
+           "Coinbase":"0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+           "CurrentBlockHeight":2,
+           "HeaderHash":"0x0000002380317fac31fb0f8aba7ff99e603507bdd41b9faf07e43b186725bcc4"
+       }
+   }
+
+--------------
+
+GetAccountShardNum
+^^^^^^^^^^^^^^^^^^
+
+This method is used to get the account shard number with the specified
+account.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getaccountshardnum - |
+|                                   | -account <string> -a <rpc address |
+|                                   | >``                               |
+|                                   | \ ``client.exe getaccountshardnum |
+|                                   |  --privatekey <string> -a <rpc ad |
+|                                   | dress>``                          |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-1:
+
+Parameters
+''''''''''
+
+-  ``account``:``string`` - account
+-  ``privatekey``:``string`` - private key
+
+.. _returns-1:
+
+Returns
+'''''''
+
+-  ``shard number``:``int`` - shard number
+
+.. _example-1:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getaccountshardnum --privatekey 0xf65e40c6809643b25ce4df33153da2f3338876f181f83d2281c6ac4a987b1479
+
+   // Result
+   shard number: 1
+
+--------------
+
+GetBalance
+^^^^^^^^^^
+
+This method returns the account balance. If the account flag is null,
+the node address balance is returned.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getbalance -t 0x<pub |
+|                                   | lic address> -a <rpc address>``   |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"seel |
+|                                   | e.GetBalance","params":[string]," |
+|                                   | id":1}``                          |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-2:
+
+Parameters
+''''''''''
+
+-  ``account``:``string`` - wallet address
+
+.. _returns-2:
+
+Returns
+'''''''
+
+-  ``result``:``big.Int`` - account balance
+
+.. _example-2:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getbalance -t 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21
+
+   // Result
+   Account: 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21
+   Balance: 4.5
+
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.GetBalance","params":["0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc":"2.0",
+       "id":1,
+       "result":450000000
+   }
+
+--------------
+
+SaveKey
+^^^^^^^
+
+This method saves the private key.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe savekey -k 0x<privat |
+|                                   | ekey> [-f file] -t 0x<public addr |
+|                                   | ess>``                            |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-3:
+
+Parameters
+''''''''''
+
+-  ``key``:``string`` - private key
+-  ``file``:``string`` - key file (default “.keystore”)
+
+.. _returns-3:
+
+Returns
+'''''''
+
+-  none
+
+.. _example-3:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe savekey -k 0x52117b49022b246ee3921a7ff6771df065594a0dde555e40d8ce940a3ecfb654
+
+--------------
+
+AddTx
+^^^^^
+
+This method submits a transaction to the node.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe sendtx -a <rpc addre |
+|                                   | ss> -m 0 -t 0x<public address> -f |
+|                                   |  keyfile --fee 0``                |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"seel |
+|                                   | e.AddTx","params":[types.Transact |
+|                                   | ion],"id":1}``                    |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-4:
+
+Parameters
+''''''''''
+
+-  ``tx``:``types.Transaction`` - transaction struct
+-  ``from``:``types.Transaction.Data.From`` - transaction ‘from’ address
+-  ``to``:``types.Transaction.Data.To`` - transaction ‘to’ address
+-  ``amount``:``types.Transaction.Data.Amount`` - transaction amount
+-  ``fee``:``types.Transaction.Data.Fee`` - transaction fee
+-  ``nonce``:``types.Transaction.Data.AccountNonce`` - transaction nonce
+-  ``payload``:``types.Transaction.Data.Payload`` - transaction payload
+
+.. _returns-4:
+
+Returns
+'''''''
+
+-  ``result``:``bool`` - submission result
+
+.. _example-4:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe sendtx -m 0 -t 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21 -f .\keyfile\shard1-0x0a57a2714e193b7ac50475ce625f2dcfb483d741 --fee 0
+
+   // Result:
+   got the sender account 0x0a57a2714e193b7ac50475ce625f2dcfb483d741 nonce: 0
+   adding the tx succeeded.
+   {
+       "accountNonce": 0,
+       "amount": 0,
+       "fee": 0,
+       "from": "0x0a57a2714e193b7ac50475ce625f2dcfb483d741",
+       "hash": "0x0ed7c1d985666d078d1ab9fd34cbd8f87104c82be7a1c2ea981761db9317cf6d",
+       "payload": "",
+       "timestamp": 0,
+       "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+   }
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.AddTx","params":[{"Data":{"From":"0x0a57a2714e193b7ac50475ce625f2dcfb483d741","To":"0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21","Amount":0,"AccountNonce":0,"Fee":0}}],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": true
+   }
+
+--------------
+
+GetAccountNonce
+^^^^^^^^^^^^^^^
+
+This method is used to obtain the nonce of the address.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getnonce -a <rpc add |
+|                                   | ress> -t 0x<public address>``     |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"seel |
+|                                   | e.GetAccountNonce","params":[stri |
+|                                   | ng],"id":1}``                     |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-5:
+
+Parameters
+''''''''''
+
+-  ``account``:``string`` - wallet address
+
+.. _returns-5:
+
+Returns
+'''''''
+
+-  ``result``:``uint64`` - nonce
+
+.. _example-5:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getnonce -t 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21
+
+   // Result
+   got account: 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21 nonce: 0
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.GetAccountNonce","params":["0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": 0
+   }
+
+--------------
+
+.. _getaccountnonce-1:
+
+GetAccountNonce
+^^^^^^^^^^^^^^^
+
+This method is used to obtain the nonce of the address.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getnonce -a <rpc add |
+|                                   | ress> -t 0x<public address>``     |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"seel |
+|                                   | e.GetAccountNonce","params":[stri |
+|                                   | ng],"id":1}``                     |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-6:
+
+Parameters
+''''''''''
+
+-  ``account``:``string`` - wallet address
+
+.. _returns-6:
+
+Returns
+'''''''
+
+-  ``result``:``uint64`` - nonce
+
+.. _example-6:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getnonce -t 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21
+
+   // Result
+   got account: 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21 nonce: 0
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.GetAccountNonce","params":["0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": 0
+   }
+
+--------------
+
+Call
+^^^^
+
+This method is used to execute a given transaction on a statedb of a
+given block height. It does not affect the statedb or blockchain and is
+useful for executing and retrieving values. However, the height
+currently does not support optional and will remove the from parameter
+in the next version or more.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe call -a <rpc address |
+|                                   | > -t 0x<public address> -f keyfil |
+|                                   | e --payload 0x<abi bytecode>``    |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"seel |
+|                                   | e.Call ","params":[CallRequest]," |
+|                                   | id":1}``                          |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-7:
+
+Parameters
+''''''''''
+
+-  ``request``:``CallRequest`` - parameter struct
+-  ``Tx``:``types.Transaction`` - transaction struct
+-  ``Height``:``int64`` - block height
+
+.. _returns-7:
+
+Returns
+'''''''
+
+-  ``result``:``string`` - transaction result
+-  ``poststate``:``string`` - state trie root hash after transaction
+   execution
+-  ``txhash``:``string`` - transaction hash
+-  ``contract``:``string`` - contract address
+
+.. _example-7:
+
+Example
+'''''''
+
+When using the example below, the contract must be deployed first. The
+solidity code file:
+
+.. code:: solidity
+
+   pragma solidity ^0.4.0;
+
+   contract SimpleStorage {
+       uint storedData=23;
+
+       function set(uint x) {
+           storedData=x;
+       }
+       
+       function get() constant returns(uint) {
+           return storedData;
+       }
+   }
+
+As you can see, the example is testing the get function.
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe call --payload 0x6d4ce63c -t 0xce694f74851c4e3eb5deb75ae841fa9b770300d2 -f ./keyfile/shard1-0x0a57a2714e193b7ac50475ce625f2dcfb483d741 
+
+   // Result
+   succeeded in calling a contract
+   {
+           "contract": "0x",
+           "poststate": "0xd542aaf551475a85732710ad75d5a09e0f39437deea96d30da4add9114c58aa0",
+           "result": "0x0000000000000000000000000000000000000000000000000000000000000017",
+           "txhash": "0xeed1286ac36b3172082e92b5d7038aeac2f593be17184c24cf8e731554596fab"
+   }
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.Call","params":[{"Tx":{"Data":{"From":"0x0a57a2714e193b7ac50475ce625f2dcfb483d741","To":"0xce694f74851c4e3eb5deb75ae841fa9b770300d2","Payload":"bUzmPA==","Amount":0,"AccountNonce":1,"Fee":0}},"Height":-1}],"id":1}' 127.0.0.1:8037
+
+   // Result
+   {"jsonrpc":"2.0","id":1,"result":{"contract":"0x","poststate":"0xd13575c405a9c39509535e1af4ffeec7099291f361b8c8080e2351677adeb531","result":"0x0000000000000000000000000000000000000000000000000000000000000017","txhash":"0x0000000000000000000000000000000000000000000000000000000000000000"}}
+
+--------------
+
+GetLogs
+^^^^^^^
+
+This method gets the event logs by block height, the contract address,
+and the event name.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getlogs --height <bl |
+|                                   | ock height> --address 0x<contract |
+|                                   |  address> --topic 0x<event name h |
+|                                   | ash>``                            |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"seel |
+|                                   | e.GetLogs ","params":[GetLogsRequ |
+|                                   | est],"id":1}``                    |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-8:
+
+Parameters
+''''''''''
+
+-  ``request``:``GetLogsRequest`` - request parameter struct
+-  ``Height``:``int64`` - block height
+-  ``ContractAddress``:``string`` - contract address
+-  ``Topic``:``string`` - event name
+
+.. _returns-8:
+
+Returns
+'''''''
+
+-  ``response``:``GetLogsResponse`` - response parameter struct
+-  ``Txhash``:``string`` - transaction hash
+-  ``LogIndex``:``uint`` - log index in receipt’s logs
+-  ``Log``:``string`` - log json
+
+.. _example-8:
+
+Example
+'''''''
+
+When using the example below, the contract must be deployed first. The
+solidity code file:
+
+.. code:: solidity
+
+   pragma solidity ^0.4.0;
+
+   contract simple_storage_1 {
+       uint storedData=23;
+       
+       event getLog(address addr, string message);
+       event getLog1(string message);
+       event getLog2(string message);
+
+       function set(uint x) public{
+           getLog1("set getLog1");
+           getLog2("set getLog2");
+           storedData=x;
+       }
+       
+       function get() constant public returns(uint) {
+           getLog(msg.sender, "get getLog");
+           getLog1("get getLog1");
+           set(16);
+           return storedData;
+       }
+   }
+
+As you can see, this example is testing the get function. In this
+situation, the height is the block height of the block containing the
+get transaction.
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getlogs --height 299 --address 0x40bdd5ab58a26cf761607684bd0230b1ea8200f2 --topic 0x978acaf30839c63aff19afed19ff8f3a430103773a67e3890aa1639af9a71bc4
+
+   // Result
+   [
+           {
+                   "Log": {
+                           "address": "0x40bdd5ab58a26cf761607684bd0230b1ea8200f2",
+                           "blockNumber": 299,
+                           "data": "AAAAAAAAAAAAAAAACleicU4ZO3rFBHXOYl8tz7SD10EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKZ2V0IGdldExvZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                           "topics": [
+                                   "0x978acaf30839c63aff19afed19ff8f3a430103773a67e3890aa1639af9a71bc4"
+                           ],
+                           "transactionIndex": 1
+                   },
+                   "LogIndex": 0,
+                   "Txhash": "0x2a06accc3739845451d50c74bc28a66c6152e9e536e263c3549a404abe8259fc"
+           }
+   ]
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.GetLogs","params":[{"Height":299, "ContractAddress":"0x40bdd5ab58a26cf761607684bd0230b1ea8200f2","Topics":"0x978acaf30839c63aff19afed19ff8f3a430103773a67e3890aa1639af9a71bc4"}],"id":1}' 127.0.0.1:8037
+
+
+   // Result
+   {"jsonrpc":"2.0","id":1,"result":[{"Txhash":"0x2a06accc3739845451d50c74bc28a66c6152e9e536e263c3549a404abe8259fc","LogIndex":0,"Log":{"address":"0x40bdd5ab58a26cf761607684bd0230b1ea8200f2","topics":["0x978acaf30839c63aff19afed19ff8f3a430103773a67e3890aa1639af9a71bc4"],"data":"AAAAAAAAAAAAAAAACleicU4ZO3rFBHXOYl8tz7SD10EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKZ2V0IGdldExvZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=","blockNumber":299,"transactionIndex":1}}]}
+
+--------------
+
+GetBlockByHeight
+^^^^^^^^^^^^^^^^
+
+This method is used to obtain the block content based on block height.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getblockbyheight --h |
+|                                   | eight -1 -f=true -a <rpc address> |
+|                                   | ``                                |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"seel |
+|                                   | e.GetBlockByHeight","params":[Get |
+|                                   | BlockByHeightRequest],"id":1}``   |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-9:
+
+Parameters
+''''''''''
+
+-  ``request``:``GetBlockByHeightRequest`` - parameter struct
+-  ``height``:``GetBlockByHeightRequest.Height`` - block height
+-  ``fulltx``:``GetBlockByHeightRequest.FullTx`` - whether to include
+   detailed transaction information
+
+.. _returns-9:
+
+Returns
+'''''''
+
+-  ``creator``:``string`` - creator address
+-  ``difficulty``:``big.Int`` - block difficulty
+-  ``hash``:``string`` - block hash
+-  ``height``:``unit64`` - block height
+-  ``nonce``:``unit64`` - block nonce
+-  ``parentHash``:``string`` - front block hash
+-  ``stateHash``:``string`` - state tree hash
+-  ``timestamp``:``big.Int`` - timestamp
+-  ``totalDifficulty``:``big.Int`` - total difficulty
+-  ``transactions``:``array`` - transaction array
+-  ``accountNonce``:``unit64`` - account nonce
+-  ``amount``:``Int`` - transaction amount
+-  ``from``:``string`` - transaction provider
+-  ``to``:``string`` - transaction receiver
+-  ``hash``:``string`` - transaction hash
+-  ``payload``:``array`` - transaction payload
+-  ``timestamp``:``string`` - transaction timestamp
+
+.. _example-9:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getblockbyheight --height 1 -f=true
+
+   // Result
+   {
+       "creator": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+       "difficulty": 8000000,
+       "hash": "0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1",
+       "height": 1,
+       "nonce": 13210793202234192000,
+       "parentHash": "0xe31733183a3146570d88b7dd335274b08d7b1771739f2d0382d4c751f364b8b3",
+       "stateHash": "0x25a65f399885aa83ac0767e3dd862addb44fbcafa5bd8c5595e52e4ffee4f04b",
+       "timestamp": 1530069406,
+       "totalDifficulty": 16000000,
+       "transactions": [
+           {
+               "accountNonce": 0,
+               "amount": 150000000,
+               "fee": 0,
+               "from": "0x0000000000000000000000000000000000000000",
+               "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+               "payload": "",
+               "timestamp": 1530069406,
+               "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+           }
+       ],
+       "txHash": "0xa54e2ac0bc8be6da9e0a00dcd32361c7893da7c88caa432272374496c545d565"
+   }
+   transaction numbers: 1
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.GetBlockByHeight","params":[{"Height":-1,"FullTx":true}],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": {
+           "creator": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+           "difficulty": 7937642,
+           "hash": "0x00000217fd6b4fbe709b7e9392586becf7d9435606ebd441abd14d68ffac0862",
+           "height": 14,
+           "nonce": 12581685447858775870,
+           "parentHash": "0x000000aebd89a90f8815a5c47636dfd2ab3a0a1826c91dbd7139c93b6dcf2c2b",
+           "stateHash": "0x58f197c8659d6368633d7fa5ad8be6c1b5353a611beb8b981b58b868e2872653",
+           "timestamp": 1530069737,
+           "totalDifficulty": 119535666,
+           "transactions": [
+               {
+                   "accountNonce": 0,
+                   "amount": 150000000,
+                   "fee": 0,
+                   "from": "0x0000000000000000000000000000000000000000",
+                   "hash": "0x0231cf89481f1f3b294b6a9fb5eb7e3a70075c09cc0d43e71262f53510af4013",
+                   "payload": "",
+                   "timestamp": 1530069737,
+                   "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+               }
+           ],
+           "txHash": "0x4f50446910b283786459f6fad423bf3c68c6003f4aa9fe094bcd01d2af5cf900"
+       }
+   }
+
+--------------
+
+GetBlockByHash
+^^^^^^^^^^^^^^
+
+This method is used to obtain the block content based on block hash.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getblockbyhash --has |
+|                                   | h <string> -f=true -a <rpc addres |
+|                                   | s>``                              |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"seel |
+|                                   | e.GetBlockByHash","params":[GetBl |
+|                                   | ockByHashRequest],"id":1}``       |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-10:
+
+Parameters
+''''''''''
+
+-  ``request``:``GetBlockByHashRequest`` - parameter struct
+-  ``hash``:``GetBlockByHashRequest.HashHex`` - block hash
+-  ``fulltx``:``GetBlockByHashRequest.FullTx`` - whether to include
+   detailed transaction information
+
+.. _returns-10:
+
+Returns
+'''''''
+
+-  ``creator``:``string`` - creator address
+-  ``difficulty``:``big.Int`` - block difficulty
+-  ``hash``:``string`` - block hash
+-  ``height``:``unit64`` - block height
+-  ``nonce``:``unit64`` - block nonce
+-  ``parentHash``:``string`` - front block hash
+-  ``stateHash``:``string`` - state tree hash
+-  ``timestamp``:``big.Int`` - timestamp
+-  ``totalDifficulty``:``big.Int`` - total difficulty
+-  ``transactions``:``array`` - transaction array
+-  ``accountNonce``:``unit64`` - account nonce
+-  ``amount``:``Int`` - transaction amount
+-  ``from``:``string`` - transaction provider
+-  ``to``:``string`` - transaction receiver
+-  ``hash``:``string`` - transaction hash
+-  ``payload``:``array`` - transaction payload
+-  ``timestamp``:``string`` - timestamp
+
+.. _example-10:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getblockbyhash --hash 0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1 -f=true
+
+   // Result
+   {
+       "creator": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+       "difficulty": 8000000,
+       "hash": "0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1",
+       "height": 1,
+       "nonce": 13210793202234192000,
+       "parentHash": "0xe31733183a3146570d88b7dd335274b08d7b1771739f2d0382d4c751f364b8b3",
+       "stateHash": "0x25a65f399885aa83ac0767e3dd862addb44fbcafa5bd8c5595e52e4ffee4f04b",
+       "timestamp": 1530069406,
+       "totalDifficulty": 16000000,
+       "transactions": [
+           {
+               "accountNonce": 0,
+               "amount": 150000000,
+               "fee": 0,
+               "from": "0x0000000000000000000000000000000000000000",
+               "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+               "payload": "",
+               "timestamp": 1530069406,
+               "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+           }
+       ],
+       "txHash": "0xa54e2ac0bc8be6da9e0a00dcd32361c7893da7c88caa432272374496c545d565"
+   }
+
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"seele.GetBlockByHash","params":[{"HashHex":"0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1","FullTx":true}],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": {
+           "creator": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+           "difficulty": 8000000,
+           "hash": "0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1",
+           "height": 1,
+           "nonce": 13210793202234192073,
+           "parentHash": "0xe31733183a3146570d88b7dd335274b08d7b1771739f2d0382d4c751f364b8b3",
+           "stateHash": "0x25a65f399885aa83ac0767e3dd862addb44fbcafa5bd8c5595e52e4ffee4f04b",
+           "timestamp": 1530069406,
+           "totalDifficulty": 16000000,
+           "transactions": [
+               {
+                   "accountNonce": 0,
+                   "amount": 150000000,
+                   "fee": 0,
+                   "from": "0x0000000000000000000000000000000000000000",
+                   "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+                   "payload": "",
+                   "timestamp": 1530069406,
+                   "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+               }
+           ],
+           "txHash": "0xa54e2ac0bc8be6da9e0a00dcd32361c7893da7c88caa432272374496c545d565"
+       }
+   }
+
+--------------
+
+txpool
+~~~~~~
+
+RPC collection provided for internal use for transaction pool inquiry
+manipulation.
+
+--------------
+
+GetBlockTransactionCountByHeight
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This method is used to obtain the number of transactions in the
+transaction pool based on block height.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getblocktxcountbyhei |
+|                                   | ght --height -1 -a <rpc address>` |
+|                                   | `                                 |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"txpo |
+|                                   | ol.GetBlockTransactionCountByHeig |
+|                                   | ht","params":[int64],"id":1}``    |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-11:
+
+Parameters
+''''''''''
+
+-  ``height``:``int64`` - block height
+
+.. _returns-11:
+
+Returns
+'''''''
+
+-  ``result``:``int`` - number of transaction
+
+.. _example-11:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getblocktxcountbyheight --height 1
+
+   // Result
+   1
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"txpool.GetBlockTransactionCountByHeight","params":[1],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": 1
+   }
+
+--------------
+
+GetBlockTransactionCountByHash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This method is used to obtain the number of transactions in the
+transaction pool based on block hash.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getblocktxcountbyhas |
+|                                   | h --hash <string> -a <rpc address |
+|                                   | >``                               |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"txpo |
+|                                   | ol.GetBlockTransactionCountByHash |
+|                                   | ","params":[string],"id":1}``     |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-12:
+
+Parameters
+''''''''''
+
+-  ``blockHash``:``string`` - block hash
+
+.. _returns-12:
+
+Returns
+'''''''
+
+-  ``result``:``int`` - number of transactions
+
+.. _example-12:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getblocktxcountbyhash --hash 0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1
+
+   // Result
+   1
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"txpool.GetBlockTransactionCountByHash","params":["0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1"],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": 1
+   }
+
+--------------
+
+GetTransactionByBlockHeightAndIndex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This method is used to obtain the transaction content based on block
+height and transaction index.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe gettxbyheightandinde |
+|                                   | x --height -1 --index 0 -a <rpc a |
+|                                   | ddress>``                         |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"txpo |
+|                                   | ol.GetTransactionByBlockHeightAnd |
+|                                   | Index","params":[GetTxByBlockHeig |
+|                                   | htAndIndexRequest],"id":1}``      |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-13:
+
+Parameters
+''''''''''
+
+-  ``request``:``GetTxByBlockHeightAndIndexRequest`` - parameter struct
+-  ``height``:``GetTxByBlockHeightAndIndexRequest.Height`` - block
+   height
+-  ``index``:``GetTxByBlockHeightAndIndexRequest.Index`` - transaction
+   index
+
+.. _returns-13:
+
+Returns
+'''''''
+
+-  ``accountNonce``:``unit64`` - account nonce
+-  ``amount``:``Int`` - transaction amount
+-  ``from``:``string`` - transaction provider
+-  ``to``:``string`` - transaction receiver
+-  ``hash``:``string`` - transaction hash
+-  ``payload``:``array`` - transaction payload
+-  ``timestamp``:``string`` - transaction timestamp
+
+.. _example-13:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe gettxbyheightandindex --height 1 --index 0
+
+   // Result
+   {
+       "accountNonce": 0,
+       "amount": 150000000,
+       "fee": 0,
+       "from": "0x0000000000000000000000000000000000000000",
+       "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+       "payload": "",
+       "timestamp": 1530069406,
+       "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+   }
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"txpool.GetTransactionByBlockHeightAndIndex","params":[{"Height":1,"Index":0}],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": {
+           "accountNonce": 0,
+           "amount": 150000000,
+           "fee": 0,
+           "from": "0x0000000000000000000000000000000000000000",
+           "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+           "payload": "",
+           "timestamp": 1530069406,
+           "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+       }
+   }
+
+--------------
+
+GetTransactionByBlockHashAndIndex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This method is used to obtain the transaction content based on block
+hash and transaction index.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe gettxbyhashandindex  |
+|                                   | --hash <string> --index 0 -a <rpc |
+|                                   |  address>``                       |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"txpo |
+|                                   | ol.GetTransactionByBlockHashAndIn |
+|                                   | dex","params":[GetTxByBlockHashAn |
+|                                   | dIndexRequest],"id":1}``          |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-14:
+
+Parameters
+''''''''''
+
+-  ``request``:``GetTxByBlockHashAndIndexRequest`` - parameter struct
+-  ``hash``:``GetTxByBlockHashAndIndexRequest.HashHex`` - block hash
+-  ``index``:``GetTxByBlockHeightAndIndexRequest.Index`` - transaction
+   index
+
+.. _returns-14:
+
+Returns
+'''''''
+
+-  ``accountNonce``:``unit64`` - account nonce
+-  ``amount``:``Int`` - transaction amount
+-  ``from``:``string`` - transaction provider
+-  ``to``:``string`` - transaction receiver
+-  ``hash``:``string`` - transaction hash
+-  ``payload``:``array`` - transaction payload
+-  ``timestamp``:``string`` - transaction timestamp
+
+.. _example-14:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe gettxbyhashandindex --hash 0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1 --index 0
+
+   // Result
+   {
+       "accountNonce": 0,
+       "amount": 150000000,
+       "fee": 0,
+       "from": "0x0000000000000000000000000000000000000000",
+       "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+       "payload": "",
+       "timestamp": 1530069406,
+       "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+   }
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"txpool.GetTransactionByBlockHashAndIndex","params":[{"HashHex":"0x0000014b43369148eaa0b4b030bb337cb3c5e3d80a6b4bf4da0729cbb9707bc1","Index":0}],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": {
+           "accountNonce": 0,
+           "amount": 150000000,
+           "fee": 0,
+           "from": "0x0000000000000000000000000000000000000000",
+           "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+           "payload": "",
+           "timestamp": 1530069406,
+           "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+       }
+   }
+
+--------------
+
+GetTransactionByHash
+^^^^^^^^^^^^^^^^^^^^
+
+This method is used to obtain the transaction content based on
+transaction hash.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe gettxbyhash --hash < |
+|                                   | string> -a <rpc address>``        |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"txpo |
+|                                   | ol.GetTransactionByHash","params" |
+|                                   | :[string],"id":1}``               |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-15:
+
+Parameters
+''''''''''
+
+-  ``txHash``:``string`` - transaction hash
+
+.. _returns-15:
+
+Returns
+'''''''
+
+-  ``accountNonce``:``unit64`` - account nonce
+-  ``amount``:``Int`` - transaction amount
+-  ``from``:``string`` - transaction provider
+-  ``to``:``string`` - transaction receiver
+-  ``hash``:``string`` - transaction hash
+-  ``payload``:``array`` - transaction payload
+-  ``timestamp``:``string`` - transaction timestamp
+
+.. _example-15:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe gettxbyhash --hash 0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e
+
+   // Result
+   {
+       "accountNonce": 0,
+       "amount": 150000000,
+       "fee": 0,
+       "from": "0x0000000000000000000000000000000000000000",
+       "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+       "payload": "",
+       "status": "block",
+       "timestamp": 1530069406,
+       "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+   }
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"txpool.GetTransactionByHash","params":["0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e"],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": {
+           "accountNonce": 0,
+           "amount": 150000000,
+           "fee": 0,
+           "from": "0x0000000000000000000000000000000000000000",
+           "hash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e",
+           "payload": "",
+           "status": "block",
+           "timestamp": 1530069406,
+           "to": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+       }
+   }
+
+--------------
+
+GetPendingTransactions
+^^^^^^^^^^^^^^^^^^^^^^
+
+This method is used to obtain all the pending state transactions.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| RPC                               | ``{"jsonrpc":"2.0","method":"txpo |
+|                                   | ol.GetPendingTransactions","param |
+|                                   | s":[string],"id":1}``             |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-16:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-16:
+
+Returns
+'''''''
+
+-  ``accountNonce``:``unit64`` - account nonce
+-  ``amount``:``Int`` - transaction amount
+-  ``from``:``string`` - transaction provider
+-  ``to``:``string`` - transaction receiver
+-  ``hash``:``string`` - transaction hash
+-  ``payload``:``array`` - transaction payload
+-  ``timestamp``:``string`` - transaction timestamp
+
+.. _example-16:
+
+Example
+'''''''
+
+.. code:: js
+
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"txpool.GetPendingTransactions","params":[""],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": [
+           {
+               "accountNonce": 0,
+               "amount": 20000000000,
+               "from": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+               "hash": "0x033d3e6d8e01260806ee06e4757708b54aca6b2727a8134a06071655388f8ce0",
+               "payload": "",
+               "timestamp": 1527573495023217300,
+               "to": "0x23ddfb54a488f906cdb9cbd257eac5663a4c74ba25619bb902651602a4491be4ce437907fcc567b31be6746a014931f4670ac116c0010e5beb28b0dce2c6eaad"
+           }
+       ]
+       
+   }
+
+--------------
+
+GetReceiptByTxHash
+^^^^^^^^^^^^^^^^^^
+
+This method is used to obtain the receipt contents based on transaction
+hash.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getreceiptbytxhash - |
+|                                   | -hash <string> -a <rpc address>`` |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"txpo |
+|                                   | ol.GetReceiptByTxHash","params":[ |
+|                                   | string],"id":1}``                 |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-17:
+
+Parameters
+''''''''''
+
+-  ``txHash``:``string`` - transaction hash
+
+.. _returns-17:
+
+Returns
+'''''''
+
+-  ``result``:``string`` - transaction result
+-  ``poststate``:``string`` - state trie root hash after transaction
+   execution
+-  ``txhash``:``string`` - transaction hash
+-  ``contract``:``string`` - contract address
+
+.. _example-17:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getreceiptbytxhash --hash 0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e
+
+   // Result
+   {
+       "contract": "0x",
+       "poststate": "0x0000000000000000000000000000000000000000000000000000000000000000",
+       "result": "0x",
+       "txhash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e"
+   }
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"txpool.GetReceiptByTxHash","params":["0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e"],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": {
+           "contract": "0x",
+           "poststate": "0x0000000000000000000000000000000000000000000000000000000000000000",
+           "result": "0x",
+           "txhash": "0xee50a7800c737874fd743844eed0330ba6a2f8521c9093432ecd200da1ed684e"
+       }
+   }
+
+--------------
+
+download
+~~~~~~~~
+
+RPC collection provided for internal inquiry of blockchain node
+synchronization state.
+
+--------------
+
+GetStatus
+^^^^^^^^^
+
+This method returns synchronization information.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getdownloadstatus -a |
+|                                   |  <rpc address>``                  |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"down |
+|                                   | load.GetStatus","params":[],"id": |
+|                                   | 2}``                              |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-18:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-18:
+
+Returns
+'''''''
+
+-  ``Status``:``string`` - synchronization state
+-  ``Duration``:``string`` - synchronization duration (seconds)
+-  ``StartNum``:``uint64`` - synchronization initial block height
+-  ``Amount``:``uint64`` - synchronization value
+-  ``Downloaded``:``uint64`` - Synchronization number of times
+
+.. _example-18:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getdownloadstatus
+
+   // Result
+   {
+       "amount": 0,
+       "downloaded": 0,
+       "duration": "",
+       "startNum": 0,
+       "status": "NotSyncing"
+   }
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"download.GetStatus","params":[],"id":1}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 1,
+       "result": {
+           "amount": 0,
+           "downloaded": 0,
+           "duration": "",
+           "startNum": 0,
+           "status": "NotSyncing"
+       }
+   }
+
+--------------
+
+network
+~~~~~~~
+
+RPC collection provided for internal inquiry of network node
+information.
+
+--------------
+
+GetPeersInfo
+^^^^^^^^^^^^
+
+This method returns the information of peer nodes.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getpeersinfo -a <rpc |
+|                                   |  address>``                       |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"netw |
+|                                   | ork.GetPeersInfo","params":[],"id |
+|                                   | ":2}``                            |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-19:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-19:
+
+Returns
+'''''''
+
+-  ``id``:``string`` - node ID
+-  ``caps``:``array`` - peer node protocol and version array
+-  ``network``:``struct`` - network access address collection
+-  ``localAddress``:``string`` - local address
+-  ``remoteAddress``:``string`` - remote address
+-  ``protocols``:``mao`` - node collection, key is the node name
+-  ``version``:``struct`` - node protocal
+-  ``difficulty``:``struct`` - node difficulty
+-  ``head``:``struct`` - current block hash of the node
+
+.. _example-19:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getpeersinfo
+
+   // Result
+   [
+       {
+           "caps": [
+               "seele/1"
+           ],
+           "id": "0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831",
+           "network": {
+               "localAddress": "127.0.0.1:39007",
+               "remoteAddress": "127.0.0.1:61137"
+           },
+           "protocols": {
+               "seele": {
+                   "difficulty": 8000000,
+                   "head": "5ac094fbbb5649b0087dec672820188f3da9f930500c8abe3f782be0416b0a2b",
+                   "version": 1
+               }
+           },
+           "shard": 2
+       }
+   ]
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"network.GetPeersInfo","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": [
+           {
+               "id": "0x0ea2a45ab5a909c309439b0e004c61b7b2a3e831",
+               "caps": [
+                   "seele/1"
+               ],
+               "network": {
+                   "localAddress": "127.0.0.1:39007",
+                   "remoteAddress": "127.0.0.1:61137"
+               },
+               "protocols": {
+                   "seele": {
+                       "version": 1,
+                       "difficulty": 8000000,
+                       "head": "5ac094fbbb5649b0087dec672820188f3da9f930500c8abe3f782be0416b0a2b"
+                   }
+               },
+               "shard": 2
+           }
+       ]
+   }
+
+--------------
+
+GetPeerCount
+^^^^^^^^^^^^
+
+This method returns the number of peer nodes.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getpeercount -a <rpc |
+|                                   |  address>``                       |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"netw |
+|                                   | ork.GetPeerCount","params":[],"id |
+|                                   | ":2}``                            |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-20:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-20:
+
+Returns
+'''''''
+
+-  ``result``:``int`` - Peer note quantity
+
+.. _example-20:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getpeercount
+
+   // Result
+   1
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"network.GetPeerCount","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": 1
+   }
+
+--------------
+
+GetNetworkVersion
+^^^^^^^^^^^^^^^^^
+
+This method returns the network version.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getnetworkversion -a |
+|                                   |  <rpc address>``                  |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"netw |
+|                                   | ork.GetNetworkVersion","params":[ |
+|                                   | ],"id":2}``                       |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-21:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-21:
+
+Returns
+'''''''
+
+-  ``result``:``uint64`` - version number
+
+.. _example-21:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getnetworkversion
+
+   // Result
+   1
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"network.GetNetworkVersion","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": 1
+   }
+
+--------------
+
+GetProtocolVersion
+^^^^^^^^^^^^^^^^^^
+
+This method returns the protocol version.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getprotocolversion - |
+|                                   | a <rpc address>``                 |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"netw |
+|                                   | ork.GetProtocolVersion","params": |
+|                                   | [],"id":2}``                      |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-22:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-22:
+
+Returns
+'''''''
+
+-  ``result``:``uint64`` - version number
+
+.. _example-22:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe getprotocolversion
+
+   // Result
+   1
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"network.GetProtocolVersion","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": 1
+   }
+
+--------------
+
+miner
+~~~~~
+
+RPC collection provided for internal inquiry of miner information. \**\*
+
+Start
+^^^^^
+
+This method starts the miner with an input number of threads.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe miner --start -t <mi |
+|                                   | ner threads num> -a <rpc address> |
+|                                   | ``                                |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"mine |
+|                                   | r.Start","params":[int],"id":2}`` |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-23:
+
+Parameters
+''''''''''
+
+-  ``threads``:``int`` - number of threads
+
+.. _returns-23:
+
+Returns
+'''''''
+
+none
+
+.. _example-23:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe miner --start -t 2
+
+   // Result
+   miner start succeed
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"miner.Start","params":[2],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": ""
+   }
+
+--------------
+
+Stop
+^^^^
+
+This method stops the miner.
+
++---------+----------------------------------------------------------------+
+| Type    | Template                                                       |
++=========+================================================================+
+| Console | ``client.exe miner --stop -a <rpc address>``                   |
++---------+----------------------------------------------------------------+
+| RPC     | ``{"jsonrpc":"2.0","method":"miner.Stop","params":[],"id":2}`` |
++---------+----------------------------------------------------------------+
+
+.. _parameters-24:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-24:
+
+Returns
+'''''''
+
+none
+
+.. _example-24:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe miner --stop
+
+   // Result
+   miner stop succeed
+
+   Tyle:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"miner.Stop","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": ""
+   }
+
+--------------
+
+Hashrate
+^^^^^^^^
+
+This method is used to obtain the hashrate of miner consensus.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe miner --gethashrate  |
+|                                   | -a <rpc address>``                |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"mine |
+|                                   | r.Hashrate","params":[],"id":2}`` |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-25:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-25:
+
+Returns
+'''''''
+
+-  ``result``:``uint64`` - hashrate
+
+.. _example-25:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe miner --gethashrate
+
+   // Result
+   miner hashrate is: 641703
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"miner.Hashrate","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": 406310
+   }
+
+GetCoinbase
+^^^^^^^^^^^
+
+This method is used to obtain the coinbase of miner consensus.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getcoinbase -a <rpc  |
+|                                   | address>``                        |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"mine |
+|                                   | r.GetCoinbase","params":[],"id":2 |
+|                                   | }``                               |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-26:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-26:
+
+Returns
+'''''''
+
+-  ``result``:``string`` - coinbase
+
+.. _example-26:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe miner --getcoinbase
+
+   // Result
+   "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"miner.GetCoinbase","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+   }
+
+GetThreads
+^^^^^^^^^^
+
+This method is used to obtain the threads of miner consensus.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe getminerthreads -a < |
+|                                   | rpc address>``                    |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"mine |
+|                                   | r.GetThreads","params":[],"id":2} |
+|                                   | ``                                |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-27:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-27:
+
+Returns
+'''''''
+
+-  ``result``:``int`` - threads
+
+.. _example-27:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe miner --getminerthreads
+
+   // Result
+   2
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"miner.GetThreads","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": 2
+   }
+
+--------------
+
+SetCoinbase
+^^^^^^^^^^^
+
+This method is used to set the coinbase
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe setcoinbase -c "0x4c |
+|                                   | 10f2cd2159bb432094e3be7e17904c2b4 |
+|                                   | aeb21" -a <rpc address>``         |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"mine |
+|                                   | r.SetCoinbase","params":["string" |
+|                                   | ],"id":2}``                       |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-28:
+
+Parameters
+''''''''''
+
+-  ``coinbase``:``string`` coinbase of the miner
+
+.. _returns-28:
+
+Returns
+'''''''
+
+-  none
+
+.. _example-28:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe setcoinbase -c "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+
+   // Result
+   succeed to set miner coinbase
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"miner.setcoinbase","params":["0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": null
+   }
+
+--------------
+
+SetThreads
+^^^^^^^^^^
+
+This method is used to set the number of threads
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe setminerthreads -t < |
+|                                   | int> -a <rpc address>``           |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"mine |
+|                                   | r.SetThreads","params":[int],"id" |
+|                                   | :2}``                             |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-29:
+
+Parameters
+''''''''''
+
+-  ``thread``:``int`` threads of the miner
+
+.. _returns-29:
+
+Returns
+'''''''
+
+-  none
+
+.. _example-29:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe setminerthreads -t 2
+
+   // Result
+   succeed to set miner thread number
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"miner.SetThreads","params":[2],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": null
+   }
+
+--------------
+
+debug
+~~~~~
+
+RPC collection provided for internal debugging. \**\*
+
+PrintBlock
+^^^^^^^^^^
+
+This method is used to print block information in dump format based on
+block height.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Go                                | ``debug.PrintBlock(height *int64, |
+|                                   |  result *string) error``          |
++-----------------------------------+-----------------------------------+
+| Console                           | ``client.exe printblock --height  |
+|                                   | -1 -a <rpc address>``             |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"debu |
+|                                   | g.PrintBlock","params":[int64],"i |
+|                                   | d":2}``                           |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-30:
+
+Parameters
+''''''''''
+
+-  ``height``:``int64`` - block height
+
+.. _returns-30:
+
+Returns
+'''''''
+
+-  ``result``:``string`` - dump format of block information
+
+.. _example-30:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe printblock --height -1
+
+   // Result
+   {
+       "Header": {
+           "CreateTimestamp": 1530076587,
+           "Creator": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+           "Difficulty": 7415612,
+           "ExtraData": null,
+           "Height": 402,
+           "Nonce": 13168111950631305000,
+           "PreviousBlockHash": "0x000001df9632899fe30be024a4a61deaa0be07faf1892f2c34f52da504523a02",
+           "ReceiptHash": "0x47a12382fd8a097b6ca3278bac46f9ca66083146384e472b823b43e5949443ae",
+           "StateHash": "0xcaa7a365daff5dc2bc9e2cd1d2cfc5263ed0b6887f4697313b5ac18cad279d7d",
+           "TxHash": "0x74b6e7a673153fa7492cb45bb356321c27d2824a9d4c04e47e200a87c87ce4bd"
+       },
+       "HeaderHash": "0x0000004103346c4697b6f1d21db674d75f07dd8af046ff0136de3c63524dff5d",
+       "Transactions": [
+           {
+               "Data": {
+                   "AccountNonce": 0,
+                   "Amount": 150000000,
+                   "Fee": 0,
+                   "From": "0x0000000000000000000000000000000000000000",
+                   "Payload": "",
+                   "Timestamp": 1530076587,
+                   "To": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21"
+               },
+               "Hash": "0x6a0d48d71563ed601d5234f2102e4871ef4aee499efa119205cd29a20ff146af",
+               "Signature": {
+                       "Sig": ""
+               }
+           }
+       ]
+   }
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"debug.PrintBlock","params":[-1],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": {
+           "HeaderHash": "0x0000005caf32077dff28f174babd29b69959179aa6e41b9520acc26d025b55cf",
+           "Header": {
+               "PreviousBlockHash": "0x0000010c44b787b748146b72244106624648380c86cd9260810342e13dffab53",
+               "Creator": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+               "StateHash": "0x187cef2e05a513027a1f28a607900e8b1e967071cb3c278def8a4a409aa12933",
+               "TxHash": "0xd89a57c23a17356beba342e682822c792ba886f5960b77a971974f9d0d189260",
+               "ReceiptHash": "0x095d6abc9238e0378b55feae3bc6001b6b45fc89fd36cdab57e2369c04241214",
+               "Difficulty": 7448251,
+               "Height": 417,
+               "CreateTimestamp": 1530076705,
+               "Nonce": 17984735537552168760,
+               "ExtraData": null
+           },
+           "Transactions": [
+               {
+                   "Hash": "0xecccd49cc4a118751c9b90a38e7ca97068f21a55feac8d37a69e97ae1fde8626",
+                   "Data": {
+                       "From": "0x0000000000000000000000000000000000000000",
+                       "To": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
+                       "Amount": 150000000,
+                       "AccountNonce": 0,
+                       "Fee": 0,
+                       "Timestamp": 1530076705,
+                       "Payload": ""
+                   },
+                   "Signature": {
+                       "Sig": ""
+                   }
+               }
+           ]
+       }
+   }
+
+--------------
+
+GetTxPoolContent
+^^^^^^^^^^^^^^^^
+
+This method is used to obtain the transaction pool content.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe gettxpoolcontent -a  |
+|                                   | <rpc address>``                   |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"debu |
+|                                   | g.GetTxPoolContent","params":[]," |
+|                                   | id":2}``                          |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-31:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-31:
+
+Returns
+'''''''
+
+-  ``result``:``map`` - map collection in which address is the key and
+   transaction is the value.
+-  ``accountNonce``:``unit64`` - account nonce
+-  ``amount``:``Int`` - transaction amount
+-  ``from``:``string`` - transaction provider
+-  ``to``:``string`` - transaction receiver
+-  ``hash``:``string`` - transaction hash
+-  ``payload``:``array`` - transaction payload
+-  ``timestamp``:``string`` - transaction timestamp
+
+.. _example-31:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"debug.GetTxPoolContent","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc":"2.0",
+       "id":2,
+       "result":{
+           "0x23ddfb54a488f906cdb9cbd257eac5663a4c74ba25619bb902651602a4491be4ce437907fcc567b31be6746a014931f4670ac116c0010e5beb28b0dce2c6eaad":[
+               {
+                   "accountNonce":0,
+                   "amount":20000000000,
+                   "from":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                   "hash":"0x033d3e6d8e01260806ee06e4757708b54aca6b2727a8134a06071655388f8ce0",
+                   "payload":"",
+                   "timestamp":1527573495023217300,
+                   "to":"0x23ddfb54a488f906cdb9cbd257eac5663a4c74ba25619bb902651602a4491be4ce437907fcc567b31be6746a014931f4670ac116c0010e5beb28b0dce2c6eaad"
+               },
+               {
+                   "accountNonce":0,
+                   "amount":20000000000,
+                   "from":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                   "hash":"0x033d3e6d8e01260806ee06e4757708b54aca6b2727a8134a06071655388f8ce0",
+                   "payload":"",
+                   "timestamp":1527573495023217300,
+                   "to":"0x23ddfb54a488f906cdb9cbd257eac5663a4c74ba25619bb902651602a4491be4ce437907fcc567b31be6746a014931f4670ac116c0010e5beb28b0dce2c6eaad"
+               }
+           ]
+       }
+   }
+
+GetTxPoolTxCount
+^^^^^^^^^^^^^^^^
+
+This method is used to obtain the number of transactions in the
+transaction pool.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe gettxpooltxcount -a  |
+|                                   | <rpc address>``                   |
++-----------------------------------+-----------------------------------+
+| RPC                               | ``{"jsonrpc":"2.0","method":"debu |
+|                                   | g.GetTxPoolTxCount","params":[]," |
+|                                   | id":2}``                          |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-32:
+
+Parameters
+''''''''''
+
+none
+
+.. _returns-32:
+
+Returns
+'''''''
+
+-  ``result``:``uint64`` - number of transactions
+
+.. _example-32:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:RPC
+   // Request
+   curl -X POST --data '{"jsonrpc":"2.0","method":"debug.GetTxPoolTxCount","params":[],"id":2}' url
+
+   // Result
+   {
+       "jsonrpc": "2.0",
+       "id": 2,
+       "result": 0
+   }
+
+Key
+^^^
+
+This method is used to generate a public/private key pair and print them
+with hex values.
+
++---------+-----------------------------------------------+
+| Type    | Template                                      |
++=========+===============================================+
+| Console | ``client.exe key --shard 1 -a <rpc address>`` |
++---------+-----------------------------------------------+
+
+.. _parameters-33:
+
+Parameters
+''''''''''
+
+-  ``shard``:``uint`` shard number
+
+.. _returns-33:
+
+Returns
+'''''''
+
+-  ``public key``:``string`` - public key
+-  ``private key``:``string`` - private key
+
+.. _example-33:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe key
+
+   // Result
+   public key:  0xf66b94477311556da1767e267e0a5782045eea61
+   private key: 0x52117b49022b246ee3921a7ff6771df065594a0dde555e40d8ce940a3ecfb654
+
+Sign
+^^^^
+
+This method is used to sign data with your private key.
+
++-----------------------------------+-----------------------------------+
+| Type                              | Template                          |
++===================================+===================================+
+| Console                           | ``client.exe sign -m 0 -t 0x<publ |
+|                                   | ic address> -fee 0 -k privatekey  |
+|                                   | -a <rpc address>``                |
++-----------------------------------+-----------------------------------+
+
+.. _parameters-34:
+
+Parameters
+''''''''''
+
+-  ``amount``:``string`` the amount of the transferred coins
+-  ``fee``:``struct`` transaction fee
+-  ``key``:``string`` private key
+-  ``payload``:``string`` transaction payload
+-  ``to``:``string`` public address of the receiver
+
+.. _returns-34:
+
+Returns
+'''''''
+
+-  ``Hash``:``string`` transaction hash
+-  ``Data``:``struct`` transaction data
+-  ``From``:``string`` transaction provider
+-  ``To``:``string`` transaction receiver
+-  ``Amount``:``string`` public address of the receiver
+-  ``AccountNonce``:``unit64`` account nonce
+-  ``Fee``:``string`` transaction fee
+-  ``Timestamp``:``string`` transaction timestamp
+-  ``Payload``:``string`` transaction payload
+-  ``Signature``:``string`` transaction signature
+-  ``Sig``:``string`` transaction sig
+
+.. _example-34:
+
+Example
+'''''''
+
+.. code:: js
+
+   Type:Console
+   // Request
+   client.exe sign -m 0 -t 0xcb20a956d6391b3389a1f4876f7dc7b805c4c561 --fee 0 -k 0x244942d66ea82f3dc998848c1be563809ed63f156d5a2d36e2aeabf8bc935067
+
+   // Result
+   got the sender account 0xcb20a956d6391b3389a1f4876f7dc7b805c4c561 nonce: 0
+   out: {
+           "Hash": "0xc207490b23c43a4be37e7440260835b1f63b6726a8ab6e18fa70ae840252df0b",
+           "Data": {
+               "From": "0xcb20a956d6391b3389a1f4876f7dc7b805c4c561",
+               "To": "0xcb20a956d6391b3389a1f4876f7dc7b805c4c561",
+               "Amount": 0,
+               "AccountNonce": 0,
+               "Fee": 0,
+               "Timestamp": 0,
+               "Payload": null
+           },
+           "Signature": {
+               "Sig": "SZaxYZynP9zksK2ZJ3FR3qUvnpVtC32aH8xL+VyCB2Iej3dfkez/Cn/aRRHlvIVCNRcFvoc+5RibpPU83MdcAQE="
+           }
+       }

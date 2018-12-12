@@ -1,31 +1,41 @@
 .. Seele documentation master file, created by
-   sphinx-quickstart on Mon Oct 15 13:04:48 2018.
+   sphinx-quickstart on Wed Oct 10 15:18:38 2018.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Seele's documentation!
-=================================
+\
+
+Seele Documentation
+===================
 ..  image:: img/Seele-logo.jpg
 ..   :height: 500px
 ..   :width: 394 px
    :scale: 50 %
    :alt: seele-logo
    :align: center
-   
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents:
 
-   ./docs/Introduction.rst
+This documentation is the result of an ongoing collaborative effort by volunteers from the Seele Community. We hope you will find it useful. We welcome new Contributors.
+
+Contents
+============
+.. toctree::
+   :maxdepth: 4
+
+   ./introduction/index.rst
    ./docs/Getting-Started-With-Seele.rst
-   ./docs/Scan-Monitor-Dashboard-Setup.rst
-   ./docs/Command-Line-Options.rst
-   ./docs/Seele-Client.rst
-   ./docs/Seele-RPC.rst
-   ./docs/Using-the-contract-simulator.rst
    ./docs/How-to-build-your-own-seele-network.rst
-   ./docs/Join-Seele-TestNet.rst
-   ./docs/Seele-Test-net-Performance-Introduction.rst
+   ./docs/Scan-Monitor-Dashboard-Setup.rst
+   ./docs/Using-the-contract-simulator.rst
    ./docs/Hash-Time-Lock-Contract.rst
    ./docs/Hash-Time-Lock-System-Contract.rst
-   ./docs/FAQ.rst
+   ./docs/Command-Line-Options.rst
+   ./docs/API-Document.rst
+   
+Test Net
+
+.. toctree::
+   :titlesonly:
+   
+   ./docs/Seele-Test-net-Performance-Introduction.rst
+
+

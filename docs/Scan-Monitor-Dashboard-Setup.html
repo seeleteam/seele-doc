@@ -24,15 +24,15 @@
 
   
 
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mining" href="Mining.html" />
-    <link rel="prev" title="How To Send Debt" href="How-to-send-debt.html" /> 
+    <link rel="next" title="Using The Contract Simulator" href="Using-the-contract-simulator.html" />
+    <link rel="prev" title="How To Build Your Own Seele Network" href="How-to-build-your-own-seele-network.html" /> 
 
   
-  <script src="../static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -78,12 +78,10 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-To-Create-An-Account.html">How To Create An Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-to-send-debt.html">How To Send Debt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scan Monitor Dashboard Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#i-steps-to-deploy-seele-monitor">I. Steps to Deploy Seele Monitor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-required-tools">1. Install Required Tools</a><ul>
@@ -157,17 +155,15 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Mining.html">Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele-node.html">Seele Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Client.html">Seele Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Join-Seele-TestNet.html">Join Seele TestNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seele.js.html">Seele.js</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
 </ul>
 
             
@@ -219,6 +215,8 @@
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="../_sources/docs/Scan-Monitor-Dashboard-Setup.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -238,19 +236,29 @@
 <h3>1. Install Required Tools<a class="headerlink" href="#install-required-tools" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="install-node">
 <h4>1） Install Node<a class="headerlink" href="#install-node" title="Permalink to this headline">¶</a></h4>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">node</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Redhat</span><span class="o">/</span><span class="n">CentOS</span><span class="p">:</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">node</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">npm</span>
+
+<span class="n">Ubuntu</span><span class="p">:</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">nodejs</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">npm</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-pm2">
 <h4>2） Install pm2<a class="headerlink" href="#install-pm2" title="Permalink to this headline">¶</a></h4>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">pm2</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">pm2</span> <span class="o">-</span><span class="n">g</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-nginx">
 <h4>3） Install nginx<a class="headerlink" href="#install-nginx" title="Permalink to this headline">¶</a></h4>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">nginx</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Redhat</span><span class="o">/</span><span class="n">CentOS</span><span class="p">:</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">nginx</span>
+
+<span class="n">Ubuntu</span><span class="p">:</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">nginx</span>
 </pre></div>
 </div>
 </div>
@@ -973,10 +981,10 @@ nginx -s reload
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Mining.html" class="btn btn-neutral float-right" title="Mining" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Using-the-contract-simulator.html" class="btn btn-neutral float-right" title="Using The Contract Simulator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="How-to-send-debt.html" class="btn btn-neutral" title="How To Send Debt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="How-to-build-your-own-seele-network.html" class="btn btn-neutral" title="How To Build Your Own Seele Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1006,16 +1014,16 @@ nginx -s reload
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
 
-  <script type="text/javascript" src="../static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
