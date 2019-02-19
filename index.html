@@ -17,33 +17,35 @@
   
 
   
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script type="text/javascript" src="static/jquery.js"></script>
+        <script type="text/javascript" src="static/underscore.js"></script>
+        <script type="text/javascript" src="static/doctools.js"></script>
+        <script type="text/javascript" src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction" href="introduction/index.html" /> 
-
-  
-  <script src="static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -170,7 +172,8 @@
 <li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#setting-up-a-node">Setting Up a Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#create-a-full-node-client">Create a Full Node Client:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#create-a-light-node-client">Create a Light Node Client:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#three-common-used-commands">Three common-used commands:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#some-common-used-commands">Some common-used commands:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#get-an-account">0. Get an account</a></li>
 <li class="toctree-l3"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#transfer">1. Transfer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#deploy-contract">2. Deploy contract</a></li>
 <li class="toctree-l3"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#call-contract">3. Call contract</a><ul>
@@ -180,6 +183,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#how-to-customize-your-node-configurations">How to customize your node configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#gcc-install-newbie-guide">GCC install newbie guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#start-metrics">Start Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#q-a">Q&amp;A</a><ul>
@@ -268,13 +272,13 @@
 <li class="toctree-l1"><a class="reference internal" href="docs/Using-the-contract-simulator.html">Using The Contract Simulator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="docs/Using-the-contract-simulator.html#example">Example</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="docs/Using-the-contract-simulator.html#compile-the-contract-simulator">Compile the contract simulator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Using-the-contract-simulator.html#a-simple-smart-contract-example">A simple smart contract example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/Using-the-contract-simulator.html#i-a-simple-smart-contract-example">I. A simple smart contract example</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="docs/Using-the-contract-simulator.html#smart-contract-source-code">Smart contract source code:</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/Using-the-contract-simulator.html#create-the-contract-in-the-simulator-with-solidity-file">Create the contract in the simulator with solidity file</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="docs/Using-the-contract-simulator.html#call-the-contract-in-simulator">Call the contract in simulator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Using-the-contract-simulator.html#a-simple-smart-contract-example-that-relies-on-remix">A simple smart contract example that relies on Remix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/Using-the-contract-simulator.html#ii-a-simple-smart-contract-example-that-relies-on-remix">II. A simple smart contract example that relies on Remix</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="docs/Using-the-contract-simulator.html#prepare-remix">1. Prepare Remix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/Using-the-contract-simulator.html#compile-contract">2. Compile Contract</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/Using-the-contract-simulator.html#deploy-contract">3. Deploy Contract</a></li>
@@ -493,26 +497,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-        <script type="text/javascript" src="static/jquery.js"></script>
-        <script type="text/javascript" src="static/underscore.js"></script>
-        <script type="text/javascript" src="static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
