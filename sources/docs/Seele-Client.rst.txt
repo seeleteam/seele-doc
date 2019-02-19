@@ -1191,138 +1191,90 @@ Light Node Client
 JSON-RPC Support
 ----------------
 
-+--------------+------------+
-| Type         | Supported? |
-+==============+============+
-| JSON-RPC 1.0 | ✓          |
-+--------------+------------+
-| JSON-RPC 2.0 | ✓          |
-+--------------+------------+
+============ ==========
+Type         Supported?
+============ ==========
+JSON-RPC 1.0 ✓
+JSON-RPC 2.0 ✓
+============ ==========
 
 JSON-RPC Port
 -------------
 
 Default port:
 
-+--------+-------------+----------------+
-| Client | Type        | Address        |
-+========+=============+================+
-| Go     | jsonrpc-2.0 | localhost:8027 |
-+--------+-------------+----------------+
+====== =========== ==============
+Client Type        Address
+====== =========== ==============
+Go     jsonrpc-2.0 localhost:8027
+====== =========== ==============
 
 Client Command List
 -------------------
 
-+--------------------------------------------------------------+------+-------+
-| Command                                                      | Full | Light |
-+==============================================================+======+=======+
-| `Call <#call>`__                                             | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `CreateHTLC <#createhtlc>`__                                 | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `DecodeHTLC <#decodehtlc>`__                                 | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `DumpHeap <#dumpheap>`__                                     | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GenerateHTLCKey <#generatehtlckey>`__                       | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GenerateHTLCStamptime <#generatehtlcstamptime>`__           | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GeneratePayload <#generatepayload>`__                       | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetAccountNonce <#getaccountnonce>`__                       | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetAccountShardNum <#getaccountshardnum>`__                 | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetBalance <#getbalance>`__                                 | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetBlock <#getblock>`__                                     | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetBlockHeight <#getblockheight>`__                         | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetBlockTransactionCount <#getblocktransactioncount>`__     | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetDebtByHash <#getdebtbyhash>`__                           | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GetDomainNameOwner <#getdomainnameowner>`__                 | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GetHTLC <#gethtlc>`__                                       | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GetInfo <#getinfo>`__                                       | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GetLogs <#getlogs>`__                                       | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GetNetworkID <#getnetworkid>`__                             | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetNetworkVersion <#getnetworkversion>`__                   | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetPeerCount <#getpeercount>`__                             | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetPeersInfo <#getpeersinfo>`__                             | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetPendingDebts <#getpendingdebts>`__                       | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `GetPendingTransactions <#getpendingtransactions>`__         | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetProtocolVersion <#getprotocolversion>`__                 | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetReceiptByTxHash <#getreceiptbytxhash>`__                 | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetTransactionByBlockIndex <#gettransactionbyblockindex>`__ | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetTransactionByHash <#gettransactionbyhash>`__             | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetTxPoolContent <#gettxpoolcontent>`__                     | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `GetTxPoolTxCount <#gettxpooltxcount>`__                     | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `Key <#key>`__                                               | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `Miner GetCoinbase <#miner-getcoinbase>`__                   | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `Miner Hashrate <#miner-hashrate>`__                         | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `Miner SetCoinbase <#miner-setcoinbase>`__                   | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `Miner SetThreads <#miner-setthreads>`__                     | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `Miner Start <#miner-start>`__                               | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `Miner Status <#miner-status>`__                             | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `Miner Stop <#miner-stop>`__                                 | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `Miner Threads <#miner-threads>`__                           | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `RefundFromHTLC <#refundfromhtlc>`__                         | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `RegisterDomainName <#registerdomainname>`__                 | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| `SaveKey <#savekey>`__                                       | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `SendTx <#sendtx>`__                                         | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `Sign <#sign>`__                                             | ✓    | ✓     |
-+--------------------------------------------------------------+------+-------+
-| `WithdrawFromHTLC <#withdrawfromhtlc>`__                     | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| GenSubChainCfgFile (Being Written)                           | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| QuerySubChain (Being Written)                                | ✓    |       |
-+--------------------------------------------------------------+------+-------+
-| RegisterSubChain (Being Written)                             | ✓    |       |
-+--------------------------------------------------------------+------+-------+
+============================================================ ==== =====
+Command                                                      Full Light
+============================================================ ==== =====
+`Call <#call>`__                                             ✓   
+`CreateHTLC <#createhtlc>`__                                 ✓   
+`DecodeHTLC <#decodehtlc>`__                                 ✓   
+`DumpHeap <#dumpheap>`__                                     ✓   
+`GenerateHTLCKey <#generatehtlckey>`__                       ✓   
+`GenerateHTLCStamptime <#generatehtlcstamptime>`__           ✓   
+`GeneratePayload <#generatepayload>`__                       ✓    ✓
+`GetAccountNonce <#getaccountnonce>`__                       ✓    ✓
+`GetAccountShardNum <#getaccountshardnum>`__                 ✓    ✓
+`GetBalance <#getbalance>`__                                 ✓    ✓
+`GetBlock <#getblock>`__                                     ✓    ✓
+`GetBlockHeight <#getblockheight>`__                         ✓    ✓
+`GetBlockTransactionCount <#getblocktransactioncount>`__     ✓    ✓
+`GetDebtByHash <#getdebtbyhash>`__                           ✓   
+`GetDomainNameOwner <#getdomainnameowner>`__                 ✓   
+`GetHTLC <#gethtlc>`__                                       ✓   
+`GetInfo <#getinfo>`__                                       ✓   
+`GetLogs <#getlogs>`__                                       ✓   
+`GetNetworkID <#getnetworkid>`__                             ✓    ✓
+`GetNetworkVersion <#getnetworkversion>`__                   ✓    ✓
+`GetPeerCount <#getpeercount>`__                             ✓    ✓
+`GetPeersInfo <#getpeersinfo>`__                             ✓    ✓
+`GetPendingDebts <#getpendingdebts>`__                       ✓   
+`GetPendingTransactions <#getpendingtransactions>`__         ✓    ✓
+`GetProtocolVersion <#getprotocolversion>`__                 ✓    ✓
+`GetReceiptByTxHash <#getreceiptbytxhash>`__                 ✓    ✓
+`GetTransactionByBlockIndex <#gettransactionbyblockindex>`__ ✓    ✓
+`GetTransactionByHash <#gettransactionbyhash>`__             ✓    ✓
+`GetTxPoolContent <#gettxpoolcontent>`__                     ✓    ✓
+`GetTxPoolTxCount <#gettxpooltxcount>`__                     ✓    ✓
+`Key <#key>`__                                               ✓    ✓
+`Miner GetCoinbase <#miner-getcoinbase>`__                   ✓   
+`Miner Hashrate <#miner-hashrate>`__                         ✓   
+`Miner SetCoinbase <#miner-setcoinbase>`__                   ✓   
+`Miner SetThreads <#miner-setthreads>`__                     ✓   
+`Miner Start <#miner-start>`__                               ✓   
+`Miner Status <#miner-status>`__                             ✓   
+`Miner Stop <#miner-stop>`__                                 ✓   
+`Miner Threads <#miner-threads>`__                           ✓   
+`RefundFromHTLC <#refundfromhtlc>`__                         ✓   
+`RegisterDomainName <#registerdomainname>`__                 ✓   
+`SaveKey <#savekey>`__                                       ✓    ✓
+`SendTx <#sendtx>`__                                         ✓    ✓
+`Sign <#sign>`__                                             ✓    ✓
+`WithdrawFromHTLC <#withdrawfromhtlc>`__                     ✓   
+GenSubChainCfgFile (Being Written)                           ✓   
+QuerySubChain (Being Written)                                ✓   
+RegisterSubChain (Being Written)                             ✓   
+============================================================ ==== =====
 
 GetInfo
 ~~~~~~~
 
 This method returns node information.
 
-+---------+---------------------------------+
-| Type    | Template                        |
-+=========+=================================+
-| Console | ``client getinfo -a <address>`` |
-+---------+---------------------------------+
+======= ===============================
+Type    Template
+======= ===============================
+Console ``client getinfo -a <address>``
+======= ===============================
 
 Parameters
 ^^^^^^^^^^
@@ -1364,11 +1316,11 @@ GetBalance
 This method returns the account balance. If the account flag is null,
 the node address balance is returned.
 
-+---------+-------------------------------------------------------+
-| Type    | Template                                              |
-+=========+=======================================================+
-| Console | ``client getbalance --account <string> -a <address>`` |
-+---------+-------------------------------------------------------+
+======= =====================================================
+Type    Template
+======= =====================================================
+Console ``client getbalance --account <string> -a <address>``
+======= =====================================================
 
 .. _parameters-1:
 
@@ -1490,11 +1442,11 @@ GetAccountNonce
 
 This method is used to obtain the nonce of the address.
 
-+---------+-------------------------------------------------------------------+
-| Type    | Template                                                          |
-+=========+===================================================================+
-| Console | ``client getnonce -a <rpc address> --account 0x<public address>`` |
-+---------+-------------------------------------------------------------------+
+======= =================================================================
+Type    Template
+======= =================================================================
+Console ``client getnonce -a <rpc address> --account 0x<public address>``
+======= =================================================================
 
 .. _parameters-3:
 
@@ -1535,11 +1487,11 @@ GetBlockHeight
 
 This method is used to obtain the height of the blockchain.
 
-+---------+--------------------------------------------+
-| Type    | Template                                   |
-+=========+============================================+
-| Console | ``client getblockheight -a <rpc address>`` |
-+---------+--------------------------------------------+
+======= ==========================================
+Type    Template
+======= ==========================================
+Console ``client getblockheight -a <rpc address>``
+======= ==========================================
 
 .. _parameters-4:
 
@@ -1577,11 +1529,11 @@ GetBlock
 This method is used to obtain the block content based on block height or
 block hash.
 
-+---------+-----------------------------------------------------------------+
-| Type    | Template                                                        |
-+=========+=================================================================+
-| Console | ``client getblock --height -1 --hash -f=true -a <rpc address>`` |
-+---------+-----------------------------------------------------------------+
+======= ===============================================================
+Type    Template
+======= ===============================================================
+Console ``client getblock --height -1 --hash -f=true -a <rpc address>``
+======= ===============================================================
 
 .. _parameters-5:
 
@@ -1811,11 +1763,11 @@ SaveKey
 
 This method saves the private key.
 
-+---------+----------------------------------------+
-| Type    | Template                               |
-+=========+========================================+
-| Console | \`client savekey –privatekey 0x –file  |
-+---------+----------------------------------------+
+======= ======================================
+Type    Template
+======= ======================================
+Console \`client savekey –privatekey 0x –file 
+======= ======================================
 
 .. _parameters-6:
 
@@ -2087,11 +2039,11 @@ GetBlockTransactionCount
 This method is used to obtain the number of transactions in the
 transaction pool based on block height or hash.
 
-+---------+---------------------------------------------------------+
-| Type    | Template                                                |
-+=========+=========================================================+
-| Console | ``client getblocktxcount --height -1 -a <rpc address>`` |
-+---------+---------------------------------------------------------+
+======= =======================================================
+Type    Template
+======= =======================================================
+Console ``client getblocktxcount --height -1 -a <rpc address>``
+======= =======================================================
 
 .. _parameters-10:
 
@@ -2137,11 +2089,11 @@ GetTransactionByBlockIndex
 This method is used to obtain the transaction content based on block
 height and transaction index.
 
-+---------+----------------------------------------------------------------+
-| Type    | Template                                                       |
-+=========+================================================================+
-| Console | ``client gettxinblock --height -1 --index 0 -a <rpc address>`` |
-+---------+----------------------------------------------------------------+
+======= ==============================================================
+Type    Template
+======= ==============================================================
+Console ``client gettxinblock --height -1 --index 0 -a <rpc address>``
+======= ==============================================================
 
 .. _parameters-11:
 
@@ -2199,11 +2151,11 @@ GetTransactionByHash
 
 This method returns tx information by hash.
 
-+---------+---------------------------------------------------------+
-| Type    | Template                                                |
-+=========+=========================================================+
-| Console | ``client gettxbyhash --hash <string> -a <rpc address>`` |
-+---------+---------------------------------------------------------+
+======= =======================================================
+Type    Template
+======= =======================================================
+Console ``client gettxbyhash --hash <string> -a <rpc address>``
+======= =======================================================
 
 .. _parameters-12:
 
@@ -2270,13 +2222,11 @@ GetReceiptByTxHash
 This method is used to obtain the receipt contents based on transaction
 hash.
 
-+-----------------------------------+-----------------------------------+
-| Type                              | Template                          |
-+===================================+===================================+
-| Console                           | ``client getreceipt --hash <strin |
-|                                   | g> --abi <string> -a <rpc address |
-|                                   | >``                               |
-+-----------------------------------+-----------------------------------+
+======= =====================================================================
+Type    Template
+======= =====================================================================
+Console ``client getreceipt --hash <string> --abi <string> -a <rpc address>``
+======= =====================================================================
 
 .. _parameters-13:
 
@@ -2331,11 +2281,11 @@ GetDebtByHash
 This method is used to obtain the receipt contents based on transaction
 hash.
 
-+---------+-----------------------------------------------------------+
-| Type    | Template                                                  |
-+=========+===========================================================+
-| Console | ``client getdebtbyhash --hash <string> -a <rpc address>`` |
-+---------+-----------------------------------------------------------+
+======= =========================================================
+Type    Template
+======= =========================================================
+Console ``client getdebtbyhash --hash <string> -a <rpc address>``
+======= =========================================================
 
 .. _parameters-14:
 
@@ -2406,11 +2356,11 @@ GetPeersInfo
 
 This method returns the information of peer nodes.
 
-+---------+---------------------------------------+
-| Type    | Template                              |
-+=========+=======================================+
-| Console | ``client peersinfo -a <rpc address>`` |
-+---------+---------------------------------------+
+======= =====================================
+Type    Template
+======= =====================================
+Console ``client peersinfo -a <rpc address>``
+======= =====================================
 
 .. _parameters-15:
 
@@ -2472,11 +2422,11 @@ GetPeerCount
 
 This method returns the number of peer nodes.
 
-+---------+-----------------------------------+
-| Type    | Template                          |
-+=========+===================================+
-| Console | ``client peers -a <rpc address>`` |
-+---------+-----------------------------------+
+======= =================================
+Type    Template
+======= =================================
+Console ``client peers -a <rpc address>``
+======= =================================
 
 .. _parameters-16:
 
@@ -2513,11 +2463,11 @@ GetNetworkVersion
 
 This method returns the network version.
 
-+---------+----------------------------------------+
-| Type    | Template                               |
-+=========+========================================+
-| Console | ``client netversion -a <rpc address>`` |
-+---------+----------------------------------------+
+======= ======================================
+Type    Template
+======= ======================================
+Console ``client netversion -a <rpc address>``
+======= ======================================
 
 .. _parameters-17:
 
@@ -2554,11 +2504,11 @@ GetProtocolVersion
 
 This method returns the protocol version.
 
-+---------+---------------------------------------------+
-| Type    | Template                                    |
-+=========+=============================================+
-| Console | ``client protocolversion -a <rpc address>`` |
-+---------+---------------------------------------------+
+======= ===========================================
+Type    Template
+======= ===========================================
+Console ``client protocolversion -a <rpc address>``
+======= ===========================================
 
 .. _parameters-18:
 
@@ -2595,11 +2545,11 @@ GetNetworkID
 
 This method returns the network id.
 
-+---------+---------------------------------------+
-| Type    | Template                              |
-+=========+=======================================+
-| Console | ``client networkid -a <rpc address>`` |
-+---------+---------------------------------------+
+======= =====================================
+Type    Template
+======= =====================================
+Console ``client networkid -a <rpc address>``
+======= =====================================
 
 .. _parameters-19:
 
@@ -2636,11 +2586,11 @@ Miner Start
 
 This method starts the miner.
 
-+---------+-----------------------------------------+
-| Type    | Template                                |
-+=========+=========================================+
-| Console | ``client miner start -a <rpc address>`` |
-+---------+-----------------------------------------+
+======= =======================================
+Type    Template
+======= =======================================
+Console ``client miner start -a <rpc address>``
+======= =======================================
 
 .. _parameters-20:
 
@@ -2677,11 +2627,11 @@ Miner Stop
 
 This method stops the miner.
 
-+---------+----------------------------------------+
-| Type    | Template                               |
-+=========+========================================+
-| Console | ``client miner stop -a <rpc address>`` |
-+---------+----------------------------------------+
+======= ======================================
+Type    Template
+======= ======================================
+Console ``client miner stop -a <rpc address>``
+======= ======================================
 
 .. _parameters-21:
 
@@ -2718,11 +2668,11 @@ Miner Status
 
 This method returns the miner’s status.
 
-+---------+------------------------------------------+
-| Type    | Template                                 |
-+=========+==========================================+
-| Console | ``client miner status -a <rpc address>`` |
-+---------+------------------------------------------+
+======= ========================================
+Type    Template
+======= ========================================
+Console ``client miner status -a <rpc address>``
+======= ========================================
 
 .. _parameters-22:
 
@@ -2759,11 +2709,11 @@ Miner GetCoinbase
 
 This method is used to obtain the coinbase of miner consensus.
 
-+---------+-----------------------------------------------+
-| Type    | Template                                      |
-+=========+===============================================+
-| Console | ``client miner getcoinbase -a <rpc address>`` |
-+---------+-----------------------------------------------+
+======= =============================================
+Type    Template
+======= =============================================
+Console ``client miner getcoinbase -a <rpc address>``
+======= =============================================
 
 .. _parameters-23:
 
@@ -2800,11 +2750,11 @@ Miner SetThreads
 
 This method is used to set the threads of miner consensus.
 
-+---------+--------------------------------------------------------------+
-| Type    | Template                                                     |
-+=========+==============================================================+
-| Console | ``client miner setthreads --threads <int> -a <rpc address>`` |
-+---------+--------------------------------------------------------------+
+======= ============================================================
+Type    Template
+======= ============================================================
+Console ``client miner setthreads --threads <int> -a <rpc address>``
+======= ============================================================
 
 .. _parameters-24:
 
@@ -2842,11 +2792,11 @@ Miner SetCoinbase
 
 This method is used to set the coinbase
 
-+---------+-------------------------------------------------------------------+
-| Type    | Template                                                          |
-+=========+===================================================================+
-| Console | ``client miner setcoinbase --coinbase <string> -a <rpc address>`` |
-+---------+-------------------------------------------------------------------+
+======= =================================================================
+Type    Template
+======= =================================================================
+Console ``client miner setcoinbase --coinbase <string> -a <rpc address>``
+======= =================================================================
 
 .. _parameters-25:
 
@@ -2884,11 +2834,11 @@ Miner Hashrate
 
 This method returns hashrate information of miner
 
-+---------+--------------------------------------+
-| Type    | Template                             |
-+=========+======================================+
-| Console | ``client hashrate -a <rpc address>`` |
-+---------+--------------------------------------+
+======= ====================================
+Type    Template
+======= ====================================
+Console ``client hashrate -a <rpc address>``
+======= ====================================
 
 .. _parameters-26:
 
@@ -2925,11 +2875,11 @@ Miner Threads
 
 This method returns threads number of miner
 
-+---------+-------------------------------------+
-| Type    | Template                            |
-+=========+=====================================+
-| Console | ``client threads -a <rpc address>`` |
-+---------+-------------------------------------+
+======= ===================================
+Type    Template
+======= ===================================
+Console ``client threads -a <rpc address>``
+======= ===================================
 
 .. _parameters-27:
 
@@ -2966,11 +2916,11 @@ GetTxPoolContent
 
 This method is used to obtain the transaction pool content.
 
-+---------+----------------------------------------------+
-| Type    | Template                                     |
-+=========+==============================================+
-| Console | ``client gettxpoolcontent -a <rpc address>`` |
-+---------+----------------------------------------------+
+======= ============================================
+Type    Template
+======= ============================================
+Console ``client gettxpoolcontent -a <rpc address>``
+======= ============================================
 
 .. _parameters-28:
 
@@ -3027,11 +2977,11 @@ GetTxPoolTxCount
 This method is used to obtain the number of transactions in the
 transaction pool.
 
-+---------+--------------------------------------------+
-| Type    | Template                                   |
-+=========+============================================+
-| Console | ``client gettxpoolcount -a <rpc address>`` |
-+---------+--------------------------------------------+
+======= ==========================================
+Type    Template
+======= ==========================================
+Console ``client gettxpoolcount -a <rpc address>``
+======= ==========================================
 
 .. _parameters-29:
 
@@ -3068,11 +3018,11 @@ GetPendingTransactions
 This method is used to obtain pending transactions in the transaction
 pool.
 
-+---------+-------------------------------------------+
-| Type    | Template                                  |
-+=========+===========================================+
-| Console | ``client getpendingtxs -a <rpc address>`` |
-+---------+-------------------------------------------+
+======= =========================================
+Type    Template
+======= =========================================
+Console ``client getpendingtxs -a <rpc address>``
+======= =========================================
 
 .. _parameters-30:
 
@@ -3126,11 +3076,11 @@ GetPendingDebts
 
 This method is used to obtain pending debts in the debts pool.
 
-+---------+--------------------------------------+
-| Type    | Template                             |
-+=========+======================================+
-| Console | ``client getdebts -a <rpc address>`` |
-+---------+--------------------------------------+
+======= ====================================
+Type    Template
+======= ====================================
+Console ``client getdebts -a <rpc address>``
+======= ====================================
 
 .. _parameters-31:
 
@@ -3185,11 +3135,11 @@ DumpHeap
 
 This method dump heap for profiling and returns the file path.
 
-+---------+--------------------------------------+
-| Type    | Template                             |
-+=========+======================================+
-| Console | ``client dumpheap -a <rpc address>`` |
-+---------+--------------------------------------+
+======= ====================================
+Type    Template
+======= ====================================
+Console ``client dumpheap -a <rpc address>``
+======= ====================================
 
 .. _parameters-32:
 
@@ -3226,11 +3176,11 @@ Key
 This method is used to generate a public/private key pair and print them
 with hex values.
 
-+---------+------------------------------+
-| Type    | Template                     |
-+=========+==============================+
-| Console | ``client key --shard <int>`` |
-+---------+------------------------------+
+======= ============================
+Type    Template
+======= ============================
+Console ``client key --shard <int>``
+======= ============================
 
 .. _parameters-33:
 
@@ -3268,11 +3218,11 @@ Deckeyfile
 
 This method is used to deckey key file to public key and private key.
 
-+---------+---------------------------------------+
-| Type    | Template                              |
-+=========+=======================================+
-| Console | ``client deckeyfile --file <string>`` |
-+---------+---------------------------------------+
+======= =====================================
+Type    Template
+======= =====================================
+Console ``client deckeyfile --file <string>``
+======= =====================================
 
 .. _parameters-34:
 
@@ -3389,13 +3339,11 @@ GeneratePayload
 
 This method is used to generate payload.
 
-+-----------------------------------+-----------------------------------+
-| Type                              | Template                          |
-+===================================+===================================+
-| Console                           | ``client payload --abi <string> - |
-|                                   | -method <string> --args <string>` |
-|                                   | `                                 |
-+-----------------------------------+-----------------------------------+
+======= ===================================================================
+Type    Template
+======= ===================================================================
+Console ``client payload --abi <string> --method <string> --args <string>``
+======= ===================================================================
 
 .. _parameters-36:
 
@@ -3517,11 +3465,11 @@ DecodeHTLC
 
 This method is used to decode HTLC contract information.
 
-+---------+----------------------------------+
-| Type    | Template                         |
-+=========+==================================+
-| Console | ``client htlc decode --payload`` |
-+---------+----------------------------------+
+======= ================================
+Type    Template
+======= ================================
+Console ``client htlc decode --payload``
+======= ================================
 
 .. _parameters-38:
 
@@ -3662,11 +3610,11 @@ GenerateHTLCKey
 
 This method is used to generate preimage key and key hash.
 
-+---------+---------------------+
-| Type    | Template            |
-+=========+=====================+
-| Console | ``client htlc key`` |
-+---------+---------------------+
+======= ===================
+Type    Template
+======= ===================
+Console ``client htlc key``
+======= ===================
 
 .. _parameters-40:
 
@@ -3784,11 +3732,11 @@ GenerateHTLCStamptime
 
 This method is used to generate unix timestamp.
 
-+---------+-----------------------------------+
-| Type    | Template                          |
-+=========+===================================+
-| Console | ``client htlc time --time <int>`` |
-+---------+-----------------------------------+
+======= =================================
+Type    Template
+======= =================================
+Console ``client htlc time --time <int>``
+======= =================================
 
 .. _parameters-42:
 

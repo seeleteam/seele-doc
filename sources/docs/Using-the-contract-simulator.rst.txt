@@ -26,8 +26,8 @@ The code is in ``https://github.com/seeleteam/go-seele``
 Copy the solc compiler to this path, and copy the solidity file in it
 too.
 
-A simple smart contract example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I. A simple smart contract example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Smart contract source code:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -36,18 +36,16 @@ SimpleStorage.sol:
 
 ::
 
-   This example is only compatible with solidity 0.4.0
-
-   pragma solidity ^0.4.0;
+   pragma solidity >=0.4.0 <0.6.0;
 
    contract SimpleStorage {
        uint storedData;
-       
-       function set(uint x) {
-           storedData=x;
+
+       function set(uint x) public {
+           storedData = x;
        }
 
-       function get() constant returns(uint) {
+       function get() public view returns (uint) {
            return storedData;
        }
    }
@@ -94,8 +92,8 @@ Verify the set function:
    Result (hex): 0x0000000000000000000000000000000000000000000000000000000000000015
    Result (big): 21
 
-A simple smart contract example that relies on Remix
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+II. A simple smart contract example that relies on Remix
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Prepare Remix
 ^^^^^^^^^^^^^^^^
@@ -113,37 +111,43 @@ Prepare the smart contract source code:
 
 ::
 
-   pragma solidity ^0.4.0;
+   pragma solidity >=0.4.0 <0.6.0;
 
    contract SimpleStorage {
        uint storedData;
-       
-       function set(uint x) {
-           storedData=x;
+
+       function set(uint x) public {
+           storedData = x;
        }
 
-       function get() constant returns(uint) {
+       function get() public view returns (uint) {
            return storedData;
        }
    }
 
-And copy the smart contract source code to the text area. |image0| Click
-the Start to compile on the right to start compile. |image1| Ignore the
-yellow warnings, due to the source code version difference, the compiler
-will issue warnings.
+And copy the smart contract source code to the text area.
+
+.. image:: ../img/remix1.png
+
+Choose the appropriate compiler and click the Start to compile on the
+right to start compile.
 
 3. Deploy Contract
 ^^^^^^^^^^^^^^^^^^
 
 Select Run on the right, as shown in the picture with an arrow point to
-it. |image2| Click the Deploy button at the middle section of the page
-at the right.
+it. Click the Deploy button at the middle section of the page at the
+right.
 
-|image3|
+.. image:: ../img/remix2.png
 
-After successful deployment as shown in picture. |image4| Open the log
-detail section for log details, click on [vm] for details. |image5| Copy
-the content in the Input section, as below
+After successful deployment as shown in picture, open the log detail
+section for log details, click on input to copy the Bytecode to the
+clipboard.
+
+.. image:: ../img/remix3.png
+
+Copy the content in the Input section, as below
 
 ::
 
@@ -181,9 +185,15 @@ that will not affect anything.
 
 Pick a random number such as 21 for testing. You could pick any number
 that you like. Enter the number at the right side in the Set field.
-|image6| The execution log will show up in the area marked grey.
-|image7| Click on this log line item for detail. |image8| Copy the
-content in the Input field.
+
+.. image:: ../img/remix4.png
+
+The execution log will show up in the area marked grey. Click on this
+log line item for detail.
+
+.. image:: ../img/remix5.png
+
+Copy the content in the Input field.
 
 ::
 
@@ -205,10 +215,16 @@ successful.
 6. Test get Function
 ^^^^^^^^^^^^^^^^^^^^
 
-Similar to set function, click on the get button. |image9| If the log
-shows up in the log field then means the function call is successful.
-|image10| Click on the log line item for detail. |image11| Copy the
-content from the input field.
+Similar to set function, click on the get button.
+
+.. image:: ../img/remix6.png
+
+If the log shows up in the log field then means the function call is
+successful. Click on the log line item for detail.
+
+.. image:: ../img/remix7.png
+
+Copy the content from the input field.
 
 ::
 
@@ -230,16 +246,11 @@ Switch to contract simulator, then call the get function.
 When the string “Succeed to call contract!” is shown and the result is
 21, then the function is running correctly!
 
-.. |image0| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/1.png
-.. |image1| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/2.png
-.. |image2| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/3.png
-.. |image3| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/4.png
-.. |image4| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/5.png
-.. |image5| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/6.png
-.. |image6| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/7.png
-.. |image7| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/8.png
-.. |image8| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/9.png
-.. |image9| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/10.png
-.. |image10| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/photo/simulator%20remix/11.png
-.. |image11| image:: https://raw.githubusercontent.com/wangff15386/seele-photo/master/simulator%20remix/12.png
+.. |image0| image:: img/remix1.png
+.. |image1| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix2.png
+.. |image2| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix3.png
+.. |image3| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix4.png
+.. |image4| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix5.png
+.. |image5| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix6.png
+.. |image6| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix7.png
 
