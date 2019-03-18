@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Seele transaction fee" href="Seele-transaction-fee.html" />
+    <link rel="prev" title="Using The Contract Simulator" href="Using-the-contract-simulator.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,20 +80,90 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-sharding.html">Sharding in Seele</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Seele JSON-RPC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#curl-examples-explained">Curl Examples Explained</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-rpc-support">JSON-RPC Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-rpc-port">JSON-RPC Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-rpc-list">JSON-RPC List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-rpc-contents">JSON-RPC Contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#seele">seele</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getinfo">GetInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getbalance">GetBalance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#addtx">AddTx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getaccountnonce">GetAccountNonce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getblockheight">GetBlockHeight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getblock">GetBlock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getblockbyhash">GetBlockByHash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getblockbyheight">GetBlockByHeight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#call">Call</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getlogs">GetLogs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generatepayload">GeneratePayload</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#estimategas">EstimateGas</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#txpool">txpool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getblocktransactioncount">GetBlockTransactionCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getblocktransactioncountbyheight">GetBlockTransactionCountByHeight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getblocktransactioncountbyhash">GetBlockTransactionCountByHash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gettransactionbyblockindex">GetTransactionByBlockIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gettransactionbyblockheightandindex">GetTransactionByBlockHeightAndIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gettransactionbyblockhashandindex">GetTransactionByBlockHashAndIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gettransactionbyhash">GetTransactionByHash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getreceiptbytxhash">GetReceiptByTxHash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getdebtbyhash">GetDebtByHash</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#download">download</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getstatus">GetStatus</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#network">network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getpeersinfo">GetPeersInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getpeercount">GetPeerCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getnetversion">GetNetVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getprotocolversion">GetProtocolVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getnetworkid">GetNetworkID</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#miner">miner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#start">Start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stop">Stop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#status">Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getcoinbase">GetCoinbase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setthreads">SetThreads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setcoinbase">SetCoinbase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getthreads">GetThreads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gethashrate">GetHashrate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#debug">debug</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#printblock">PrintBlock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gettxpoolcontent">GetTxPoolContent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gettxpooltxcount">GetTxPoolTxCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getpendingtxs">GetPendingTxs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getpendingdebts">GetPendingDebts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dumpheap">DumpHeap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gettps">GetTPS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#monitor">monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nodeinfo">NodeInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodestats">NodeStats</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-transaction-fee.html">Seele transaction fee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-mining-reward.html">Seele mining reward</a></li>
 </ul>
 
             
@@ -3606,6 +3678,15 @@ pool.</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Seele-transaction-fee.html" class="btn btn-neutral float-right" title="Seele transaction fee" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Using-the-contract-simulator.html" class="btn btn-neutral float-left" title="Using The Contract Simulator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

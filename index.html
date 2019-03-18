@@ -82,17 +82,13 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Seele-sharding.html">Sharding in Seele</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/Command-Line-Options.html">Command Line Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/Command-Line-Options.html#node">Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/API-Document.html">JSON RPC API</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="docs/Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Seele-RPC.html">Seele JSON-RPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Seele-transaction-fee.html">Seele transaction fee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Seele-mining-reward.html">Seele mining reward</a></li>
 </ul>
 
             
@@ -190,6 +186,12 @@
 <li class="toctree-l3"><a class="reference internal" href="docs/Getting-Started-With-Seele.html#genesis-block-hash-mismatch">genesis block hash mismatch</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Seele-sharding.html">Sharding in Seele</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-sharding.html#introduction">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-sharding.html#how-to-send-debt">2. How to send debt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-sharding.html#get-debt">3. Get debt</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="docs/How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a><ul>
@@ -291,173 +293,86 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#basic">Basic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#command">Command</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#init">init</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description">Parameter Description:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#results">Results:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example">Example：</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Seele-RPC.html">Seele JSON-RPC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-RPC.html#curl-examples-explained">Curl Examples Explained</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-RPC.html#json-rpc-support">JSON-RPC Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-RPC.html#json-rpc-port">JSON-RPC Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-RPC.html#json-rpc-list">JSON-RPC List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-RPC.html#json-rpc-contents">JSON-RPC Contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/Seele-RPC.html#seele">seele</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getinfo">GetInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getbalance">GetBalance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#addtx">AddTx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getaccountnonce">GetAccountNonce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getblockheight">GetBlockHeight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getblock">GetBlock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getblockbyhash">GetBlockByHash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getblockbyheight">GetBlockByHeight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#call">Call</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getlogs">GetLogs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#generatepayload">GeneratePayload</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#estimategas">EstimateGas</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#gensecret">gensecret</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-1">parameter description:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#results-1">results：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-1">Example：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/Seele-RPC.html#txpool">txpool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getblocktransactioncount">GetBlockTransactionCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getblocktransactioncountbyheight">GetBlockTransactionCountByHeight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getblocktransactioncountbyhash">GetBlockTransactionCountByHash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#gettransactionbyblockindex">GetTransactionByBlockIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#gettransactionbyblockheightandindex">GetTransactionByBlockHeightAndIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#gettransactionbyblockhashandindex">GetTransactionByBlockHashAndIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#gettransactionbyhash">GetTransactionByHash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getreceiptbytxhash">GetReceiptByTxHash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getdebtbyhash">GetDebtByHash</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#create">create</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-2">Parameter description：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#results-2">results：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-2">Example:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/Seele-RPC.html#download">download</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getstatus">GetStatus</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#participate">participate</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-3">parameter description：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#results-3">Results：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-3">Example：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/Seele-RPC.html#network">network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getpeersinfo">GetPeersInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getpeercount">GetPeerCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getnetversion">GetNetVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getprotocolversion">GetProtocolVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getnetworkid">GetNetworkID</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#refund">refund</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-4">parameter description：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-of-getting-contractid">Example of getting contractId</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#result">Result:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-4">Example：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/Seele-RPC.html#miner">miner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#start">Start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#stop">Stop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#status">Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getcoinbase">GetCoinbase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#setthreads">SetThreads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#setcoinbase">SetCoinbase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getthreads">GetThreads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#gethashrate">GetHashrate</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#withdraw">withdraw</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-5">Parameter description：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#results-4">results：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-5">Example:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/Seele-RPC.html#debug">debug</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#printblock">PrintBlock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#gettxpoolcontent">GetTxPoolContent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#gettxpooltxcount">GetTxPoolTxCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getpendingtxs">GetPendingTxs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#getpendingdebts">GetPendingDebts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#dumpheap">DumpHeap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#gettps">GetTPS</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#getcontractbyid">getContractById</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-6">Parameter description：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#results-5">results：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-6">Example:</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#unpack">unpack</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-7">parameter description：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#result-1">result:</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#getreceipt">getreceipt</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-8">parameter description：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#result-2">result:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-7">example</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#getbalance">getbalance</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#parameter-description-9">parameter description:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#result-3">result</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-8">example</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#help">help</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#tutorial">Tutorial</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#working-on-seele1">Working on seele1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#example-9">example</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#operating-on-seele2">Operating on seele2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#operation-on-seele1">Operation on seele1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#on-seele1">On seele1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-Contract.html#on-seele2">On seele2</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#tutorial-for-hash-time-lock-htlc-system-contract">Tutorial for Hash Time Lock (HTLC) System Contract</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#home">Home</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#view-commands">View commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#tutorial">Tutorial</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#on-seele2">On seele2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#on-seele1">On seele1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#on-seele2-1">On seele2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/Hash-Time-Lock-System-Contract.html#on-seele1-1">On seele1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/Seele-RPC.html#monitor">monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#nodeinfo">NodeInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/Seele-RPC.html#nodestats">NodeStats</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="docs/Command-Line-Options.html">Command Line Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/Command-Line-Options.html#node">Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/API-Document.html">JSON RPC API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="docs/API-Document.html#json-rpc-support">JSON-RPC Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/API-Document.html#json-rpc-port">JSON-RPC Port</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/API-Document.html#json-rpc-example">JSON-RPC Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/API-Document.html#json-rpc-list">JSON-RPC List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="docs/API-Document.html#json-rpc-contents">JSON-RPC Contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="docs/API-Document.html#seele">seele</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getinfo">GetInfo</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getaccountshardnum">GetAccountShardNum</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getbalance">GetBalance</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#savekey">SaveKey</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#addtx">AddTx</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getaccountnonce">GetAccountNonce</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getaccountnonce-1">GetAccountNonce</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#call">Call</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getlogs">GetLogs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getblockbyheight">GetBlockByHeight</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getblockbyhash">GetBlockByHash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Seele-transaction-fee.html">Seele transaction fee</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/Seele-transaction-fee.html#gas">Gas</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="docs/API-Document.html#txpool">txpool</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getblocktransactioncountbyheight">GetBlockTransactionCountByHeight</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getblocktransactioncountbyhash">GetBlockTransactionCountByHash</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#gettransactionbyblockheightandindex">GetTransactionByBlockHeightAndIndex</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#gettransactionbyblockhashandindex">GetTransactionByBlockHashAndIndex</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#gettransactionbyhash">GetTransactionByHash</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getpendingtransactions">GetPendingTransactions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getreceiptbytxhash">GetReceiptByTxHash</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/API-Document.html#download">download</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getstatus">GetStatus</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/API-Document.html#network">network</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getpeersinfo">GetPeersInfo</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getpeercount">GetPeerCount</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getnetworkversion">GetNetworkVersion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getprotocolversion">GetProtocolVersion</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/API-Document.html#miner">miner</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#start">Start</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#stop">Stop</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#hashrate">Hashrate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getcoinbase">GetCoinbase</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#getthreads">GetThreads</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#setcoinbase">SetCoinbase</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#setthreads">SetThreads</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/API-Document.html#debug">debug</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#printblock">PrintBlock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#gettxpoolcontent">GetTxPoolContent</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#gettxpooltxcount">GetTxPoolTxCount</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#key">Key</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/API-Document.html#sign">Sign</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<p>Test Net</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="docs/Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Seele-mining-reward.html">Seele mining reward</a></li>
 </ul>
 </div>
 </div>
