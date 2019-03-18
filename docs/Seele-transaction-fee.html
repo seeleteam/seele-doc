@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Table of Contents &mdash; Seele  documentation</title>
+  <title>Seele transaction fee &mdash; Seele  documentation</title>
   
 
   
@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Seele mining reward" href="Seele-mining-reward.html" />
+    <link rel="prev" title="Seele JSON-RPC" href="Seele-RPC.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,20 +80,19 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-sharding.html">Sharding in Seele</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Seele transaction fee</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gas">Gas</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-mining-reward.html">Seele mining reward</a></li>
 </ul>
 
             
@@ -137,13 +138,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Table of Contents</li>
+      <li>Seele transaction fee</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/docs/Home.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../sources/docs/Seele-transaction-fee.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -156,28 +157,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="table-of-contents">
-<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/API-Document">API
-Document</a></li>
-<li><a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Getting-Started-With-Seele">Getting Started With
-Seele</a></li>
-<li><a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Join-Seele-TestNet">Join Seele
-TestNet</a></li>
-<li><a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/How-to-build-your-own-seele-network">How to build your own seele
-network</a></li>
-<li><a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Scan-Monitor-Dashboard-Setup">Scan Monitor Dashboard
-Setup</a></li>
-<li><a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Seele-Test-net-Performance-Introduction">Seele Test-net Performance
-Introduction</a></li>
-<li><a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Using-the-contract-simulator">Using the Contract
-Simulator</a></li>
-<li><a class="reference external" href="https://github.com/seeleteam/labs/wiki/Hash-Time-Lock-Contract">Hash Time Lock
-Contract</a></li>
-<li><a class="reference external" href="https://github.com/seeleteam/go-seele/wiki/Hash-Time-Lock-System-Contract">Hash Time Lock System
-Contract</a></li>
-</ul>
+  <div class="section" id="seele-transaction-fee">
+<h1>Seele transaction fee<a class="headerlink" href="#seele-transaction-fee" title="Permalink to this headline">¶</a></h1>
+<p>While the major currency unit of Seele is <strong>seele</strong>, we use <strong>fan</strong> as
+the smallest unit. 1 seele = 100,000,000 fan. When you send transactions
+in Seele, the transaction amount and price is measured in <strong>fan</strong>.</p>
+<p>Note that transaction amount and transaction fee are different. The
+transaction amount is the amount transferred from the sender to the
+receiver. The transaction fee is calculated by</p>
+<p><code class="docutils literal notranslate"><span class="pre">fee</span> <span class="pre">=</span> <span class="pre">price</span> <span class="pre">*</span> <span class="pre">gas</span></code></p>
+<p>and is paid to the block miners. The price is provided by the sender and
+gas depends on the transaction itself.</p>
+<div class="section" id="gas">
+<h2>Gas<a class="headerlink" href="#gas" title="Permalink to this headline">¶</a></h2>
+<p>The gas for different types of transaction is listed in the following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="28%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">within a shard</th>
+<th class="head">cross-shard</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>normal
+transaction</strong></td>
+<td>21000</td>
+<td>63000</td>
+</tr>
+<tr class="row-odd"><td><strong>contract
+transaction</strong></td>
+<td>21000 + gas for
+the contract
+payload + gas
+used for contract
+execution</td>
+<td>Not applicable</td>
+</tr>
+</tbody>
+</table>
+<p>Currently, cross-shard contract is not supported.</p>
+</div>
 </div>
 
 
@@ -185,6 +209,15 @@ Contract</a></li>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Seele-mining-reward.html" class="btn btn-neutral float-right" title="Seele mining reward" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Seele-RPC.html" class="btn btn-neutral float-left" title="Seele JSON-RPC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

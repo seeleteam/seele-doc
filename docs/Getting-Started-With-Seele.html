@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="How To Build Your Own Seele Network" href="How-to-build-your-own-seele-network.html" />
+    <link rel="next" title="Sharding in Seele" href="Seele-sharding.html" />
     <link rel="prev" title="Introduction" href="../introduction/index.html" /> 
 </head>
 
@@ -106,17 +106,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-sharding.html">Sharding in Seele</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-Contract.html">Hash Time Lock Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hash-Time-Lock-System-Contract.html">Hash Time Lock System Contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html">Command Line Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Command-Line-Options.html#node">Node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="API-Document.html">JSON RPC API</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Seele-Test-net-Performance-Introduction.html">Seele TestNet Performance Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-transaction-fee.html">Seele transaction fee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-mining-reward.html">Seele mining reward</a></li>
 </ul>
 
             
@@ -194,10 +190,14 @@ compiler</a>.</li>
 <li>Clone the go-seele repository to the
 <a class="reference external" href="https://github.com/golang/go/wiki/SettingGOPATH">GOPATH</a>
 directory : <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">get</span> <span class="pre">-u</span> <span class="pre">-v</span> <span class="pre">github.com\seeleteam\go-seele\...</span></code></li>
+<li>In <code class="docutils literal notranslate"><span class="pre">$GOPATH\src\github.com\seeleteam\go-seele</span></code>, build the
+source: run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span></code> for Linux and <code class="docutils literal notranslate"><span class="pre">buildall.bat</span></code> for
+Windows.</li>
 </ul>
 </li>
-<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">seeleteam\go-seele\cmd\node</span></code>, run: <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>; if you are
-running this for the first time a node executable object will appear.</p>
+<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">$GOPATH\src\github.com\seeleteam\go-seele\cmd\node</span></code>, run:
+<code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>; if you are running this for the first time a node
+executable object will appear.</p>
 <ul class="simple">
 <li>Something you may need to know before running a node:<ul>
 <li><ol class="first arabic">
@@ -207,12 +207,6 @@ mismatch”, follow the solution located
 </ol>
 </li>
 <li><ol class="first arabic" start="2">
-<li>If you want to run a light node, just replace node1.json
-with light_node1.json. Of course, don’t forget to start a
-full node before you do this.</li>
-</ol>
-</li>
-<li><ol class="first arabic" start="3">
 <li>Unless otherwise stated, the nodes mentioned below refer to
 the full node.</li>
 </ol>
@@ -305,7 +299,7 @@ configurations</a>.</p>
     <span class="s2">&quot;dataDir&quot;</span><span class="p">:</span> <span class="s2">&quot;node1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:8027&quot;</span><span class="p">,</span>
     <span class="s2">&quot;coinbase&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;algorithm&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256&quot;</span>
+    <span class="s2">&quot;algorithm&quot;</span><span class="p">:</span> <span class="s2">&quot;spow&quot;</span>
   <span class="p">},</span>
   <span class="s2">&quot;p2p&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;privateKey&quot;</span><span class="p">:</span> <span class="s2">&quot;0xf65e40c6809643b25ce4df33153da2f3338876f181f83d2281c6ac4a987b1479&quot;</span><span class="p">,</span>
@@ -314,8 +308,8 @@ configurations</a>.</p>
     <span class="s2">&quot;networkID&quot;</span><span class="p">:</span> <span class="s2">&quot;seele&quot;</span>
   <span class="p">},</span>
   <span class="s2">&quot;log&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;isDebug&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-    <span class="s2">&quot;printLog&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="s2">&quot;isDebug&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;printLog&quot;</span><span class="p">:</span> <span class="n">false</span>
   <span class="p">},</span>
   <span class="s2">&quot;httpServer&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0:8037&quot;</span><span class="p">,</span>
@@ -340,7 +334,7 @@ configurations</a>.</p>
     <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;test123&quot;</span>
   <span class="p">},</span>
   <span class="s2">&quot;genesis&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;difficult&quot;</span><span class="p">:</span><span class="mi">8000000</span><span class="p">,</span>
+    <span class="s2">&quot;difficult&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
     <span class="s2">&quot;shard&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1539742676</span>
   <span class="p">}</span>
@@ -388,8 +382,7 @@ for more nodes.</p>
 </td><td><p>The p2p server will listen on the TCP connection, which is used as the
 UDP address for the Kad protocol.</p>
 </td></tr><tr><td><p>networkID</p>
-</td><td><p>Used to indicate the network type. For example, 1 is testnet, 2 is
-mainnet.</p>
+</td><td><p>Used to indicate the network type.</p>
 </td></tr><tr><th rowspan="2"><p>log</p>
 </th><td><p>isDebug</p>
 </td><td><p>If IsDebug is true, the log will be on the debug level, otherwise it
@@ -413,10 +406,10 @@ irrelevant to the client’s custom HTTP.</p>
 </th><td><p>timestamp</p>
 </td><td><p>Timestamp of the genesis block.</p>
 </td></tr><tr><td><p>difficult</p>
-</td><td><p>Difficulty level: should be difficult near the beginning in order for
-easier block creation.</p>
+</td><td><p>Difficulty level: should be easy at the beginning in order for easier
+block creation.</p>
 </td></tr><tr><td><p>shard</p>
-</td><td><p>Number of shards in the genesis block.</p>
+</td><td><p>Shard number of the genesis block.</p>
 </td></tr></table><ul>
 <li><p class="first">Help:</p>
 <p>Use “node -h” for a list of available commands.</p>
@@ -460,7 +453,7 @@ will appear.</li>
 <span class="n">COMMANDS</span><span class="p">:</span>
      <span class="n">call</span>              <span class="n">call</span> <span class="n">contract</span>
      <span class="n">deckeyfile</span>        <span class="n">Decrypt</span> <span class="n">key</span> <span class="n">file</span>
-     <span class="n">domain</span>            <span class="n">system</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">commands</span>
+     <span class="n">domain</span>            <span class="n">system</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">commands</span> <span class="p">(</span><span class="n">under</span> <span class="n">development</span><span class="p">)</span>
      <span class="n">dumpheap</span>          <span class="n">dump</span> <span class="n">heap</span> <span class="k">for</span> <span class="n">profiling</span><span class="p">,</span> <span class="k">return</span> <span class="n">the</span> <span class="n">file</span> <span class="n">path</span>
      <span class="n">getbalance</span>        <span class="n">get</span> <span class="n">balance</span> <span class="n">info</span>
      <span class="n">getblock</span>          <span class="n">get</span> <span class="n">block</span> <span class="n">by</span> <span class="n">height</span> <span class="ow">or</span> <span class="nb">hash</span>
@@ -496,15 +489,23 @@ will appear.</li>
 </div>
 <div class="section" id="create-a-light-node-client">
 <h2>Create a Light Node Client:<a class="headerlink" href="#create-a-light-node-client" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Preparations:<ul>
-<li>Install go v1.10 or higher and the C compiler.</li>
-<li>In <code class="docutils literal notranslate"><span class="pre">seeleteam\go-seele\cmd\client\light</span></code>, run: <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>. If
+<ul>
+<li><p class="first">Preparations:</p>
+<ul>
+<li><p class="first">Install go v1.10 or higher and the C compiler.</p>
+</li>
+<li><p class="first">To run a light node, run</p>
+<p><code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node1.json</span> <span class="pre">-l</span></code></p>
+<p>where node1.json can be replaced by other node json files.</p>
+</li>
+<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">seeleteam\go-seele\cmd\client\light</span></code>, run: <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>. If
 you are running this for the first time, a client executable
-object will appear.</li>
+object will appear.</p>
+</li>
 </ul>
 </li>
-<li>Running a Light Node Client:<ul>
+<li><p class="first">Running a Light Node Client:</p>
+<ul class="simple">
 <li>On Windows:<ul>
 <li>In the command window, run: <code class="docutils literal notranslate"><span class="pre">light</span></code></li>
 </ul>
@@ -515,7 +516,8 @@ object will appear.</li>
 </li>
 </ul>
 </li>
-<li>Help:</li>
+<li><p class="first">Help:</p>
+</li>
 </ul>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">light</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">NAME</span><span class="p">:</span>
@@ -578,8 +580,6 @@ help you get a Seele account.</li>
 <span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">10</span> <span class="o">--</span><span class="n">price</span> <span class="mi">10</span> <span class="o">--</span><span class="n">gas</span> <span class="mi">21000</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">to</span> <span class="mh">0xb286933bccbec9ca1cd92257d12d12ebab9b1201</span>
 
 <span class="o">//</span> <span class="n">Response</span>
-
-<span class="n">In</span> <span class="n">seeleteam</span><span class="o">/</span><span class="n">go</span><span class="o">-</span><span class="n">seele</span><span class="o">/</span><span class="n">cmd</span><span class="o">/</span><span class="n">node</span><span class="p">:</span>
 
 <span class="n">Please</span> <span class="nb">input</span> <span class="n">your</span> <span class="n">key</span> <span class="n">file</span> <span class="n">password</span><span class="p">:</span>
 <span class="n">account</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="n">current</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sending</span> <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span>
@@ -888,7 +888,7 @@ path to the .seele folder is in the logs printed above.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="How-to-build-your-own-seele-network.html" class="btn btn-neutral float-right" title="How To Build Your Own Seele Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Seele-sharding.html" class="btn btn-neutral float-right" title="Sharding in Seele" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../introduction/index.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

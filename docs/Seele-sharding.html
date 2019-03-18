@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How To Send Debt &mdash; Seele  documentation</title>
+  <title>Sharding in Seele &mdash; Seele  documentation</title>
   
 
   
@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How To Build Your Own Seele Network" href="How-to-build-your-own-seele-network.html" />
+    <link rel="prev" title="Getting Started With Seele" href="Getting-Started-With-Seele.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,10 +80,15 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Seele-sharding.html">Sharding in Seele</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sharding in Seele</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-send-debt">2. How to send debt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-debt">3. Get debt</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-build-your-own-seele-network.html">How To Build Your Own Seele Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Scan-Monitor-Dashboard-Setup.html">Scan Monitor Dashboard Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
@@ -133,13 +140,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>How To Send Debt</li>
+      <li>Sharding in Seele</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/docs/How-to-send-debt.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../sources/docs/Seele-sharding.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -152,18 +159,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="how-to-send-debt">
-<h1>How To Send Debt<a class="headerlink" href="#how-to-send-debt" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>The difference between transactions and debts is that transactions
-happen between two accounts on the same shard while debts happen
-between two accounts on different shards.</li>
-</ul>
-<p>You should have two accounts on different shards.
-<a class="reference external" href="How-To-Create-An-Account.html">Here</a> will help you to get the
-accounts.</p>
-<div class="section" id="transfer">
-<h2>1. Transfer<a class="headerlink" href="#transfer" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="sharding-in-seele">
+<h1>Sharding in Seele<a class="headerlink" href="#sharding-in-seele" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>To increase the capacity of Seele, we partition the Seele network into
+<strong>4</strong> shards. In each shard there is an independent blockchain.
+Transactions can be made across shards. The cross-shard transaction is
+also called debt.</p>
+<p>The difference between regular transactions and debts is that regular
+transactions happen between two accounts on the same shard while debts
+happen between two accounts on different shards.</p>
+</div>
+<div class="section" id="how-to-send-debt">
+<h2>2. How to send debt<a class="headerlink" href="#how-to-send-debt" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>You need an account with value to transfer money (for example, 100000
 fan) from shard1 account to shard2 account.</li>
@@ -229,11 +238,11 @@ fan) from shard1 account to shard2 account.</li>
 <p>The result of <code class="docutils literal notranslate"><span class="pre">&quot;failed&quot;:</span> <span class="pre">false</span></code>row indicats that the transfer was
 successful. By the way, if tx is not packed by the miner or the miner is
 packing, you may see<code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">error</span> <span class="pre">when</span> <span class="pre">call</span> <span class="pre">rpc</span> <span class="pre">leveldb:</span> <span class="pre">not</span> <span class="pre">found</span></code>.
-Don’t worry, just wait for servals seconds, or you can use
+Don’t worry, just wait for severals seconds, or you can use
 <code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">gettxbyhash</span></code> to query tx <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p>
 </div>
 <div class="section" id="get-debt">
-<h2>2. Get debt<a class="headerlink" href="#get-debt" title="Permalink to this headline">¶</a></h2>
+<h2>3. Get debt<a class="headerlink" href="#get-debt" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>When the transaction got over 120 blocks confirmed, you will get the
 pending debt on shard 2.</li>
@@ -256,7 +265,7 @@ pending debt on shard 2.</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Few second later, the debt will be packed by a new block in shard 2.</li>
+<li>Few seconds later, the debt will be packed by a new block in shard 2.</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getdebtbyhash</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x5ecc232012ae6a1cfe9ab88ca38583872c0bc0b2e1da4e987f5dc98cbde8c0f1</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span>
 <span class="p">{</span>
@@ -346,6 +355,15 @@ pending debt on shard 2.</li>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="How-to-build-your-own-seele-network.html" class="btn btn-neutral float-right" title="How To Build Your Own Seele Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Getting-Started-With-Seele.html" class="btn btn-neutral float-left" title="Getting Started With Seele" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

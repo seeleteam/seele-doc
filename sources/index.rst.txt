@@ -23,19 +23,14 @@ Contents
 
    ./introduction/index.rst
    ./docs/Getting-Started-With-Seele.rst
+   ./docs/Seele-sharding.rst
    ./docs/How-to-build-your-own-seele-network.rst
    ./docs/Scan-Monitor-Dashboard-Setup.rst
    ./docs/Using-the-contract-simulator.rst
-   ./docs/Hash-Time-Lock-Contract.rst
-   ./docs/Hash-Time-Lock-System-Contract.rst
-   ./docs/Command-Line-Options.rst
-   ./docs/API-Document.rst
-   
-Test Net
+   ./docs/Seele-RPC.rst
+   ./docs/Seele-transaction-fee.rst
+   ./docs/Seele-mining-reward.rst 
 
-.. toctree::
-   :titlesonly:
    
-   ./docs/Seele-Test-net-Performance-Introduction.rst
 
 

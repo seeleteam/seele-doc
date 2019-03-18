@@ -127,7 +127,7 @@ Prepare the smart contract source code:
 
 And copy the smart contract source code to the text area.
 
-.. image:: ../img/remix1.png
+|image0|
 
 Choose the appropriate compiler and click the Start to compile on the
 right to start compile.
@@ -139,15 +139,13 @@ Select Run on the right, as shown in the picture with an arrow point to
 it. Click the Deploy button at the middle section of the page at the
 right.
 
-.. image:: ../img/remix2.png
+|image1|
 
 After successful deployment as shown in picture, open the log detail
 section for log details, click on input to copy the Bytecode to the
 clipboard.
 
-.. image:: ../img/remix3.png
-
-Copy the content in the Input section, as below
+|image2| Copy the content in the Input section, as below
 
 ::
 
@@ -185,13 +183,12 @@ that will not affect anything.
 
 Pick a random number such as 21 for testing. You could pick any number
 that you like. Enter the number at the right side in the Set field.
-
-.. image:: ../img/remix4.png
+|image3|
 
 The execution log will show up in the area marked grey. Click on this
 log line item for detail.
 
-.. image:: ../img/remix5.png
+|image4|
 
 Copy the content in the Input field.
 
@@ -217,12 +214,12 @@ successful.
 
 Similar to set function, click on the get button.
 
-.. image:: ../img/remix6.png
+|image5|
 
 If the log shows up in the log field then means the function call is
 successful. Click on the log line item for detail.
 
-.. image:: ../img/remix7.png
+|image6|
 
 Copy the content from the input field.
 
@@ -246,7 +243,7 @@ Switch to contract simulator, then call the get function.
 When the string “Succeed to call contract!” is shown and the result is
 21, then the function is running correctly!
 
-.. |image0| image:: img/remix1.png
+.. |image0| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix1.png
 .. |image1| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix2.png
 .. |image2| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix3.png
 .. |image3| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix4.png

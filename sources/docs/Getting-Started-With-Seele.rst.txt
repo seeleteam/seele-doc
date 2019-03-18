@@ -12,9 +12,13 @@ Setting Up a Node
    -  Clone the go-seele repository to the
       `GOPATH <https://github.com/golang/go/wiki/SettingGOPATH>`__
       directory : ``go get -u -v github.com\seeleteam\go-seele\...``
+   -  In ``$GOPATH\src\github.com\seeleteam\go-seele``, build the
+      source: run ``make all`` for Linux and ``buildall.bat`` for
+      Windows.
 
--  In ``seeleteam\go-seele\cmd\node``, run: ``go build``; if you are
-   running this for the first time a node executable object will appear.
+-  In ``$GOPATH\src\github.com\seeleteam\go-seele\cmd\node``, run:
+   ``go build``; if you are running this for the first time a node
+   executable object will appear.
 
    -  Something you may need to know before running a node:
 
@@ -26,13 +30,7 @@ Setting Up a Node
 
       -  
 
-         2. If you want to run a light node, just replace node1.json
-            with light_node1.json. Of course, don’t forget to start a
-            full node before you do this.
-
-      -  
-
-         3. Unless otherwise stated, the nodes mentioned below refer to
+         2. Unless otherwise stated, the nodes mentioned below refer to
             the full node.
 
 -  **Get an account**:
@@ -115,7 +113,7 @@ node1.json:
        "dataDir": "node1",
        "address": "0.0.0.0:8027",
        "coinbase": "0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21",
-       "algorithm": "sha256"
+       "algorithm": "spow"
      },
      "p2p": {
        "privateKey": "0xf65e40c6809643b25ce4df33153da2f3338876f181f83d2281c6ac4a987b1479",
@@ -124,8 +122,8 @@ node1.json:
        "networkID": "seele"
      },
      "log": {
-       "isDebug": true,
-       "printLog": true
+       "isDebug": false,
+       "printLog": false
      },
      "httpServer": {
        "address": "0.0.0.0:8037",
@@ -150,7 +148,7 @@ node1.json:
        "password": "test123"
      },
      "genesis": {
-       "difficult":8000000,
+       "difficult":20,
        "shard":1,
        "timestamp":1539742676
      }
@@ -511,8 +509,7 @@ networkID
 
    <td>
 
-Used to indicate the network type. For example, 1 is testnet, 2 is
-mainnet.
+Used to indicate the network type.
 
 .. raw:: html
 
@@ -780,8 +777,8 @@ difficult
 
    <td>
 
-Difficulty level: should be difficult near the beginning in order for
-easier block creation.
+Difficulty level: should be easy at the beginning in order for easier
+block creation.
 
 .. raw:: html
 
@@ -809,7 +806,7 @@ shard
 
    <td>
 
-Number of shards in the genesis block.
+Shard number of the genesis block.
 
 .. raw:: html
 
@@ -866,7 +863,7 @@ Create a Full Node Client:
    COMMANDS:
         call              call contract
         deckeyfile        Decrypt key file
-        domain            system domain name commands
+        domain            system domain name commands (under development)
         dumpheap          dump heap for profiling, return the file path
         getbalance        get balance info
         getblock          get block by height or hash
@@ -904,6 +901,12 @@ Create a Light Node Client:
 -  Preparations:
 
    -  Install go v1.10 or higher and the C compiler.
+   -  To run a light node, run
+
+      ``node start -c .\config\node1.json -l``
+
+      where node1.json can be replaced by other node json files.
+
    -  In ``seeleteam\go-seele\cmd\client\light``, run: ``go build``. If
       you are running this for the first time, a client executable
       object will appear.
@@ -983,9 +986,7 @@ Some common-used commands:
      
      client sendtx --amount 10 --price 10 --gas 21000 --from .keystore-shard1-0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21 --to 0xb286933bccbec9ca1cd92257d12d12ebab9b1201
 
-     // Response 
-     
-     In seeleteam/go-seele/cmd/node: 
+     // Response  
 
      Please input your key file password: 
      account 0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21 current nonce: 0, sending nonce: 0
