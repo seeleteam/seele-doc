@@ -13,11 +13,17 @@ The difference between regular transactions and debts is that regular
 transactions happen between two accounts on the same shard while debts
 happen between two accounts on different shards.
 
+Under ``$GOPATH\src\github.com\seeleteam\go-seele\cmd\node\config\``, we
+have **4** nodes: node1.json, node2.json, node3.json, node4.json. Each
+json file corresponds to the configuration of one shard. They are used
+to run Seele nodes. For details, see `How to customize your node
+configurations <#how-to-customize-your-node-configurations>`__.
+
 2. How to send debt
 -------------------
 
--  You need an account with value to transfer money (for example, 100000
-   fan) from shard1 account to shard2 account.
+-  You need an account with value to transfer (for example, 100000 fan)
+   from shard1 account to shard2 account.
 
 ::
 
@@ -64,7 +70,8 @@ happen between two accounts on different shards.
            }
    }
 
--  Query the transfer result with the tx ``Hash`` on shard 1.
+-  Query the transaction result with the transaction ``Hash`` on shard
+   1.
 
 ::
 
@@ -79,17 +86,17 @@ happen between two accounts on different shards.
            "usedGas": 42000
    }
 
-The result of ``"failed": false``\ row indicats that the transfer was
-successful. By the way, if tx is not packed by the miner or the miner is
-packing, you may see\ ``get error when call rpc leveldb: not found``.
-Don’t worry, just wait for severals seconds, or you can use
-``client gettxbyhash`` to query tx ``status``.
+The result of ``"failed": false``\ row indicates that the transaction
+was successful. If the transaction is not completed, you may see
+``get error when call rpc leveldb: not found``. You could use
+``client gettxbyhash`` to query the transaction ``status``.
 
 3. Get debt
 -----------
 
--  When the transaction got over 120 blocks confirmed, you will get the
-   pending debt on shard 2.
+-  When over 120 blocks are confirmed in shard 1 after this transaction
+   is recorded on chain. The corresponding debt will be sent to shard 2.
+   You can check the pending debt on shard 2. If the
 
 ::
 
@@ -109,7 +116,7 @@ Don’t worry, just wait for severals seconds, or you can use
            }
    ]
 
--  Few seconds later, the debt will be packed by a new block in shard 2.
+-  Later, the debt will be packed by a new block in shard 2.
 
 ::
 

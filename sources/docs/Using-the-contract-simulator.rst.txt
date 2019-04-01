@@ -243,11 +243,11 @@ Switch to contract simulator, then call the get function.
 When the string “Succeed to call contract!” is shown and the result is
 21, then the function is running correctly!
 
-.. |image0| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix1.png
-.. |image1| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix2.png
-.. |image2| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix3.png
-.. |image3| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix4.png
-.. |image4| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix5.png
-.. |image5| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix6.png
-.. |image6| image:: file:///Users/zixing/seele_docs/seele_docs/source/img/remix7.png
+.. |image0| image:: ../img/remix1.png
+.. |image1| image:: ../img/remix2.png
+.. |image2| image:: ../img/remix3.png
+.. |image3| image:: ../img/remix4.png
+.. |image4| image:: ../img/remix5.png
+.. |image5| image:: ../img/remix6.png
+.. |image6| image:: ../img/remix7.png
 

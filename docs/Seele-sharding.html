@@ -170,12 +170,17 @@ also called debt.</p>
 <p>The difference between regular transactions and debts is that regular
 transactions happen between two accounts on the same shard while debts
 happen between two accounts on different shards.</p>
+<p>Under <code class="docutils literal notranslate"><span class="pre">$GOPATH\src\github.com\seeleteam\go-seele\cmd\node\config\</span></code>, we
+have <strong>4</strong> nodes: node1.json, node2.json, node3.json, node4.json. Each
+json file corresponds to the configuration of one shard. They are used
+to run Seele nodes. For details, see <a class="reference external" href="#how-to-customize-your-node-configurations">How to customize your node
+configurations</a>.</p>
 </div>
 <div class="section" id="how-to-send-debt">
 <h2>2. How to send debt<a class="headerlink" href="#how-to-send-debt" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>You need an account with value to transfer money (for example, 100000
-fan) from shard1 account to shard2 account.</li>
+<li>You need an account with value to transfer (for example, 100000 fan)
+from shard1 account to shard2 account.</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shard1</span> <span class="n">account</span><span class="p">:</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span>
 <span class="n">shard2</span> <span class="n">account</span><span class="p">:</span> <span class="mh">0xd228e1dd02bdce9656b8e195a77e0da0b70daea1</span>
@@ -221,7 +226,8 @@ fan) from shard1 account to shard2 account.</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Query the transfer result with the tx <code class="docutils literal notranslate"><span class="pre">Hash</span></code> on shard 1.</li>
+<li>Query the transaction result with the transaction <code class="docutils literal notranslate"><span class="pre">Hash</span></code> on shard
+1.</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x07d874cad8305bdcb813221425725d0c4ce651a20420e98cc0e911e181ae1da1</span>
 <span class="p">{</span>
@@ -235,17 +241,17 @@ fan) from shard1 account to shard2 account.</li>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The result of <code class="docutils literal notranslate"><span class="pre">&quot;failed&quot;:</span> <span class="pre">false</span></code>row indicats that the transfer was
-successful. By the way, if tx is not packed by the miner or the miner is
-packing, you may see<code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">error</span> <span class="pre">when</span> <span class="pre">call</span> <span class="pre">rpc</span> <span class="pre">leveldb:</span> <span class="pre">not</span> <span class="pre">found</span></code>.
-Don’t worry, just wait for severals seconds, or you can use
-<code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">gettxbyhash</span></code> to query tx <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p>
+<p>The result of <code class="docutils literal notranslate"><span class="pre">&quot;failed&quot;:</span> <span class="pre">false</span></code>row indicates that the transaction
+was successful. If the transaction is not completed, you may see
+<code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">error</span> <span class="pre">when</span> <span class="pre">call</span> <span class="pre">rpc</span> <span class="pre">leveldb:</span> <span class="pre">not</span> <span class="pre">found</span></code>. You could use
+<code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">gettxbyhash</span></code> to query the transaction <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p>
 </div>
 <div class="section" id="get-debt">
 <h2>3. Get debt<a class="headerlink" href="#get-debt" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>When the transaction got over 120 blocks confirmed, you will get the
-pending debt on shard 2.</li>
+<li>When over 120 blocks are confirmed in shard 1 after this transaction
+is recorded on chain. The corresponding debt will be sent to shard 2.
+You can check the pending debt on shard 2. If the</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getdebts</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span>
 <span class="p">[</span>
@@ -265,7 +271,7 @@ pending debt on shard 2.</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Few seconds later, the debt will be packed by a new block in shard 2.</li>
+<li>Later, the debt will be packed by a new block in shard 2.</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="n">getdebtbyhash</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x5ecc232012ae6a1cfe9ab88ca38583872c0bc0b2e1da4e987f5dc98cbde8c0f1</span> <span class="o">--</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8028</span>
 <span class="p">{</span>
