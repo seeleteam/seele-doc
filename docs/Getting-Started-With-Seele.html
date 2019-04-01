@@ -99,7 +99,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-customize-your-node-configurations">How to customize your node configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gcc-install-newbie-guide">GCC install newbie guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#start-metrics">Start Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#q-a">Q&amp;A</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#genesis-block-hash-mismatch">genesis block hash mismatch</a></li>
 </ul>
@@ -191,7 +190,7 @@ compiler</a>.</li>
 <a class="reference external" href="https://github.com/golang/go/wiki/SettingGOPATH">GOPATH</a>
 directory : <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">get</span> <span class="pre">-u</span> <span class="pre">-v</span> <span class="pre">github.com\seeleteam\go-seele\...</span></code></li>
 <li>In <code class="docutils literal notranslate"><span class="pre">$GOPATH\src\github.com\seeleteam\go-seele</span></code>, build the
-source: run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span></code> for Linux and <code class="docutils literal notranslate"><span class="pre">buildall.bat</span></code> for
+source: run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span></code> for Linux/Mac and <code class="docutils literal notranslate"><span class="pre">buildall.bat</span></code> for
 Windows.</li>
 </ul>
 </li>
@@ -232,9 +231,8 @@ provided for testing.</p>
 <li>Running a Single Node：<ul>
 <li>In the cmd window, run:
 <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">.\config\node1.json</span></code></li>
-<li>By default this will start the miner, not metrics. You
-can add flags <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">stop</span></code> to not start the miner, or
-<code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">true</span></code> to <a class="reference external" href="#start-metrics">start metrics</a>.</li>
+<li>By default this will start the miner. You can add flags
+<code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">stop</span></code> to not start the miner.</li>
 </ul>
 </li>
 <li>Running Multiple Nodes：<ul>
@@ -251,9 +249,8 @@ can add flags <code class="docutils literal notranslate"><span class="pre">-m</s
 <li><p class="first">Running a Single Node：</p>
 <ul class="simple">
 <li>On terminal, run: <code class="docutils literal notranslate"><span class="pre">./node</span> <span class="pre">start</span> <span class="pre">-c</span> <span class="pre">./config/node1.json</span></code></li>
-<li>By default this will start the miner, not metrics. You
-can add flags <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">stop</span></code> to not start the miner, or
-<code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">true</span></code> to <a class="reference external" href="#start-metrics">start metrics</a>.</li>
+<li>By default this will start the miner. You can add flags
+<code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">stop</span></code> to not start the miner.</li>
 </ul>
 </li>
 <li><p class="first">Running Multiple Nodes：</p>
@@ -278,11 +275,12 @@ configurations</a>.</p>
 <p>If you want to have a quickstart in a test or private blockchain
 environment, you can use the default node configurations and
 accounts. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="o">./</span><span class="n">config</span><span class="o">/</span><span class="n">node1</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">accounts</span> <span class="o">./</span><span class="n">config</span><span class="o">/</span><span class="n">accounts</span><span class="o">.</span><span class="n">json</span>
-
-<span class="n">Note</span> <span class="n">that</span> <span class="n">seeleteam</span><span class="o">/</span><span class="n">go</span><span class="o">-</span><span class="n">seele</span><span class="o">/</span><span class="n">cmd</span><span class="o">/</span><span class="n">node</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">accounts</span><span class="o">.</span><span class="n">json</span> <span class="n">only</span> <span class="n">contains</span> <span class="n">test</span> <span class="n">accounts</span><span class="p">,</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">them</span> <span class="k">if</span> <span class="n">you</span> <span class="n">are</span> <span class="n">going</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Seele</span> <span class="n">mainnet</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">node</span> <span class="n">start</span> <span class="o">-</span><span class="n">c</span> <span class="o">./</span><span class="n">config</span><span class="o">/</span><span class="n">node1</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">accounts</span> <span class="o">./</span><span class="n">config</span><span class="o">/</span><span class="n">accounts</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
+<p>Note that seeleteam/go-seele/cmd/node/config/accounts.json only
+contains test accounts, do <strong>not</strong> use them if you are going to
+connect to the Seele mainnet.</p>
 </li>
 </ul>
 </li>
@@ -393,7 +391,7 @@ otherwise it will be written and stored in a file.</p>
 </td></tr><tr><th rowspan="3"><p>httpServer</p>
 </th><td><p>address</p>
 </td><td><p>HTTP RPC’s service address.</p>
-</td></tr><tr><td><p>crossorgins</p>
+</td></tr><tr><td><p>crossorigins</p>
 </td><td><p>Sent to the client’s cross-origin resource sharing origin. Note that
 CORS is a type of forced safety measure by the browser, which is
 irrelevant to the client’s custom HTTP.</p>
@@ -419,15 +417,17 @@ block creation.</p>
 </div>
 <div class="section" id="create-a-full-node-client">
 <h2>Create a Full Node Client:<a class="headerlink" href="#create-a-full-node-client" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Preparations:</p>
 <ul class="simple">
-<li>Preparations:<ul>
 <li>Install go v1.10 or higher and the C compiler.</li>
 <li>In <code class="docutils literal notranslate"><span class="pre">seeleteam\go-seele\cmd\client</span></code>, run: <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>. If you
 are running this for the first time, a client executable object
 will appear.</li>
 </ul>
 </li>
-<li>Running a Full Node Client:<ul>
+<li><p class="first">Running a Full Node Client:</p>
+<ul class="simple">
 <li>On Windows:<ul>
 <li>In the command window, run: <code class="docutils literal notranslate"><span class="pre">client</span></code></li>
 </ul>
@@ -438,7 +438,15 @@ will appear.</li>
 </li>
 </ul>
 </li>
-<li>Help:</li>
+<li><p class="first">By default, client will interact with address 127.0.0.1:8027. To
+interact with other addresses, you will need to add <code class="docutils literal notranslate"><span class="pre">-a</span> <span class="pre">[address]</span></code>
+while using <code class="docutils literal notranslate"><span class="pre">client</span></code>. For example,</p>
+<p><code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">getbalance</span> <span class="pre">--account</span> <span class="pre">[certain</span> <span class="pre">account</span> <span class="pre">address]</span> <span class="pre">-a</span> <span class="pre">127.0.0.1:8028</span></code></p>
+<p>By default, we use port 8027 for node1.json, port 8028 for
+node2.json, port 8029 for node3.json, port 8026 for node4.json.</p>
+</li>
+<li><p class="first">Help:</p>
+</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">NAME</span><span class="p">:</span>
@@ -568,8 +576,7 @@ help you get a Seele account.</li>
 <div class="section" id="transfer">
 <h3>1. Transfer<a class="headerlink" href="#transfer" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Of course, you need an account with money in it to transfer money
-(for example, 10 fans) to a certain account A.</li>
+<li>You need an account with Seeles to make a transaction.</li>
 </ul>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Assume</span> <span class="n">you</span> <span class="n">have</span> <span class="n">created</span> <span class="n">your</span> <span class="n">account</span> <span class="k">with</span> <span class="n">address</span> <span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">keyfile</span> <span class="ow">is</span> <span class="o">.</span><span class="n">keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span>
 
@@ -603,7 +610,7 @@ help you get a Seele account.</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Query the transfer result with the tx <code class="docutils literal notranslate"><span class="pre">Hash</span></code>.</li>
+<li>Query a transaction with <code class="docutils literal notranslate"><span class="pre">Hash</span></code>.</li>
 </ul>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getreceipt</span> <span class="o">--</span><span class="nb">hash</span> <span class="mh">0x9c0e2565b8a0b33c3f69aa6eb9bad4a86c3925a1fe12272e2082091b9b1c5609</span>
@@ -620,14 +627,12 @@ help you get a Seele account.</li>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The result of <code class="docutils literal notranslate"><span class="pre">&quot;failure&quot;:</span> <span class="pre">false</span></code>row, indicating that the transfer
-was successful. By the way, if tx is not packed by the miner or the
-miner is packing, you may
-see<code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">error</span> <span class="pre">when</span> <span class="pre">call</span> <span class="pre">rpc</span> <span class="pre">leveldb:</span> <span class="pre">not</span> <span class="pre">found</span></code>. Don’t worry, just
-wait for several seconds, or you can use <code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">gettxbyhash</span></code> to query
-tx <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p>
+<p>The result of <code class="docutils literal notranslate"><span class="pre">&quot;failure&quot;:</span> <span class="pre">false</span></code>row, indicating that the transaction
+was successful. If the transaction is not completed, you may see
+<code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">error</span> <span class="pre">when</span> <span class="pre">call</span> <span class="pre">rpc</span> <span class="pre">leveldb:</span> <span class="pre">not</span> <span class="pre">found</span></code>. You could use
+<code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">gettxbyhash</span></code> to query the transaction <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p>
 <ul class="simple">
-<li>Confirm the balance of receiver account A.</li>
+<li>Confirm the balance of receiver account.</li>
 </ul>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">getbalance</span> <span class="o">--</span><span class="n">account</span> <span class="mh">0xb286933bccbec9ca1cd92257d12d12ebab9b1201</span>
@@ -643,18 +648,17 @@ tx <code class="docutils literal notranslate"><span class="pre">status</span></c
 <div class="section" id="deploy-contract">
 <h3>2. Deploy contract<a class="headerlink" href="#deploy-contract" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>In the following, we demonstrate how to deploy a contract on Seele
-blockchain. Before deploying smart contract, you will need to compile
-your Solidity code to bytecode for EVM (Ethereum Virtual Machine)
-since we use EVM in Seele. Currently, we support contracts in
-Solidity v0.4.25. As an example, we use <code class="docutils literal notranslate"><span class="pre">simple_storage.sol</span></code>
-contract. <a class="reference external" href="Using-the-contract-simulator.html">Using the contract
-simulator</a> will help you get
-the contract Bytecode data (by using Remix) which will be the input
-of the payload parameter. You do not need to specify the address of
-the contract since the address will be created automatically. The
-contract address can be found in the receipt as introduced in the
-following step.</li>
+<li>In the following, we demonstrate how to deploy a smart contract on
+Seele blockchain. Before deploying the smart contract, you will need
+to compile your Solidity code to bytecode for EVM (Ethereum Virtual
+Machine) since Seele uses EVM. Currently, we support contracts in
+Solidity v0.4.25 - v0.5.0. As an example, see <code class="docutils literal notranslate"><span class="pre">simple_storage.sol</span></code>.
+<a class="reference external" href="Using-the-contract-simulator.html">Using the contract simulator</a>
+will help you get the contract Bytecode data (by using Remix) which
+will be the input of the payload parameter. There is no need to
+specify the address of the smart contract since the address will be
+created automatically. The smart contract address can be found in the
+receipt as introduced in the following step.</li>
 </ul>
 <div class="code js highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">//</span> <span class="n">Request</span>
 <span class="n">client</span> <span class="n">sendtx</span> <span class="o">--</span><span class="n">amount</span> <span class="mi">0</span> <span class="o">--</span><span class="kn">from</span> <span class="nn">.keystore</span><span class="o">-</span><span class="n">shard1</span><span class="o">-</span><span class="mh">0x4c10f2cd2159bb432094e3be7e17904c2b4aeb21</span> <span class="o">--</span><span class="n">payload</span> <span class="mh">0x608060405234801561001057600080fd5b50600560008190555060df806100276000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058207f6dc43a0d648e9f5a0cad5071cde46657de72eb87ab4cded53a7f1090f51e6d0029</span>
@@ -709,7 +713,7 @@ contract address.</p>
 <div class="section" id="sendtx">
 <h4>Sendtx<a class="headerlink" href="#sendtx" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>After you successfully deploy your contract on Seele, your contract
+<li>After you successfully deploy your contract on Seele, the contract
 has its own address. To call the contract, you will need to send a
 transaction to the contract address. <a class="reference external" href="Using-the-contract-simulator.html">Using the contract
 simulator</a> will help you
@@ -802,13 +806,15 @@ mine and send transactions. <strong>Do not use private keys associated with
 your coinbase or any other transaction accounts here!</strong></li>
 <li>You could connect to some static nodes in the network by
 configuration. The format of “staticNodes” field is [“ip:port”,…],
-for example, [“127.0.0.1:8057”].</li>
+for example, [“127.0.0.1:8057”]. The static nodes used to connect to
+the Seele mainnet can be found on <a class="reference external" href="https://seelescan.net">Seele
+Scan</a> and in node json files under
+<strong>seeleteam/go-seele/cmd/node/config</strong>.</li>
 <li>If “isDebug” and “printLog” fields are true, the display is in debug
-mode and log mode when you run the Seele node. Default values should
-be false.</li>
-<li>The “networkID”, “difficult” and “timestamp” field for nodes in the
-same network should be the same. Nodes with different values in these
-field <strong>can not</strong> connect to each other.</li>
+mode and log mode when you run the Seele node. The default value of
+these fields should be false.</li>
+<li>The values of “networkID”, “difficult” and “timestamp” should not be
+modified. Otherwise your node <strong>cannot</strong> connect to the mainnet.</li>
 </ol>
 </div>
 <div class="section" id="gcc-install-newbie-guide">
@@ -818,35 +824,6 @@ field <strong>can not</strong> connect to each other.</li>
 <p>Or you can go directly to the
 <a class="reference external" href="https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/">website</a>
 to download the release installer. (Recommended)</p>
-</div>
-<div class="section" id="start-metrics">
-<h2>Start Metrics<a class="headerlink" href="#start-metrics" title="Permalink to this headline">¶</a></h2>
-<p>If you want to start the metrics, it is necessary to install InfluxDB
-first.</p>
-<p>Download Link: <a class="reference external" href="https://portal.influxdata.com/downloads">https://portal.influxdata.com/downloads</a></p>
-<p>After downloading Influxdb, go to the Influxdb folder and update
-Influxdb.conf:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">http</span><span class="p">]</span>
-  <span class="c1"># Determines whether the HTTP endpoint is enabled.</span>
-  <span class="c1"># enabled = true</span>
-
-  <span class="c1"># The bind address used by the HTTP service.</span>
-  <span class="c1"># bind-address = &quot;:8086&quot;</span>
-  <span class="n">bind</span><span class="o">-</span><span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;:8087&quot;</span>
-</pre></div>
-</div>
-<p>Then, start the influxdb with influxdb.conf.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">influxd</span> <span class="n">run</span> <span class="o">-</span><span class="n">config</span> <span class="n">influxdb</span><span class="o">.</span><span class="n">conf</span>
-</pre></div>
-</div>
-<p>And in another cmd window, use the influxdb client to create the
-database “influxdb”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">influx</span> <span class="o">-</span><span class="n">port</span> <span class="mi">8087</span>
-<span class="n">create</span> <span class="n">database</span> <span class="n">influxdb</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-<p>Finally, start the node with -t true.</p>
 </div>
 <div class="section" id="q-a">
 <h2>Q&amp;A<a class="headerlink" href="#q-a" title="Permalink to this headline">¶</a></h2>

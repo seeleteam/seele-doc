@@ -13,7 +13,7 @@ Setting Up a Node
       `GOPATH <https://github.com/golang/go/wiki/SettingGOPATH>`__
       directory : ``go get -u -v github.com\seeleteam\go-seele\...``
    -  In ``$GOPATH\src\github.com\seeleteam\go-seele``, build the
-      source: run ``make all`` for Linux and ``buildall.bat`` for
+      source: run ``make all`` for Linux/Mac and ``buildall.bat`` for
       Windows.
 
 -  In ``$GOPATH\src\github.com\seeleteam\go-seele\cmd\node``, run:
@@ -52,9 +52,8 @@ Setting Up a Node
 
             -  In the cmd window, run:
                ``node start -c .\config\node1.json``
-            -  By default this will start the miner, not metrics. You
-               can add flags ``-m stop`` to not start the miner, or
-               ``-t true`` to `start metrics <#start-metrics>`__.
+            -  By default this will start the miner. You can add flags
+               ``-m stop`` to not start the miner.
 
          -  Running Multiple Nodes：
 
@@ -68,9 +67,8 @@ Setting Up a Node
          -  Running a Single Node：
 
             -  On terminal, run: ``./node start -c ./config/node1.json``
-            -  By default this will start the miner, not metrics. You
-               can add flags ``-m stop`` to not start the miner, or
-               ``-t true`` to `start metrics <#start-metrics>`__.
+            -  By default this will start the miner. You can add flags
+               ``-m stop`` to not start the miner.
 
          -  Running Multiple Nodes：
 
@@ -96,7 +94,9 @@ Setting Up a Node
 
              ./node start -c ./config/node1.json --accounts ./config/accounts.json
 
-         Note that seeleteam/go-seele/cmd/node/config/accounts.json only contains test accounts, do not use them if you are going to connect to the Seele mainnet. 
+      Note that seeleteam/go-seele/cmd/node/config/accounts.json only
+      contains test accounts, do **not** use them if you are going to
+      connect to the Seele mainnet.
 
 -  The node configuration and test accounts are shown as follows. To
    modify it for your own account, see `How to customize your node
@@ -633,7 +633,7 @@ HTTP RPC’s service address.
 
    <td>
 
-crossorgins
+crossorigins
 
 .. raw:: html
 
@@ -846,6 +846,15 @@ Create a Full Node Client:
 
       -  In the command window, run: ``./client``
 
+-  By default, client will interact with address 127.0.0.1:8027. To
+   interact with other addresses, you will need to add ``-a [address]``
+   while using ``client``. For example,
+
+   ``client getbalance --account [certain account address] -a 127.0.0.1:8028``
+
+   By default, we use port 8027 for node1.json, port 8028 for
+   node2.json, port 8029 for node3.json, port 8026 for node4.json.
+
 -  Help:
 
 ::
@@ -972,8 +981,7 @@ Some common-used commands:
 1. Transfer
 ~~~~~~~~~~~
 
--  Of course, you need an account with money in it to transfer money
-   (for example, 10 fans) to a certain account A.
+-  You need an account with Seeles to make a transaction.
 
 .. code:: js
 
@@ -1008,7 +1016,7 @@ Some common-used commands:
        }
      }
 
--  Query the transfer result with the tx ``Hash``.
+-  Query a transaction with ``Hash``.
 
 .. code:: js
 
@@ -1026,14 +1034,12 @@ Some common-used commands:
        "usedGas": 21000
      }
 
-The result of ``"failure": false``\ row, indicating that the transfer
-was successful. By the way, if tx is not packed by the miner or the
-miner is packing, you may
-see\ ``get error when call rpc leveldb: not found``. Don’t worry, just
-wait for several seconds, or you can use ``client gettxbyhash`` to query
-tx ``status``.
+The result of ``"failure": false``\ row, indicating that the transaction
+was successful. If the transaction is not completed, you may see
+``get error when call rpc leveldb: not found``. You could use
+``client gettxbyhash`` to query the transaction ``status``.
 
--  Confirm the balance of receiver account A.
+-  Confirm the balance of receiver account.
 
 .. code:: js
 
@@ -1049,18 +1055,17 @@ tx ``status``.
 2. Deploy contract
 ~~~~~~~~~~~~~~~~~~
 
--  In the following, we demonstrate how to deploy a contract on Seele
-   blockchain. Before deploying smart contract, you will need to compile
-   your Solidity code to bytecode for EVM (Ethereum Virtual Machine)
-   since we use EVM in Seele. Currently, we support contracts in
-   Solidity v0.4.25. As an example, we use ``simple_storage.sol``
-   contract. `Using the contract
-   simulator <Using-the-contract-simulator.html>`__ will help you get
-   the contract Bytecode data (by using Remix) which will be the input
-   of the payload parameter. You do not need to specify the address of
-   the contract since the address will be created automatically. The
-   contract address can be found in the receipt as introduced in the
-   following step.
+-  In the following, we demonstrate how to deploy a smart contract on
+   Seele blockchain. Before deploying the smart contract, you will need
+   to compile your Solidity code to bytecode for EVM (Ethereum Virtual
+   Machine) since Seele uses EVM. Currently, we support contracts in
+   Solidity v0.4.25 - v0.5.0. As an example, see ``simple_storage.sol``.
+   `Using the contract simulator <Using-the-contract-simulator.html>`__
+   will help you get the contract Bytecode data (by using Remix) which
+   will be the input of the payload parameter. There is no need to
+   specify the address of the smart contract since the address will be
+   created automatically. The smart contract address can be found in the
+   receipt as introduced in the following step.
 
 .. code:: js
 
@@ -1117,7 +1122,7 @@ contract address.
 Sendtx
 ^^^^^^
 
--  After you successfully deploy your contract on Seele, your contract
+-  After you successfully deploy your contract on Seele, the contract
    has its own address. To call the contract, you will need to send a
    transaction to the contract address. `Using the contract
    simulator <Using-the-contract-simulator.html>`__ will help you
@@ -1212,15 +1217,17 @@ them.
 
 4. You could connect to some static nodes in the network by
    configuration. The format of “staticNodes” field is [“ip:port”,…],
-   for example, [“127.0.0.1:8057”].
+   for example, [“127.0.0.1:8057”]. The static nodes used to connect to
+   the Seele mainnet can be found on `Seele
+   Scan <https://seelescan.net>`__ and in node json files under
+   **seeleteam/go-seele/cmd/node/config**.
 
 5. If “isDebug” and “printLog” fields are true, the display is in debug
-   mode and log mode when you run the Seele node. Default values should
-   be false.
+   mode and log mode when you run the Seele node. The default value of
+   these fields should be false.
 
-6. The “networkID”, “difficult” and “timestamp” field for nodes in the
-   same network should be the same. Nodes with different values in these
-   field **can not** connect to each other.
+6. The values of “networkID”, “difficult” and “timestamp” should not be
+   modified. Otherwise your node **cannot** connect to the mainnet.
 
 `GCC <https://gcc.gnu.org/>`__ install newbie guide
 ---------------------------------------------------
@@ -1232,44 +1239,6 @@ Download Link: https://gcc.gnu.org/install/binaries.html
 Or you can go directly to the
 `website <https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/>`__
 to download the release installer. (Recommended)
-
-Start Metrics
--------------
-
-If you want to start the metrics, it is necessary to install InfluxDB
-first.
-
-Download Link: https://portal.influxdata.com/downloads
-
-After downloading Influxdb, go to the Influxdb folder and update
-Influxdb.conf:
-
-::
-
-   [http]
-     # Determines whether the HTTP endpoint is enabled.
-     # enabled = true
-
-     # The bind address used by the HTTP service.
-     # bind-address = ":8086"
-     bind-address = ":8087"
-
-Then, start the influxdb with influxdb.conf.
-
-::
-
-   influxd run -config influxdb.conf
-
-And in another cmd window, use the influxdb client to create the
-database “influxdb”.
-
-::
-
-   influx -port 8087
-   create database influxdb
-   exit
-
-Finally, start the node with -t true.
 
 Q&A
 ---
