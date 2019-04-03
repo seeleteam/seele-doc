@@ -16,9 +16,15 @@ Setting Up a Node
       source: run ``make all`` for Linux/Mac and ``buildall.bat`` for
       Windows.
 
--  In ``$GOPATH\src\github.com\seeleteam\go-seele\cmd\node``, run:
-   ``go build``; if you are running this for the first time a node
-   executable object will appear.
+-  In ``$GOPATH\src\github.com\seeleteam\go-seele\build``, you can find
+   an executable **node**. It is recommended to copy all the node*.json
+   files under
+
+   ``$GOPATH\src\github.com\seeleteam\go-seele\cmd\node\config\``
+
+   to this ``go-seele\build`` directory. They are configuration files.
+   But we will assume these node json files are at ``go-seele\build``
+   directory throughout the document.
 
    -  Something you may need to know before running a node:
 
@@ -44,47 +50,43 @@ Setting Up a Node
 
 -  **Running a Node**:
 
-   -  In go-seele/cmd/node:
+   Assume you have copied the node json files to the ``go-seele/build``
+   directory. These are 4 node configurations that can be used as
+   examples. To use your own account to interact with the mainnet, make
+   sure you use the correct coinbase, p2p private key and shard
+   information in one of these json files. For details, see `How to
+   customize your node
+   configurations <#how-to-customize-your-node-configurations>`__.
+
+   -  In go-seele/build:
 
       -  On Windows:
 
          -  Running a Single Node：
 
-            -  In the cmd window, run:
-               ``node start -c .\config\node1.json``
+            -  In the cmd window, run: ``node start -c node1.json``
             -  By default this will start the miner. You can add flags
                ``-m stop`` to not start the miner.
 
          -  Running Multiple Nodes：
 
-            -  In one cmd window, run:
-               ``node start -c .\config\node1.json``
-            -  In a second cmd window, run:
-               ``node start -c .\config\node2.json``
+            -  In one cmd window, run: ``node start -c node1.json``
+            -  In a second cmd window, run: ``node start -c node2.json``
 
       -  On Linux & Mac:
 
          -  Running a Single Node：
 
-            -  On terminal, run: ``./node start -c ./config/node1.json``
+            -  On terminal, run: ``./node start -c node1.json``
             -  By default this will start the miner. You can add flags
                ``-m stop`` to not start the miner.
 
          -  Running Multiple Nodes：
 
             -  In one terminal window, run:
-               ``./node start -c ./config/node1.json``
+               ``./node start -c node1.json``
             -  In another terminal window, run:
-               ``./node start -c ./config/node2.json``
-
-            **Important note:** under
-            seeleteam/go-seele/cmd/node/config, there are 4 node
-            configurations (with filename node*.json) that can be used
-            as examples. To use your own account to interact with the
-            mainnet, make sure you use the correct coinbase, p2p private
-            key and shard information in one of these json files. For
-            details, see `How to customize your node
-            configurations <#how-to-customize-your-node-configurations>`__.
+               ``./node start -c node2.json``
 
       If you want to have a quickstart in a test or private blockchain
       environment, you can use the default node configurations and
@@ -92,7 +94,7 @@ Setting Up a Node
 
       ::
 
-             ./node start -c ./config/node1.json --accounts ./config/accounts.json
+             ./node start -c node1.json --accounts $GOPATH/src/github.com/seeleteam/go-seele/cmd/node/config/accounts.json
 
       Note that seeleteam/go-seele/cmd/node/config/accounts.json only
       contains test accounts, do **not** use them if you are going to
@@ -832,9 +834,7 @@ Create a Full Node Client:
 -  Preparations:
 
    -  Install go v1.10 or higher and the C compiler.
-   -  In ``seeleteam\go-seele\cmd\client``, run: ``go build``. If you
-      are running this for the first time, a client executable object
-      will appear.
+   -  In ``seeleteam\go-seele\build``
 
 -  Running a Full Node Client:
 
@@ -909,16 +909,14 @@ Create a Light Node Client:
 
 -  Preparations:
 
+   In ``seeleteam/go-seele/build/``,
+
    -  Install go v1.10 or higher and the C compiler.
    -  To run a light node, run
 
-      ``node start -c .\config\node1.json -l``
+      ``./node start -c node1.json -l``
 
       where node1.json can be replaced by other node json files.
-
-   -  In ``seeleteam\go-seele\cmd\client\light``, run: ``go build``. If
-      you are running this for the first time, a client executable
-      object will appear.
 
 -  Running a Light Node Client:
 
@@ -1220,11 +1218,16 @@ them.
    for example, [“127.0.0.1:8057”]. The static nodes used to connect to
    the Seele mainnet can be found on `Seele
    Scan <https://seelescan.net>`__ and in node json files under
-   **seeleteam/go-seele/cmd/node/config**.
+   **seeleteam/go-seele/cmd/node/config**. **The ports for shard1,
+   shard2, shard3 and shard4 are 8057, 8058, 8059, 8056 respectively.**
+   If you find a node on Seele Scan with different port, try to modify
+   it with the correct ports.
 
 5. If “isDebug” and “printLog” fields are true, the display is in debug
    mode and log mode when you run the Seele node. The default value of
-   these fields should be false.
+   “isDebug” is false. The default value of “printLog” is true. If
+   “printLog” is false, you will not see the mining details on the
+   screen.
 
 6. The values of “networkID”, “difficult” and “timestamp” should not be
    modified. Otherwise your node **cannot** connect to the mainnet.
