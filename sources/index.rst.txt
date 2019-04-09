@@ -30,7 +30,7 @@ Contents
    ./docs/Seele-RPC.rst
    ./docs/Seele-transaction-fee.rst
    ./docs/Seele-mining-reward.rst 
-
+   ./docs/Q&A.rst
    
 
 
