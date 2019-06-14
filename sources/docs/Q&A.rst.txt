@@ -55,3 +55,29 @@ No. Currently we only support intra-shard contracts.
 
 By default, the data folder is ~/.seele. If you delete this folder and
 restart your node, you will synchronize the data from scratch.
+
+6. How to handle the “too many open files” error when you run a seele node?
+---------------------------------------------------------------------------
+
+Mac’s default upper limit for the number of files a process can open at
+the same time may be too low for a seele node.
+
+In terminal, type the command
+
+``launchctl limit maxfiles``.
+
+The response should be
+
+``maxfiles 256 unlimited``
+
+where ``256`` is ‘soft limit’ and ``unlimited`` is ‘hard limit’.
+
+Use the command
+
+``sudo launchctl limit maxfiles 65536 200000``
+
+to change the two limits and this time the reponse to
+``launchctl limit maxfiles`` should be ``maxfiles 65536 200000``. You’re
+expected to input your password for the sudo command. Refer to this
+`blog <https://medium.com/mindful-technology/too-many-open-files-limit-ulimit-on-mac-os-x-add0f1bfddde>`__
+if the above didn’t solve your problem.
