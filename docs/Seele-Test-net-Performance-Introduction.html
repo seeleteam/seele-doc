@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Seele mining reward &mdash; Seele  documentation</title>
+  <title>Seele TestNet Performance Introduction &mdash; Seele  documentation</title>
   
 
   
@@ -34,9 +34,7 @@
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Q&amp;A" href="Q&amp;A.html" />
-    <link rel="prev" title="Seele transaction fee" href="Seele-transaction-fee.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,7 +78,7 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started-With-Seele.html">Getting Started With Seele</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Seele-sharding.html">Sharding in Seele</a></li>
@@ -89,7 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Using-the-contract-simulator.html">Using The Contract Simulator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Seele-RPC.html">Seele JSON-RPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Seele-transaction-fee.html">Seele transaction fee</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Seele mining reward</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seele-mining-reward.html">Seele mining reward</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Q&amp;A.html">Q&amp;A</a></li>
 </ul>
 
@@ -136,13 +134,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Seele mining reward</li>
+      <li>Seele TestNet Performance Introduction</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/docs/Seele-mining-reward.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../sources/docs/Seele-Test-net-Performance-Introduction.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -155,52 +153,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="seele-mining-reward">
-<h1>Seele mining reward<a class="headerlink" href="#seele-mining-reward" title="Permalink to this headline">¶</a></h1>
-<p>A miner gets reward for mining a block. We define one “Seele year” as
-the time needed to produce 3,150,000 blocks in one shard. In different
-“years”, the mining reward differs.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="23%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head"></th>
-<th class="head">Year 1</th>
-<th class="head">Year 2</th>
-<th class="head">Year 3</th>
-<th class="head">Year 4</th>
-<th class="head">Year 5</th>
-<th class="head">Year 6</th>
-<th class="head">Year 7</th>
-<th class="head">Year 8</th>
-<th class="head">Year 9</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>block reward</strong></td>
-<td>6</td>
-<td>4</td>
-<td>3</td>
-<td>2.5</td>
-<td>2</td>
-<td>2</td>
-<td>1.5</td>
-<td>1.5</td>
-<td>1.5</td>
-</tr>
-</tbody>
-</table>
-<p>(the reward unit: seele).</p>
+  <div class="section" id="seele-testnet-performance-introduction">
+<h1>Seele TestNet Performance Introduction<a class="headerlink" href="#seele-testnet-performance-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="test-net-functions-and-their-corresponding-functions-in-the-whitepaper">
+<h2>1. Test-net Functions and Their Corresponding Functions in the Whitepaper<a class="headerlink" href="#test-net-functions-and-their-corresponding-functions-in-the-whitepaper" title="Permalink to this headline">¶</a></h2>
+<p>There are three major highlights in Seele’s whitepaper – the Neural
+Consensus Algorithm (EDA), Heterogeneous Forest Network, and Value
+Transport Protocol (VTP and QVIC). In this released version of the
+test-net, the sPoW consensus algorithm can be regarded as the subnet and
+preview version of the EDA. The complete version of the Neural Consensus
+Algorithm will be gradually released after the release of our test-net.
+A stable version will be released in the main-net.</p>
+</div>
+<div class="section" id="the-external-participation-program-of-seele-test-net">
+<h2>2. The External Participation Program of Seele Test-net:<a class="headerlink" href="#the-external-participation-program-of-seele-test-net" title="Permalink to this headline">¶</a></h2>
+<p>A three-phase strategy: The first phase is to select certain community
+members (users &amp; developers) to experience and test the test-net for one
+or two weeks. After gathering their feedback and basing our tests, we’ll
+continue to work on enhancements. Crucial enhancements will be released
+as soon as possible.</p>
+<p>The second phase is to expand the scope and invite more community users
+and partners. We will continue to optimize the test-net and enhance user
+experience. The time span will be one to two weeks.</p>
+<p>The third phase is to open the test-net to the entire community.
+Suggestions and recommendations are welcome.</p>
+</div>
+<div class="section" id="test-net-operation-indicators">
+<h2>3. Test-net Operation Indicators<a class="headerlink" href="#test-net-operation-indicators" title="Permalink to this headline">¶</a></h2>
+<p>We have reached a peak of 3000 TPS with the block generation time within
+10 seconds. When the main-net launches, there will be better
+improvements to meet the requirements of various industry applications,
+including high-concurrent Internet services and financial services with
+strict reliability and security requirements.</p>
+<p>Currently, the transaction confirmation delay &lt; 1 minute. When the
+main-net launches, we’re planning to reduce the transaction confirmation
+delay to within seconds.</p>
+<p>In the current version of test-net, our contract virtual machine is
+highly compatible with EVM. Most Ethereum smart contracts (including
+ERC20) can be executed.</p>
+<p>Before the release of main-net, we will also be able to support the
+popular WebAssembly smart contracts for complex business logics and
+requirements.</p>
+</div>
 </div>
 
 
@@ -208,15 +202,6 @@ the time needed to produce 3,150,000 blocks in one shard. In different
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Q&amp;A.html" class="btn btn-neutral float-right" title="Q&amp;A" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="Seele-transaction-fee.html" class="btn btn-neutral float-left" title="Seele transaction fee" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

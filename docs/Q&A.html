@@ -30,7 +30,7 @@
 
     
 
-  <link rel="icon" type="image/ico" href="images/seeleapp.logo.png" />
+  
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -95,6 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#how-long-does-it-take-for-a-cross-shard-transaction-to-complete">3. How long does it take for a cross-shard transaction to complete?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#is-cross-shard-contract-supported-in-seele">4. Is cross-shard contract supported in Seele?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#where-is-the-blockchain-data-stored-on-my-computer">5. Where is the blockchain data stored on my computer?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-handle-the-too-many-open-files-error-when-you-run-a-seele-node">6. How to handle the “too many open files” error when you run a seele node?</a></li>
 </ul>
 </li>
 </ul>
@@ -207,6 +208,23 @@ for a long time. Please report it to the team.</p>
 <h2>5. Where is the blockchain data stored on my computer?<a class="headerlink" href="#where-is-the-blockchain-data-stored-on-my-computer" title="Permalink to this headline">¶</a></h2>
 <p>By default, the data folder is ~/.seele. If you delete this folder and
 restart your node, you will synchronize the data from scratch.</p>
+</div>
+<div class="section" id="how-to-handle-the-too-many-open-files-error-when-you-run-a-seele-node">
+<h2>6. How to handle the “too many open files” error when you run a seele node?<a class="headerlink" href="#how-to-handle-the-too-many-open-files-error-when-you-run-a-seele-node" title="Permalink to this headline">¶</a></h2>
+<p>Mac’s default upper limit for the number of files a process can open at
+the same time may be too low for a seele node.</p>
+<p>In terminal, type the command</p>
+<p><code class="docutils literal notranslate"><span class="pre">launchctl</span> <span class="pre">limit</span> <span class="pre">maxfiles</span></code>.</p>
+<p>The response should be</p>
+<p><code class="docutils literal notranslate"><span class="pre">maxfiles</span> <span class="pre">256</span> <span class="pre">unlimited</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">256</span></code> is ‘soft limit’ and <code class="docutils literal notranslate"><span class="pre">unlimited</span></code> is ‘hard limit’.</p>
+<p>Use the command</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">launchctl</span> <span class="pre">limit</span> <span class="pre">maxfiles</span> <span class="pre">65536</span> <span class="pre">200000</span></code></p>
+<p>to change the two limits and this time the reponse to
+<code class="docutils literal notranslate"><span class="pre">launchctl</span> <span class="pre">limit</span> <span class="pre">maxfiles</span></code> should be <code class="docutils literal notranslate"><span class="pre">maxfiles</span> <span class="pre">65536</span> <span class="pre">200000</span></code>. You’re
+expected to input your password for the sudo command. Refer to this
+<a class="reference external" href="https://medium.com/mindful-technology/too-many-open-files-limit-ulimit-on-mac-os-x-add0f1bfddde">blog</a>
+if the above didn’t solve your problem.</p>
 </div>
 </div>
 
